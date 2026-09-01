@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тропами памяти</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#17130f;color:#f3ead8}
+body{font-family:Georgia,"Times New Roman",serif;overflow-x:hidden}
+.hero{
+  position:relative;width:100%;min-height:100vh;
+  background-image:linear-gradient(to bottom,rgba(0,0,0,.03),rgba(0,0,0,.12) 55%,rgba(0,0,0,.42)),
+  url("main-background.png");
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+}
+.choice{
+  position:absolute;bottom:7.5%;width:34vw;max-width:520px;min-height:125px;
+  padding:22px 30px;border:1px solid rgba(240,220,170,.45);
+  border-radius:22px;background:rgba(35,29,20,.42);
+  backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);
+  color:#f5ead3;text-decoration:none;text-align:left;
+  transition:.35s ease;overflow:hidden;
+}
+.choice:before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(255,255,255,.08),transparent 45%);
+  opacity:0;transition:.35s ease;
+}
+.choice:hover,.choice:focus-visible{
+  transform:translateY(-8px) scale(1.015);
+  background:rgba(43,36,25,.72);
+  border-color:rgba(255,225,160,.9);
+  box-shadow:0 12px 35px rgba(0,0,0,.42),0 0 28px rgba(222,190,120,.16);
+  outline:none;
+}
+.choice:hover:before,.choice:focus-visible:before{opacity:1}
+.partisans{left:5%}.underground{right:5%}
+.choice-content{position:relative;z-index:1}
+.choice h2{
+  margin:0 0 7px;font-size:clamp(22px,2.3vw,36px);
+  letter-spacing:.08em;font-weight:500;text-transform:uppercase
+}
+.choice p{margin:0;font-size:clamp(13px,1.2vw,18px);line-height:1.4;letter-spacing:.04em}
+.hint{
+  position:absolute;bottom:2.4%;width:100%;text-align:center;
+  font-size:14px;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(244,231,205,.78);pointer-events:none
+}
+/* Кликабельные зоны на двух центральных фигурах */
+.character-hotspot{
+  position:absolute;bottom:22%;width:16%;height:50%;
+  border-radius:50%;background:transparent;border:0;cursor:pointer;
+  transition:.3s ease
+}
+.character-hotspot:hover,.character-hotspot:focus-visible{
+  background:rgba(235,211,161,.08);
+  box-shadow:0 0 50px rgba(235,211,161,.12);outline:none
+}
+.character-partisan{left:43%}
+.character-underground{right:43%}
+
+@media(max-width:800px){
+  .hero{min-height:100svh}
+  .choice{bottom:5%;width:43%;min-height:105px;padding:16px;border-radius:16px}
+  .partisans{left:3%}.underground{right:3%}
+  .choice h2{font-size:clamp(17px,4vw,25px)}
+  .choice p{font-size:clamp(11px,2.5vw,15px)}
+  .hint,.character-hotspot{display:none}
+}
+@media(max-width:520px){
+  .hero{min-height:100svh;background-position:52% center}
+  .choice{width:46%;min-height:90px}
+  .choice p{display:none}.choice h2{font-size:16px}
+}
+@media(prefers-reduced-motion:reduce){
+  .choice,.choice:before,.character-hotspot{transition:none}
+}
+</style>
+</head>
+<body>
+<main class="hero" aria-label="Выбор исторического пути">
+
+  <a class="choice partisans" href="partisans.html"
+     aria-label="Перейти к интерактивному плакату о партизанах">
+    <div class="choice-content">
+      <h2>Партизаны</h2>
+      <p>Жизнь · борьба · разведка · сопротивление</p>
+    </div>
+  </a>
+
+  <a class="choice underground" href="underground.html"
+     aria-label="Перейти к интерактивному плакату о подпольщиках">
+    <div class="choice-content">
+      <h2>Подпольщики</h2>
+      <p>Тайная борьба · связь · агитация · сопротивление</p>
+    </div>
+  </a>
+
+  <a class="character-hotspot character-partisan" href="partisans.html"
+     aria-label="Открыть раздел о партизанах" title="Партизаны"></a>
+
+  <a class="character-hotspot character-underground" href="underground.html"
+     aria-label="Открыть раздел о подпольщиках" title="Подпольщики"></a>
+
+  <div class="hint">Выберите свой путь</div>
+</main>
+</body>
+</html>
