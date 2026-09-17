@@ -4,90 +4,2778 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Тропа Коржа — Тропами памяти</title>
+
 <style>
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#101512}body{color:#f3ead9;font-family:Georgia,"Times New Roman",serif}.game{min-height:100vh;background:url("korzh-background.png") center/cover fixed;position:relative}.game:before{content:"";position:fixed;inset:0;background:linear-gradient(#10151222,#05090866);pointer-events:none}.topbar{min-height:76px;display:flex;align-items:center;gap:20px;padding:10px 24px;background:#131816cc;border-bottom:2px solid #e7d7b766;position:relative;z-index:5}.brand{flex:1;color:#211f19;background:#e4d2ad;padding:13px 20px;font-weight:700;font-size:clamp(18px,2vw,27px);letter-spacing:.06em;clip-path:polygon(1% 8%,98% 0,100% 88%,3% 100%,0 24%)}.nav{display:flex;gap:8px;flex-wrap:wrap}.nav button,.continue,.primary,.choice{border:0;color:#211f19;background:#e4d2ad;font-weight:700;box-shadow:0 2px #0004;transition:.15s}.nav button{padding:12px 14px;border-radius:5px;font-size:14px}button:hover{filter:brightness(1.08);transform:translateY(-1px)}.content{min-height:calc(100vh - 76px);display:flex;align-items:flex-end;padding:0 6vw 34px;position:relative;z-index:1}.dialogue{width:min(1120px,100%);margin:auto;padding:28px 34px 24px;background:#0d1514c7;border:2px solid #e4d2ada6;border-radius:7px;box-shadow:0 12px 35px #0008;animation:appear .5s}.name{display:inline-block;margin-top:-47px;margin-bottom:15px;padding:10px 30px;color:#211f19;background:#e4d2ad;font-size:20px;font-weight:700;clip-path:polygon(2% 7%,97% 0,100% 88%,3% 100%,0 20%)}.chapter{color:#d9c69f;font-size:13px;letter-spacing:.14em;margin-bottom:12px}.text{font-size:clamp(18px,2vw,25px);line-height:1.55;max-width:900px;min-height:82px}.continue{display:block;margin:20px 0 0 auto;padding:13px 24px;border-radius:4px}.choices{display:grid;gap:10px;margin-top:22px;max-width:900px}.choice{text-align:left;padding:15px 18px;border-radius:5px}.card{margin-top:20px;padding:18px 20px;border-left:4px solid #e4d2ad;background:#e4d2ad1a;line-height:1.55}.card-title{color:#e4d2ad;font-weight:700;letter-spacing:.05em;margin-bottom:8px}.toast{position:fixed;top:92px;right:24px;z-index:30;max-width:390px;padding:14px 17px;background:#131816f5;border:1px solid #cdbd9d;color:#f3ead9;border-radius:5px;opacity:0;transform:translateY(-8px);pointer-events:none;transition:.25s}.toast.show{opacity:1;transform:translateY(0)}.overlay{position:fixed;inset:0;z-index:20;display:none;align-items:center;justify-content:center;padding:20px;background:#060a09bb;backdrop-filter:blur(3px)}.overlay.open{display:flex}.modal{width:min(820px,100%);max-height:92vh;overflow:auto;padding:34px;background:#181c19f8;border:2px solid #e4d2adb3;box-shadow:0 20px 60px #0009;border-radius:8px}.modal h1{margin:0 0 8px;color:#e4d2ad;font-size:clamp(25px,4vw,38px)}.subtitle{color:#cdbd9d;margin:0 0 24px;line-height:1.5}.close{float:right;border:0;background:transparent;color:#e4d2ad;font-size:24px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:14px;color:#e4d2ad}.field input,.field select{width:100%;padding:11px 12px;border:1px solid #e4d2ad66;background:#111816;color:#f3ead9;border-radius:4px}.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:24px;flex-wrap:wrap}.primary{padding:13px 20px;border-radius:4px}.secondary{padding:12px 18px;border-radius:4px;border:1px solid #cdbd9d;background:transparent;color:#f3ead9}.profiles{display:grid;gap:10px;margin-top:18px}.profile{padding:15px;background:#111816;border:1px solid #e4d2ad4d;border-radius:5px;display:flex;justify-content:space-between;gap:12px;align-items:center}.profile strong{color:#e4d2ad}.profile small{display:block;color:#bdb5a6;margin-top:4px}.profile button{padding:9px 13px;border:0;border-radius:4px;background:#e4d2ad;color:#211f19;font-weight:700}.map{position:relative;margin-top:20px;min-height:240px;border:1px solid #e4d2ad80;background:linear-gradient(135deg,#6e5b3a40,#141c17cc);overflow:hidden}.map:after{content:"";position:absolute;left:12%;top:58%;width:76%;height:2px;background:#e4d2ad8c;transform:rotate(-8deg)}.point{position:absolute;padding:8px 11px;border:1px solid #e4d2ad8c;background:#131816e8;color:#f3ead9;border-radius:4px;font-size:13px;z-index:2}.p1{left:10%;top:22%}.p2{left:40%;top:45%}.p3{right:10%;top:25%}.p4{right:18%;bottom:17%}@keyframes appear{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}@media(max-width:760px){.topbar{padding:8px 10px;flex-direction:column}.brand{width:100%;text-align:center;font-size:19px}.nav{justify-content:center}.nav button{padding:9px 10px;font-size:12px}.content{min-height:calc(100vh - 150px);padding:0 12px 16px}.dialogue{padding:23px 18px 18px}.name{margin-top:-41px;font-size:16px;padding:9px 18px}.text{font-size:18px}.continue{width:100%}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.modal{padding:23px}}
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #101512;
+    color: #f1eadc;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.game {
+    min-height: 100vh;
+    background:
+        linear-gradient(
+            rgba(10, 15, 12, 0.18),
+            rgba(10, 15, 12, 0.28)
+        ),
+        url("korzh-background.png") center center / cover fixed no-repeat;
+    position: relative;
+}
+
+/* =========================
+   ВЕРХНЯЯ ПАНЕЛЬ
+========================= */
+
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+
+    min-height: 64px;
+    padding: 10px 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    background: rgba(10, 13, 11, 0.86);
+    border-bottom: 1px solid rgba(231, 216, 184, 0.25);
+    backdrop-filter: blur(5px);
+}
+
+.brand {
+    color: #e9dfc9;
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 7px;
+}
+
+.nav button {
+    border: 1px solid rgba(225, 211, 180, 0.28);
+    background: rgba(35, 39, 34, 0.8);
+    color: #eee6d5;
+    padding: 8px 11px;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.nav button:hover {
+    background: rgba(87, 82, 63, 0.9);
+    border-color: rgba(225, 211, 180, 0.55);
+}
+
+/* =========================
+   СЦЕНА
+========================= */
+
+.content {
+    min-height: 100vh;
+    padding: 110px 20px 120px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.dialogue {
+    width: min(980px, 94vw);
+    padding: 30px 34px 28px;
+
+    background: rgba(13, 17, 14, 0.88);
+    border: 1px solid rgba(231, 216, 184, 0.25);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+
+    position: relative;
+}
+
+.name {
+    position: absolute;
+    top: -18px;
+    left: 24px;
+
+    padding: 8px 18px;
+
+    background: #d8c9a8;
+    color: #25251f;
+
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    clip-path: polygon(
+        0 0,
+        96% 0,
+        100% 20%,
+        96% 100%,
+        0 100%
+    );
+}
+
+.chapter {
+    color: #d8c9a8;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 13px;
+    margin-bottom: 13px;
+}
+
+.text {
+    font-size: 20px;
+    line-height: 1.65;
+}
+
+.text p {
+    margin: 0 0 13px;
+}
+
+.text .quote {
+    font-style: italic;
+    color: #e6dcc7;
+}
+
+.choices {
+    display: grid;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.choice {
+    width: 100%;
+    padding: 14px 17px;
+
+    text-align: left;
+
+    color: #eee7d8;
+    background: rgba(50, 53, 47, 0.88);
+
+    border: 1px solid rgba(224, 209, 178, 0.25);
+    border-radius: 3px;
+
+    transition: 0.2s;
+}
+
+.choice:hover {
+    background: rgba(84, 79, 61, 0.95);
+    transform: translateX(3px);
+}
+
+.continue {
+    margin-top: 24px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.primary {
+    border: 1px solid #cdbd98;
+    background: rgba(119, 104, 72, 0.85);
+    color: #fff9ea;
+
+    padding: 12px 23px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+}
+
+.primary:hover {
+    background: rgba(146, 126, 83, 0.95);
+}
+
+/* =========================
+   ИСТОРИЧЕСКИЕ КАРТОЧКИ
+========================= */
+
+.card {
+    margin: 22px 0 5px;
+    padding: 20px;
+
+    background: rgba(221, 208, 177, 0.08);
+    border-left: 3px solid #cdbd98;
+
+    line-height: 1.6;
+}
+
+.card-title {
+    color: #e2d2ae;
+    font-weight: bold;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.real {
+    border-left-color: #9eaa86;
+}
+
+.fiction {
+    border-left-color: #a98d72;
+}
+
+.date {
+    font-size: 28px;
+    letter-spacing: 3px;
+    color: #e5d5b0;
+    margin-bottom: 12px;
+}
+
+/* =========================
+   МОДАЛЬНЫЕ ОКНА
+========================= */
+
+.overlay {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+
+    background: rgba(5, 8, 6, 0.82);
+    padding: 40px 18px;
+
+    overflow-y: auto;
+}
+
+.overlay.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    width: min(760px, 96vw);
+    max-height: 92vh;
+    overflow-y: auto;
+
+    padding: 30px;
+
+    background: #1a1d19;
+    border: 1px solid rgba(225, 210, 177, 0.3);
+
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.6);
+
+    position: relative;
+}
+
+.modal h1 {
+    margin-top: 0;
+    color: #e5d6b6;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+.modal h2 {
+    color: #d8c9a8;
+    font-size: 20px;
+}
+
+.close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+
+    width: 36px;
+    height: 36px;
+
+    border: 0;
+    background: transparent;
+    color: #ddd3c0;
+
+    font-size: 25px;
+}
+
+.close:hover {
+    color: white;
+}
+
+/* =========================
+   ДОСЬЕ
+========================= */
+
+.intro {
+    color: #c9c0ae;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.field {
+    margin-bottom: 16px;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 6px;
+    color: #d9ccb0;
+}
+
+.field input,
+.field select {
+    width: 100%;
+
+    padding: 11px 12px;
+
+    background: #111410;
+    color: #f0e8d8;
+
+    border: 1px solid rgba(225, 210, 177, 0.25);
+    border-radius: 3px;
+}
+
+.field input:focus,
+.field select:focus {
+    outline: none;
+    border-color: #cdbd98;
+}
+
+.profile-list {
+    display: grid;
+    gap: 12px;
+}
+
+.profile {
+    padding: 16px;
+
+    background: rgba(221, 208, 177, 0.07);
+    border: 1px solid rgba(225, 210, 177, 0.2);
+}
+
+.profile-title {
+    color: #e3d5b7;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.profile-info {
+    color: #bbb3a2;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.profile button {
+    margin-top: 10px;
+}
+
+/* =========================
+   ДНЕВНИК
+========================= */
+
+.diary-entry {
+    padding: 17px 18px;
+    margin-bottom: 12px;
+
+    background: rgba(226, 213, 181, 0.06);
+    border-left: 2px solid #bca982;
+
+    line-height: 1.6;
+}
+
+.diary-date {
+    color: #d5c39c;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+/* =========================
+   КАРТА
+========================= */
+
+.map {
+    min-height: 390px;
+    position: relative;
+
+    background:
+        linear-gradient(
+            rgba(110, 105, 79, 0.15),
+            rgba(110, 105, 79, 0.15)
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 38px,
+            rgba(220, 210, 180, 0.08) 39px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 38px,
+            rgba(220, 210, 180, 0.08) 39px
+        );
+
+    border: 1px solid rgba(225, 210, 177, 0.22);
+    overflow: hidden;
+}
+
+.map::before {
+    content: "";
+    position: absolute;
+    left: 14%;
+    top: 53%;
+    width: 75%;
+    height: 2px;
+    background: #c6b58c;
+    transform: rotate(-10deg);
+    opacity: 0.6;
+}
+
+.point {
+    position: absolute;
+    transform: translate(-50%, -50%);
+
+    padding: 7px 10px;
+
+    background: rgba(24, 28, 23, 0.9);
+    border: 1px solid rgba(225, 210, 177, 0.35);
+    color: #e9ddc3;
+
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+/* =========================
+   АДАПТИВ
+========================= */
+
+@media (max-width: 800px) {
+    .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .nav {
+        justify-content: flex-start;
+    }
+
+    .content {
+        padding-top: 150px;
+    }
+
+    .dialogue {
+        padding: 28px 20px 22px;
+    }
+
+    .text {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 520px) {
+    .brand {
+        font-size: 16px;
+    }
+
+    .nav button {
+        font-size: 12px;
+        padding: 7px 8px;
+    }
+
+    .content {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
 </style>
 </head>
+
 <body>
-<main class="game">
-<header class="topbar"><div class="brand">🌲 ТРОПАМИ ПАМЯТИ</div><nav class="nav"><button onclick="openDossier()">📜 ДОСЬЕ</button><button onclick="openDiary()">📖 ДНЕВНИК</button><button onclick="openMap()">🗺 КАРТА</button><button onclick="openHistory()">📚 ИСТОРИЯ</button><button onclick="openMenu()">⚙ МЕНЮ</button></nav></header>
-<section class="content"><div class="dialogue" id="dialogue"><div class="name" id="speaker"></div><div class="chapter" id="chapter"></div><div class="text" id="text"></div><div class="choices" id="choices"></div><button class="continue" id="continue">ПРОДОЛЖИТЬ →</button></div></section>
-<div class="toast" id="toast"></div>
 
-<div class="overlay" id="dossierOverlay"><div class="modal"><button class="close" onclick="closeOverlay('dossierOverlay')">×</button><h1>📜 ЛИЧНОЕ ДОСЬЕ</h1><p class="subtitle">Заполни досье своего героя.<br><em>Используй вымышленные данные — это часть игры.</em></p><form id="dossierForm"><div class="form-grid"><div class="field"><label>Имя *</label><input id="firstName" required></div><div class="field"><label>Фамилия *</label><input id="lastName" required></div><div class="field"><label>Возраст *</label><input id="age" type="number" min="13" max="99" required></div><div class="field"><label>Пол *</label><select id="gender" required><option value="">Выбери</option><option value="girl">Девушка</option><option value="boy">Парень</option></select></div><div class="field"><label>Родной город / деревня *</label><input id="birthplace" required></div><div class="field"><label>Район / область *</label><input id="region" required></div><div class="field"><label>Имя близкого человека *</label><input id="relativeName" required></div><div class="field"><label>Кем он приходится? *</label><input id="relativeRelation" required></div><div class="field full"><label>Как тебя узнать? — особая примета *</label><input id="mark" required></div><div class="field full"><label>Под каким именем тебя будут знать товарищи? — кодовое имя *</label><input id="codeName" required></div></div><div class="modal-actions"><button type="button" class="secondary" onclick="closeOverlay('dossierOverlay')">ОТМЕНА</button><button class="primary">💾 СОХРАНИТЬ ДОСЬЕ</button></div><p class="subtitle" style="font-size:13px;margin-top:18px">В игре не нужны настоящие адреса или данные родственников. Используй вымышленные данные.</p></form></div></div>
+<div class="game">
 
-<div class="overlay" id="profilesOverlay"><div class="modal"><button class="close" onclick="closeOverlay('profilesOverlay')">×</button><h1>📜 ВЫБЕРИ СВОЁ ДОСЬЕ</h1><p class="subtitle">Выбери героя, чтобы продолжить путь.</p><div class="profiles" id="profiles"></div><div class="modal-actions"><button class="primary" onclick="newDossier()">СОЗДАТЬ НОВОЕ ДОСЬЕ</button></div></div></div>
-<div class="overlay" id="diaryOverlay"><div class="modal"><button class="close" onclick="closeOverlay('diaryOverlay')">×</button><h1>📖 ТВОЙ ДНЕВНИК</h1><div id="diaryContent"></div></div></div>
-<div class="overlay" id="mapOverlay"><div class="modal"><button class="close" onclick="closeOverlay('mapOverlay')">×</button><h1>🗺 КАРТА</h1><p class="subtitle">Пинск и дорога Пинск — Логишин.</p><div class="map"><div class="point p1">ПИНСК</div><div class="point p2">ЛЕСНОЙ ЛАГЕРЬ</div><div class="point p3">ЛОГИШИН</div><div class="point p4">ДОРОГА</div></div></div></div>
-<div class="overlay" id="historyOverlay"><div class="modal"><button class="close" onclick="closeOverlay('historyOverlay')">×</button><h1>📚 ИСТОРИЯ</h1><p class="subtitle">Исторические сведения открываются по мере прохождения.</p><div class="card"><div class="card-title">ВАСИЛИЙ ЗАХАРОВИЧ КОРЖ</div>Партизанский командир, действовавший на Пинщине. Во время войны использовал псевдоним «Комаров».</div><div class="card"><div class="card-title">28 ИЮНЯ 1941 ГОДА</div>На дороге Пинск — Логишин произошёл один из самых ранних боёв белорусских партизан с немецкими войсками.</div></div></div>
-<div class="overlay" id="menuOverlay"><div class="modal"><button class="close" onclick="closeOverlay('menuOverlay')">×</button><h1>⚙ МЕНЮ</h1><p class="subtitle">Прогресс и данные героя сохраняются в браузере.</p><div id="menuInfo"></div><div class="modal-actions"><button class="secondary" onclick="resetProgress()">НАЧАТЬ ПУТЬ ЗАНОВО</button></div></div></div>
+    <!-- ВЕРХНЕЕ МЕНЮ -->
+    <header class="topbar">
+
+        <div class="brand">
+            🌲 ТРОПАМИ ПАМЯТИ
+        </div>
+
+        <nav class="nav">
+            <button onclick="openDossier()">📜 ДОСЬЕ</button>
+            <button onclick="openDiary()">📖 ДНЕВНИК</button>
+            <button onclick="openMap()">🗺 КАРТА</button>
+            <button onclick="openHistory()">📚 ИСТОРИЯ</button>
+            <button onclick="openMenu()">⚙ МЕНЮ</button>
+        </nav>
+
+    </header>
+
+
+    <!-- ОСНОВНАЯ СЦЕНА -->
+    <main class="content">
+
+        <section class="dialogue">
+
+            <div class="name" id="speaker"></div>
+
+            <div class="chapter" id="chapter"></div>
+
+            <div class="text" id="storyText"></div>
+
+            <div class="choices" id="choices"></div>
+
+            <div class="continue" id="continueArea"></div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         ДОСЬЕ
+    ========================== -->
+
+    <div class="overlay" id="dossierOverlay">
+
+        <div class="modal">
+
+            <button class="close" onclick="closeOverlay('dossierOverlay')">×</button>
+
+            <div id="dossierContent"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ВЫБОР ПРОФИЛЯ
+    ========================== -->
+
+    <div class="overlay" id="profilesOverlay">
+
+        <div class="modal">
+
+            <button class="close" onclick="closeOverlay('profilesOverlay')">×</button>
+
+            <h1>📜 ВЫБЕРИ СВОЁ ДОСЬЕ</h1>
+
+            <div class="profile-list" id="profileList"></div>
+
+            <div class="continue">
+                <button class="primary" onclick="createNewProfile()">
+                    СОЗДАТЬ НОВОЕ ДОСЬЕ
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ДНЕВНИК
+    ========================== -->
+
+    <div class="overlay" id="diaryOverlay">
+
+        <div class="modal">
+
+            <button class="close" onclick="closeOverlay('diaryOverlay')">×</button>
+
+            <h1>📖 ТВОЙ ДНЕВНИК</h1>
+
+            <div id="diaryContent"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         КАРТА
+    ========================== -->
+
+    <div class="overlay" id="mapOverlay">
+
+        <div class="modal">
+
+            <button class="close" onclick="closeOverlay('mapOverlay')">×</button>
+
+            <h1>🗺 КАРТА ПУТИ</h1>
+
+            <p class="intro">
+                Здесь постепенно открываются места, связанные с твоим путешествием.
+            </p>
+
+            <div class="map">
+
+                <div
+                    class="point"
+                    style="left: 20%; top: 63%;"
+                >
+                    ПИНСК
+                </div>
+
+                <div
+                    class="point"
+                    style="left: 72%; top: 34%;"
+                >
+                    ЛОГИШИН
+                </div>
+
+                <div
+                    class="point"
+                    style="left: 48%; top: 48%;"
+                >
+                    🌲 ЛЕС
+                </div>
+
+                <div
+                    class="point"
+                    style="left: 59%; top: 65%;"
+                >
+                    ДОРОГА
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ИСТОРИЯ
+    ========================== -->
+
+    <div class="overlay" id="historyOverlay">
+
+        <div class="modal">
+
+            <button class="close" onclick="closeOverlay('historyOverlay')">×</button>
+
+            <h1>📚 ИСТОРИЯ</h1>
+
+            <h2>Партизанское движение</h2>
+
+            <p class="intro">
+                Во время Великой Отечественной войны на оккупированной территории
+                Беларуси действовали многочисленные партизанские формирования
+                и подпольные организации.
+            </p>
+
+            <h2>Разведка</h2>
+
+            <p class="intro">
+                Сведения о передвижении противника, дорогах, населённых пунктах
+                и военных объектах имели большое значение для сопротивления.
+            </p>
+
+            <h2>Население</h2>
+
+            <p class="intro">
+                Партизаны были связаны с населением оккупированной территории.
+                Люди могли помогать продовольствием, сведениями, связью и другими
+                способами, однако такая помощь могла быть опасной для самих мирных жителей.
+            </p>
+
+            <h2>Василий Захарович Корж</h2>
+
+            <p class="intro">
+                Один из известных руководителей партизанского движения в Беларуси.
+                В начале войны его деятельность была связана с Пинским Полесьем.
+                Псевдоним Коржа — Комаров.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         МЕНЮ
+    ========================== -->
+
+    <div class="overlay" id="menuOverlay">
+
+        <div class="modal">
+
+            <button class="close" onclick="closeOverlay('menuOverlay')">×</button>
+
+            <h1>⚙ МЕНЮ</h1>
+
+            <p class="intro">
+                Твоё прохождение сохраняется в этом браузере автоматически.
+            </p>
+
+            <button class="primary" onclick="restartStory()">
+                НАЧАТЬ ИСТОРИЮ ЗАНОВО
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
 
 <script>
-const PROFILE_KEY='tropami_pamyati_korzh_profiles',ACTIVE_KEY='tropami_pamyati_active_korzh_profile',PROGRESS_KEY='tropami_pamyati_korzh_progress',DIARY_KEY='tropami_pamyati_korzh_diary';
-let i=Number(localStorage.getItem(PROGRESS_KEY)||0),pendingDossier=false;
-const S=[
-['ПРОЛОГ','ТВОЙ ДНЕВНИК','<b>22 июня 1941 года.</b><br><br>Война пришла в Беларусь.<br><br>Утро начиналось как обычно. Но этот день изменил жизнь миллионов людей.'],
-['ПРОЛОГ','ТВОЙ ДНЕВНИК','Ты ещё не знаешь, чем закончится война.<br><br>Ты знаешь только одно: теперь всё будет иначе.','choice',[['Идти узнать последние новости.','ответственность'],['Остаться рядом с близкими и помочь им.','забота'],['Искать возможность помочь тем, кто оказался в опасности.','инициатива']]],
-['ГЛАВА I — КОГДА НАЧАЛАСЬ ВОЙНА','ТВОЙ ДНЕВНИК','Первые дни войны проходят быстро.<br><br>Новости становятся тревожнее. Дороги заполняются военными колоннами. Люди пытаются понять, что происходит.'],
-['ГЛАВА I — КОГДА НАЧАЛАСЬ ВОЙНА','ТВОЙ ДНЕВНИК','Ты уходишь из привычной жизни не потому, что знаешь, как победить.<br><br>Ты просто понимаешь: оставаться в стороне уже невозможно.<br><br>Впереди — лес.'],
-['ЛИЧНОЕ ДОСЬЕ','СИСТЕМА','Прежде чем продолжить путь, создай героя.<br><br>Заполни личное досье. Используй только вымышленные данные.','dossier'],
-['ГЛАВА II — ПЕРЕД ДОРОГОЙ','ВАСИЛИЙ ЗАХАРОВИЧ КОРЖ','Лес казался тихим.<br><br>Но теперь ты знала: тишина здесь ничего не означала.<br><br>Где-то совсем рядом могла проходить дорога. Каждый звук мог оказаться важным.'],
-['ГЛАВА II — ПЕРЕД ДОРОГОЙ','ТВОЙ ДНЕВНИК','<b>Анна</b> — местная жительница. Хорошо знает лесные дороги.<br><br><b>Миша</b> — молодой связной. Быстрый и иногда слишком торопливый.<br><br><b>Степан</b> — опытный боец. Осторожный и недоверчивый к непроверенной информации.'],
-['ГЛАВА II — ПЕРЕД ДОРОГОЙ','АННА','— Я кое-что видела на дороге.<br><br>Она замолкает.<br><br>— Но если немцы узнают, что я вам помогала…','choice',[['«Расскажи всё, что видела».','доверие'],['«Не рискуй. Если опасно — можешь не говорить».','ответственность'],['«Подумай, что именно ты можешь сообщить».','наблюдение']]],
-['ГЛАВА II — ПЕРЕД ДОРОГОЙ','ТВОЙ ДНЕВНИК','Ты впервые почувствовала, насколько тесно сопротивление связано с обычными людьми.<br><br>Информация, продукты, связь, предупреждения — всё это могло иметь значение.<br><br>Но помощь была опасной и для тех, кто её оказывал.','card','<div class="card-title">🤝 ПАРТИЗАНЫ И НАСЕЛЕНИЕ</div>Партизанское движение было связано с населением оккупированной территории. Люди могли помогать сведениями, продовольствием, связью и другими способами.'],
-['ГЛАВА II — ПЕРЕД ДОРОГОЙ','ВАСИЛИЙ ЗАХАРОВИЧ КОРЖ','Корж раскладывает карту.<br><br>— В разведке нельзя додумывать.<br><br>— Говорить нужно только то, что действительно видел.<br><br>— Нам понадобится наблюдатель.'],
-['ГЛАВА II — ПЕРЕД ДОРОГОЙ','ЗАДАНИЕ','Перед тобой дорога.<br><br>Запомни направление движения, количество машин, время появления колонны и особенности местности.<br><br><b>Главное правило: не додумывай.</b>','choice',[['Внимательно наблюдать.','наблюдение'],['Сразу сделать вывод о происходящем.','поспешность'],['Ждать указаний и ничего не придумывать.','дисциплина']]],
-['ГЛАВА II — ПЕРЕД ДОРОГОЙ','МИША','— Я тоже пойду, — говорит Миша.<br><br>— Только поближе. Так я больше увижу.','choice',[['Предупредить Мишу.','ответственность'],['Ничего не говорить.','молчание'],['Сообщить Коржу.','дисциплина']]],
-['ГЛАВА II — ПЕРЕД ДОРОГОЙ','ТВОЙ ДНЕВНИК','Вечером лагерь постепенно затихает.<br><br><i>Сегодня я поняла, что информация может быть не менее важна, чем оружие.</i><br><br><i>Нужно смотреть внимательно. Слушать внимательно. И думать о других.</i>','diary'],
-['ГЛАВА II — ПЕРЕД ДОРОГОЙ','СТЕПАН','— Корж!<br><br>Голос Степана разрывает тишину.<br><br>— На дороге движение.'],
-['ГЛАВА III — 28 ИЮНЯ','ТВОЙ ДНЕВНИК','<b>28 июня 1941 года.</b><br><br>Дорога Пинск — Логишин.<br><br>Ты понимаешь: сегодня твоя первая настоящая разведка.'],
-['ГЛАВА III — 28 ИЮНЯ','ВАСИЛИЙ ЗАХАРОВИЧ КОРЖ','— Помнишь, что нужно делать?','choice',[['👁 Наблюдать.','наблюдение'],['📯 Передать сигнал.','связь'],['✋ Ничего не предпринимать без приказа.','дисциплина']]],
-['ГЛАВА III — 28 ИЮНЯ','ТВОЙ ДНЕВНИК','Ты приседаешь ниже.<br><br>Сначала появляется звук. Потом на дороге показывается колонна.<br><br>Ты стараешься не двигаться. Не додумывать. Только смотреть.','choice',[['Передать информацию товарищам.','разведка'],['Продолжить наблюдение.','наблюдение'],['Подойти ближе самостоятельно.','риск']]],
-['ГЛАВА III — 28 ИЮНЯ','ВАСИЛИЙ ЗАХАРОВИЧ КОРЖ','Получив информацию, Корж коротко говорит:<br><br>— Приготовиться.'],
-['ГЛАВА III — 28 ИЮНЯ','ТВОЙ ДНЕВНИК','Несколько секунд кажется, что ничего не происходит.<br><br>А затем тишину разрывают звуки боя.<br><br><b>Отряд Коржа вступил в бой.</b><br><br>Ты остаёшься в укрытии и стараешься выполнять свою задачу.','choice',[['Оставаться в укрытии.','осторожность'],['Передавать информацию товарищам.','связь'],['Помочь раненому товарищу.','взаимопомощь']]],
-['ГЛАВА III — 28 ИЮНЯ','ТВОЙ ДНЕВНИК','Бой заканчивается так же внезапно, как начался.<br><br>Дорога снова становится тихой.<br><br>Ты впервые увидела настоящий бой.'],
-['ГЛАВА III — 28 ИЮНЯ','ВАСИЛИЙ ЗАХАРОВИЧ КОРЖ','— Все живы?<br><br>Пауза.<br><br>— Не все.<br><br>— Запомните этот день.<br><br><b>Война только начинается.</b>','diary'],
-['ГЛАВА III — 28 ИЮНЯ','ТВОЙ ДНЕВНИК','<b>28 июня 1941 года.</b><br><br><i>Сегодня я впервые увидела настоящий бой.</i><br><br><i>Я думала, что самое сложное — не испугаться.</i><br><br><i>Теперь понимаю: самое сложное — думать, когда страшно.</i>'],
-['ГЛАВА IV — ПОСЛЕ ПЕРВОГО БОЯ','ТВОЙ ДНЕВНИК','Казалось странным, что солнце снова взошло.<br><br>Лес жил своей обычной жизнью.<br><br>Но вчерашнего дня уже нельзя было вернуть.'],
-['ГЛАВА IV — ПОСЛЕ ПЕРВОГО БОЯ','ВАСИЛИЙ ЗАХАРОВИЧ КОРЖ','Корж раскладывает карту.<br><br>— Один бой ничего не заканчивает.<br>— Нам нужно знать дороги.<br>— Нужно знать деревни.<br>— Нужно знать, где находится противник.<br><br>— И самое главное — проверять информацию.','map'],
-['ГЛАВА IV — ПОСЛЕ ПЕРВОГО БОЯ','ЗАДАНИЕ НА КАРТЕ','Перед тобой участок местности.<br><br>Что необходимо учитывать разведчику?','choice',[['Дороги, перекрёстки и направления движения.','карта'],['Только расстояние до лагеря.','карта'],['Только количество деревень.','карта']]],
-['ГЛАВА IV — ПОСЛЕ ПЕРВОГО БОЯ','АННА','— Люди хотят помочь.<br><br>— Но они боятся.'],
-['ГЛАВА IV — ПОСЛЕ ПЕРВОГО БОЯ','ВАСИЛИЙ ЗАХАРОВИЧ КОРЖ','— И правильно делают.<br><br>— Нельзя требовать от человека жертвовать собой только потому, что он оказался рядом.'],
-['ГЛАВА IV — ПОСЛЕ ПЕРВОГО БОЯ','МИША','Миша приносит сообщение.<br><br>Степан спрашивает:<br><br>— Откуда информация?<br><br>— Мне рассказали.'],
-['ГЛАВА IV — ПОСЛЕ ПЕРВОГО БОЯ','СТЕПАН','— Кто?<br><br>Миша молчит.<br><br>Корж спокойно говорит:<br><br>— Значит, сначала проверим.','choice',[['🔎 Проверить информацию.','проверка'],['⚡ Действовать сразу.','поспешность'],['❓ Узнать, почему источник неизвестен.','анализ']]],
-['ГЛАВА IV — ПОСЛЕ ПЕРВОГО БОЯ','ТВОЙ ДНЕВНИК','<b>ПРАВИЛО РАЗВЕДКИ</b><br><br>Один непроверенный слух может привести к ошибочному решению.<br><br>Поэтому разведка — это не только наблюдение. Это ещё и проверка информации.','card','<div class="card-title">📌 ЧТО ТЫ УЗНАЛА</div>Разведчик должен отличать наблюдение от предположения, проверять сведения и передавать их точно.'],
-['ГЛАВА IV — ПОСЛЕ ПЕРВОГО БОЯ','ВАСИЛИЙ ЗАХАРОВИЧ КОРЖ','Вечером Корж сидит у костра.<br><br>У тебя есть возможность задать ему один вопрос.','choice',[['«Вам бывает страшно?»','разговор'],['«Почему вы решили остаться?»','разговор'],['«Когда всё это закончится?»','разговор']]],
-['ГЛАВА IV — ПОСЛЕ ПЕРВОГО БОЯ','ВАСИЛИЙ ЗАХАРОВИЧ КОРЖ','Корж отвечает после короткой паузы:<br><br>— Конечно, бывает.<br><br>— Смелость — это не когда человеку не страшно.<br><br>— Это когда страх не заставляет его забыть о других.'],
-['ГЛАВА V — ПУТЬ ПРОДОЛЖАЕТСЯ','ТВОЙ ДНЕВНИК','<b>Прошло время.</b><br><br><b>1941</b> — первые месяцы войны.<br><br><b>1942</b> — партизанские формирования расширяются.<br><br><b>1943</b> — борьба становится масштабнее.<br><br><b>1944</b> — Беларусь приближается к освобождению.'],
-['ГЛАВА V — ПУТЬ ПРОДОЛЖАЕТСЯ','ТВОЙ ДНЕВНИК','Ты пришла сюда человеком, который почти ничего не знал о войне.<br><br>Ты боялась.<br>Ошибалась.<br>Училась.<br>Делала выбор.<br><br>И постепенно поняла:'],
-['ГЛАВА V — ПУТЬ ПРОДОЛЖАЕТСЯ','ТВОЙ ДНЕВНИК','<b>Сопротивление — это не только оружие.</b><br><br>Это люди.<br><br>Это доверие.<br><br>Это информация.<br><br>Это ответственность.<br><br>Это память.'],
-['ФИНАЛ','ТВОЙ ДНЕВНИК','<b>ТВОЙ ПУТЬ ПРОДОЛЖАЕТСЯ.</b><br><br>Но теперь пришло время отделить художественную историю игры от событий, которые действительно произошли.'],
-['📖 А ЧТО БЫЛО НА САМОМ ДЕЛЕ?','ИСТОРИЧЕСКАЯ СПРАВКА','<b>ВАСИЛИЙ ЗАХАРОВИЧ КОРЖ</b><br><br>Василий Корж — один из руководителей партизанского движения в Беларуси. В начале войны на Пинщине был создан партизанский отряд, которым он руководил под псевдонимом «Комаров».','card','<div class="card-title">🟢 РЕАЛЬНО</div>Корж, Пинщина, псевдоним «Комаров», начало партизанской борьбы в первые дни войны и связь с дорогой Пинск — Логишин — исторические факты.'],
-['📖 А ЧТО БЫЛО НА САМОМ ДЕЛЕ?','ИСТОРИЧЕСКАЯ СПРАВКА','<b>28 ИЮНЯ 1941 ГОДА</b><br><br>На дороге Пинск — Логишин произошёл бой группы партизан, связанной с отрядом Коржа, с немецкой техникой.<br><br>В источниках место боя описывается по-разному, в том числе в районе Посеничей и Подболотья. Поэтому в игре мы не перегружаем сцену спорными деталями.','card','<div class="card-title">🟢 РЕАЛЬНО</div>Дата — 28 июня 1941 года; район Пинска; дорога Пинск — Логишин; участие партизан Коржа и бой с немецкой техникой.'],
-['📖 А ЧТО БЫЛО НА САМОМ ДЕЛЕ?','ИСТОРИЧЕСКАЯ СПРАВКА','<b>А ЧТО ПРИДУМАНО ДЛЯ ИГРЫ?</b><br><br>Твой герой — вымышленный.<br>Его семья — вымышленная.<br>Кодовое имя — вымышленное.<br>Анна, Миша и Степан — игровые персонажи.<br>Диалоги и решения героя — художественная реконструкция.','card','<div class="card-title">🟡 ВАЖНО</div>Ты не меняешь историю. Ты проходишь её рядом с теми, кто действительно жил и действовал в это время.'],
-['ФИНАЛ','СИСТЕМА','Твой первый путь завершён.<br><br>Досье сохранено.<br>История Коржа открыта в энциклопедии.<br>Твои решения сохранены.','final']
+
+/* =========================================================
+   ХРАНИЛИЩЕ
+========================================================= */
+
+const PROFILES_KEY = "tropami_pamyati_korzh_profiles";
+const ACTIVE_KEY = "tropami_pamyati_active_korzh_profile";
+const DIARY_KEY = "tropami_pamyati_korzh_diary";
+
+
+let profiles = JSON.parse(
+    localStorage.getItem(PROFILES_KEY) || "[]"
+);
+
+let activeProfileId =
+    localStorage.getItem(ACTIVE_KEY) || null;
+
+let currentScene = 0;
+
+let diary = JSON.parse(
+    localStorage.getItem(DIARY_KEY) || "[]"
+);
+
+
+/* =========================================================
+   ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
+========================================================= */
+
+function getActiveProfile() {
+
+    if (!activeProfileId) {
+        return null;
+    }
+
+    return profiles.find(
+        profile => profile.id === activeProfileId
+    ) || null;
+}
+
+
+function saveProfiles() {
+
+    localStorage.setItem(
+        PROFILES_KEY,
+        JSON.stringify(profiles)
+    );
+}
+
+
+function saveDiary() {
+
+    localStorage.setItem(
+        DIARY_KEY,
+        JSON.stringify(diary)
+    );
+}
+
+
+function saveProgress() {
+
+    const profile = getActiveProfile();
+
+    if (!profile) {
+        return;
+    }
+
+    profile.progress = currentScene;
+
+    saveProfiles();
+}
+
+
+function closeOverlay(id) {
+
+    document.getElementById(id).classList.remove("active");
+}
+
+
+function closeAllOverlays() {
+
+    document
+        .querySelectorAll(".overlay")
+        .forEach(element => {
+            element.classList.remove("active");
+        });
+}
+
+
+/* =========================================================
+   ДОСЬЕ
+========================================================= */
+
+function openDossier() {
+
+    if (profiles.length === 0) {
+        showDossierForm();
+        return;
+    }
+
+    if (!getActiveProfile()) {
+        renderProfiles();
+        document
+            .getElementById("profilesOverlay")
+            .classList.add("active");
+
+        return;
+    }
+
+    showCurrentDossier();
+}
+
+
+function renderProfiles() {
+
+    const list =
+        document.getElementById("profileList");
+
+    if (profiles.length === 0) {
+
+        list.innerHTML =
+            "<p class='intro'>Пока нет сохранённых досье.</p>";
+
+        return;
+    }
+
+
+    list.innerHTML = profiles.map(profile => {
+
+        const path =
+            profile.path === "partisan"
+                ? "🌲 Партизаны"
+                : "🏙️ Подпольщики";
+
+        const progress =
+            Math.min(
+                100,
+                Math.round(
+                    ((profile.progress || 0) /
+                    Math.max(1, scenes.length - 1)) * 100
+                )
+            );
+
+        return `
+            <div class="profile">
+
+                <div class="profile-title">
+                    📜 ${escapeHtml(profile.codeName || "Без кодового имени")}
+                </div>
+
+                <div class="profile-info">
+                    ${escapeHtml(profile.name || "")}
+                    ${escapeHtml(profile.surname || "")},
+                    ${escapeHtml(profile.age || "")} лет<br>
+
+                    Путь: ${path}<br>
+
+                    Прогресс: ${progress}%
+                </div>
+
+                <button
+                    class="primary"
+                    onclick="continueProfile('${profile.id}')"
+                >
+                    ПРОДОЛЖИТЬ
+                </button>
+
+            </div>
+        `;
+
+    }).join("");
+}
+
+
+function continueProfile(id) {
+
+    activeProfileId = id;
+
+    localStorage.setItem(
+        ACTIVE_KEY,
+        id
+    );
+
+    const profile = getActiveProfile();
+
+    currentScene =
+        profile && typeof profile.progress === "number"
+            ? profile.progress
+            : 0;
+
+    closeAllOverlays();
+
+    renderScene();
+}
+
+
+function createNewProfile() {
+
+    closeOverlay("profilesOverlay");
+
+    showDossierForm();
+}
+
+
+function showDossierForm() {
+
+    const content =
+        document.getElementById("dossierContent");
+
+    content.innerHTML = `
+
+        <h1>📜 ЛИЧНОЕ ДОСЬЕ</h1>
+
+        <p class="intro">
+            Заполни досье своего героя.<br>
+            <strong>Используй вымышленные данные — это часть игры.</strong>
+        </p>
+
+        <div class="field">
+            <label>Имя</label>
+            <input id="dName" type="text">
+        </div>
+
+        <div class="field">
+            <label>Фамилия</label>
+            <input id="dSurname" type="text">
+        </div>
+
+        <div class="field">
+            <label>Возраст</label>
+            <input id="dAge" type="number" min="12" max="80">
+        </div>
+
+        <div class="field">
+            <label>Пол</label>
+
+            <select id="dGender">
+                <option value="">Выбери</option>
+                <option value="girl">Девушка</option>
+                <option value="boy">Юноша</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Родной город / деревня</label>
+            <input id="dPlace" type="text">
+        </div>
+
+        <div class="field">
+            <label>Район / область</label>
+            <input id="dRegion" type="text">
+        </div>
+
+        <div class="field">
+            <label>
+                Кому сообщить о твоей судьбе,
+                если ты погибнешь или попадёшь в плен?
+            </label>
+
+            <input id="dRelative" type="text">
+        </div>
+
+        <div class="field">
+            <label>Кем он приходится</label>
+            <input id="dRelation" type="text">
+        </div>
+
+        <div class="field">
+            <label>Как тебя узнать?</label>
+            <input id="dMark" type="text">
+        </div>
+
+        <div class="field">
+            <label>
+                Под каким именем тебя будут знать товарищи?
+            </label>
+
+            <input id="dCode" type="text">
+        </div>
+
+        <div class="continue">
+            <button
+                class="primary"
+                onclick="saveDossier()"
+            >
+                💾 СОХРАНИТЬ ДОСЬЕ
+            </button>
+        </div>
+    `;
+
+
+    document
+        .getElementById("dossierOverlay")
+        .classList.add("active");
+}
+
+
+function saveDossier() {
+
+    const profile = {
+
+        id:
+            "korzh_" +
+            Date.now() +
+            "_" +
+            Math.random()
+                .toString(36)
+                .slice(2),
+
+        name:
+            document.getElementById("dName").value.trim(),
+
+        surname:
+            document.getElementById("dSurname").value.trim(),
+
+        age:
+            document.getElementById("dAge").value.trim(),
+
+        gender:
+            document.getElementById("dGender").value,
+
+        place:
+            document.getElementById("dPlace").value.trim(),
+
+        region:
+            document.getElementById("dRegion").value.trim(),
+
+        relative:
+            document.getElementById("dRelative").value.trim(),
+
+        relation:
+            document.getElementById("dRelation").value.trim(),
+
+        mark:
+            document.getElementById("dMark").value.trim(),
+
+        codeName:
+            document.getElementById("dCode").value.trim(),
+
+        path:
+            "partisan",
+
+        mentor:
+            "Василий Захарович Корж",
+
+        progress:
+            5,
+
+        achievements:
+            [],
+
+        learned:
+            []
+
+    };
+
+
+    if (
+        !profile.name ||
+        !profile.surname ||
+        !profile.age ||
+        !profile.gender ||
+        !profile.codeName
+    ) {
+
+        alert(
+            "Пожалуйста, заполни имя, фамилию, возраст, пол и кодовое имя."
+        );
+
+        return;
+    }
+
+
+    profiles.push(profile);
+
+    activeProfileId = profile.id;
+
+    saveProfiles();
+
+    localStorage.setItem(
+        ACTIVE_KEY,
+        activeProfileId
+    );
+
+
+    closeOverlay("dossierOverlay");
+
+    currentScene = 5;
+
+    addDiary(
+        "Досье принято",
+        `Кодовое имя: ${profile.codeName}.`
+    );
+
+    renderScene();
+}
+
+
+function showCurrentDossier() {
+
+    const profile =
+        getActiveProfile();
+
+    if (!profile) {
+        showDossierForm();
+        return;
+    }
+
+
+    const path =
+        profile.path === "partisan"
+            ? "🌲 Партизаны"
+            : "🏙️ Подпольщики";
+
+
+    const content =
+        document.getElementById("dossierContent");
+
+
+    content.innerHTML = `
+
+        <h1>📜 ЛИЧНОЕ ДОСЬЕ</h1>
+
+        <div class="card">
+
+            <div class="card-title">
+                КОДОВОЕ ИМЯ
+            </div>
+
+            ${escapeHtml(profile.codeName)}
+
+        </div>
+
+        <p>
+            <strong>Имя:</strong>
+            ${escapeHtml(profile.name)}
+            ${escapeHtml(profile.surname)}
+        </p>
+
+        <p>
+            <strong>Возраст:</strong>
+            ${escapeHtml(profile.age)}
+        </p>
+
+        <p>
+            <strong>Родной город / деревня:</strong>
+            ${escapeHtml(profile.place)}
+        </p>
+
+        <p>
+            <strong>Район / область:</strong>
+            ${escapeHtml(profile.region)}
+        </p>
+
+        <p>
+            <strong>Близкий человек:</strong>
+            ${escapeHtml(profile.relative)}
+        </p>
+
+        <p>
+            <strong>Кем приходится:</strong>
+            ${escapeHtml(profile.relation)}
+        </p>
+
+        <p>
+            <strong>Особая примета:</strong>
+            ${escapeHtml(profile.mark)}
+        </p>
+
+        <div class="card real">
+
+            <div class="card-title">
+                ПУТЬ
+            </div>
+
+            ${path}
+
+        </div>
+
+        <div class="card real">
+
+            <div class="card-title">
+                ИСТОРИЧЕСКИЙ НАСТАВНИК
+            </div>
+
+            ${escapeHtml(profile.mentor)}
+
+        </div>
+
+    `;
+
+
+    document
+        .getElementById("dossierOverlay")
+        .classList.add("active");
+}
+
+
+/* =========================================================
+   ДНЕВНИК
+========================================================= */
+
+function addDiary(date, text) {
+
+    diary.push({
+        date: date,
+        text: text
+    });
+
+    saveDiary();
+}
+
+
+function openDiary() {
+
+    const container =
+        document.getElementById("diaryContent");
+
+    if (diary.length === 0) {
+
+        container.innerHTML =
+            "<p class='intro'>Пока здесь пусто. Твои записи появятся по ходу истории.</p>";
+
+    } else {
+
+        container.innerHTML =
+            diary.map(entry => `
+                <div class="diary-entry">
+
+                    <div class="diary-date">
+                        ${escapeHtml(entry.date)}
+                    </div>
+
+                    ${escapeHtml(entry.text)}
+
+                </div>
+            `).join("");
+
+    }
+
+
+    document
+        .getElementById("diaryOverlay")
+        .classList.add("active");
+}
+
+
+/* =========================================================
+   КАРТА
+========================================================= */
+
+function openMap() {
+
+    document
+        .getElementById("mapOverlay")
+        .classList.add("active");
+}
+
+
+/* =========================================================
+   ИСТОРИЯ
+========================================================= */
+
+function openHistory() {
+
+    document
+        .getElementById("historyOverlay")
+        .classList.add("active");
+}
+
+
+/* =========================================================
+   МЕНЮ
+========================================================= */
+
+function openMenu() {
+
+    document
+        .getElementById("menuOverlay")
+        .classList.add("active");
+}
+
+
+function restartStory() {
+
+    if (
+        !confirm(
+            "Начать историю заново? Досье сохранится."
+        )
+    ) {
+        return;
+    }
+
+    currentScene = 0;
+
+    closeAllOverlays();
+
+    renderScene();
+}
+
+
+/* =========================================================
+   ЭКРАНЫ ИСТОРИИ
+========================================================= */
+
+const scenes = [
+
+    /* 0 */
+
+    {
+        chapter: "",
+        speaker: "",
+        text: `
+            <div class="date">22 июня 1941 года</div>
+
+            <p>
+                <strong>Война пришла в Беларусь.</strong>
+            </p>
+
+            <p>
+                Утро начиналось как обычно.
+                Но этот день изменил жизнь миллионов людей.
+            </p>
+
+            <p class="quote">
+                Что ты сделаешь, когда ещё не знаешь,
+                чем закончится война?
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 1 */
+
+    {
+        chapter: "Пролог",
+        speaker: "ТВОЙ ГЕРОЙ",
+        text: `
+            Ты ещё не знаешь, насколько долгим будет этот путь.
+
+            <p>
+                Ты слышишь первые тревожные новости.
+                Люди говорят о войне, но никто не знает,
+                что будет завтра.
+            </p>
+
+            <p>
+                Перед тобой первый выбор.
+            </p>
+        `,
+        choices: [
+            "Идти узнать последние новости.",
+            "Остаться рядом с близкими и помочь им.",
+            "Искать возможность помочь тем, кто оказался в опасности."
+        ]
+    },
+
+
+    /* 2 */
+
+    {
+        chapter: "Глава I — Когда началась война",
+        speaker: "",
+        text: `
+            <p>
+                Прошло несколько дней.
+            </p>
+
+            <p>
+                Война приближается.
+                Обычная жизнь постепенно исчезает.
+            </p>
+
+            <p>
+                Всё чаще приходится думать не о том,
+                что будет через год, а о том,
+                что произойдёт завтра.
+            </p>
+
+            <p>
+                Вскоре твой путь приводит тебя к людям,
+                которые решили сопротивляться.
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 3 */
+
+    {
+        chapter: "Глава I",
+        speaker: "",
+        text: `
+            <p>
+                Лес становится новым домом.
+            </p>
+
+            <p>
+                Здесь нет привычной безопасности.
+                Есть только люди, карта, дорога
+                и необходимость доверять друг другу.
+            </p>
+
+            <p>
+                Именно здесь ты впервые слышишь имя,
+                которое скоро станет для тебя знакомым.
+            </p>
+
+            <p class="quote">
+                Василий Захарович Корж.
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 4 */
+
+    {
+        chapter: "Личное досье",
+        speaker: "",
+        text: `
+            <p>
+                Прежде чем продолжить путь,
+                нужно оставить сведения о своём герое.
+            </p>
+
+            <p>
+                Это не настоящий военный документ.
+                Это игровое досье персонажа.
+            </p>
+        `,
+        button: "ОТКРЫТЬ ДОСЬЕ",
+        action: "dossier"
+    },
+
+
+    /* 5 */
+
+    {
+        chapter: "Глава II — Перед дорогой",
+        speaker: "",
+        text: `
+            <p>
+                Конец июня 1941 года.
+            </p>
+
+            <p>
+                В лесу ты постепенно понимаешь главное:
+                здесь нельзя действовать в одиночку.
+            </p>
+
+            <p>
+                У каждого своя задача.
+                Кто-то наблюдает.
+                Кто-то передаёт сведения.
+                Кто-то знает местность.
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 6 */
+
+    {
+        chapter: "Глава II",
+        speaker: "",
+        text: `
+            <p>
+                Здесь ты знакомишься с тремя людьми.
+            </p>
+
+            <p>
+                <strong>Анна</strong> — местная жительница.
+                Спокойная и внимательная.
+                Она хорошо знает окрестности.
+            </p>
+
+            <p>
+                <strong>Миша</strong> — молодой связной.
+                Быстрый, смелый и иногда слишком поспешный.
+            </p>
+
+            <p>
+                <strong>Степан</strong> — опытный боец.
+                Он осторожен и не сразу доверяет новым людям.
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 7 */
+
+    {
+        chapter: "Глава II",
+        speaker: "АННА",
+        text: `
+            <p>
+                — Я видела движение на дороге.
+            </p>
+
+            <p>
+                Анна говорит тихо.
+            </p>
+
+            <p>
+                — Но я не уверена, что могу рассказывать об этом.
+                Если узнают...
+            </p>
+
+            <p>
+                Ты понимаешь:
+                для неё это не просто разговор.
+            </p>
+        `,
+        choices: [
+            "Попробовать убедить Анну рассказать всё.",
+            "Не давить на неё.",
+            "Объяснить, почему сведения могут быть важны."
+        ]
+    },
+
+
+    /* 8 */
+
+    {
+        chapter: "Глава II",
+        speaker: "",
+        text: `
+            <div class="card real">
+
+                <div class="card-title">
+                    🤝 ПАРТИЗАНЫ И НАСЕЛЕНИЕ
+                </div>
+
+                Партизанское движение было тесно связано
+                с населением оккупированной территории.
+                Люди могли помогать сведениями,
+                продовольствием, связью и другими способами.
+
+            </div>
+
+            <p>
+                Но такая помощь могла быть опасной.
+                Поэтому доверие всегда означало ответственность.
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 9 */
+
+    {
+        chapter: "Глава II",
+        speaker: "ВАСИЛИЙ ЗАХАРОВИЧ КОРЖ",
+        text: `
+            <p>
+                Перед тобой человек,
+                которого товарищи знают как Комарова.
+            </p>
+
+            <p>
+                <strong>
+                    Василий Захарович Корж
+                </strong>
+            </p>
+
+            <p>
+                — В разведке нельзя додумывать.
+            </p>
+
+            <p>
+                — Говорить нужно только то,
+                что действительно видел.
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 10 */
+
+    {
+        chapter: "Глава II",
+        speaker: "КОРЖ",
+        text: `
+            <p>
+                — Сегодня тебе предстоит наблюдать за дорогой.
+            </p>
+
+            <p>
+                — Запоминай всё, что можешь увидеть:
+                направление движения,
+                количество машин,
+                время,
+                особенности дороги.
+            </p>
+
+            <p class="quote">
+                Наблюдатель должен видеть больше,
+                чем кажется возможным.
+            </p>
+        `,
+        choices: [
+            "Внимательно наблюдать за дорогой.",
+            "Сосредоточиться только на движении.",
+            "Рискнуть и подойти ближе."
+        ]
+    },
+
+
+    /* 11 */
+
+    {
+        chapter: "Глава II",
+        speaker: "",
+        text: `
+            <p>
+                Ты замечаешь несколько деталей.
+            </p>
+
+            <p>
+                Дорога соединяет населённые пункты.
+                Рядом лес.
+                Движение идёт в определённом направлении.
+            </p>
+
+            <div class="card">
+                <div class="card-title">
+                    🗺 ИСТОРИЧЕСКОЕ МЫШЛЕНИЕ
+                </div>
+
+                Попробуй ответить:
+                почему для разведчика важно точно определить
+                место, время и направление движения?
+            </div>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 12 */
+
+    {
+        chapter: "Глава II",
+        speaker: "МИША",
+        text: `
+            <p>
+                — Я сам схожу ближе к дороге!
+            </p>
+
+            <p>
+                Миша уже собирается уходить.
+            </p>
+
+            <p>
+                Степан хмурится.
+            </p>
+
+            <p>
+                — Слишком опасно.
+            </p>
+        `,
+        choices: [
+            "Предупредить Мишу.",
+            "Ничего не говорить.",
+            "Рассказать Коржу."
+        ]
+    },
+
+
+    /* 13 */
+
+    {
+        chapter: "Глава II",
+        speaker: "ТВОЙ ДНЕВНИК",
+        text: `
+            <p>
+                Вечером вы снова собираетесь у костра.
+            </p>
+
+            <p class="quote">
+                Сегодня я поняла,
+                что в войне информация может быть
+                не менее важна, чем оружие.
+            </p>
+        `,
+        button: "ЗАПИСАТЬ В ДНЕВНИК",
+        action: "diary1"
+    },
+
+
+    /* 14 */
+
+    {
+        chapter: "Глава II",
+        speaker: "",
+        text: `
+            <p>
+                Ночь.
+            </p>
+
+            <p>
+                Вдруг кто-то замечает движение.
+            </p>
+
+            <p class="quote">
+                — Корж! На дороге движение.
+            </p>
+
+            <div class="date">
+                28 ИЮНЯ 1941 ГОДА
+            </div>
+
+            <p>
+                <strong>
+                    ДОРОГА ПИНСК — ЛОГИШИН
+                </strong>
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 15 */
+
+    {
+        chapter: "Глава III — 28 июня",
+        speaker: "",
+        text: `
+            <div class="date">
+                28 июня 1941 года
+            </div>
+
+            <p>
+                Наступает утро.
+            </p>
+
+            <p>
+                Дорога перед вами.
+                Каждый звук кажется слишком громким.
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 16 */
+
+    {
+        chapter: "Глава III",
+        speaker: "КОРЖ",
+        text: `
+            <p>
+                — Помнишь, что нужно делать?
+            </p>
+
+            <p>
+                Корж смотрит на тебя спокойно.
+            </p>
+
+            <p>
+                Сейчас особенно важно не поддаваться панике.
+            </p>
+        `,
+        choices: [
+            "Наблюдать.",
+            "Подготовить условный сигнал.",
+            "Ничего не делать без приказа."
+        ]
+    },
+
+
+    /* 17 */
+
+    {
+        chapter: "Глава III",
+        speaker: "",
+        text: `
+            <p>
+                На дороге появляется колонна.
+            </p>
+
+            <p>
+                Ты стараешься запомнить всё,
+                что успеваешь увидеть.
+            </p>
+
+            <p>
+                Теперь нужно решить,
+                как поступить с полученной информацией.
+            </p>
+        `,
+        choices: [
+            "Передать сигнал.",
+            "Продолжить наблюдать.",
+            "Действовать самостоятельно."
+        ]
+    },
+
+
+    /* 18 */
+
+    {
+        chapter: "Глава III",
+        speaker: "КОРЖ",
+        text: `
+            <p>
+                — Приготовиться.
+            </p>
+
+            <p>
+                Несколько секунд кажутся вечностью.
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 19 */
+
+    {
+        chapter: "Глава III",
+        speaker: "",
+        text: `
+            <p>
+                Начинается бой.
+            </p>
+
+            <p>
+                <strong>
+                    Отряд Коржа вступил в бой.
+                </strong>
+            </p>
+
+            <p>
+                Ты слышишь выстрелы,
+                видишь движение товарищей
+                и понимаешь, что теперь всё происходит по-настоящему.
+            </p>
+        `,
+        choices: [
+            "Оставаться в укрытии.",
+            "Передавать информацию.",
+            "Помочь раненому товарищу.",
+            "Продолжать наблюдение."
+        ]
+    },
+
+
+    /* 20 */
+
+    {
+        chapter: "Глава III",
+        speaker: "",
+        text: `
+            <p>
+                Всё заканчивается так же внезапно,
+                как началось.
+            </p>
+
+            <p>
+                Дорога затихает.
+                В воздухе остаётся дым.
+            </p>
+
+            <p>
+                Никто не говорит несколько мгновений.
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 21 */
+
+    {
+        chapter: "Глава III",
+        speaker: "КОРЖ",
+        text: `
+            <p>
+                — Все живы?
+            </p>
+
+            <p>
+                Кто-то отвечает.
+            </p>
+
+            <p>
+                — Не все.
+            </p>
+
+            <p>
+                Корж смотрит на дорогу.
+            </p>
+
+            <p class="quote">
+                — Запомните этот день.
+            </p>
+
+            <p class="quote">
+                — Война только начинается.
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 22 */
+
+    {
+        chapter: "Глава III",
+        speaker: "ТВОЙ ДНЕВНИК",
+        text: `
+            <div class="card">
+
+                <div class="card-title">
+                    28 июня 1941 года
+                </div>
+
+                <p>
+                    Сегодня я впервые увидела настоящий бой.
+                </p>
+
+                <p>
+                    Я думала, что самое сложное —
+                    не испугаться.
+                </p>
+
+                <p>
+                    Теперь понимаю:
+                    самое сложное —
+                    думать, когда страшно.
+                </p>
+
+            </div>
+        `,
+        button: "ЗАПИСАТЬ В ДНЕВНИК",
+        action: "diary2"
+    },
+
+
+    /* 23 */
+
+    {
+        chapter: "Глава IV — После первого боя",
+        speaker: "",
+        text: `
+            <div class="date">
+                29 июня 1941 года
+            </div>
+
+            <p>
+                Наступает тихое утро.
+            </p>
+
+            <p>
+                Но тишина не означает,
+                что война закончилась.
+            </p>
+
+            <p>
+                Один бой ничего не решает.
+                Путь продолжается.
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 24 */
+
+    {
+        chapter: "Глава IV",
+        speaker: "КОРЖ",
+        text: `
+            <p>
+                Корж разворачивает карту.
+            </p>
+
+            <p>
+                — Теперь нам нужно знать,
+                что происходит вокруг.
+            </p>
+
+            <p>
+                — Дороги.
+                Перекрёстки.
+                Населённые пункты.
+                Движение.
+            </p>
+
+            <p>
+                — Сведения нужно собирать
+                и проверять.
+            </p>
+        `,
+        button: "ПОСМОТРЕТЬ КАРТУ",
+        action: "map"
+    },
+
+
+    /* 25 */
+
+    {
+        chapter: "Глава IV",
+        speaker: "",
+        text: `
+            <p>
+                Перед тобой карта.
+            </p>
+
+            <p>
+                Попробуй определить,
+                какие объекты могут иметь значение
+                для наблюдения.
+            </p>
+
+            <div class="card">
+                <div class="card-title">
+                    ЗАДАНИЕ
+                </div>
+
+                Назови три объекта,
+                которые нужно учитывать при изучении местности.
+            </div>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 26 */
+
+    {
+        chapter: "Глава IV",
+        speaker: "АННА",
+        text: `
+            <p>
+                — Люди боятся.
+            </p>
+
+            <p>
+                Анна говорит о жителях ближайших деревень.
+            </p>
+
+            <p>
+                — Они хотят помочь.
+                Но никто не знает,
+                чем это может для них закончиться.
+            </p>
+        `,
+        choices: [
+            "Не заставлять людей рисковать.",
+            "Получить необходимые сведения.",
+            "Подумать, как помочь самим людям."
+        ]
+    },
+
+
+    /* 27 */
+
+    {
+        chapter: "Глава IV",
+        speaker: "КОРЖ",
+        text: `
+            <p>
+                — Никого нельзя заставлять
+                становиться героем.
+            </p>
+
+            <p>
+                — Мы должны помнить,
+                что за каждым человеком
+                стоит семья.
+            </p>
+
+            <p class="quote">
+                Ответственность — это не только
+                выполнить задачу.
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 28 */
+
+    {
+        chapter: "Глава IV",
+        speaker: "МИША",
+        text: `
+            <p>
+                Миша возвращается с новостями.
+            </p>
+
+            <p>
+                — Мне рассказали о движении
+                на одной из дорог.
+            </p>
+
+            <p>
+                Степан сразу задаёт вопрос:
+            </p>
+
+            <p class="quote">
+                — А откуда ты знаешь,
+                что сведения точные?
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 29 */
+
+    {
+        chapter: "Глава IV",
+        speaker: "",
+        text: `
+            <p>
+                Перед тобой выбор.
+            </p>
+
+            <p>
+                Что делать с информацией,
+                источник которой неизвестен?
+            </p>
+        `,
+        choices: [
+            "Проверить сведения.",
+            "Действовать немедленно.",
+            "Выяснить, почему источник скрыт."
+        ]
+    },
+
+
+    /* 30 */
+
+    {
+        chapter: "Глава IV",
+        speaker: "",
+        text: `
+            <div class="card real">
+
+                <div class="card-title">
+                    🔎 ПРАВИЛО РАЗВЕДКИ
+                </div>
+
+                Историческая разведка требовала
+                внимательности и проверки сведений.
+                Ошибка в информации могла привести
+                к ошибочному решению.
+
+            </div>
+
+            <p>
+                Историк тоже работает с информацией:
+                он проверяет источники,
+                сопоставляет факты
+                и учитывает разные свидетельства.
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 31 */
+
+    {
+        chapter: "Глава IV",
+        speaker: "КОРЖ",
+        text: `
+            <p>
+                Вечером вы сидите у костра.
+            </p>
+
+            <p>
+                У тебя появляется возможность
+                задать Коржу один вопрос.
+            </p>
+        `,
+        choices: [
+            "Вам бывает страшно?",
+            "Почему вы решили остаться?",
+            "Когда всё закончится?"
+        ]
+    },
+
+
+    /* 32 */
+
+    {
+        chapter: "Глава IV",
+        speaker: "КОРЖ",
+        text: `
+            <p>
+                Корж некоторое время молчит.
+            </p>
+
+            <p>
+                — Конечно, бывает.
+            </p>
+
+            <p>
+                — Смелость — это не когда человеку
+                не страшно.
+            </p>
+
+            <p>
+                — Это когда страх не заставляет
+                его забыть о других.
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 33 */
+
+    {
+        chapter: "Глава V — Путь продолжается",
+        speaker: "",
+        text: `
+            <p>
+                <strong>Прошло время.</strong>
+            </p>
+
+            <div class="date">
+                1941 → 1942 → 1943 → 1944
+            </div>
+
+            <p>
+                Партизанское движение расширялось.
+                Появлялись новые отряды и формирования.
+                Борьба становилась масштабнее.
+            </p>
+
+            <p>
+                Твой путь продолжается вместе
+                с историей страны.
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 34 */
+
+    {
+        chapter: "Глава V",
+        speaker: "ТВОЙ ГЕРОЙ",
+        text: `
+            <p>
+                Я пришла сюда человеком,
+                который почти ничего не знал о войне.
+            </p>
+
+            <p>
+                Я боялась.
+            </p>
+
+            <p>
+                Ошибалась.
+            </p>
+
+            <p>
+                Училась.
+            </p>
+
+            <p>
+                Делала выбор.
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 35 */
+
+    {
+        chapter: "Глава V",
+        speaker: "",
+        text: `
+            <p>
+                И я поняла:
+            </p>
+
+            <p class="quote">
+                сопротивление — это не только оружие.
+            </p>
+
+            <p class="quote">
+                Это люди.
+            </p>
+
+            <p class="quote">
+                Это доверие.
+            </p>
+
+            <p class="quote">
+                Это память.
+            </p>
+
+            <p class="quote">
+                Это ответственность.
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 36 */
+
+    {
+        chapter: "Финал",
+        speaker: "",
+        text: `
+            <p>
+                Ты прошла путь рядом с людьми,
+                которые жили в первые недели войны.
+            </p>
+
+            <p>
+                Теперь самое время отделить
+                историю от игрового повествования.
+            </p>
+
+            <p>
+                Что было на самом деле?
+            </p>
+        `,
+        button: "📖 УЗНАТЬ ИСТОРИЮ"
+    },
+
+
+    /* 37 */
+
+    {
+        chapter: "📖 А ЧТО БЫЛО НА САМОМ ДЕЛЕ?",
+        speaker: "",
+        text: `
+            <div class="card real">
+
+                <div class="card-title">
+                    ВАСИЛИЙ ЗАХАРОВИЧ КОРЖ
+                </div>
+
+                Василий Захарович Корж —
+                один из известных руководителей
+                партизанского движения в Беларуси.
+
+                В начале Великой Отечественной войны
+                его деятельность была связана
+                с Пинским Полесьем.
+
+                Его псевдоним —
+                <strong>Комаров</strong>.
+
+            </div>
+
+            <p>
+                В первые недели войны сопротивление
+                на оккупированной территории
+                только начинало формироваться.
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 38 */
+
+    {
+        chapter: "Историческая справка",
+        speaker: "",
+        text: `
+            <div class="card real">
+
+                <div class="card-title">
+                    28 ИЮНЯ 1941 ГОДА
+                </div>
+
+                На дороге
+                <strong>Пинск — Логишин</strong>
+                произошёл один из ранних боёв
+                партизанского формирования,
+                связанного с Коржем.
+
+            </div>
+
+            <p>
+                Этот эпизод относится к самым ранним
+                проявлениям вооружённого сопротивления
+                в Беларуси после начала немецкого вторжения.
+            </p>
+
+            <p>
+                В разных исторических источниках
+                встречаются расхождения в деталях
+                точного места и описании боя.
+                Поэтому в игре мы не добавляем
+                спорные подробности как бесспорные факты.
+            </p>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    },
+
+
+    /* 39 */
+
+    {
+        chapter: "История и игра",
+        speaker: "",
+        text: `
+            <div class="card real">
+
+                <div class="card-title">
+                    🟢 РЕАЛЬНО
+                </div>
+
+                Василий Захарович Корж.<br>
+                Псевдоним Комаров.<br>
+                Пинское Полесье.<br>
+                28 июня 1941 года.<br>
+                Дорога Пинск — Логишин.<br>
+                Ранний бой партизанского формирования.
+
+            </div>
+
+
+            <div class="card fiction">
+
+                <div class="card-title">
+                    🟡 ВЫМЫШЛЕНО ДЛЯ ИГРЫ
+                </div>
+
+                Твой герой.<br>
+                Семья героя.<br>
+                Кодовое имя.<br>
+                Анна.<br>
+                Миша.<br>
+                Степан.<br>
+                Диалоги.<br>
+                Игровые решения.<br>
+                Личные записи дневника.
+
+            </div>
+
+            <p class="quote">
+                Ты не меняешь историю.
+            </p>
+
+            <p class="quote">
+                Ты проходишь её рядом с теми,
+                кто действительно её создавал.
+            </p>
+        `,
+        button: "ЗАВЕРШИТЬ ПУТЬ"
+    },
+
+
+    /* 40 */
+
+    {
+        chapter: "Путь завершён",
+        speaker: "",
+        text: `
+            <div class="date">
+                100%
+            </div>
+
+            <p>
+                <strong>
+                    Тропа Коржа пройдена.
+                </strong>
+            </p>
+
+            <p>
+                Ты познакомилась с историей
+                первых недель войны,
+                узнала о разведке,
+                взаимодействии с населением
+                и одном из ранних боёв
+                партизанского движения.
+            </p>
+
+            <div class="card">
+
+                <div class="card-title">
+                    ТВОЁ ДОСЬЕ ОБНОВЛЕНО
+                </div>
+
+                🌲 Путь: Партизаны<br>
+                👤 Наставник: Василий Захарович Корж<br>
+                🔎 Разведка<br>
+                🤝 Население<br>
+                🗺 Работа с картой<br>
+                ⚔ Первый бой<br>
+                🧭 Ответственность
+
+            </div>
+        `,
+        button: "ПРОДОЛЖИТЬ"
+    }
+
 ];
-function profiles(){try{return JSON.parse(localStorage.getItem(PROFILE_KEY)||'[]')}catch(e){return[]}}
-function active(){try{return JSON.parse(localStorage.getItem(ACTIVE_KEY)||'null')}catch(e){return null}}
-function diary(){try{return JSON.parse(localStorage.getItem(DIARY_KEY)||'[]')}catch(e){return[]}}
-function saveProgress(){localStorage.setItem(PROGRESS_KEY,i)}
-function notice(x){const t=document.getElementById('toast');t.textContent=x;t.classList.add('show');clearTimeout(window.tt);window.tt=setTimeout(()=>t.classList.remove('show'),2800)}
-function closeOverlay(id){document.getElementById(id).classList.remove('open')}
-function render(){const s=S[i];document.getElementById('chapter').textContent=s[0];document.getElementById('speaker').textContent=s[1];let text=s[2];if(s[4]&&s[3]==='card')text+='<div class="card">'+s[4]+'</div>';document.getElementById('text').innerHTML=text;const c=document.getElementById('choices');c.innerHTML='';const b=document.getElementById('continue');if(s[3]==='choice'){b.style.display='none';s[4].forEach(a=>{let q=document.createElement('button');q.className='choice';q.textContent=a[0];q.onclick=()=>{notice('Твой выбор сохранён.');i++;saveProgress();render()};c.appendChild(q)})}else{b.style.display='block';b.textContent=s[3]==='dossier'?'ОТКРЫТЬ ДОСЬЕ →':s[3]==='map'?'ОТКРЫТЬ КАРТУ →':s[3]==='final'?'ЗАВЕРШИТЬ ПУТЬ →':'ПРОДОЛЖИТЬ →';b.onclick=()=>next(s)}}
-function next(s){if(s[3]==='dossier'){pendingDossier=true;openDossier();return}if(s[3]==='map'){openMap();i++;saveProgress();setTimeout(render,250);return}if(s[3]==='diary'){addDiary('28 июня 1941 года',s[2]);notice('Запись добавлена в дневник.')}if(s[3]==='final'){openFinal();return}if(i<S.length-1){i++;saveProgress();render()}}
-function addDiary(date,text){let d=diary();d.push({date,text:text.replace(/<[^>]*>/g,'')});localStorage.setItem(DIARY_KEY,JSON.stringify(d))}
-function openDiary(){const d=diary();document.getElementById('diaryContent').innerHTML=d.length?d.map(x=>'<div class="card"><div class="card-title">'+x.date+'</div>'+x.text+'</div>').join(''):'<p class="subtitle">Пока записей нет.</p>';document.getElementById('diaryOverlay').classList.add('open')}
-function openMap(){document.getElementById('mapOverlay').classList.add('open')}
-function openHistory(){document.getElementById('historyOverlay').classList.add('open')}
-function openMenu(){const p=active();document.getElementById('menuInfo').innerHTML='<div class="card"><div class="card-title">ГЕРОЙ</div>'+(p?p.codeName:'Досье ещё не создано')+'</div><div class="card"><div class="card-title">ПРОГРЕСС</div>'+Math.round(i/(S.length-1)*100)+'%</div>';document.getElementById('menuOverlay').classList.add('open')}
-function openDossier(){if(profiles().length&&!pendingDossier){renderProfiles();document.getElementById('profilesOverlay').classList.add('open')}else document.getElementById('dossierOverlay').classList.add('open')}
-function renderProfiles(){const box=document.getElementById('profiles');box.innerHTML='';profiles().forEach((p,n)=>{let d=document.createElement('div');d.className='profile';d.innerHTML='<div><strong>📜 '+p.codeName+'</strong><small>'+p.firstName+' '+p.lastName+' · '+p.age+' лет · 🌲 Партизаны</small></div><button>ПРОДОЛЖИТЬ</button>';d.querySelector('button').onclick=()=>{localStorage.setItem(ACTIVE_KEY,JSON.stringify(p));closeOverlay('profilesOverlay');pendingDossier=false;if(i<5){i=5;saveProgress();render()}else notice('Досье загружено.')};box.appendChild(d)})}
-function newDossier(){closeOverlay('profilesOverlay');document.getElementById('dossierForm').reset();document.getElementById('dossierOverlay').classList.add('open')}
-document.getElementById('dossierForm').onsubmit=e=>{e.preventDefault();let ids=['firstName','lastName','age','gender','birthplace','region','relativeName','relativeRelation','mark','codeName'];let p={};ids.forEach(id=>p[id]=document.getElementById(id).value.trim());p.path='partisans';p.mentor='Василий Захарович Корж';let a=profiles();a.push(p);localStorage.setItem(PROFILE_KEY,JSON.stringify(a));localStorage.setItem(ACTIVE_KEY,JSON.stringify(p));closeOverlay('dossierOverlay');pendingDossier=false;notice('ДОСЬЕ ПРИНЯТО · Кодовое имя: '+p.codeName);i=5;saveProgress();setTimeout(render,800)}
-function openFinal(){const p=active();document.getElementById('historyOverlay').innerHTML='<div class="modal"><button class="close" onclick="closeOverlay(\'historyOverlay\')">×</button><h1>📜 ОБНОВЛЁННОЕ ДОСЬЕ</h1><p class="subtitle">Первый путь завершён.</p><div class="card"><div class="card-title">КОДОВОЕ ИМЯ</div>'+(p?p.codeName:'—')+'</div><div class="card"><div class="card-title">ПУТЬ</div>🌲 Партизаны</div><div class="card"><div class="card-title">НАСТАВНИК</div>Василий Захарович Корж</div><div class="card"><div class="card-title">ОТКРЫТО</div>Разведка · карта · взаимодействие с населением · проверка информации · первый бой · ответственность</div></div>';document.getElementById('historyOverlay').classList.add('open')}
-function resetProgress(){if(confirm('Начать историю заново? Досье сохранится.')){i=0;localStorage.removeItem(PROGRESS_KEY);localStorage.removeItem(DIARY_KEY);closeOverlay('menuOverlay');render();notice('История начата заново.')}}
-render();
+
+
+/* =========================================================
+   ОТОБРАЖЕНИЕ СЦЕНЫ
+========================================================= */
+
+function renderScene() {
+
+    const scene =
+        scenes[currentScene];
+
+    if (!scene) {
+        return;
+    }
+
+
+    document.getElementById("speaker").textContent =
+        scene.speaker || "";
+
+    document.getElementById("chapter").textContent =
+        scene.chapter || "";
+
+    document.getElementById("storyText").innerHTML =
+        scene.text || "";
+
+
+    const choices =
+        document.getElementById("choices");
+
+    const continueArea =
+        document.getElementById("continueArea");
+
+
+    choices.innerHTML = "";
+    continueArea.innerHTML = "";
+
+
+    if (scene.choices) {
+
+        scene.choices.forEach(
+            (choice, index) => {
+
+                const button =
+                    document.createElement("button");
+
+                button.className = "choice";
+
+                button.textContent =
+                    choice;
+
+                button.onclick = () => {
+
+                    registerChoice(
+                        currentScene,
+                        index
+                    );
+
+                    goNext();
+                };
+
+                choices.appendChild(button);
+            }
+        );
+
+    } else {
+
+        const button =
+            document.createElement("button");
+
+        button.className = "primary";
+
+        button.textContent =
+            scene.button || "ПРОДОЛЖИТЬ";
+
+        button.onclick = () => {
+
+            if (scene.action) {
+                runSceneAction(scene.action);
+            } else {
+                goNext();
+            }
+
+        };
+
+        continueArea.appendChild(button);
+    }
+
+
+    saveProgress();
+}
+
+
+/* =========================================================
+   ПЕРЕХОД
+========================================================= */
+
+function goNext() {
+
+    currentScene++;
+
+    saveProgress();
+
+    renderScene();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================================================
+   ДЕЙСТВИЯ СЦЕН
+========================================================= */
+
+function runSceneAction(action) {
+
+    if (action === "dossier") {
+
+        openDossier();
+        return;
+    }
+
+
+    if (action === "diary1") {
+
+        addDiary(
+            "Глава II",
+            "Сегодня я поняла, что в войне информация может быть не менее важна, чем оружие."
+        );
+
+        goNext();
+        return;
+    }
+
+
+    if (action === "diary2") {
+
+        addDiary(
+            "28 июня 1941 года",
+            "Сегодня я впервые увидела настоящий бой. Я думала, что самое сложное — не испугаться. Теперь понимаю: самое сложное — думать, когда страшно."
+        );
+
+        goNext();
+        return;
+    }
+
+
+    if (action === "map") {
+
+        openMap();
+
+        goNext();
+
+        return;
+    }
+}
+
+
+/* =========================================================
+   СОХРАНЕНИЕ ВЫБОРОВ
+========================================================= */
+
+function registerChoice(sceneNumber, choiceNumber) {
+
+    const profile =
+        getActiveProfile();
+
+    if (!profile) {
+        return;
+    }
+
+
+    if (!profile.choices) {
+        profile.choices = {};
+    }
+
+
+    profile.choices[sceneNumber] =
+        choiceNumber;
+
+
+    saveProfiles();
+}
+
+
+/* =========================================================
+   ЗАЩИТА ОТ HTML ВВОДА
+========================================================= */
+
+function escapeHtml(value) {
+
+    return String(value || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+
+/* =========================================================
+   СТАРТ
+========================================================= */
+
+function startGame() {
+
+    const profile =
+        getActiveProfile();
+
+
+    if (profile) {
+
+        currentScene =
+            typeof profile.progress === "number"
+                ? profile.progress
+                : 0;
+
+    } else {
+
+        currentScene = 0;
+
+    }
+
+
+    renderScene();
+}
+
+
+startGame();
+
 </script>
-</main>
+
 </body>
 </html>
