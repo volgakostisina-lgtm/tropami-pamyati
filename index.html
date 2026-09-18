@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Тропами памяти</title>
 
@@ -25,15 +30,8 @@ body {
     color: #f1eadc;
 }
 
-
-/* =========================================
-   ОСНОВНОЙ ЭКРАН
-========================================= */
-
 .game {
     min-height: 100vh;
-
-    position: relative;
 
     background-image:
         linear-gradient(
@@ -51,9 +49,7 @@ body {
 }
 
 
-/* =========================================
-   ВЕРХНЯЯ ПАНЕЛЬ
-========================================= */
+/* ВЕРХНЯЯ ПАНЕЛЬ */
 
 .topbar {
     height: 64px;
@@ -67,79 +63,52 @@ body {
     border-bottom:
         1px solid
         rgba(236, 225, 199, 0.18);
-
-    position: relative;
-    z-index: 5;
 }
 
 .brand {
     font-size: 21px;
-
     letter-spacing: 2px;
-
     color: #eee4d1;
-
     text-transform: uppercase;
 }
 
 
-/* =========================================
-   ЦЕНТР
-========================================= */
+/* ЦЕНТР */
 
 .main {
-
     flex: 1;
 
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
-
     align-items: center;
 
-    padding:
-        45px
-        20px
-        70px;
+    padding: 45px 20px 70px;
 
     text-align: center;
-
-    position: relative;
 }
 
 
-/* =========================================
-   ВСТУПИТЕЛЬНЫЙ БЛОК
-========================================= */
+/* ВСТУПИТЕЛЬНЫЙ БЛОК */
 
 .intro {
-
     max-width: 760px;
 
-    padding:
-        32px
-        40px
-        36px;
+    padding: 32px 40px 36px;
 
-    background:
-        rgba(12, 17, 15, 0.72);
+    background: rgba(12, 17, 15, 0.72);
 
     border:
         1px solid
         rgba(230, 216, 190, 0.18);
 
     box-shadow:
-        0 18px 45px
-        rgba(0,0,0,0.35);
+        0 18px 45px rgba(0, 0, 0, 0.35);
 
     backdrop-filter: blur(3px);
 }
 
-
 .kicker {
-
     font-size: 15px;
 
     letter-spacing: 4px;
@@ -151,13 +120,10 @@ body {
     margin-bottom: 12px;
 }
 
-
 h1 {
-
     margin: 0;
 
-    font-size:
-        clamp(38px, 6vw, 72px);
+    font-size: clamp(38px, 6vw, 72px);
 
     font-weight: normal;
 
@@ -168,13 +134,10 @@ h1 {
     text-transform: uppercase;
 
     text-shadow:
-        0 3px 15px
-        rgba(0,0,0,0.7);
+        0 3px 15px rgba(0, 0, 0, 0.7);
 }
 
-
 .years {
-
     margin-top: 10px;
 
     font-size: 18px;
@@ -184,11 +147,8 @@ h1 {
     color: #d0c2aa;
 }
 
-
 .subtitle {
-
-    margin:
-        24px auto 0;
+    margin: 24px auto 0;
 
     max-width: 620px;
 
@@ -199,11 +159,8 @@ h1 {
     color: #eee7da;
 }
 
-
 .description {
-
-    margin:
-        18px auto 0;
+    margin: 18px auto 0;
 
     max-width: 610px;
 
@@ -215,28 +172,21 @@ h1 {
 }
 
 
-/* =========================================
-   ДВА ПУТИ
-========================================= */
+/* ДВА ПУТИ */
 
 .paths {
-
     margin-top: 32px;
 
-    width:
-        min(900px, 100%);
+    width: min(900px, 100%);
 
     display: grid;
 
-    grid-template-columns:
-        1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 
     gap: 18px;
 }
 
-
 .path-button {
-
     min-height: 145px;
 
     border:
@@ -263,15 +213,11 @@ h1 {
         border-color 0.2s ease;
 
     box-shadow:
-        0 10px 25px
-        rgba(0,0,0,0.28);
+        0 10px 25px rgba(0, 0, 0, 0.28);
 }
 
-
 .path-button:hover {
-
-    transform:
-        translateY(-3px);
+    transform: translateY(-3px);
 
     background:
         rgba(25, 31, 27, 0.94);
@@ -280,9 +226,7 @@ h1 {
         rgba(235, 225, 205, 0.65);
 }
 
-
 .path-icon {
-
     display: block;
 
     font-size: 34px;
@@ -290,9 +234,7 @@ h1 {
     margin-bottom: 8px;
 }
 
-
 .path-title {
-
     display: block;
 
     font-size: 22px;
@@ -302,9 +244,7 @@ h1 {
     text-transform: uppercase;
 }
 
-
 .path-text {
-
     display: block;
 
     margin-top: 7px;
@@ -317,19 +257,14 @@ h1 {
 }
 
 
-/* =========================================
-   КНОПКА ТЕСТА
-========================================= */
+/* КНОПКА ТЕСТА */
 
 .test-button {
-
     margin-top: 18px;
 
     min-width: 360px;
 
-    padding:
-        17px
-        30px;
+    padding: 17px 30px;
 
     border:
         1px solid
@@ -359,11 +294,8 @@ h1 {
         border-color 0.2s ease;
 }
 
-
 .test-button:hover {
-
-    transform:
-        translateY(-2px);
+    transform: translateY(-2px);
 
     background:
         rgba(67, 64, 50, 0.97);
@@ -372,9 +304,7 @@ h1 {
         rgba(240, 229, 207, 0.8);
 }
 
-
 .test-note {
-
     margin-top: 10px;
 
     font-size: 13px;
@@ -383,18 +313,14 @@ h1 {
 }
 
 
-/* =========================================
-   НИЖНЯЯ ПОДПИСЬ
-========================================= */
+/* НИЖНЯЯ ПОДПИСЬ */
 
 .footer {
-
-    position: absolute;
+    position: fixed;
 
     bottom: 16px;
 
     left: 0;
-
     right: 0;
 
     text-align: center;
@@ -408,9 +334,7 @@ h1 {
 }
 
 
-/* =========================================
-   ТЕЛЕФОН
-========================================= */
+/* ТЕЛЕФОН */
 
 @media (max-width: 700px) {
 
@@ -424,17 +348,11 @@ h1 {
     }
 
     .main {
-        padding:
-            28px
-            14px
-            55px;
+        padding: 28px 14px 55px;
     }
 
     .intro {
-        padding:
-            25px
-            20px
-            28px;
+        padding: 25px 20px 28px;
     }
 
     h1 {
@@ -456,101 +374,69 @@ h1 {
 
     .test-button {
         min-width: 0;
-
         width: 100%;
     }
 
     .footer {
         position: static;
-
         margin-top: 20px;
     }
 
 }
 
 </style>
+
 </head>
 
 
 <body>
 
-
 <div class="game">
 
-
-    <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
 
     <div class="topbar">
 
         <div class="brand">
-
             ▲ ТРОПАМИ ПАМЯТИ
-
         </div>
 
     </div>
 
 
-
-    <!-- ЦЕНТРАЛЬНАЯ ЧАСТЬ -->
-
     <main class="main">
 
 
-        <!-- ВСТУПЛЕНИЕ -->
-
         <section class="intro">
 
-
             <div class="kicker">
-
                 Беларусь · 1941–1944
-
             </div>
-
 
             <h1>
-
                 Тропами памяти
-
             </h1>
 
-
             <div class="years">
-
                 ВЕЛИКАЯ ОТЕЧЕСТВЕННАЯ ВОЙНА
-
             </div>
-
 
             <div class="subtitle">
-
                 Два пути. Одна история.
-
             </div>
 
-
             <div class="description">
-
                 Перед тобой два пути сопротивления.
                 Ты можешь выбрать один самостоятельно
                 или пройти небольшое испытание,
                 которое поможет определить,
                 какой путь тебе ближе.
-
             </div>
-
 
         </section>
 
 
-
-        <!-- ДВА ОСНОВНЫХ ПУТИ -->
-
         <div class="paths">
 
-
-            <!-- ПАРТИЗАНЫ -->
 
             <button
                 class="path-button"
@@ -558,33 +444,22 @@ h1 {
             >
 
                 <span class="path-icon">
-
                     🌲
-
                 </span>
-
 
                 <span class="path-title">
-
                     Партизаны
-
                 </span>
 
-
                 <span class="path-text">
-
                     Лес, разведка, рейды,
                     командная работа и борьба
                     на оккупированной территории.
-
                 </span>
-
 
             </button>
 
 
-
-            <!-- ПОДПОЛЬЩИКИ -->
 
             <button
                 class="path-button"
@@ -592,27 +467,18 @@ h1 {
             >
 
                 <span class="path-icon">
-
                     🏙️
-
                 </span>
-
 
                 <span class="path-title">
-
                     Подпольщики
-
                 </span>
 
-
                 <span class="path-text">
-
                     Конспирация, связь,
                     информация, осторожность
                     и сопротивление в оккупации.
-
                 </span>
-
 
             </button>
 
@@ -620,43 +486,29 @@ h1 {
         </div>
 
 
-
-        <!-- НЕОБЯЗАТЕЛЬНЫЙ ТЕСТ -->
-
         <button
             class="test-button"
             onclick="window.location.href='test.html'"
         >
-
             🧭 ОПРЕДЕЛИТЬ СВОЙ ПУТЬ
-
         </button>
 
 
         <div class="test-note">
-
             Небольшое испытание по качествам и умениям
             · здесь нет неправильных ответов
-
         </div>
 
 
-
-        <!-- ПОДПИСЬ -->
-
         <div class="footer">
-
             Интерактивный исторический проект
             для учащихся 9 класса
-
         </div>
 
 
     </main>
 
-
 </div>
-
 
 </body>
 </html>
