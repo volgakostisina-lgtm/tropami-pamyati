@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Тропа Шмырёва · Тропами памяти</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #111713;
+    color: #eee7d8;
+}
+
+
+/* =========================================
+   ОСНОВА
+========================================= */
+
+.game {
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            rgba(10, 15, 12, 0.45),
+            rgba(10, 14, 12, 0.72)
+        ),
+        url("korzh-background.png");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    position: relative;
+}
+
+
+/* =========================================
+   ВЕРХНЯЯ ПАНЕЛЬ
+========================================= */
+
+.topbar {
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(8, 12, 10, 0.88);
+
+    border-bottom:
+        1px solid
+        rgba(235, 224, 199, 0.18);
+
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.brand {
+    color: #eee4d1;
+
+    font-size: 19px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================
+   МЕНЮ
+========================================= */
+
+.menu {
+    position: fixed;
+
+    top: 76px;
+    right: 18px;
+
+    display: flex;
+    gap: 6px;
+
+    z-index: 30;
+}
+
+.menu button {
+    border:
+        1px solid
+        rgba(235, 225, 205, 0.25);
+
+    background:
+        rgba(12, 17, 14, 0.88);
+
+    color: #e9dfcc;
+
+    padding: 8px 10px;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    transition: 0.2s;
+}
+
+.menu button:hover {
+    background:
+        rgba(40, 43, 34, 0.95);
+
+    border-color:
+        rgba(235, 225, 205, 0.55);
+}
+
+
+/* =========================================
+   КОНТЕНТ
+========================================= */
+
+.main {
+    max-width: 980px;
+
+    margin: 0 auto;
+
+    padding:
+        65px
+        20px
+        80px;
+}
+
+
+/* =========================================
+   ЗАГОЛОВОК
+========================================= */
+
+.hero {
+    text-align: center;
+
+    padding:
+        42px
+        30px;
+
+    background:
+        rgba(10, 15, 12, 0.78);
+
+    border:
+        1px solid
+        rgba(231, 218, 192, 0.25);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,0.35);
+}
+
+.kicker {
+    color: #cfc1a7;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    font-size: 14px;
+}
+
+h1 {
+    margin:
+        15px 0 8px;
+
+    font-size:
+        clamp(36px, 6vw, 68px);
+
+    font-weight: normal;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 4px 15px rgba(0,0,0,0.7);
+}
+
+.hero-subtitle {
+    color: #d0c3ac;
+
+    font-size: 19px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   СЦЕНА
+========================================= */
+
+.scene {
+    margin-top: 28px;
+
+    background:
+        rgba(10, 14, 12, 0.86);
+
+    border:
+        1px solid
+        rgba(231, 218, 192, 0.18);
+
+    padding: 32px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,0.3);
+}
+
+.scene-label {
+    color: #bfae91;
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 15px;
+}
+
+.scene h2 {
+    margin:
+        0 0 18px;
+
+    font-size: 30px;
+
+    font-weight: normal;
+
+    color: #f0e6d4;
+}
+
+.scene p {
+    font-size: 18px;
+
+    line-height: 1.75;
+
+    color: #ddd5c7;
+
+    margin:
+        12px 0;
+}
+
+.quote {
+    margin:
+        25px 0;
+
+    padding:
+        18px 22px;
+
+    border-left:
+        3px solid
+        #9e8d6e;
+
+    background:
+        rgba(255,255,255,0.035);
+
+    font-size: 18px;
+
+    line-height: 1.65;
+
+    color: #e7dece;
+}
+
+
+/* =========================================
+   ДОСЬЕ
+========================================= */
+
+.dossier {
+    margin-top: 28px;
+
+    display: none;
+
+    background:
+        rgba(16, 20, 17, 0.95);
+
+    border:
+        1px solid
+        rgba(231, 218, 192, 0.28);
+
+    padding: 30px;
+}
+
+.dossier.visible {
+    display: block;
+}
+
+.dossier h2 {
+    margin-top: 0;
+
+    font-weight: normal;
+
+    letter-spacing: 2px;
+}
+
+.dossier-intro {
+    color: #c9c0b2;
+
+    line-height: 1.6;
+
+    margin-bottom: 22px;
+}
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 14px;
+}
+
+.field {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.field.full {
+    grid-column: 1 / -1;
+}
+
+.field label {
+    font-size: 13px;
+
+    color: #b9ad99;
+
+    margin-bottom: 6px;
+}
+
+.field input,
+.field select {
+    padding:
+        12px;
+
+    background:
+        #171d19;
+
+    color: #eee7d8;
+
+    border:
+        1px solid
+        rgba(235,225,205,0.22);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 15px;
+}
+
+.field input:focus,
+.field select:focus {
+    outline: none;
+
+    border-color:
+        rgba(235,225,205,0.65);
+}
+
+.save-button {
+    margin-top: 22px;
+
+    width: 100%;
+
+    padding: 15px;
+
+    border:
+        1px solid
+        rgba(235,225,205,0.45);
+
+    background:
+        rgba(55,54,43,0.95);
+
+    color: #f0e7d7;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 16px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+}
+
+.save-button:hover {
+    background:
+        rgba(72,70,55,1);
+}
+
+
+/* =========================================
+   ВЫБОР
+========================================= */
+
+.choice-area {
+    margin-top: 28px;
+
+    display: none;
+}
+
+.choice-area.visible {
+    display: block;
+}
+
+.choice-title {
+    text-align: center;
+
+    font-size: 25px;
+
+    line-height: 1.5;
+
+    margin-bottom: 22px;
+
+    color: #eee5d5;
+}
+
+.choices {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 18px;
+}
+
+.choice {
+    padding: 25px;
+
+    min-height: 190px;
+
+    border:
+        1px solid
+        rgba(235,225,205,0.32);
+
+    background:
+        rgba(13,18,15,0.90);
+
+    color: #eee7d8;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        background 0.2s,
+        border-color 0.2s;
+}
+
+.choice:hover {
+    transform:
+        translateY(-4px);
+
+    background:
+        rgba(30,34,28,0.96);
+
+    border-color:
+        rgba(235,225,205,0.65);
+}
+
+.choice-icon {
+    display: block;
+
+    font-size: 38px;
+
+    margin-bottom: 12px;
+}
+
+.choice-title {
+    display: block;
+
+    font-size: 20px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 10px;
+}
+
+.choice-text {
+    display: block;
+
+    color: #c9c1b3;
+
+    line-height: 1.5;
+
+    font-size: 15px;
+}
+
+
+/* =========================================
+   РЕЗУЛЬТАТ ВЫБОРА
+========================================= */
+
+.result {
+    display: none;
+
+    margin-top: 25px;
+
+    padding: 25px;
+
+    background:
+        rgba(38,38,31,0.88);
+
+    border:
+        1px solid
+        rgba(230,216,190,0.25);
+}
+
+.result.visible {
+    display: block;
+}
+
+.result h3 {
+    margin-top: 0;
+
+    font-size: 23px;
+
+    font-weight: normal;
+}
+
+.result p {
+    line-height: 1.7;
+
+    color: #d8d0c2;
+}
+
+
+/* =========================================
+   ИСТОРИЧЕСКАЯ СПРАВКА
+========================================= */
+
+.history {
+    display: none;
+
+    margin-top: 30px;
+
+    padding: 32px;
+
+    background:
+        rgba(20, 23, 19, 0.95);
+
+    border:
+        1px solid
+        rgba(231,218,192,0.28);
+}
+
+.history.visible {
+    display: block;
+}
+
+.history h2 {
+    font-weight: normal;
+
+    letter-spacing: 2px;
+
+    margin-top: 0;
+}
+
+.history h3 {
+    color: #d7c8ae;
+
+    font-weight: normal;
+
+    margin-top: 28px;
+}
+
+.history p,
+.history li {
+    color: #d8d0c2;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+.history ul {
+    padding-left: 25px;
+}
+
+.fact-box {
+    margin-top: 25px;
+
+    padding: 20px;
+
+    background:
+        rgba(255,255,255,0.035);
+
+    border-left:
+        3px solid
+        #9e8d6e;
+}
+
+
+/* =========================================
+   ДНЕВНИК
+========================================= */
+
+.diary {
+    display: none;
+
+    margin-top: 28px;
+
+    padding: 28px;
+
+    background:
+        rgba(23,21,17,0.95);
+
+    border:
+        1px solid
+        rgba(218,201,169,0.25);
+}
+
+.diary.visible {
+    display: block;
+}
+
+.diary h2 {
+    margin-top: 0;
+
+    font-weight: normal;
+}
+
+.diary-entry {
+    padding:
+        14px 0;
+
+    border-bottom:
+        1px solid
+        rgba(235,225,205,0.12);
+
+    line-height: 1.6;
+
+    color: #d7cdbd;
+}
+
+
+/* =========================================
+   КАРТА
+========================================= */
+
+.map {
+    display: none;
+
+    margin-top: 28px;
+
+    padding: 30px;
+
+    background:
+        rgba(23,25,20,0.95);
+
+    border:
+        1px solid
+        rgba(231,218,192,0.25);
+
+    text-align: center;
+}
+
+.map.visible {
+    display: block;
+}
+
+.map-road {
+    margin:
+        25px auto;
+
+    max-width: 650px;
+
+    padding: 30px;
+
+    border:
+        1px dashed
+        rgba(220,207,177,0.35);
+
+    background:
+        rgba(255,255,255,0.025);
+
+    font-size: 18px;
+
+    line-height: 2;
+}
+
+.location {
+    color: #e4d7bf;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   КНОПКИ
+========================================= */
+
+.next-button {
+    display: none;
+
+    margin:
+        28px auto 0;
+
+    padding:
+        15px 30px;
+
+    border:
+        1px solid
+        rgba(235,225,205,0.45);
+
+    background:
+        rgba(53,52,42,0.95);
+
+    color: #eee6d7;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
+
+.next-button.visible {
+    display: block;
+}
+
+.next-button:hover {
+    background:
+        rgba(70,68,53,1);
+}
+
+
+/* =========================================
+   АДАПТАЦИЯ
+========================================= */
+
+@media (max-width: 700px) {
+
+    .topbar {
+        height: 56px;
+    }
+
+    .brand {
+        font-size: 14px;
+    }
+
+    .menu {
+        position: static;
+
+        padding:
+            8px;
+
+        justify-content: center;
+
+        background:
+            rgba(8,12,10,0.9);
+    }
+
+    .main {
+        padding:
+            35px 12px 55px;
+    }
+
+    .hero {
+        padding:
+            32px 20px;
+    }
+
+    .scene {
+        padding: 22px;
+    }
+
+    .scene p {
+        font-size: 16px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .field.full {
+        grid-column: auto;
+    }
+
+    .choices {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="game">
+
+
+    <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
+
+    <header class="topbar">
+
+        <div class="brand">
+            ▲ ТРОПАМИ ПАМЯТИ · ТРОПА ШМЫРЁВА
+        </div>
+
+    </header>
+
+
+    <!-- МЕНЮ -->
+
+    <div class="menu">
+
+        <button onclick="showSection('dossier')">
+            📜 ДОСЬЕ
+        </button>
+
+        <button onclick="showSection('diary')">
+            📖 ДНЕВНИК
+        </button>
+
+        <button onclick="showSection('map')">
+            🗺 КАРТА
+        </button>
+
+        <button onclick="showSection('history')">
+            📚 ИСТОРИЯ
+        </button>
+
+    </div>
+
+
+    <main class="main">
+
+
+        <!-- ЗАГОЛОВОК -->
+
+        <section class="hero">
+
+            <div class="kicker">
+                Витебская область · 1941 год
+            </div>
+
+            <h1>
+                Тропа Шмырёва
+            </h1>
+
+            <div class="hero-subtitle">
+                «Когда рядом с тобой — люди, за которых ты отвечаешь»
+            </div>
+
+        </section>
+
+
+        <!-- ВСТУПЛЕНИЕ -->
+
+        <section class="scene">
+
+            <div class="scene-label">
+                Пролог
+            </div>
+
+            <h2>
+                Суражский район
+            </h2>
+
+            <p>
+                Июль 1941 года.
+            </p>
+
+            <p>
+                Война пришла в Беларусь совсем недавно.
+                Вокруг меняется привычная жизнь.
+                Люди уходят в лес, пытаются сохранить связь
+                друг с другом и понять, что делать дальше.
+            </p>
+
+            <p>
+                В Суражском районе формируется партизанский
+                отряд под руководством Миная Филипповича Шмырёва.
+            </p>
+
+            <p>
+                Тебе предстоит пройти этот путь рядом
+                с историческим героем.
+            </p>
+
+            <div class="quote">
+                Но помни: ты — вымышленный участник событий.
+                История Миная Шмырёва и его семьи остаётся
+                историей реальных людей.
+            </div>
+
+        </section>
+
+
+        <!-- ДОСЬЕ -->
+
+        <section
+            id="dossier"
+            class="dossier"
+        >
+
+            <h2>
+                📜 ЛИЧНОЕ ДОСЬЕ
+            </h2>
+
+            <div class="dossier-intro">
+
+                Заполни досье своего героя.
+
+                <br>
+
+                Используй вымышленные данные —
+                это часть игры.
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+                <div class="field">
+
+                    <label>
+                        Имя
+                    </label>
+
+                    <input
+                        id="firstName"
+                        type="text"
+                        placeholder="Например, Иван"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Фамилия
+                    </label>
+
+                    <input
+                        id="lastName"
+                        type="text"
+                        placeholder="Например, Петров"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Возраст
+                    </label>
+
+                    <input
+                        id="age"
+                        type="number"
+                        min="12"
+                        max="70"
+                        placeholder="16"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Пол
+                    </label>
+
+                    <select id="gender">
+
+                        <option value="">
+                            Выбери
+                        </option>
+
+                        <option value="girl">
+                            Девушка
+                        </option>
+
+                        <option value="boy">
+                            Юноша
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Родной город / деревня
+                    </label>
+
+                    <input
+                        id="place"
+                        type="text"
+                        placeholder="Вымышленное место"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Район / область
+                    </label>
+
+                    <input
+                        id="region"
+                        type="text"
+                        placeholder="Например, Витебская область"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Имя близкого человека
+                    </label>
+
+                    <input
+                        id="relative"
+                        type="text"
+                        placeholder="Вымышленное имя"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Кем он тебе приходится?
+                    </label>
+
+                    <input
+                        id="relativeRole"
+                        type="text"
+                        placeholder="Мама, брат, друг..."
+                    >
+
+                </div>
+
+
+                <div class="field full">
+
+                    <label>
+                        Как тебя узнать?
+                    </label>
+
+                    <input
+                        id="mark"
+                        type="text"
+                        placeholder="Особая примета"
+                    >
+
+                </div>
+
+
+                <div class="field full">
+
+                    <label>
+                        Под каким именем тебя будут знать товарищи?
+                    </label>
+
+                    <input
+                        id="codename"
+                        type="text"
+                        placeholder="Кодовое имя"
+                    >
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                class="save-button"
+                onclick="saveDossier()"
+            >
+                💾 СОХРАНИТЬ ДОСЬЕ
+            </button>
+
+
+        </section>
+
+
+        <!-- ПЕРВАЯ СЦЕНА ПОСЛЕ ДОСЬЕ -->
+
+        <section
+            id="startScene"
+            class="scene"
+            style="display:none;"
+        >
+
+            <div class="scene-label">
+                Глава I · Первые недели
+            </div>
+
+            <h2>
+                Ты становишься частью отряда
+            </h2>
+
+            <p>
+                Теперь у тебя есть новое имя и новая
+                ответственность.
+            </p>
+
+            <p>
+                В лесу каждый человек важен.
+                Кто-то умеет хорошо ориентироваться,
+                кто-то умеет наблюдать, кто-то поддерживает
+                связь с населением.
+            </p>
+
+            <p>
+                Но вскоре приходит известие,
+                которое меняет всё.
+            </p>
+
+            <div class="quote">
+                Оккупанты захватили детей
+                командира — Миная Филипповича Шмырёва.
+            </div>
+
+            <p>
+                От него требуют сдаться.
+                Взамен обещают сохранить детям жизнь.
+            </p>
+
+            <button
+                class="next-button visible"
+                onclick="showChoice()"
+            >
+                ПРОДОЛЖИТЬ
+            </button>
+
+        </section>
+
+
+        <!-- ДИЛЕММА -->
+
+        <section
+            id="choiceArea"
+            class="choice-area"
+        >
+
+            <div class="choice-title">
+
+                Тебя спрашивают:
+
+                <br>
+
+                <strong>
+                    Что бы ты посоветовал командиру?
+                </strong>
+
+            </div>
+
+
+            <div class="choices">
+
+
+                <button
+                    class="choice"
+                    onclick="makeChoice('children')"
+                >
+
+                    <span class="choice-icon">
+                        👨‍👧
+                    </span>
+
+                    <span class="choice-title">
+                        Попытаться спасти детей
+                    </span>
+
+                    <span class="choice-text">
+                        Попробовать найти возможность
+                        освободить детей, даже если это
+                        создаёт опасность для отряда.
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="choice"
+                    onclick="makeChoice('detachment')"
+                >
+
+                    <span class="choice-icon">
+                        🌲
+                    </span>
+
+                    <span class="choice-title">
+                        Продолжить борьбу
+                    </span>
+
+                    <span class="choice-text">
+                        Не соглашаться на требования врага
+                        и сохранить отряд для продолжения
+                        борьбы.
+                    </span>
+
+                </button>
+
+
+            </div>
+
+
+            <div
+                id="result"
+                class="result"
+            >
+
+                <h3 id="resultTitle"></h3>
+
+                <p id="resultText"></p>
+
+                <button
+                    class="next-button visible"
+                    onclick="showHistoricalTruth()"
+                >
+                    📖 УЗНАТЬ, ЧТО БЫЛО НА САМОМ ДЕЛЕ
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ИСТОРИЧЕСКАЯ СПРАВКА -->
+
+        <section
+            id="history"
+            class="history"
+        >
+
+            <h2>
+                📖 А ЧТО БЫЛО НА САМОМ ДЕЛЕ?
+            </h2>
+
+
+            <h3>
+                Минай Филиппович Шмырёв
+            </h3>
+
+            <p>
+                В июле 1941 года в Суражском районе
+                был сформирован партизанский отряд
+                под руководством Миная Филипповича
+                Шмырёва (1891–1964).
+            </p>
+
+            <p>
+                Позже он создал и возглавил
+                1-ю Белорусскую партизанскую бригаду.
+                Среди партизан Шмырёв получил
+                прозвище «Батька Минай».
+            </p>
+
+
+            <h3>
+                История его детей
+            </h3>
+
+            <p>
+                Оккупанты захватили в качестве заложников
+                четырёх детей М. Ф. Шмырёва:
+                трёхлетнего Мишу, семилетнюю Зину,
+                десятилетнего Серёжу и четырнадцатилетнюю Лизу.
+            </p>
+
+            <p>
+                Захватчики требовали, чтобы отец
+                сдался в плен в обмен на спасение
+                жизни его детей.
+            </p>
+
+            <p>
+                Старшая дочь Лиза смогла тайно
+                передать отцу записку:
+            </p>
+
+
+            <div class="quote">
+                «Папа, за нас не волнуйся, никого не слушай,
+                к немцам не иди...»
+            </div>
+
+
+            <p>
+                Минай Шмырёв не сдался и продолжил
+                борьбу с врагом.
+            </p>
+
+            <p>
+                Его дети были расстреляны.
+            </p>
+
+
+            <div class="fact-box">
+
+                <strong>
+                    Память
+                </strong>
+
+                <p>
+                    По признанию самого М. Ф. Шмырёва,
+                    он всегда носил записку дочери
+                    в нагрудном кармане и до последних
+                    дней жил с болью о погибших детях.
+                </p>
+
+                <p>
+                    В память о них во дворе средней школы
+                    в Сураже установлен памятник.
+                </p>
+
+            </div>
+
+
+            <div class="fact-box">
+
+                <strong>
+                    Важно
+                </strong>
+
+                <p>
+                    Твой выбор в игре — вымышленный.
+                    Он не изменяет исторические события.
+                    Реальное решение и судьба семьи
+                    Шмырёва уже известны из исторических
+                    источников и учебника.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ДНЕВНИК -->
+
+        <section
+            id="diary"
+            class="diary"
+        >
+
+            <h2>
+                📖 ДНЕВНИК
+            </h2>
+
+            <div
+                id="diaryContent"
+            >
+
+                <div class="diary-entry">
+                    Здесь будут появляться записи
+                    твоего героя.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- КАРТА -->
+
+        <section
+            id="map"
+            class="map"
+        >
+
+            <h2>
+                🗺 КАРТА ПУТИ
+            </h2>
+
+            <div class="map-road">
+
+                <div class="location">
+                    БЕЛАРУСЬ
+                </div>
+
+                ↓
+
+                <div class="location">
+                    ВИТЕБСКАЯ ОБЛАСТЬ
+                </div>
+
+                ↓
+
+                <div class="location">
+                    СУРАЖСКИЙ РАЙОН
+                </div>
+
+                ↓
+
+                <div class="location">
+                    ПАРТИЗАНСКИЙ ОТРЯД
+                    МИНАЯ ШМЫРЁВА
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<script>
+
+
+/* =========================================
+   СОСТОЯНИЕ ИГРЫ
+========================================= */
+
+let gameData = {
+
+    dossier: null,
+
+    choice: null,
+
+    diary: []
+
+};
+
+
+/* =========================================
+   СОХРАНЕНИЕ
+========================================= */
+
+function saveGame() {
+
+    localStorage.setItem(
+        "shmyryovGame",
+        JSON.stringify(gameData)
+    );
+
+}
+
+
+/* =========================================
+   ЗАГРУЗКА
+========================================= */
+
+function loadGame() {
+
+    const saved =
+        localStorage.getItem("shmyryovGame");
+
+    if (!saved) {
+        return;
+    }
+
+    try {
+
+        gameData =
+            JSON.parse(saved);
+
+    } catch (error) {
+
+        console.log(
+            "Не удалось загрузить сохранение."
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   ДОСЬЕ
+========================================= */
+
+function saveDossier() {
+
+    const firstName =
+        document.getElementById("firstName").value.trim();
+
+    const lastName =
+        document.getElementById("lastName").value.trim();
+
+    const age =
+        document.getElementById("age").value.trim();
+
+    const gender =
+        document.getElementById("gender").value;
+
+    const place =
+        document.getElementById("place").value.trim();
+
+    const region =
+        document.getElementById("region").value.trim();
+
+    const relative =
+        document.getElementById("relative").value.trim();
+
+    const relativeRole =
+        document.getElementById("relativeRole").value.trim();
+
+    const mark =
+        document.getElementById("mark").value.trim();
+
+    const codename =
+        document.getElementById("codename").value.trim();
+
+
+    if (
+        !firstName ||
+        !lastName ||
+        !age ||
+        !gender ||
+        !codename
+    ) {
+
+        alert(
+            "Заполни имя, фамилию, возраст, пол и кодовое имя."
+        );
+
+        return;
+    }
+
+
+    gameData.dossier = {
+
+        firstName,
+        lastName,
+        age,
+        gender,
+        place,
+        region,
+        relative,
+        relativeRole,
+        mark,
+        codename
+
+    };
+
+
+    saveGame();
+
+
+    document
+        .getElementById("dossier")
+        .classList.remove("visible");
+
+
+    document
+        .getElementById("startScene")
+        .style.display = "block";
+
+
+    addDiary(
+        "Досье принято. Путь героя начался."
+    );
+
+
+    document
+        .getElementById("startScene")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+/* =========================================
+   ДНЕВНИК
+========================================= */
+
+function addDiary(text) {
+
+    gameData.diary.push(text);
+
+    saveGame();
+
+    renderDiary();
+
+}
+
+
+function renderDiary() {
+
+    const container =
+        document.getElementById("diaryContent");
+
+
+    if (!gameData.diary.length) {
+
+        container.innerHTML =
+            '<div class="diary-entry">Пока записей нет.</div>';
+
+        return;
+    }
+
+
+    container.innerHTML =
+        gameData.diary
+            .map(
+                (entry, index) => `
+                    <div class="diary-entry">
+                        <strong>
+                            Запись ${index + 1}
+                        </strong>
+                        <br>
+                        ${entry}
+                    </div>
+                `
+            )
+            .join("");
+
+}
+
+
+/* =========================================
+   ПОКАЗ ВЫБОРА
+========================================= */
+
+function showChoice() {
+
+    const area =
+        document.getElementById("choiceArea");
+
+
+    area.classList.add("visible");
+
+
+    addDiary(
+        "Я узнал, что дети Миная Шмырёва захвачены врагом."
+    );
+
+
+    area.scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================
+   ВЫБОР УЧАЩЕГОСЯ
+========================================= */
+
+function makeChoice(choice) {
+
+    if (gameData.choice) {
+        return;
+    }
+
+
+    gameData.choice =
+        choice;
+
+
+    if (choice === "children") {
+
+        document.getElementById("resultTitle").textContent =
+            "Ты выбрал попытаться спасти детей.";
+
+        document.getElementById("resultText").textContent =
+            "Для тебя жизнь конкретных людей оказалась главным аргументом. " +
+            "Такое решение означает готовность принять на себя " +
+            "огромный риск и ответственность.";
+
+        addDiary(
+            "Моё решение: попытаться спасти детей."
+        );
+
+    }
+
+
+    if (choice === "detachment") {
+
+        document.getElementById("resultTitle").textContent =
+            "Ты выбрал продолжить борьбу.";
+
+        document.getElementById("resultText").textContent =
+            "Для тебя главным стало сохранение отряда " +
+            "и продолжение сопротивления. " +
+            "Но это решение тоже связано с тяжёлой моральной ответственностью.";
+
+        addDiary(
+            "Моё решение: продолжить борьбу и сохранить отряд."
+        );
+
+    }
+
+
+    document
+        .getElementById("result")
+        .classList.add("visible");
+
+
+    saveGame();
+
+
+    document
+        .getElementById("result")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+/* =========================================
+   ИСТОРИЧЕСКАЯ ПРАВДА
+========================================= */
+
+function showHistoricalTruth() {
+
+    const history =
+        document.getElementById("history");
+
+
+    history.classList.add("visible");
+
+
+    history.scrollIntoView({
+        behavior: "smooth"
+    });
+
+
+    addDiary(
+        "Я узнал, какое решение принял Минай Шмырёв."
+    );
+
+}
+
+
+/* =========================================
+   ПЕРЕКЛЮЧЕНИЕ РАЗДЕЛОВ
+========================================= */
+
+function showSection(id) {
+
+    const section =
+        document.getElementById(id);
+
+
+    section.classList.add("visible");
+
+
+    section.scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================
+   ЗАПУСК
+========================================= */
+
+loadGame();
+
+renderDiary();
+
+
+/* Если досье уже есть */
+
+if (gameData.dossier) {
+
+    document
+        .getElementById("dossier")
+        .classList.add("visible");
+
+}
+
+
+/* Если выбор уже сделан */
+
+if (gameData.choice) {
+
+    document
+        .getElementById("choiceArea")
+        .classList.add("visible");
+
+    document
+        .getElementById("result")
+        .classList.add("visible");
+
+}
+
+</script>
+
+</body>
+</html>
