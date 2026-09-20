@@ -1,0 +1,1833 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Тропа Мазаник · Тропами памяти</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100%;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#111;
+    color:#f4eee2;
+}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(12,12,12,.66),rgba(12,12,12,.82)),
+        url("main-background.png") center/cover fixed no-repeat;
+}
+
+button,input,select{
+    font:inherit;
+}
+
+.topbar{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:64px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 24px;
+    background:rgba(9,9,9,.88);
+    border-bottom:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(8px);
+    z-index:50;
+}
+
+.logo{
+    letter-spacing:3px;
+    font-weight:bold;
+    font-size:14px;
+}
+
+.top-actions{
+    display:flex;
+    gap:8px;
+}
+
+.top-btn{
+    border:1px solid rgba(255,255,255,.18);
+    background:rgba(255,255,255,.06);
+    color:#eee;
+    padding:9px 13px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.top-btn:hover{
+    background:rgba(255,255,255,.13);
+}
+
+.screen{
+    min-height:100vh;
+    padding:96px 20px 60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.panel{
+    width:min(920px,100%);
+    background:rgba(15,15,15,.86);
+    border:1px solid rgba(255,255,255,.13);
+    border-radius:18px;
+    padding:42px;
+    box-shadow:0 20px 70px rgba(0,0,0,.45);
+}
+
+.kicker{
+    color:#c5a96d;
+    letter-spacing:4px;
+    font-size:13px;
+    margin-bottom:12px;
+    text-transform:uppercase;
+}
+
+h1{
+    margin:0 0 16px;
+    font-family:Georgia,serif;
+    font-size:clamp(34px,6vw,62px);
+    line-height:1;
+}
+
+h2{
+    font-family:Georgia,serif;
+    font-size:34px;
+    margin:0 0 18px;
+}
+
+h3{
+    font-family:Georgia,serif;
+    font-size:25px;
+}
+
+.subtitle{
+    color:#c9c3b8;
+    font-size:18px;
+    line-height:1.6;
+}
+
+.story-text{
+    color:#e9e3d7;
+    font-size:18px;
+    line-height:1.8;
+    white-space:pre-line;
+}
+
+.quote{
+    margin:25px 0;
+    padding:18px 22px;
+    border-left:3px solid #c5a96d;
+    background:rgba(255,255,255,.045);
+    color:#eee4d2;
+    font-family:Georgia,serif;
+    font-size:20px;
+    line-height:1.6;
+}
+
+.choice-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px;
+    margin-top:28px;
+}
+
+.choice{
+    text-align:left;
+    padding:18px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.14);
+    background:rgba(255,255,255,.055);
+    color:#f3eee5;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.choice:hover{
+    transform:translateY(-2px);
+    background:rgba(255,255,255,.10);
+    border-color:rgba(197,169,109,.55);
+}
+
+.choice-title{
+    display:block;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.choice-note{
+    display:block;
+    color:#aaa49b;
+    font-size:14px;
+    line-height:1.4;
+}
+
+.primary{
+    display:inline-block;
+    margin-top:26px;
+    padding:14px 20px;
+    border:none;
+    border-radius:9px;
+    background:#c5a96d;
+    color:#18140e;
+    font-weight:bold;
+    cursor:pointer;
+    letter-spacing:.5px;
+}
+
+.primary:hover{
+    filter:brightness(1.08);
+}
+
+.secondary{
+    display:inline-block;
+    margin-top:14px;
+    padding:11px 17px;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:9px;
+    background:rgba(255,255,255,.05);
+    color:#eee;
+    cursor:pointer;
+}
+
+.dossier{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-top:25px;
+}
+
+.field{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.field.full{
+    grid-column:1/-1;
+}
+
+.field label{
+    color:#bdb5a7;
+    font-size:13px;
+}
+
+.field input,
+.field select{
+    width:100%;
+    padding:13px;
+    border-radius:8px;
+    border:1px solid rgba(255,255,255,.14);
+    background:#1a1a1a;
+    color:#f5f0e7;
+    outline:none;
+}
+
+.field input:focus,
+.field select:focus{
+    border-color:#c5a96d;
+}
+
+.small-note{
+    margin-top:16px;
+    color:#99948b;
+    font-size:13px;
+    line-height:1.5;
+}
+
+.profile-list{
+    display:grid;
+    gap:12px;
+    margin-top:25px;
+}
+
+.profile{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    padding:17px;
+    border:1px solid rgba(255,255,255,.13);
+    border-radius:10px;
+    background:rgba(255,255,255,.045);
+}
+
+.profile-info{
+    line-height:1.5;
+}
+
+.profile-code{
+    color:#c5a96d;
+    font-weight:bold;
+}
+
+.profile-meta{
+    color:#aaa;
+    font-size:13px;
+}
+
+.overlay{
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.78);
+    z-index:100;
+}
+
+.overlay.active{
+    display:flex;
+}
+
+.modal{
+    width:min(850px,100%);
+    max-height:88vh;
+    overflow:auto;
+    background:#151515;
+    border:1px solid rgba(255,255,255,.16);
+    border-radius:16px;
+    padding:30px;
+}
+
+.modal h2{
+    font-size:28px;
+}
+
+.diary-entry{
+    padding:15px 0;
+    border-bottom:1px solid rgba(255,255,255,.09);
+}
+
+.diary-entry strong{
+    color:#c5a96d;
+}
+
+.stat-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:24px;
+}
+
+.stat{
+    background:rgba(255,255,255,.05);
+    padding:15px;
+    border-radius:9px;
+    text-align:center;
+}
+
+.stat b{
+    display:block;
+    font-size:24px;
+    color:#c5a96d;
+}
+
+.fade{
+    animation:fade .45s ease;
+}
+
+@keyframes fade{
+    from{opacity:0;transform:translateY(8px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+@media(max-width:700px){
+    .panel{
+        padding:26px 20px;
+    }
+
+    .choice-grid,
+    .dossier,
+    .stat-grid{
+        grid-template-columns:1fr;
+    }
+
+    .field.full{
+        grid-column:auto;
+    }
+
+    .topbar{
+        padding:0 12px;
+    }
+
+    .logo{
+        font-size:11px;
+        letter-spacing:2px;
+    }
+
+    .top-btn{
+        padding:8px 9px;
+        font-size:12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    <div class="logo">▲ ТРОПАМИ ПАМЯТИ · ПОДПОЛЬЕ</div>
+
+    <div class="top-actions">
+        <button class="top-btn" onclick="openDossier()">📜 ДОСЬЕ</button>
+        <button class="top-btn" onclick="openDiary()">📖 ДНЕВНИК</button>
+        <button class="top-btn" onclick="goHome()">🏠 ГЛАВНАЯ</button>
+    </div>
+</div>
+
+<div id="app"></div>
+
+<!-- МОДАЛЬНОЕ ОКНО ДОСЬЕ -->
+<div id="dossierOverlay" class="overlay">
+    <div class="modal">
+        <div id="dossierContent"></div>
+    </div>
+</div>
+
+<!-- МОДАЛЬНОЕ ОКНО ДНЕВНИКА -->
+<div id="diaryOverlay" class="overlay">
+    <div class="modal">
+        <h2>📖 Дневник</h2>
+        <div id="diaryContent"></div>
+        <button class="secondary" onclick="closeOverlays()">Закрыть</button>
+    </div>
+</div>
+
+<script>
+
+/* =========================================================
+   СОСТОЯНИЕ ИГРЫ
+========================================================= */
+
+let hero = null;
+
+let game = {
+    scene: 0,
+    trust: 0,
+    caution: 0,
+    courage: 0,
+    evidence: 0,
+    diary: [],
+    discoveries: [],
+    finished: false
+};
+
+const STORAGE_KEY = "tropami_mazanik_profiles";
+
+/* =========================================================
+   ПРОФИЛИ
+========================================================= */
+
+function getProfiles(){
+    try{
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    }catch(e){
+        return [];
+    }
+}
+
+function saveProfiles(profiles){
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(profiles));
+}
+
+function saveCurrent(){
+    if(!hero) return;
+
+    hero.game = game;
+
+    const profiles = getProfiles();
+
+    const index = profiles.findIndex(p => p.id === hero.id);
+
+    if(index >= 0){
+        profiles[index] = hero;
+    }else{
+        profiles.push(hero);
+    }
+
+    saveProfiles(profiles);
+}
+
+/* =========================================================
+   ЭКРАНЫ
+========================================================= */
+
+function render(html){
+    document.getElementById("app").innerHTML =
+        `<div class="screen fade">${html}</div>`;
+}
+
+function goHome(){
+    window.location.href = "index.html";
+}
+
+/* =========================================================
+   НАЧАЛО
+========================================================= */
+
+function start(){
+
+    const profiles = getProfiles();
+
+    if(profiles.length){
+        showProfileChoice();
+    }else{
+        showIntro();
+    }
+}
+
+function showIntro(){
+
+    render(`
+        <div class="panel">
+
+            <div class="kicker">ВТОРАЯ ТРОПА · ПОДПОЛЬЕ</div>
+
+            <h1>Город молчит</h1>
+
+            <div class="subtitle">
+                Минск. 1943 год.
+            </div>
+
+            <div class="quote">
+                «В городе опасно не только то, что ты делаешь.
+                Опасно даже то, кто тебя знает».
+            </div>
+
+            <div class="story-text">
+Ты не знаешь, кто написал эту записку.
+
+Ты не знаешь, откуда человек, который передал её, знает твоё имя.
+
+И пока ты стоишь в полутёмном подъезде, тебе кажется,
+что самое разумное — положить листок обратно.
+
+Но в оккупированном городе иногда именно бездействие
+становится выбором.
+            </div>
+
+            <button class="primary" onclick="showDossierIntro()">
+                НАЧАТЬ ИСТОРИЮ
+            </button>
+
+        </div>
+    `);
+}
+
+/* =========================================================
+   ДОСЬЕ
+========================================================= */
+
+function showDossierIntro(){
+
+    render(`
+        <div class="panel">
+
+            <div class="kicker">ЛИЧНОЕ ДОСЬЕ</div>
+
+            <h2>Создай своего героя</h2>
+
+            <div class="story-text">
+Перед тем как войти в историю, тебе понадобится новое имя.
+
+Это вымышленный герой.
+
+Используй только придуманные данные.
+Не вводи настоящий адрес, реальные сведения о родственниках
+или другую личную информацию.
+            </div>
+
+            <button class="primary" onclick="showDossierForm()">
+                ЗАПОЛНИТЬ ДОСЬЕ
+            </button>
+
+        </div>
+    `);
+}
+
+function showDossierForm(existing=null){
+
+    render(`
+        <div class="panel">
+
+            <div class="kicker">ЛИЧНОЕ ДОСЬЕ</div>
+
+            <h2>Заполни досье своего героя</h2>
+
+            <div class="dossier">
+
+                <div class="field">
+                    <label>Имя</label>
+                    <input id="firstName" value="${existing?.firstName || ""}">
+                </div>
+
+                <div class="field">
+                    <label>Фамилия</label>
+                    <input id="lastName" value="${existing?.lastName || ""}">
+                </div>
+
+                <div class="field">
+                    <label>Возраст</label>
+                    <input id="age" type="number" min="12" max="80"
+                           value="${existing?.age || ""}">
+                </div>
+
+                <div class="field">
+                    <label>Пол</label>
+                    <select id="gender">
+                        <option value="">Выбери</option>
+                        <option ${existing?.gender==="Женский"?"selected":""}>Женский</option>
+                        <option ${existing?.gender==="Мужской"?"selected":""}>Мужской</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Родной город / деревня</label>
+                    <input id="homePlace" value="${existing?.homePlace || ""}">
+                </div>
+
+                <div class="field">
+                    <label>Район / область</label>
+                    <input id="region" value="${existing?.region || ""}">
+                </div>
+
+                <div class="field">
+                    <label>Имя близкого человека</label>
+                    <input id="relativeName" value="${existing?.relativeName || ""}">
+                </div>
+
+                <div class="field">
+                    <label>Кем он тебе приходится?</label>
+                    <input id="relativeRole" value="${existing?.relativeRole || ""}">
+                </div>
+
+                <div class="field full">
+                    <label>Как тебя узнать? Особая примета</label>
+                    <input id="specialMark" value="${existing?.specialMark || ""}">
+                </div>
+
+                <div class="field full">
+                    <label>Под каким именем тебя будут знать товарищи?</label>
+                    <input id="codeName" value="${existing?.codeName || ""}">
+                </div>
+
+            </div>
+
+            <div class="small-note">
+                Все данные — часть игры. Используй вымышленные сведения.
+            </div>
+
+            <button class="primary" onclick="createHero()">
+                💾 СОХРАНИТЬ ДОСЬЕ
+            </button>
+
+        </div>
+    `);
+}
+
+function createHero(){
+
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const age = document.getElementById("age").value.trim();
+    const gender = document.getElementById("gender").value;
+    const homePlace = document.getElementById("homePlace").value.trim();
+    const region = document.getElementById("region").value.trim();
+    const relativeName = document.getElementById("relativeName").value.trim();
+    const relativeRole = document.getElementById("relativeRole").value.trim();
+    const specialMark = document.getElementById("specialMark").value.trim();
+    const codeName = document.getElementById("codeName").value.trim();
+
+    if(
+        !firstName ||
+        !lastName ||
+        !age ||
+        !gender ||
+        !homePlace ||
+        !region ||
+        !relativeName ||
+        !relativeRole ||
+        !specialMark ||
+        !codeName
+    ){
+        alert("Заполни все поля досье.");
+        return;
+    }
+
+    hero = {
+        id:"hero_" + Date.now(),
+        firstName,
+        lastName,
+        age,
+        gender,
+        homePlace,
+        region,
+        relativeName,
+        relativeRole,
+        specialMark,
+        codeName,
+        path:"Подпольщики",
+        mentor:"Елена Мазаник · Мария Осипова · Надежда Троян",
+        game:{
+            scene:0,
+            trust:0,
+            caution:0,
+            courage:0,
+            evidence:0,
+            diary:[],
+            discoveries:[],
+            finished:false
+        }
+    };
+
+    game = hero.game;
+
+    saveCurrent();
+
+    storyScene0();
+}
+
+function showProfileChoice(){
+
+    const profiles = getProfiles();
+
+    let html = `
+        <div class="panel">
+
+            <div class="kicker">АРХИВ</div>
+
+            <h2>Выбери своё досье</h2>
+
+            <div class="story-text">
+Ты уже создавал героя.
+Можно продолжить его историю или начать новую.
+            </div>
+
+            <div class="profile-list">
+    `;
+
+    profiles.forEach(p=>{
+
+        const progress = p.game?.finished
+            ? "История завершена"
+            : "История продолжается";
+
+        html += `
+            <div class="profile">
+
+                <div class="profile-info">
+                    <div class="profile-code">
+                        📜 ${escapeHtml(p.codeName)}
+                    </div>
+
+                    <div>
+                        ${escapeHtml(p.firstName)}
+                        ${escapeHtml(p.lastName)},
+                        ${escapeHtml(String(p.age))}
+                    </div>
+
+                    <div class="profile-meta">
+                        Подпольщики · ${progress}
+                    </div>
+                </div>
+
+                <button class="primary"
+                        style="margin:0"
+                        onclick="loadProfile('${p.id}')">
+                    ПРОДОЛЖИТЬ
+                </button>
+
+            </div>
+        `;
+    });
+
+    html += `
+            </div>
+
+            <button class="secondary"
+                    onclick="showDossierIntro()">
+                Создать новое досье
+            </button>
+
+        </div>
+    `;
+
+    render(html);
+}
+
+function loadProfile(id){
+
+    const profiles = getProfiles();
+    const found = profiles.find(p=>p.id===id);
+
+    if(!found) return;
+
+    hero = found;
+    game = found.game || {
+        scene:0,
+        trust:0,
+        caution:0,
+        courage:0,
+        evidence:0,
+        diary:[],
+        discoveries:[],
+        finished:false
+    };
+
+    if(game.finished){
+        showEnding();
+    }else{
+        continueStory();
+    }
+}
+
+/* =========================================================
+   ИСТОРИЯ
+========================================================= */
+
+function continueStory(){
+
+    switch(game.scene){
+
+        case 0: storyScene0(); break;
+        case 1: storyScene1(); break;
+        case 2: storyScene2(); break;
+        case 3: storyScene3(); break;
+        case 4: storyScene4(); break;
+        case 5: storyScene5(); break;
+        case 6: storyScene6(); break;
+        case 7: storyScene7(); break;
+        case 8: storyScene8(); break;
+        case 9: storyScene9(); break;
+        case 10: storyScene10(); break;
+        default: showEnding();
+    }
+}
+
+function nextScene(){
+
+    game.scene++;
+    saveCurrent();
+    continueStory();
+}
+
+function addDiary(text){
+
+    game.diary.push({
+        date:new Date().toLocaleDateString("ru-RU"),
+        text
+    });
+}
+
+function addDiscovery(text){
+
+    if(!game.discoveries.includes(text)){
+        game.discoveries.push(text);
+    }
+}
+
+/* =========================================================
+   СЦЕНА 0
+========================================================= */
+
+function storyScene0(){
+
+    render(`
+        <div class="panel">
+
+            <div class="kicker">МИНСК · 1943</div>
+
+            <h2>Записка</h2>
+
+            <div class="story-text">
+Вечер.
+
+Ты идёшь домой привычной дорогой.
+
+После наступления темноты город меняется.
+Окна закрыты. На улице почти нет людей.
+Каждый звук кажется слишком громким.
+
+У подъезда ты замечаешь человека.
+
+Он не смотрит на тебя.
+
+Когда ты проходишь мимо, его рука едва заметно касается твоей руки.
+
+В ладони оказывается сложенный клочок бумаги.
+
+Ты заходишь в подъезд.
+
+Поднимаешься на несколько ступеней.
+
+И только тогда разворачиваешь записку.
+            </div>
+
+            <div class="quote">
+«Завтра. После шестого удара часов.
+Не приходи один».
+            </div>
+
+            <div class="story-text">
+Подписи нет.
+
+Но внизу стоит маленький знак.
+
+Ты видел его раньше.
+
+На другом листке.
+
+Только вот где?
+            </div>
+
+            <div class="choice-grid">
+
+                <button class="choice" onclick="
+                    game.caution++;
+                    addDiary('Я решил не спешить. Сначала нужно понять, откуда взялась записка.');
+                    addDiscovery('Таинственная записка');
+                    nextScene();
+                ">
+                    <span class="choice-title">Спрятать записку и сначала проверить знак</span>
+                    <span class="choice-note">Осторожность может сохранить жизнь.</span>
+                </button>
+
+                <button class="choice" onclick="
+                    game.courage++;
+                    addDiary('Я решил прийти на встречу. Иногда слишком долгие сомнения опаснее риска.');
+                    addDiscovery('Таинственная записка');
+                    nextScene();
+                ">
+                    <span class="choice-title">Принять приглашение</span>
+                    <span class="choice-note">Если это зовут товарища, нельзя заставлять его ждать.</span>
+                </button>
+
+            </div>
+
+        </div>
+    `);
+}
+
+/* =========================================================
+   СЦЕНА 1
+========================================================= */
+
+function storyScene1(){
+
+    render(`
+        <div class="panel">
+
+            <div class="kicker">ГЛАВА I</div>
+
+            <h2>Человек у окна</h2>
+
+            <div class="story-text">
+На следующий вечер ты приходишь к назначенному месту.
+
+Сначала кажется, что никого нет.
+
+Потом в окне напротив загорается свет.
+
+Один раз.
+
+Через несколько секунд — снова.
+
+Ты понимаешь: это условный знак.
+
+Из тёмного подъезда выходит женщина.
+
+Она не представляется.
+
+Она смотрит на тебя несколько секунд, будто пытается решить,
+можно ли тебе доверять.
+            </div>
+
+            <div class="quote">
+— Здесь много людей, которые умеют говорить правильные слова.
+Но нам нужны те, кто умеет молчать.
+            </div>
+
+            <div class="story-text">
+Она протягивает тебе маленький свёрток.
+
+— Отнесёшь это человеку на соседней улице.
+
+— Что внутри?
+
+Женщина чуть улыбается.
+
+— Если тебе действительно нужно это знать,
+значит, пока рано.
+            </div>
+
+            <div class="choice-grid">
+
+                <button class="choice" onclick="
+                    game.caution++;
+                    game.trust++;
+                    addDiary('Я не стал задавать лишних вопросов.');
+                    nextScene();
+                ">
+                    <span class="choice-title">Взять свёрток и ничего не спрашивать</span>
+                    <span class="choice-note">В подполье доверие начинается с умения хранить чужую тайну.</span>
+                </button>
+
+                <button class="choice" onclick="
+                    game.evidence++;
+                    addDiary('Я попросил хотя бы объяснить, кому именно я должен передать свёрток.');
+                    nextScene();
+                ">
+                    <span class="choice-title">Попросить объяснить хотя бы цель задания</span>
+                    <span class="choice-note">Ты хочешь понимать, во что ввязываешься.</span>
+                </button>
+
+            </div>
+
+        </div>
+    `);
+}
+
+/* =========================================================
+   СЦЕНА 2
+========================================================= */
+
+function storyScene2(){
+
+    render(`
+        <div class="panel">
+
+            <div class="kicker">ГЛАВА II</div>
+
+            <h2>Не тот адрес</h2>
+
+            <div class="story-text">
+Ты приходишь к нужному дому.
+
+Но дверь закрыта.
+
+Ты ждёшь.
+
+Пять минут.
+
+Десять.
+
+Никого.
+
+И вдруг слышишь шаги.
+
+К тебе приближается мужчина.
+
+Он называет твоё кодовое имя.
+
+Правильно.
+
+Полностью.
+
+Ты никогда раньше его не видел.
+            </div>
+
+            <div class="quote">
+— Передавай.
+
+Он протягивает руку.
+
+Но что-то не сходится.
+
+Ты должен был встретиться с женщиной.
+
+И тебе никогда не говорили, что за свёртком
+может прийти кто-то другой.
+            </div>
+
+            <div class="choice-grid">
+
+                <button class="choice" onclick="
+                    game.caution+=2;
+                    addDiary('Я не передал свёрток незнакомцу. Слишком много неизвестных.');
+                    addDiscovery('Первое сомнение');
+                    nextScene();
+                ">
+                    <span class="choice-title">Не отдавать свёрток</span>
+                    <span class="choice-note">Сначала убедиться, что перед тобой действительно свой человек.</span>
+                </button>
+
+                <button class="choice" onclick="
+                    game.trust++;
+                    addDiary('Я решил довериться и передал свёрток.');
+                    nextScene();
+                ">
+                    <span class="choice-title">Довериться условному имени</span>
+                    <span class="choice-note">Он знает твоё кодовое имя. Возможно, этого достаточно.</span>
+                </button>
+
+            </div>
+
+        </div>
+    `);
+}
+
+/* =========================================================
+   СЦЕНА 3
+========================================================= */
+
+function storyScene3(){
+
+    render(`
+        <div class="panel">
+
+            <div class="kicker">ГЛАВА III</div>
+
+            <h2>Три имени</h2>
+
+            <div class="story-text">
+На следующую встречу тебя приводит человек,
+которому ты уже начинаешь доверять.
+
+В небольшой комнате почти нет мебели.
+
+За столом сидят три женщины.
+
+Первая смотрит спокойно и внимательно.
+
+Вторая почти не говорит, но замечает каждую мелочь.
+
+Третья кажется моложе остальных.
+
+Ты ещё не знаешь, насколько важную роль
+каждая из них уже играет в подпольной борьбе.
+            </div>
+
+            <div class="quote">
+— Запомни три имени, — говорит первая.
+
+— Елена Мазаник.
+
+— Мария Осипова.
+
+— Надежда Троян.
+
+— Но не пытайся узнать о них всё сразу.
+            </div>
+
+            <div class="story-text">
+Ты понимаешь главное:
+
+эти люди работают не поодиночке.
+
+У каждого своя часть общей сети.
+
+Иногда люди даже не знают всей картины,
+чтобы одна ошибка не поставила под удар остальных.
+            </div>
+
+            <button class="primary" onclick="
+                game.trust++;
+                addDiscovery('Елена Мазаник');
+                addDiscovery('Мария Осипова');
+                addDiscovery('Надежда Троян');
+                addDiary('Сегодня я впервые услышал три имени: Мазаник, Осипова и Троян.');
+                nextScene();
+            ">
+                ЗАПОМНИТЬ ТРИ ИМЕНИ
+            </button>
+
+        </div>
+    `);
+}
+
+/* =========================================================
+   СЦЕНА 4
+========================================================= */
+
+function storyScene4(){
+
+    render(`
+        <div class="panel">
+
+            <div class="kicker">ГЛАВА IV</div>
+
+            <h2>Слишком много совпадений</h2>
+
+            <div class="story-text">
+Последние несколько дней ты замечаешь странные вещи.
+
+Один и тот же человек появляется на разных улицах.
+
+Одна и та же машина несколько раз проезжает
+мимо места встреч.
+
+А однажды ты видишь человека,
+который слишком долго стоит возле дома.
+
+Он не делает ничего подозрительного.
+
+И именно поэтому становится ещё подозрительнее.
+            </div>
+
+            <div class="quote">
+Иногда подполье держится не на смелости.
+
+Иногда оно держится на способности вовремя заметить
+то, чего другие предпочитают не замечать.
+            </div>
+
+            <div class="choice-grid">
+
+                <button class="choice" onclick="
+                    game.caution++;
+                    addDiary('Я решил изменить привычный маршрут и предупредить товарищей.');
+                    nextScene();
+                ">
+                    <span class="choice-title">Предупредить товарищей</span>
+                    <span class="choice-note">Лучше перестраховаться.</span>
+                </button>
+
+                <button class="choice" onclick="
+                    game.evidence++;
+                    addDiary('Я решил сначала понаблюдать и собрать больше сведений.');
+                    nextScene();
+                ">
+                    <span class="choice-title">Понаблюдать ещё</span>
+                    <span class="choice-note">Один признак ещё ничего не доказывает.</span>
+                </button>
+
+            </div>
+
+        </div>
+    `);
+}
+
+/* =========================================================
+   СЦЕНА 5
+========================================================= */
+
+function storyScene5(){
+
+    render(`
+        <div class="panel">
+
+            <div class="kicker">ГЛАВА V</div>
+
+            <h2>Имя, которое нельзя произносить громко</h2>
+
+            <div class="story-text">
+Наконец тебе объясняют, почему вокруг столько осторожности.
+
+Речь идёт о человеке, который занимает
+высокое положение в оккупационной администрации.
+
+Его имя произносят тихо.
+
+Вильгельм Кубе.
+
+Ты уже слышал это имя раньше.
+
+Но теперь понимаешь:
+речь идёт не о слухах.
+
+Подпольщики собирают сведения.
+
+Связи.
+
+Возможности.
+
+Имена.
+
+Но самое страшное — никто не знает,
+какой из вариантов окажется последним.
+            </div>
+
+            <div class="quote">
+— Ты должен понять одну вещь, — говорит Мария.
+
+— Большая операция начинается задолго до того,
+как о ней узнаёт тот, против кого она направлена.
+            </div>
+
+            <div class="story-text">
+Ты впервые понимаешь,
+что находишься рядом с историей,
+масштаб которой пока не можешь представить.
+            </div>
+
+            <button class="primary" onclick="
+                game.evidence++;
+                addDiscovery('Вильгельм Кубе');
+                addDiary('Теперь я знаю имя человека, вокруг которого строится операция.');
+                nextScene();
+            ">
+                ПРОДОЛЖИТЬ
+            </button>
+
+        </div>
+    `);
+}
+
+/* =========================================================
+   СЦЕНА 6
+========================================================= */
+
+function storyScene6(){
+
+    render(`
+        <div class="panel">
+
+            <div class="kicker">ГЛАВА VI</div>
+
+            <h2>Кому можно доверять?</h2>
+
+            <div class="story-text">
+Вечером тебе сообщают:
+
+план изменился.
+
+Ты не знаешь почему.
+
+Не знаешь, кто его изменил.
+
+И не знаешь, дошла ли новая информация
+до всех участников.
+
+Это самый опасный момент.
+
+Не тогда, когда всё известно.
+
+А тогда, когда каждый знает только часть.
+            </div>
+
+            <div class="quote">
+— Запомни, — говорит Елена.
+
+— Если ты сомневаешься, не передавай дальше то,
+чего сам не проверил.
+            </div>
+
+            <div class="choice-grid">
+
+                <button class="choice" onclick="
+                    game.caution+=2;
+                    addDiary('Я решил сначала проверить информацию.');
+                    nextScene();
+                ">
+                    <span class="choice-title">Проверить сообщение</span>
+                    <span class="choice-note">Лучше задержать информацию, чем передать ложную.</span>
+                </button>
+
+                <button class="choice" onclick="
+                    game.courage++;
+                    addDiary('Я решил сообщить товарищам о новой информации сразу.');
+                    nextScene();
+                ">
+                    <span class="choice-title">Немедленно предупредить товарищей</span>
+                    <span class="choice-note">Иногда промедление тоже может быть опасным.</span>
+                </button>
+
+            </div>
+
+        </div>
+    `);
+}
+
+/* =========================================================
+   СЦЕНА 7
+========================================================= */
+
+function storyScene7(){
+
+    render(`
+        <div class="panel">
+
+            <div class="kicker">ГЛАВА VII · СЕНТЯБРЬ 1943</div>
+
+            <h2>Последняя ночь</h2>
+
+            <div class="story-text">
+Город спит.
+
+По крайней мере, так кажется.
+
+Ты сидишь в комнате и смотришь на часы.
+
+Каждая минута становится длиннее предыдущей.
+
+Ты знаешь только то,
+что должен знать.
+
+И понимаешь главное:
+
+люди, которым ты сегодня помогал,
+сейчас находятся в разных местах города.
+
+Елена.
+
+Мария.
+
+Надежда.
+
+Каждая выполняет свою часть общего дела.
+            </div>
+
+            <div class="quote">
+На войне иногда самое тяжёлое —
+не сделать шаг.
+
+Самое тяжёлое — дождаться момента,
+когда уже нельзя ничего изменить.
+            </div>
+
+            <div class="story-text">
+Часы продолжают идти.
+
+Ты слышишь далёкий звук.
+
+Потом ещё один.
+
+И снова тишина.
+            </div>
+
+            <button class="primary" onclick="
+                game.courage++;
+                addDiary('Я дождался момента. Теперь оставалось только ждать.');
+                nextScene();
+            ">
+                ЖДАТЬ
+            </button>
+
+        </div>
+    `);
+}
+
+/* =========================================================
+   СЦЕНА 8
+========================================================= */
+
+function storyScene8(){
+
+    render(`
+        <div class="panel">
+
+            <div class="kicker">22 СЕНТЯБРЯ 1943 ГОДА</div>
+
+            <h2>Тишина после грома</h2>
+
+            <div class="story-text">
+Ночь.
+
+Потом — резкий звук.
+
+Ты не видел, что произошло.
+
+Именно поэтому первые секунды
+кажутся страшнее всего.
+
+Никто не знает подробностей.
+
+Только утром город начинает шептаться.
+
+Что-то произошло.
+
+Что-то, чего оккупационные власти
+очень не хотели допустить.
+            </div>
+
+            <div class="quote">
+И только позже ты понимаешь:
+история уже сделала свой шаг.
+
+Но для тех, кто участвовал в ней,
+опасность ещё не закончилась.
+            </div>
+
+            <div class="story-text">
+Елена Мазаник.
+
+Мария Осипова.
+
+Надежда Троян.
+
+Три имени.
+
+Одна операция.
+
+И десятки людей,
+чья помощь оставалась невидимой.
+            </div>
+
+            <button class="primary" onclick="
+                addDiscovery('22 сентября 1943 года');
+                addDiary('22 сентября. Операция завершилась. Но я понял: конец одного дела не означает конец опасности.');
+                nextScene();
+            ">
+                ПРОДОЛЖИТЬ
+            </button>
+
+        </div>
+    `);
+}
+
+/* =========================================================
+   СЦЕНА 9
+========================================================= */
+
+function storyScene9(){
+
+    render(`
+        <div class="panel">
+
+            <div class="kicker">ПОСЛЕ</div>
+
+            <h2>Цена тишины</h2>
+
+            <div class="story-text">
+Теперь ты смотришь на город иначе.
+
+Ты понимаешь, что подполье — это не только
+громкие события.
+
+Это человек, который передал сообщение.
+
+Женщина, которая рискнула доверием.
+
+Связной, который запомнил маршрут.
+
+Человек, который промолчал,
+когда слишком хотелось рассказать.
+
+И люди, которые знали только маленькую часть
+огромной работы.
+            </div>
+
+            <div class="quote">
+История иногда складывается
+из поступков, о которых никто не узнаёт.
+            </div>
+
+            <div class="story-text">
+Ты открываешь своё досье.
+
+На первой странице всё ещё стоит
+твоё вымышленное имя.
+
+Но теперь рядом с ним появились записи.
+
+Ты изменился не потому,
+что стал героем.
+
+А потому, что научился понимать цену
+доверия, ответственности и выбора.
+            </div>
+
+            <button class="primary" onclick="
+                addDiary('Я понял, что подпольная борьба состояла не только из громких событий, но и из множества незаметных решений.');
+                nextScene();
+            ">
+                ОТКРЫТЬ ПОСЛЕДНЮЮ СТРАНИЦУ
+            </button>
+
+        </div>
+    `);
+}
+
+/* =========================================================
+   СЦЕНА 10 — ИСТОРИЧЕСКИЙ БЛОК
+========================================================= */
+
+function storyScene10(){
+
+    game.finished = true;
+    saveCurrent();
+
+    render(`
+        <div class="panel">
+
+            <div class="kicker">📖 А ЧТО БЫЛО НА САМОМ ДЕЛЕ?</div>
+
+            <h2>История вместо легенды</h2>
+
+            <div class="story-text">
+Твой герой был вымышленным.
+
+Но люди, рядом с которыми он оказался,
+существовали на самом деле.
+
+Елена Григорьевна Мазаник,
+Мария Борисовна Осипова
+и Надежда Викторовна Троян
+были участницами подпольной и партизанской борьбы
+в годы Великой Отечественной войны.
+
+В 1943 году их пути сошлись
+в операции против Вильгельма Кубе,
+генерального комиссара Белоруссии.
+            </div>
+
+            <div class="quote">
+22 сентября 1943 года в Минске
+произошёл взрыв, в результате которого Кубе погиб.
+            </div>
+
+            <div class="story-text">
+Мария Осипова была связана с минским подпольем
+и поддерживала связь с партизанскими формированиями.
+
+Елена Мазаник работала в доме Кубе,
+что давало ей доступ к его окружению.
+
+Надежда Троян была разведчицей,
+связной и участницей подпольной борьбы.
+
+Подготовка операции была связана
+с длительной разведывательной работой,
+связями между подпольщиками и партизанами
+и передачей информации.
+            </div>
+
+            <div class="story-text">
+29 октября 1943 года
+Елене Мазаник, Марии Осиповой
+и Надежде Троян было присвоено
+звание Героя Советского Союза.
+            </div>
+
+            <div class="quote">
+В истории этой операции важно видеть
+не только её финальный момент,
+но и огромную работу людей,
+которые собирали сведения,
+устанавливали связи,
+проверяли информацию
+и брали на себя риск.
+            </div>
+
+            <div class="story-text">
+Теперь ты знаешь,
+что в твоей игре было вымышленным,
+а что принадлежит реальной истории.
+
+Но остаётся вопрос:
+
+что бы ты сделал,
+если бы оказался перед выбором,
+от которого зависели другие?
+            </div>
+
+            <div class="stat-grid">
+
+                <div class="stat">
+                    <b>${game.trust}</b>
+                    доверие
+                </div>
+
+                <div class="stat">
+                    <b>${game.caution}</b>
+                    осторожность
+                </div>
+
+                <div class="stat">
+                    <b>${game.evidence}</b>
+                    сведения
+                </div>
+
+            </div>
+
+            <button class="primary" onclick="showEnding()">
+                ЗАКРЫТЬ ИСТОРИЮ
+            </button>
+
+        </div>
+    `);
+}
+
+/* =========================================================
+   ФИНАЛ
+========================================================= */
+
+function showEnding(){
+
+    render(`
+        <div class="panel">
+
+            <div class="kicker">ИСТОРИЯ ЗАВЕРШЕНА</div>
+
+            <h2>Ты прошёл тропу подполья</h2>
+
+            <div class="story-text">
+${escapeHtml(hero.firstName)}, ${escapeHtml(hero.codeName)}.
+
+Твоё досье останется в архиве этой игры.
+
+Но главное осталось не в цифрах.
+
+Ты увидел, как подпольная борьба строится
+из доверия, осторожности, информации
+и множества решений,
+которые со стороны могут казаться маленькими.
+            </div>
+
+            <div class="quote">
+«История — это не только то,
+что произошло.
+
+Это ещё и люди,
+которые в нужный момент
+решили не пройти мимо».
+            </div>
+
+            <button class="primary" onclick="goHome()">
+                🏠 ВЕРНУТЬСЯ НА ГЛАВНУЮ
+            </button>
+
+            <button class="secondary" onclick="showDiaryPage()">
+                📖 ОТКРЫТЬ ДНЕВНИК
+            </button>
+
+        </div>
+    `);
+}
+
+/* =========================================================
+   ДОСЬЕ
+========================================================= */
+
+function openDossier(){
+
+    if(!hero){
+        showDossierIntro();
+        return;
+    }
+
+    document.getElementById("dossierContent").innerHTML = `
+
+        <h2>📜 Личное досье</h2>
+
+        <div class="story-text">
+            <b>Имя:</b> ${escapeHtml(hero.firstName)}
+            <br>
+            <b>Фамилия:</b> ${escapeHtml(hero.lastName)}
+            <br>
+            <b>Возраст:</b> ${escapeHtml(String(hero.age))}
+            <br>
+            <b>Пол:</b> ${escapeHtml(hero.gender)}
+            <br>
+            <b>Родной город / деревня:</b> ${escapeHtml(hero.homePlace)}
+            <br>
+            <b>Район / область:</b> ${escapeHtml(hero.region)}
+            <br>
+            <b>Близкий человек:</b> ${escapeHtml(hero.relativeName)}
+            <br>
+            <b>Кем приходится:</b> ${escapeHtml(hero.relativeRole)}
+            <br>
+            <b>Особая примета:</b> ${escapeHtml(hero.specialMark)}
+            <br>
+            <b>Кодовое имя:</b> ${escapeHtml(hero.codeName)}
+        </div>
+
+        <hr style="border-color:rgba(255,255,255,.1);margin:25px 0">
+
+        <div class="story-text">
+            <b>Историческая линия:</b><br>
+            Елена Мазаник · Мария Осипова · Надежда Троян
+        </div>
+
+        <button class="secondary" onclick="closeOverlays()">
+            Закрыть
+        </button>
+    `;
+
+    document.getElementById("dossierOverlay")
+        .classList.add("active");
+}
+
+/* =========================================================
+   ДНЕВНИК
+========================================================= */
+
+function openDiary(){
+
+    if(!hero){
+        alert("Сначала создай героя.");
+        return;
+    }
+
+    let html = "";
+
+    if(!game.diary.length){
+
+        html = `
+            <div class="story-text">
+                Пока здесь пусто.
+                Твой дневник начнётся вместе с историей.
+            </div>
+        `;
+
+    }else{
+
+        game.diary.forEach((entry,index)=>{
+
+            html += `
+                <div class="diary-entry">
+                    <strong>Запись ${index+1} · ${escapeHtml(entry.date)}</strong>
+                    <div class="story-text">
+                        ${escapeHtml(entry.text)}
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    document.getElementById("diaryContent").innerHTML = html;
+
+    document.getElementById("diaryOverlay")
+        .classList.add("active");
+}
+
+function showDiaryPage(){
+    openDiary();
+}
+
+function closeOverlays(){
+    document.querySelectorAll(".overlay")
+        .forEach(x=>x.classList.remove("active"));
+}
+
+/* =========================================================
+   БЕЗОПАСНЫЙ ВЫВОД ТЕКСТА
+========================================================= */
+
+function escapeHtml(text){
+
+    return String(text)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+/* =========================================================
+   ЗАПУСК
+========================================================= */
+
+start();
+
+</script>
+
+</body>
+</html>
