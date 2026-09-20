@@ -17,398 +17,540 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100%;
-    font-family: Georgia, "Times New Roman", serif;
-    color: #eee;
 }
 
 body {
+    font-family: Georgia, "Times New Roman", serif;
+    color: #eee;
+
     background:
-        linear-gradient(rgba(8,10,12,.72), rgba(8,10,12,.82)),
-        url("main-background.png") center / cover fixed no-repeat;
+        linear-gradient(
+            rgba(8, 10, 11, .58),
+            rgba(8, 10, 11, .78)
+        ),
+        url("main-background.png")
+        center / cover fixed no-repeat;
 }
 
+
 /* =========================
-   ВЕРХНЕЕ МЕНЮ
+   ВЕРХНЯЯ ПАНЕЛЬ
 ========================= */
 
 .topbar {
+
     position: fixed;
+
     top: 0;
     left: 0;
     right: 0;
+
     z-index: 100;
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 8px;
+    justify-content: space-between;
 
-    padding: 12px 18px;
+    padding: 13px 22px;
 
-    background: rgba(12,13,15,.92);
-    border-bottom: 1px solid rgba(255,255,255,.15);
-    backdrop-filter: blur(8px);
+    background: rgba(10, 11, 12, .92);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.15);
+
+    backdrop-filter: blur(7px);
 }
 
+
 .logo {
+
+    color: #d8c49b;
+
     font-size: 14px;
+
     letter-spacing: 2px;
-    color: #d7c39a;
+
     white-space: nowrap;
 }
 
-.menu-buttons {
+
+.top-buttons {
+
     display: flex;
-    gap: 7px;
+
+    gap: 8px;
+
     flex-wrap: wrap;
+
     justify-content: flex-end;
 }
 
-.menu-buttons button {
-    border: 1px solid rgba(255,255,255,.2);
-    background: rgba(255,255,255,.06);
-    color: #eee;
+
+.top-buttons button {
+
     padding: 7px 11px;
+
     border-radius: 5px;
-    cursor: pointer;
+
+    border:
+        1px solid rgba(255,255,255,.18);
+
+    background:
+        rgba(255,255,255,.06);
+
+    color: #eee;
+
     font-family: inherit;
+
+    cursor: pointer;
+
     transition: .2s;
 }
 
-.menu-buttons button:hover {
-    background: rgba(255,255,255,.14);
-    transform: translateY(-1px);
+
+.top-buttons button:hover {
+
+    background:
+        rgba(255,255,255,.14);
+
 }
+
 
 /* =========================
-   ОСНОВНОЙ ЭКРАН
+   ОСНОВНАЯ ОБЛАСТЬ
 ========================= */
 
-.game {
-    max-width: 980px;
+.page {
+
+    min-height: 100vh;
+
+    max-width: 1150px;
+
     margin: 0 auto;
-    padding: 105px 20px 60px;
+
+    padding:
+        120px 25px 70px;
 }
 
-.scene {
-    background: rgba(14,15,17,.88);
-    border: 1px solid rgba(255,255,255,.14);
-    box-shadow: 0 20px 60px rgba(0,0,0,.45);
-    border-radius: 12px;
-    overflow: hidden;
+
+/* =========================
+   ЗАГОЛОВОК
+========================= */
+
+.intro {
+
+    max-width: 850px;
+
+    margin:
+        0 auto 38px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    background:
+        rgba(11, 13, 14, .87);
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.42);
 }
 
-.scene-inner {
-    padding: 34px;
-}
 
-.chapter-label {
-    color: #bca778;
+.label {
+
+    margin-bottom: 15px;
+
+    color: #bda675;
+
     font-size: 13px;
-    letter-spacing: 2px;
+
+    letter-spacing: 4px;
+
     text-transform: uppercase;
-    margin-bottom: 14px;
 }
+
 
 h1 {
+
     margin: 0 0 18px;
-    font-size: clamp(30px, 5vw, 52px);
+
+    color: #f1e6d0;
+
+    font-size:
+        clamp(38px, 7vw, 68px);
+
     line-height: 1.05;
-    color: #f0e6d0;
+
+    letter-spacing: 2px;
 }
 
-h2 {
-    margin-top: 0;
-    color: #e6d5ad;
-    font-size: 30px;
-}
 
-h3 {
-    color: #d9c494;
-}
+.subtitle {
 
-p {
-    font-size: 18px;
-    line-height: 1.75;
-    color: #ddd;
-}
+    margin: 0;
 
-.lead {
-    font-size: 21px;
-    line-height: 1.65;
-    color: #f0eadf;
-}
+    color: #ddd4c4;
 
-.small {
-    font-size: 14px;
-    color: #aaa;
-}
+    font-size: 20px;
 
-.quote {
-    margin: 25px 0;
-    padding: 18px 22px;
-    border-left: 3px solid #a89062;
-    background: rgba(255,255,255,.045);
-    color: #e6dcc9;
-    font-style: italic;
-    font-size: 18px;
     line-height: 1.6;
 }
 
-.info-card {
-    margin: 25px 0;
-    padding: 20px;
-    border: 1px solid rgba(188,167,120,.28);
-    background: rgba(188,167,120,.07);
-    border-radius: 8px;
+
+.divider {
+
+    width: 90px;
+
+    height: 1px;
+
+    margin: 25px auto;
+
+    background: #a38b5d;
 }
 
-.info-card strong {
-    color: #dec996;
-}
 
 /* =========================
-   КНОПКИ
+   ИСТОРИИ
 ========================= */
 
-.buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 30px;
+.stories {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 25px;
+
+    max-width: 1050px;
+
+    margin: 0 auto;
 }
 
-.btn {
-    display: inline-block;
-    padding: 13px 19px;
 
-    border: 1px solid rgba(255,255,255,.22);
+.story {
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-height: 440px;
+
+    padding: 30px;
+
+    background:
+        rgba(12,14,15,.91);
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.38);
+
+    transition:
+        transform .25s,
+        border-color .25s,
+        background .25s;
+}
+
+
+.story:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(205,181,126,.55);
+
+    background:
+        rgba(17,19,20,.96);
+}
+
+
+.story-number {
+
+    color: #9f8a60;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 18px;
+}
+
+
+.story-icon {
+
+    font-size: 42px;
+
+    margin-bottom: 15px;
+}
+
+
+.story h2 {
+
+    margin: 0 0 15px;
+
+    color: #e8d5aa;
+
+    font-size: 29px;
+
+    line-height: 1.15;
+}
+
+
+.story h3 {
+
+    margin: 0 0 18px;
+
+    color: #c7bda9;
+
+    font-size: 17px;
+
+    font-weight: normal;
+
+    line-height: 1.5;
+}
+
+
+.story p {
+
+    color: #d4d1ca;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+    margin-top: 0;
+}
+
+
+.story-facts {
+
+    margin:
+        10px 0 25px;
+
+    padding: 15px 17px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border-left:
+        3px solid #85744e;
+
+    color: #c9c5bc;
+
+    line-height: 1.6;
+
+    font-size: 15px;
+}
+
+
+.story-facts strong {
+
+    color: #d8c695;
+}
+
+
+.story-button {
+
+    margin-top: auto;
+
+    width: 100%;
+
+    padding: 14px 18px;
+
     border-radius: 6px;
 
-    background: #292a29;
-    color: #f3eee4;
+    border:
+        1px solid #9b8456;
+
+    background:
+        #675637;
+
+    color: #f5eee1;
+
+    font-family: inherit;
+
+    font-size: 16px;
 
     cursor: pointer;
-    font-family: inherit;
-    font-size: 16px;
 
     transition: .2s;
 }
 
-.btn:hover {
-    background: #3b3c3a;
-    transform: translateY(-2px);
+
+.story-button:hover {
+
+    background:
+        #7b6744;
+
+    transform:
+        translateY(-2px);
 }
 
-.btn.primary {
-    background: #6e5d3c;
-    border-color: #9f895c;
-}
-
-.btn.primary:hover {
-    background: #81704a;
-}
-
-.btn.danger {
-    background: #553d39;
-}
-
-.btn.choice {
-    width: 100%;
-    text-align: left;
-    padding: 20px;
-}
-
-.btn.choice strong {
-    display: block;
-    color: #ead8ad;
-    font-size: 18px;
-    margin-bottom: 7px;
-}
-
-.btn.choice span {
-    color: #c8c5bf;
-    line-height: 1.5;
-}
 
 /* =========================
-   ДОСЬЕ
+   НИЖНИЙ БЛОК
 ========================= */
 
-.dossier {
-    background: rgba(0,0,0,.22);
-    border: 1px solid rgba(255,255,255,.13);
-    padding: 24px;
+.note {
+
+    max-width: 850px;
+
+    margin: 32px auto 0;
+
+    padding: 23px 28px;
+
+    background:
+        rgba(10,12,13,.82);
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
     border-radius: 8px;
-    margin-top: 25px;
+
+    text-align: center;
 }
 
-.field {
-    margin-bottom: 17px;
+
+.note-title {
+
+    color: #d8c493;
+
+    font-size: 15px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 10px;
 }
 
-.field label {
-    display: block;
-    margin-bottom: 7px;
-    color: #d7c49a;
+
+.note p {
+
+    margin: 0;
+
+    color: #bdb9b0;
+
+    line-height: 1.6;
+
     font-size: 15px;
 }
 
-.field input,
-.field select {
-    width: 100%;
-    padding: 12px 13px;
 
-    background: rgba(255,255,255,.07);
-    color: #eee;
+/* =========================
+   НАЗАД
+========================= */
 
-    border: 1px solid rgba(255,255,255,.18);
+.back {
+
+    display: block;
+
+    margin:
+        28px auto 0;
+
+    padding:
+        11px 18px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    color: #ddd;
+
+    border:
+        1px solid rgba(255,255,255,.18);
+
     border-radius: 5px;
 
     font-family: inherit;
-    font-size: 16px;
+
+    cursor: pointer;
 }
 
-.field select option {
-    background: #202124;
+
+.back:hover {
+
+    background:
+        rgba(255,255,255,.12);
 }
 
-.warning {
-    padding: 14px;
-    margin: 20px 0;
-
-    background: rgba(180,140,70,.09);
-    border: 1px solid rgba(180,140,70,.25);
-
-    color: #d7cdbb;
-    line-height: 1.5;
-}
-
-/* =========================
-   ДНЕВНИК
-========================= */
-
-.diary-entry {
-    margin: 16px 0;
-    padding: 18px;
-
-    background: rgba(255,255,255,.045);
-    border-left: 3px solid #85744e;
-}
-
-.diary-entry .date {
-    color: #aa9974;
-    font-size: 13px;
-    margin-bottom: 7px;
-}
-
-/* =========================
-   ИСТОРИЯ
-========================= */
-
-.history {
-    border-top: 1px solid rgba(255,255,255,.13);
-    margin-top: 30px;
-    padding-top: 28px;
-}
-
-.fact {
-    margin: 18px 0;
-    padding: 16px 18px;
-    background: rgba(255,255,255,.045);
-    border-radius: 6px;
-}
-
-.fact strong {
-    color: #dfcb9c;
-}
-
-/* =========================
-   ФИНАЛ
-========================= */
-
-.final-box {
-    text-align: center;
-    padding: 25px 0;
-}
-
-.final-box h1 {
-    color: #e4d0a4;
-}
-
-.final-line {
-    font-size: 21px;
-    line-height: 1.7;
-    color: #e2ddd2;
-}
 
 /* =========================
    МОБИЛЬНАЯ ВЕРСИЯ
 ========================= */
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
 
     .topbar {
-        align-items: flex-start;
+
         flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 10px;
     }
 
-    .menu-buttons {
-        justify-content: flex-start;
+
+    .page {
+
+        padding-top: 150px;
+
+        padding-left: 12px;
+
+        padding-right: 12px;
     }
 
-    .game {
-        padding-top: 145px;
-        padding-left: 10px;
-        padding-right: 10px;
+
+    .intro {
+
+        padding: 27px 20px;
     }
 
-    .scene-inner {
-        padding: 22px;
+
+    .stories {
+
+        grid-template-columns: 1fr;
     }
 
-    p {
-        font-size: 17px;
+
+    .story {
+
+        min-height: auto;
+
+        padding: 25px;
     }
 
-    .lead {
-        font-size: 19px;
-    }
-
-    .menu-buttons button {
-        font-size: 12px;
-        padding: 6px 8px;
-    }
 }
+
 
 </style>
 </head>
 
+
 <body>
 
+
 <!-- =========================
-     ВЕРХНЕЕ МЕНЮ
+     ВЕРХНЯЯ ПАНЕЛЬ
 ========================= -->
 
-<div class="topbar">
+<header class="topbar">
 
     <div class="logo">
         ▲ ТРОПАМИ ПАМЯТИ
     </div>
 
-    <div class="menu-buttons">
 
-        <button onclick="showDossier()">
-            📜 ДОСЬЕ
-        </button>
-
-        <button onclick="showDiary()">
-            📖 ДНЕВНИК
-        </button>
-
-        <button onclick="showHistory()">
-            📚 ИСТОРИЯ
-        </button>
+    <div class="top-buttons">
 
         <button onclick="goHome()">
             🏠 ГЛАВНАЯ
@@ -416,109 +558,252 @@ p {
 
     </div>
 
-</div>
+</header>
+
 
 
 <!-- =========================
-     ИГРА
+     СТРАНИЦА
 ========================= -->
 
-<main class="game">
+<main class="page">
 
-    <div class="scene">
 
-        <div class="scene-inner" id="game">
+    <!-- ВСТУПЛЕНИЕ -->
 
-            <!-- сюда JavaScript вставляет сцены -->
+    <section class="intro">
 
+        <div class="label">
+            ВТОРАЯ ТРОПА
         </div>
 
-    </div>
+
+        <h1>
+            ПОДПОЛЬЩИКИ
+        </h1>
+
+
+        <div class="divider"></div>
+
+
+        <p class="subtitle">
+            Городская борьба.
+            Тайные связи.
+            Информация.
+            Риск.
+        </p>
+
+
+        <p class="subtitle">
+            Здесь нет одного пути.
+            Выбери историю,
+            с которой хочешь начать.
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         ДВЕ ИСТОРИИ
+    ========================= -->
+
+    <section class="stories">
+
+
+        <!-- =====================
+             МАЗАНИК / ОСИПОВА / ТРОЯН
+        ====================== -->
+
+        <article class="story">
+
+            <div class="story-number">
+                ИСТОРИЯ I
+            </div>
+
+
+            <div class="story-icon">
+                💠
+            </div>
+
+
+            <h2>
+                Минск. Операция против Кубе
+            </h2>
+
+
+            <h3>
+                Елена Мазаник · Мария Осипова ·
+                Надежда Троян
+            </h3>
+
+
+            <p>
+                Минск, 1943 год.
+                В оккупированном городе
+                действует подполье.
+            </p>
+
+
+            <p>
+                Несколько женщин оказываются
+                связанными с одной из самых
+                известных операций белорусского
+                подполья.
+            </p>
+
+
+            <div class="story-facts">
+
+                <strong>
+                    В этой истории:
+                </strong>
+
+                <br>
+
+                • подпольная связь<br>
+
+                • сбор и передача информации<br>
+
+                • доверие и осторожность<br>
+
+                • Минск 1943 года<br>
+
+                • операция против
+                Вильгельма Кубе
+
+            </div>
+
+
+            <button
+                class="story-button"
+                onclick="openMazanik()"
+            >
+                ОТКРЫТЬ ИСТОРИЮ →
+            </button>
+
+        </article>
+
+
+
+        <!-- =====================
+             ЗАСЛОНОВ
+        ====================== -->
+
+        <article class="story">
+
+            <div class="story-number">
+                ИСТОРИЯ II
+            </div>
+
+
+            <div class="story-icon">
+                🚂
+            </div>
+
+
+            <h2>
+                Орша. Железнодорожное подполье
+            </h2>
+
+
+            <h3>
+                Константин Заслонов
+            </h3>
+
+
+            <p>
+                Осень 1941 года.
+                Орша.
+                Крупный железнодорожный узел
+                оказывается под оккупацией.
+            </p>
+
+
+            <p>
+                Подпольщики начинают сопротивление,
+                используя связь, информацию
+                и возможности железнодорожного
+                узла.
+            </p>
+
+
+            <div class="story-facts">
+
+                <strong>
+                    В этой истории:
+                </strong>
+
+                <br>
+
+                • Орша 1941 года<br>
+
+                • железнодорожное подполье<br>
+
+                • разведка и связь<br>
+
+                • сопротивление оккупации<br>
+
+                • переход к партизанской борьбе
+                в 1942 году
+
+            </div>
+
+
+            <button
+                class="story-button"
+                onclick="openZaslonov()"
+            >
+                ОТКРЫТЬ ИСТОРИЮ →
+            </button>
+
+        </article>
+
+    </section>
+
+
+
+    <!-- =========================
+         ПОЯСНЕНИЕ
+    ========================= -->
+
+    <section class="note">
+
+        <div class="note-title">
+            📖 КАК УСТРОЕНА ТРОПА
+        </div>
+
+
+        <p>
+            Каждая история — отдельная
+            визуальная новелла.
+            В ней тебя ждут личное досье,
+            игровые решения, дневник
+            и исторический блок
+            «А что было на самом деле?».
+        </p>
+
+    </section>
+
+
+
+    <button
+        class="back"
+        onclick="goHome()"
+    >
+        ← Вернуться на главную
+    </button>
+
 
 </main>
 
 
+
 <script>
 
-/* =====================================================
-   СОСТОЯНИЕ ИГРЫ
-===================================================== */
-
-let game = {
-
-    chapter: 0,
-
-    dossier: null,
-
-    mentor: null,
-
-    diary: [],
-
-    choices: [],
-
-    historicalInfo: [],
-
-    finished: false
-
-};
-
-
-/* =====================================================
-   СОХРАНЕНИЕ
-===================================================== */
-
-const STORAGE_KEY = "tropamiUndergroundGame";
-
-
-function saveGame() {
-
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(game)
-    );
-
-}
-
-
-function loadGame() {
-
-    const saved =
-        localStorage.getItem(STORAGE_KEY);
-
-    if (!saved) return;
-
-    try {
-
-        game = JSON.parse(saved);
-
-    } catch (error) {
-
-        console.log("Не удалось загрузить досье.");
-
-    }
-
-}
-
-
-/* =====================================================
-   РЕНДЕР
-===================================================== */
-
-function render(html) {
-
-    document.getElementById("game").innerHTML = html;
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-}
-
-
-/* =====================================================
-   ГЛАВНАЯ
-===================================================== */
+/* =========================
+   ПЕРЕХОДЫ
+========================= */
 
 function goHome() {
 
@@ -527,1718 +812,21 @@ function goHome() {
 }
 
 
-/* =====================================================
-   НАЧАЛО
-===================================================== */
+function openMazanik() {
 
-function startGame() {
-
-    if (game.dossier) {
-
-        renderExistingDossier();
-
-    } else {
-
-        renderPrologue();
-
-    }
+    window.location.href = "mazanik.html";
 
 }
 
 
-/* =====================================================
-   ПРОЛОГ
-===================================================== */
+function openZaslonov() {
 
-function renderPrologue() {
-
-    render(`
-
-        <div class="chapter-label">
-            ТРОПА ПОДПОЛЬЩИКОВ
-        </div>
-
-        <h1>
-            Там, где нельзя ошибаться
-        </h1>
-
-        <p class="lead">
-            Представь город, в котором привычная жизнь
-            закончилась почти мгновенно.
-        </p>
-
-        <p>
-            На улицах появились чужие солдаты.
-            Изменились правила.
-            Исчезло чувство безопасности.
-        </p>
-
-        <p>
-            Но даже в оккупированном городе
-            оставались люди, которые продолжали
-            сопротивляться.
-        </p>
-
-        <p>
-            Их оружием могли стать не только
-            смелость и решительность.
-            Иногда важнее были память,
-            осторожность, наблюдательность
-            и доверие.
-        </p>
-
-        <div class="quote">
-            Подполье существовало там,
-            где открытая борьба была слишком опасной.
-        </div>
-
-        <div class="info-card">
-
-            <strong>
-                В этой истории твой герой — вымышленный.
-            </strong>
-
-            <p>
-                Исторические события и реальные люди,
-                которых ты встретишь, основаны
-                на материалах по истории Беларуси
-                периода Великой Отечественной войны.
-            </p>
-
-        </div>
-
-        <div class="buttons">
-
-            <button
-                class="btn primary"
-                onclick="showDossierForm()"
-            >
-                НАЧАТЬ ИСТОРИЮ
-            </button>
-
-        </div>
-
-    `);
+    window.location.href = "zaslonov.html";
 
 }
-
-
-/* =====================================================
-   ДОСЬЕ
-===================================================== */
-
-function showDossier() {
-
-    if (!game.dossier) {
-
-        showDossierForm();
-
-    } else {
-
-        renderDossier();
-
-    }
-
-}
-
-
-/* =====================================================
-   ФОРМА ДОСЬЕ
-===================================================== */
-
-function showDossierForm() {
-
-    render(`
-
-        <div class="chapter-label">
-            ЛИЧНОЕ ДОСЬЕ
-        </div>
-
-        <h2>
-            Создай своего героя
-        </h2>
-
-        <p>
-            Заполни досье своего героя.
-        </p>
-
-        <div class="warning">
-            ⚠️ Используй только вымышленные данные —
-            это часть игры. Не указывай настоящие
-            адреса, телефоны и другие личные сведения.
-        </div>
-
-        <div class="dossier">
-
-            <div class="field">
-
-                <label>Имя</label>
-
-                <input
-                    id="firstName"
-                    placeholder="Например: Алексей"
-                >
-
-            </div>
-
-
-            <div class="field">
-
-                <label>Фамилия</label>
-
-                <input
-                    id="lastName"
-                    placeholder="Например: Орлов"
-                >
-
-            </div>
-
-
-            <div class="field">
-
-                <label>Возраст</label>
-
-                <input
-                    id="age"
-                    type="number"
-                    min="12"
-                    max="80"
-                    placeholder="Например: 18"
-                >
-
-            </div>
-
-
-            <div class="field">
-
-                <label>Пол</label>
-
-                <select id="gender">
-
-                    <option value="">
-                        Выбери
-                    </option>
-
-                    <option value="girl">
-                        Девушка
-                    </option>
-
-                    <option value="boy">
-                        Юноша
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>Родной город / деревня</label>
-
-                <input
-                    id="place"
-                    placeholder="Вымышленное название"
-                >
-
-            </div>
-
-
-            <div class="field">
-
-                <label>Район / область</label>
-
-                <input
-                    id="region"
-                    placeholder="Например: Минская область"
-                >
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    Имя близкого человека
-                </label>
-
-                <input
-                    id="relative"
-                    placeholder="Вымышленное имя"
-                >
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    Кем он тебе приходится?
-                </label>
-
-                <input
-                    id="relativeRole"
-                    placeholder="Например: мама, брат, друг"
-                >
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    Как тебя узнать?
-                </label>
-
-                <input
-                    id="mark"
-                    placeholder="Особая примета героя"
-                >
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    Под каким именем тебя будут знать товарищи?
-                </label>
-
-                <input
-                    id="codeName"
-                    placeholder="Кодовое имя"
-                >
-
-            </div>
-
-
-            <div class="buttons">
-
-                <button
-                    class="btn primary"
-                    onclick="saveDossier()"
-                >
-                    💾 СОХРАНИТЬ ДОСЬЕ
-                </button>
-
-            </div>
-
-        </div>
-
-    `);
-
-}
-
-
-/* =====================================================
-   СОХРАНЕНИЕ ДОСЬЕ
-===================================================== */
-
-function saveDossier() {
-
-    const firstName =
-        document.getElementById("firstName").value.trim();
-
-    const lastName =
-        document.getElementById("lastName").value.trim();
-
-    const age =
-        document.getElementById("age").value.trim();
-
-    const gender =
-        document.getElementById("gender").value;
-
-    const place =
-        document.getElementById("place").value.trim();
-
-    const region =
-        document.getElementById("region").value.trim();
-
-    const relative =
-        document.getElementById("relative").value.trim();
-
-    const relativeRole =
-        document.getElementById("relativeRole").value.trim();
-
-    const mark =
-        document.getElementById("mark").value.trim();
-
-    const codeName =
-        document.getElementById("codeName").value.trim();
-
-
-    if (
-        !firstName ||
-        !lastName ||
-        !age ||
-        !gender ||
-        !place ||
-        !region ||
-        !relative ||
-        !relativeRole ||
-        !mark ||
-        !codeName
-    ) {
-
-        alert("Заполни все поля досье.");
-
-        return;
-
-    }
-
-
-    game.dossier = {
-
-        firstName,
-        lastName,
-        age,
-        gender,
-        place,
-        region,
-        relative,
-        relativeRole,
-        mark,
-        codeName
-
-    };
-
-
-    game.chapter = 1;
-
-    saveGame();
-
-    showDossierAccepted();
-
-}
-
-
-/* =====================================================
-   ДОСЬЕ СОЗДАНО
-===================================================== */
-
-function showDossierAccepted() {
-
-    const d = game.dossier;
-
-    render(`
-
-        <div class="chapter-label">
-            ДОСЬЕ ПРИНЯТО
-        </div>
-
-        <h2>
-            ${escapeHTML(d.codeName)}
-        </h2>
-
-        <p class="lead">
-            Теперь у тебя есть имя,
-            под которым тебя будут знать товарищи.
-        </p>
-
-        <div class="info-card">
-
-            <strong>
-                ${escapeHTML(d.firstName)}
-                ${escapeHTML(d.lastName)}
-            </strong>
-
-            <p>
-                Возраст: ${escapeHTML(d.age)}<br>
-                Родом: ${escapeHTML(d.place)}<br>
-                ${escapeHTML(d.region)}
-            </p>
-
-        </div>
-
-        <p>
-            Но настоящее испытание только начинается.
-        </p>
-
-        <div class="buttons">
-
-            <button
-                class="btn primary"
-                onclick="chapter1()"
-            >
-                ПРОДОЛЖИТЬ
-            </button>
-
-        </div>
-
-    `);
-
-}
-
-
-/* =====================================================
-   ПРОДОЛЖЕНИЕ
-===================================================== */
-
-function renderExistingDossier() {
-
-    const d = game.dossier;
-
-    render(`
-
-        <div class="chapter-label">
-            ТВОЁ ДОСЬЕ
-        </div>
-
-        <h2>
-            📜 ${escapeHTML(d.codeName)}
-        </h2>
-
-        <p>
-            ${escapeHTML(d.firstName)}
-            ${escapeHTML(d.lastName)},
-            ${escapeHTML(d.age)} лет
-        </p>
-
-        <p class="small">
-            Прогресс истории сохранён.
-        </p>
-
-        <div class="buttons">
-
-            <button
-                class="btn primary"
-                onclick="continueGame()"
-            >
-                ПРОДОЛЖИТЬ
-            </button>
-
-            <button
-                class="btn"
-                onclick="renderDossier()"
-            >
-                ПОСМОТРЕТЬ ДОСЬЕ
-            </button>
-
-        </div>
-
-    `);
-
-}
-
-
-function continueGame() {
-
-    switch(game.chapter) {
-
-        case 1:
-            chapter1();
-            break;
-
-        case 2:
-            chapter2();
-            break;
-
-        case 3:
-            chapter3();
-            break;
-
-        case 4:
-            chapter4();
-            break;
-
-        case 5:
-            chapter5();
-            break;
-
-        case 6:
-            chapter6();
-            break;
-
-        default:
-            chapter1();
-
-    }
-
-}
-
-
-/* =====================================================
-   ПРОСМОТР ДОСЬЕ
-===================================================== */
-
-function renderDossier() {
-
-    const d = game.dossier;
-
-    if (!d) {
-
-        showDossierForm();
-
-        return;
-
-    }
-
-    render(`
-
-        <div class="chapter-label">
-            ЛИЧНОЕ ДОСЬЕ
-        </div>
-
-        <h2>
-            📜 ${escapeHTML(d.codeName)}
-        </h2>
-
-        <div class="dossier">
-
-            <p>
-                <strong>Имя:</strong>
-                ${escapeHTML(d.firstName)}
-            </p>
-
-            <p>
-                <strong>Фамилия:</strong>
-                ${escapeHTML(d.lastName)}
-            </p>
-
-            <p>
-                <strong>Возраст:</strong>
-                ${escapeHTML(d.age)}
-            </p>
-
-            <p>
-                <strong>Родной город / деревня:</strong>
-                ${escapeHTML(d.place)}
-            </p>
-
-            <p>
-                <strong>Район / область:</strong>
-                ${escapeHTML(d.region)}
-            </p>
-
-            <p>
-                <strong>Близкий человек:</strong>
-                ${escapeHTML(d.relative)}
-            </p>
-
-            <p>
-                <strong>Кем приходится:</strong>
-                ${escapeHTML(d.relativeRole)}
-            </p>
-
-            <p>
-                <strong>Особая примета:</strong>
-                ${escapeHTML(d.mark)}
-            </p>
-
-            <p>
-                <strong>Кодовое имя:</strong>
-                ${escapeHTML(d.codeName)}
-            </p>
-
-        </div>
-
-        <div class="buttons">
-
-            <button
-                class="btn primary"
-                onclick="continueGame()"
-            >
-                ПРОДОЛЖИТЬ ИСТОРИЮ
-            </button>
-
-        </div>
-
-    `);
-
-}
-
-
-/* =====================================================
-   ГЛАВА 1
-===================================================== */
-
-function chapter1() {
-
-    game.chapter = 1;
-
-    saveGame();
-
-    render(`
-
-        <div class="chapter-label">
-            ГЛАВА I · ГОРОД
-        </div>
-
-        <h2>
-            Жизнь продолжается
-        </h2>
-
-        <p>
-            Оккупация изменила город.
-        </p>
-
-        <p>
-            Люди стараются не смотреть друг другу
-            в глаза слишком долго.
-            Одни боятся.
-            Другие молчат.
-            Третьи уже ищут способы сопротивляться.
-        </p>
-
-        <p>
-            Ты ещё не знаешь, кому можно доверять.
-        </p>
-
-        <div class="quote">
-            Иногда первое правило подпольщика —
-            научиться замечать то,
-            что другие предпочитают не замечать.
-        </div>
-
-        <p>
-            Сегодня ты случайно становишься свидетелем
-            разговора двух знакомых.
-        </p>
-
-        <p>
-            Они говорят тихо.
-            Слишком тихо.
-        </p>
-
-        <div class="info-card">
-
-            <strong>
-                Что ты делаешь?
-            </strong>
-
-        </div>
-
-        <div class="buttons">
-
-            <button
-                class="btn choice"
-                onclick="chapter1Choice('listen')"
-            >
-                <strong>Остаться рядом и послушать</strong>
-                <span>
-                    Возможно, ты узнаешь что-то важное.
-                </span>
-            </button>
-
-            <button
-                class="btn choice"
-                onclick="chapter1Choice('leave')"
-            >
-                <strong>Уйти и не привлекать внимания</strong>
-                <span>
-                    Иногда осторожность важнее любопытства.
-                </span>
-            </button>
-
-        </div>
-
-    `);
-
-}
-
-
-function chapter1Choice(choice) {
-
-    game.choices.push({
-        chapter: 1,
-        choice: choice
-    });
-
-    game.diary.push({
-        date: "Глава I",
-        text:
-            choice === "listen"
-            ? "Я впервые понял(а), что в оккупированном городе даже обычный разговор может иметь значение."
-            : "Я решил(а), что не каждую тайну нужно узнавать сразу."
-    });
-
-    saveGame();
-
-    chapter2();
-
-}
-
-
-/* =====================================================
-   ГЛАВА 2
-===================================================== */
-
-function chapter2() {
-
-    game.chapter = 2;
-
-    saveGame();
-
-    render(`
-
-        <div class="chapter-label">
-            ГЛАВА II · ДОВЕРИЕ
-        </div>
-
-        <h2>
-            Слово, которое нельзя вернуть
-        </h2>
-
-        <p>
-            Через несколько дней тебе предлагают
-            передать сообщение.
-        </p>
-
-        <p>
-            Ты не знаешь всего содержания.
-            И не должен знать.
-        </p>
-
-        <p>
-            Тебе называют только человека,
-            которому нужно передать весточку.
-        </p>
-
-        <div class="quote">
-            В подполье информация часто разделялась.
-            Каждый знал только то,
-            что было необходимо для его задачи.
-        </div>
-
-        <p>
-            По дороге ты замечаешь,
-            что за тобой несколько минут
-            движется один и тот же человек.
-        </p>
-
-        <div class="buttons">
-
-            <button
-                class="btn choice"
-                onclick="chapter2Choice('wait')"
-            >
-                <strong>Изменить маршрут</strong>
-                <span>
-                    Проверить, действительно ли за тобой следят.
-                </span>
-            </button>
-
-            <button
-                class="btn choice"
-                onclick="chapter2Choice('continue')"
-            >
-                <strong>Продолжить путь</strong>
-                <span>
-                    Не менять поведение и не показывать тревогу.
-                </span>
-            </button>
-
-        </div>
-
-    `);
-
-}
-
-
-function chapter2Choice(choice) {
-
-    game.choices.push({
-        chapter: 2,
-        choice: choice
-    });
-
-    game.diary.push({
-        date: "Глава II",
-        text:
-            choice === "wait"
-            ? "Я решил(а) сначала убедиться, что опасность реальна."
-            : "Я продолжил(а) путь, стараясь не показать волнения."
-    });
-
-    saveGame();
-
-    chapter3();
-
-}
-
-
-/* =====================================================
-   ГЛАВА 3
-===================================================== */
-
-function chapter3() {
-
-    game.chapter = 3;
-
-    saveGame();
-
-    render(`
-
-        <div class="chapter-label">
-            ГЛАВА III · ПОДПОЛЬНАЯ СЕТЬ
-        </div>
-
-        <h2>
-            У каждого — своя задача
-        </h2>
-
-        <p>
-            Постепенно ты понимаешь:
-            сопротивление — это не только люди,
-            которые носят оружие.
-        </p>
-
-        <p>
-            Кто-то собирает сведения.
-            Кто-то передаёт сообщения.
-            Кто-то помогает людям скрыться.
-            Кто-то распространяет информацию.
-        </p>
-
-        <p>
-            Другой человек может знать больше тебя.
-            Но это не значит, что тебе следует
-            расспрашивать его.
-        </p>
-
-        <div class="info-card">
-
-            <strong>
-                Подпольная работа требует осторожности,
-                памяти и взаимного доверия.
-            </strong>
-
-        </div>
-
-        <p>
-            Тебе предлагают выбрать,
-            какую работу ты хотел(а) бы выполнять чаще.
-        </p>
-
-        <div class="buttons">
-
-            <button
-                class="btn choice"
-                onclick="chapter3Choice('information')"
-            >
-                <strong>Работать с информацией</strong>
-                <span>
-                    Наблюдать, запоминать,
-                    проверять и передавать сведения.
-                </span>
-            </button>
-
-            <button
-                class="btn choice"
-                onclick="chapter3Choice('people')"
-            >
-                <strong>Работать с людьми</strong>
-                <span>
-                    Помогать устанавливать связь
-                    и поддерживать доверие.
-                </span>
-            </button>
-
-        </div>
-
-    `);
-
-}
-
-
-function chapter3Choice(choice) {
-
-    game.choices.push({
-        chapter: 3,
-        choice: choice
-    });
-
-    game.diary.push({
-        date: "Глава III",
-        text:
-            choice === "information"
-            ? "Мне кажется, что я умею замечать детали и запоминать важное."
-            : "Мне важно понимать людей и сохранять доверие."
-    });
-
-    saveGame();
-
-    chapter4();
-
-}
-
-
-/* =====================================================
-   ГЛАВА 4
-===================================================== */
-
-function chapter4() {
-
-    game.chapter = 4;
-
-    saveGame();
-
-    const d = game.dossier;
-
-    render(`
-
-        <div class="chapter-label">
-            ГЛАВА IV · ИМЯ
-        </div>
-
-        <h2>
-            Кто ты для них?
-        </h2>
-
-        <p>
-            В подполье твоё настоящее имя
-            постепенно отходит на второй план.
-        </p>
-
-        <p>
-            Товарищи знают тебя по кодовому имени:
-        </p>
-
-        <div class="quote">
-            ${escapeHTML(d.codeName)}
-        </div>
-
-        <p>
-            Это имя становится частью твоей новой жизни.
-        </p>
-
-        <p>
-            Но иногда тебе приходится вспоминать,
-            ради чего ты всё это делаешь.
-        </p>
-
-        <p>
-            Ради людей.
-            Ради дома.
-            Ради тех, кто ждёт.
-        </p>
-
-        <div class="info-card">
-
-            <strong>
-                Кому сообщить о твоей судьбе,
-                если ты погибнешь или попадёшь в плен?
-            </strong>
-
-            <p>
-                В твоём досье уже есть ответ.
-            </p>
-
-        </div>
-
-        <div class="buttons">
-
-            <button
-                class="btn primary"
-                onclick="chapter5()"
-            >
-                ПРОДОЛЖИТЬ
-            </button>
-
-        </div>
-
-    `);
-
-}
-
-
-/* =====================================================
-   ГЛАВА 5
-===================================================== */
-
-function chapter5() {
-
-    game.chapter = 5;
-
-    saveGame();
-
-    render(`
-
-        <div class="chapter-label">
-            ГЛАВА V · ВЫБОР
-        </div>
-
-        <h2>
-            Информация
-        </h2>
-
-        <p>
-            Однажды тебе становится известно,
-            что важные сведения должны попасть
-            к людям, которые продолжают сопротивление.
-        </p>
-
-        <p>
-            Но ситуация изменилась.
-        </p>
-
-        <p>
-            Передать сообщение сейчас —
-            значит подвергнуть риску
-            и себя, и других.
-        </p>
-
-        <div class="quote">
-            Война заставляет принимать решения,
-            в которых редко бывает простой ответ.
-        </div>
-
-        <div class="buttons">
-
-            <button
-                class="btn choice"
-                onclick="chapter5Choice('deliver')"
-            >
-                <strong>Передать сообщение</strong>
-                <span>
-                    Информация может быть очень важной.
-                </span>
-            </button>
-
-            <button
-                class="btn choice"
-                onclick="chapter5Choice('wait')"
-            >
-                <strong>Подождать</strong>
-                <span>
-                    Иногда необходимо выбрать
-                    более безопасный момент.
-                </span>
-            </button>
-
-        </div>
-
-    `);
-
-}
-
-
-function chapter5Choice(choice) {
-
-    game.choices.push({
-        chapter: 5,
-        choice: choice
-    });
-
-    game.diary.push({
-        date: "Глава V",
-        text:
-            choice === "deliver"
-            ? "Я решил(а), что информация слишком важна, чтобы молчать."
-            : "Я решил(а), что иногда ожидание — тоже решение."
-    });
-
-    saveGame();
-
-    chapter6();
-
-}
-
-
-/* =====================================================
-   ГЛАВА 6
-===================================================== */
-
-function chapter6() {
-
-    game.chapter = 6;
-
-    saveGame();
-
-    render(`
-
-        <div class="chapter-label">
-            ГЛАВА VI · ОПАСНОСТЬ
-        </div>
-
-        <h2>
-            Когда рядом опасность
-        </h2>
-
-        <p>
-            Подпольная сеть оказывается под угрозой.
-        </p>
-
-        <p>
-            Кто-то сообщает, что враг начал
-            проверять людей, которые могут
-            быть связаны с сопротивлением.
-        </p>
-
-        <p>
-            Теперь особенно важно:
-            не паниковать,
-            не говорить лишнего
-            и помнить договорённости.
-        </p>
-
-        <div class="info-card">
-
-            <strong>
-                Твоя задача — помочь сохранить связь
-                между людьми.
-            </strong>
-
-        </div>
-
-        <p>
-            Ты можешь сделать только одно:
-            предупредить человека,
-            которому угрожает опасность.
-        </p>
-
-        <div class="buttons">
-
-            <button
-                class="btn primary"
-                onclick="chapter6Choice('warn')"
-            >
-                ПРЕДУПРЕДИТЬ
-            </button>
-
-            <button
-                class="btn"
-                onclick="chapter6Choice('verify')"
-            >
-                СНАЧАЛА ПРОВЕРИТЬ СВЕДЕНИЯ
-            </button>
-
-        </div>
-
-    `);
-
-}
-
-
-function chapter6Choice(choice) {
-
-    game.choices.push({
-        chapter: 6,
-        choice: choice
-    });
-
-    game.diary.push({
-        date: "Глава VI",
-        text:
-            choice === "warn"
-            ? "Я решил(а) предупредить человека."
-            : "Я решил(а) сначала проверить сведения."
-    });
-
-    saveGame();
-
-    chapter7();
-
-}
-
-
-/* =====================================================
-   ГЛАВА 7
-===================================================== */
-
-function chapter7() {
-
-    game.chapter = 7;
-
-    saveGame();
-
-    render(`
-
-        <div class="chapter-label">
-            ГЛАВА VII · ПАМЯТЬ
-        </div>
-
-        <h2>
-            То, что остаётся
-        </h2>
-
-        <p>
-            Подпольная работа редко оставляет
-            после себя громкие следы.
-        </p>
-
-        <p>
-            Иногда это записка.
-            Иногда — переданное сообщение.
-            Иногда — человек, которому удалось
-            спастись благодаря чьей-то помощи.
-        </p>
-
-        <p>
-            Но история сопротивления складывалась
-            именно из таких поступков.
-        </p>
-
-        <div class="quote">
-            Не каждый герой был известен.
-            Но каждый выбор мог иметь значение.
-        </div>
-
-        <p>
-            Ты закрываешь своё досье.
-        </p>
-
-        <p>
-            Но прежде чем закончить путь,
-            нужно узнать, что происходило
-            в реальной истории.
-        </p>
-
-        <div class="buttons">
-
-            <button
-                class="btn primary"
-                onclick="historicalPart()"
-            >
-                📖 А ЧТО БЫЛО НА САМОМ ДЕЛЕ?
-            </button>
-
-        </div>
-
-    `);
-
-}
-
-
-/* =====================================================
-   ИСТОРИЧЕСКАЯ ЧАСТЬ
-===================================================== */
-
-function historicalPart() {
-
-    game.chapter = 8;
-
-    saveGame();
-
-    render(`
-
-        <div class="chapter-label">
-            📖 А ЧТО БЫЛО НА САМОМ ДЕЛЕ?
-        </div>
-
-        <h2>
-            Подполье Беларуси
-        </h2>
-
-        <p>
-            История твоего героя была игровой.
-            Но сопротивление в оккупированной Беларуси
-            было реальностью.
-        </p>
-
-        <div class="fact">
-
-            <strong>
-                Минск, 1943 год
-            </strong>
-
-            <p>
-                В Минске действовали подпольные
-                группы и организации.
-                Их участники собирали сведения,
-                поддерживали связь,
-                распространяли информацию
-                и участвовали в сопротивлении
-                оккупационным властям.
-            </p>
-
-        </div>
-
-        <div class="fact">
-
-            <strong>
-                Елена Мазаник,
-                Надежда Троян и Мария Осипова
-            </strong>
-
-            <p>
-                В 1943 году история минского подполья
-                была связана с операцией против
-                генерального комиссара Белоруссии
-                Вильгельма Кубе.
-            </p>
-
-        </div>
-
-        <div class="fact">
-
-            <strong>
-                22 сентября 1943 года
-            </strong>
-
-            <p>
-                В результате подпольной операции
-                Вильгельм Кубе был убит.
-            </p>
-
-        </div>
-
-        <div class="fact">
-
-            <strong>
-                Константин Заслонов
-            </strong>
-
-            <p>
-                Осенью 1941 года в Орше
-                действовала подпольная организация,
-                связанная с железнодорожным узлом.
-            </p>
-
-            <p>
-                Подпольщики занимались сопротивлением,
-                сбором сведений и саботажем работы
-                оккупационной железнодорожной системы.
-            </p>
-
-            <p>
-                В 1942 году Заслонов продолжил
-                борьбу уже в партизанском движении.
-            </p>
-
-        </div>
-
-        <div class="info-card">
-
-            <strong>
-                Главное
-            </strong>
-
-            <p>
-                Подпольная борьба требовала
-                организованности, осторожности,
-                взаимного доверия,
-                связи между участниками
-                и поддержки населения.
-            </p>
-
-        </div>
-
-        <p class="small">
-            Игровые события, персонаж игрока,
-            его семья, кодовое имя и личные решения
-            являются вымышленными.
-            Исторические личности и события
-            обозначены отдельно.
-        </p>
-
-        <div class="buttons">
-
-            <button
-                class="btn primary"
-                onclick="finishGame()"
-            >
-                ЗАКОНЧИТЬ ТРОПУ
-            </button>
-
-        </div>
-
-    `);
-
-}
-
-
-/* =====================================================
-   ФИНАЛ
-===================================================== */
-
-function finishGame() {
-
-    game.finished = true;
-    game.chapter = 9;
-
-    saveGame();
-
-    const d = game.dossier;
-
-    render(`
-
-        <div class="final-box">
-
-            <div class="chapter-label">
-                ТРОПА ПРОЙДЕНА
-            </div>
-
-            <h1>
-                ${escapeHTML(d.codeName)}
-            </h1>
-
-            <p class="final-line">
-                Ты прошёл(ла) тропу подпольщика.
-            </p>
-
-            <p>
-                Твоя игровая история закончилась.
-                Но история людей, которые
-                сопротивлялись оккупации,
-                осталась в памяти.
-            </p>
-
-            <div class="quote">
-                Память нужна не для того,
-                чтобы жить прошлым.
-                Она нужна, чтобы понимать,
-                через что прошли люди.
-            </div>
-
-            <div class="info-card">
-
-                <strong>
-                    📜 ТВОЁ ДОСЬЕ СОХРАНЕНО
-                </strong>
-
-                <p>
-                    В следующий раз ты сможешь
-                    открыть эту историю снова.
-                </p>
-
-            </div>
-
-            <div class="buttons">
-
-                <button
-                    class="btn primary"
-                    onclick="showDiary()"
-                >
-                    📖 ОТКРЫТЬ ДНЕВНИК
-                </button>
-
-                <button
-                    class="btn"
-                    onclick="showDossier()"
-                >
-                    📜 ПОСМОТРЕТЬ ДОСЬЕ
-                </button>
-
-                <button
-                    class="btn"
-                    onclick="goHome()"
-                >
-                    🏠 НА ГЛАВНУЮ
-                </button>
-
-            </div>
-
-        </div>
-
-    `);
-
-}
-
-
-/* =====================================================
-   ДНЕВНИК
-===================================================== */
-
-function showDiary() {
-
-    if (!game.dossier) {
-
-        render(`
-
-            <div class="chapter-label">
-                📖 ДНЕВНИК
-            </div>
-
-            <h2>
-                Здесь пока пусто
-            </h2>
-
-            <p>
-                Сначала создай героя
-                и начни историю.
-            </p>
-
-            <div class="buttons">
-
-                <button
-                    class="btn primary"
-                    onclick="startGame()"
-                >
-                    НАЧАТЬ
-                </button>
-
-            </div>
-
-        `);
-
-        return;
-
-    }
-
-
-    let entries = "";
-
-    if (game.diary.length === 0) {
-
-        entries = `
-            <p>
-                Первые записи появятся по мере
-                прохождения истории.
-            </p>
-        `;
-
-    } else {
-
-        game.diary.forEach(entry => {
-
-            entries += `
-
-                <div class="diary-entry">
-
-                    <div class="date">
-                        ${escapeHTML(entry.date)}
-                    </div>
-
-                    <div>
-                        ${escapeHTML(entry.text)}
-                    </div>
-
-                </div>
-
-            `;
-
-        });
-
-    }
-
-
-    render(`
-
-        <div class="chapter-label">
-            📖 ДНЕВНИК
-        </div>
-
-        <h2>
-            Записи ${escapeHTML(game.dossier.codeName)}
-        </h2>
-
-        ${entries}
-
-        <div class="buttons">
-
-            <button
-                class="btn primary"
-                onclick="continueGame()"
-            >
-                ПРОДОЛЖИТЬ ИСТОРИЮ
-            </button>
-
-        </div>
-
-    `);
-
-}
-
-
-/* =====================================================
-   ИСТОРИЯ
-===================================================== */
-
-function showHistory() {
-
-    render(`
-
-        <div class="chapter-label">
-            📚 ИСТОРИЯ
-        </div>
-
-        <h2>
-            Подпольное сопротивление
-        </h2>
-
-        <p>
-            Подпольщики действовали в городах
-            и населённых пунктах, находившихся
-            под оккупацией.
-        </p>
-
-        <div class="fact">
-
-            <strong>
-                Что входило в деятельность подполья?
-            </strong>
-
-            <p>
-                Сбор и передача сведений,
-                связь между группами,
-                агитация и распространение
-                информации, помощь людям,
-                саботаж и другие формы сопротивления.
-            </p>
-
-        </div>
-
-        <div class="fact">
-
-            <strong>
-                Почему была важна связь?
-            </strong>
-
-            <p>
-                Подпольная деятельность требовала
-                координации и доверия.
-                Разные участники могли выполнять
-                разные задачи.
-            </p>
-
-        </div>
-
-        <div class="fact">
-
-            <strong>
-                Кто поддерживал сопротивление?
-            </strong>
-
-            <p>
-                Значительную роль играло население:
-                люди помогали продовольствием,
-                сведениями, укрытием и связью.
-            </p>
-
-        </div>
-
-        <div class="buttons">
-
-            <button
-                class="btn"
-                onclick="continueGame()"
-            >
-                НАЗАД К ИСТОРИИ
-            </button>
-
-        </div>
-
-    `);
-
-}
-
-
-/* =====================================================
-   ЗАЩИТА ТЕКСТА
-===================================================== */
-
-function escapeHTML(value) {
-
-    return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-
-}
-
-
-/* =====================================================
-   ЗАПУСК
-===================================================== */
-
-loadGame();
-
-startGame();
 
 </script>
+
 
 </body>
 </html>
