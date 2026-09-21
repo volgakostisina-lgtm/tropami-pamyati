@@ -1,5 +1,510 @@
-<!doctype html><html lang="ru"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Интерактивный плакат «Партизаны»</title>
-<style>body{margin:0;background:#17130f;color:#f3ead8;font-family:Georgia,serif;padding:50px}
-a{color:#e8d4a6}</style></head><body><h1>Интерактивный плакат «Партизаны»</h1><p>Здесь будет интерактивный плакат о партизанах.</p>
-<p><a href="index.html">← Вернуться на главную</a></p></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Партизаны · Тропами памяти</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+        font-family: Georgia, "Times New Roman", serif;
+        color: #f5eee2;
+    }
+
+    body {
+        min-height: 100vh;
+        background:
+            linear-gradient(
+                rgba(12, 10, 8, 0.52),
+                rgba(12, 10, 8, 0.68)
+            ),
+            url("main-background.png") center center / cover fixed no-repeat;
+    }
+
+    /* Верхняя панель */
+
+    .topbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 64px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 0 28px;
+
+        background: rgba(12, 10, 8, 0.82);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+        backdrop-filter: blur(5px);
+
+        z-index: 100;
+    }
+
+    .logo {
+        color: #f5eee2;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+
+    .home-btn {
+        border: 1px solid rgba(245, 238, 226, 0.45);
+        background: rgba(20, 17, 14, 0.7);
+        color: #f5eee2;
+
+        padding: 10px 18px;
+
+        border-radius: 6px;
+
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 15px;
+
+        cursor: pointer;
+
+        transition:
+            background 0.25s ease,
+            border-color 0.25s ease,
+            transform 0.25s ease;
+    }
+
+    .home-btn:hover {
+        background: rgba(245, 238, 226, 0.12);
+        border-color: rgba(245, 238, 226, 0.75);
+        transform: translateY(-1px);
+    }
+
+    /* Основная часть */
+
+    .page {
+        min-height: 100vh;
+
+        padding: 110px 24px 70px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .intro {
+        width: min(900px, 100%);
+        text-align: center;
+
+        margin-bottom: 42px;
+    }
+
+    .path-number {
+        font-size: 15px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+
+        color: #d1c0a4;
+
+        margin-bottom: 12px;
+    }
+
+    h1 {
+        margin: 0 0 14px;
+
+        font-size: clamp(36px, 6vw, 64px);
+        line-height: 1.05;
+
+        letter-spacing: 2px;
+
+        text-shadow:
+            0 3px 15px rgba(0, 0, 0, 0.55);
+    }
+
+    .subtitle {
+        margin: 0 auto;
+
+        max-width: 720px;
+
+        font-size: 18px;
+        line-height: 1.65;
+
+        color: #ddd2c1;
+    }
+
+    /* Карточки */
+
+    .stories {
+        width: min(1000px, 100%);
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 24px;
+    }
+
+    .story-card {
+        position: relative;
+
+        min-height: 390px;
+
+        padding: 34px 30px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(24, 21, 17, 0.92),
+                rgba(12, 11, 9, 0.88)
+            );
+
+        border: 1px solid rgba(245, 238, 226, 0.20);
+
+        border-radius: 10px;
+
+        box-shadow:
+            0 18px 50px rgba(0, 0, 0, 0.40);
+
+        overflow: hidden;
+
+        transition:
+            transform 0.3s ease,
+            border-color 0.3s ease,
+            box-shadow 0.3s ease;
+    }
+
+    .story-card::before {
+        content: "";
+
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+
+        width: 4px;
+
+        background: rgba(178, 148, 101, 0.75);
+    }
+
+    .story-card:hover {
+        transform: translateY(-5px);
+
+        border-color: rgba(245, 238, 226, 0.42);
+
+        box-shadow:
+            0 24px 65px rgba(0, 0, 0, 0.52);
+    }
+
+    .story-location {
+        font-size: 14px;
+
+        letter-spacing: 2px;
+
+        color: #cbb28d;
+
+        text-transform: uppercase;
+
+        margin-bottom: 16px;
+    }
+
+    .story-card h2 {
+        margin: 0 0 12px;
+
+        font-size: 32px;
+
+        line-height: 1.15;
+    }
+
+    .story-person {
+        margin: 0 0 20px;
+
+        font-size: 18px;
+
+        color: #e2d7c7;
+
+        line-height: 1.5;
+    }
+
+    .story-description {
+        margin: 0;
+
+        font-size: 16px;
+
+        line-height: 1.65;
+
+        color: #c7bdaf;
+    }
+
+    .story-button {
+        margin-top: 28px;
+
+        width: 100%;
+
+        padding: 14px 18px;
+
+        border: 1px solid rgba(245, 238, 226, 0.35);
+
+        border-radius: 6px;
+
+        background: rgba(245, 238, 226, 0.08);
+
+        color: #f5eee2;
+
+        font-family: Georgia, "Times New Roman", serif;
+
+        font-size: 16px;
+
+        letter-spacing: 1px;
+
+        cursor: pointer;
+
+        transition:
+            background 0.25s ease,
+            border-color 0.25s ease;
+    }
+
+    .story-button:hover {
+        background: rgba(245, 238, 226, 0.16);
+        border-color: rgba(245, 238, 226, 0.65);
+    }
+
+    /* Нижняя подпись */
+
+    .bottom-note {
+        width: min(850px, 100%);
+
+        margin-top: 42px;
+
+        padding: 22px 26px;
+
+        text-align: center;
+
+        background: rgba(12, 10, 8, 0.62);
+
+        border: 1px solid rgba(245, 238, 226, 0.12);
+
+        border-radius: 8px;
+
+        color: #bfb5a7;
+
+        font-size: 14px;
+
+        line-height: 1.65;
+    }
+
+    .bottom-note strong {
+        color: #ddd2c1;
+    }
+
+    /* Телефон */
+
+    @media (max-width: 760px) {
+
+        .topbar {
+            height: 58px;
+            padding: 0 15px;
+        }
+
+        .logo {
+            font-size: 15px;
+            letter-spacing: 1px;
+        }
+
+        .home-btn {
+            padding: 8px 12px;
+            font-size: 13px;
+        }
+
+        .page {
+            padding: 92px 16px 45px;
+        }
+
+        .stories {
+            grid-template-columns: 1fr;
+        }
+
+        .story-card {
+            min-height: 350px;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Верхняя панель -->
+
+<header class="topbar">
+
+    <a class="logo" href="index.html">
+        ▲ ТРОПАМИ ПАМЯТИ
+    </a>
+
+    <button class="home-btn" onclick="goHome()">
+        🏠 ГЛАВНАЯ
+    </button>
+
+</header>
+
+
+<!-- Основная страница -->
+
+<main class="page">
+
+    <section class="intro">
+
+        <div class="path-number">
+            ПЕРВАЯ ТРОПА
+        </div>
+
+        <h1>
+            ПАРТИЗАНЫ
+        </h1>
+
+        <p class="subtitle">
+            Лес. Дороги. Разведка. Связь.
+            Решения, от которых зависела судьба товарищей.
+            Выбери историю, с которой хочешь начать.
+        </p>
+
+    </section>
+
+
+    <section class="stories">
+
+        <!-- КОРЖ -->
+
+        <article class="story-card">
+
+            <div>
+
+                <div class="story-location">
+                    ПИНСКАЯ ОБЛАСТЬ · 1941
+                </div>
+
+                <h2>
+                    Тропа Коржа
+                </h2>
+
+                <p class="story-person">
+                    Василий Захарович Корж
+                </p>
+
+                <p class="story-description">
+                    Первые недели войны.
+                    Лесные дороги Пинщины.
+                    Разведка, первые столкновения и
+                    рождение партизанского сопротивления.
+                </p>
+
+            </div>
+
+            <button
+                class="story-button"
+                onclick="openKorzh()"
+            >
+                🌲 НАЧАТЬ ИСТОРИЮ
+            </button>
+
+        </article>
+
+
+        <!-- ШМЫРЁВ -->
+
+        <article class="story-card">
+
+            <div>
+
+                <div class="story-location">
+                    ВИТЕБСКАЯ ОБЛАСТЬ · 1941
+                </div>
+
+                <h2>
+                    Тропа Шмырёва
+                </h2>
+
+                <p class="story-person">
+                    Минай Филиппович Шмырёв
+                </p>
+
+                <p class="story-description">
+                    Первые бои на Витебщине.
+                    Сопротивление в тылу врага,
+                    Суражский район и выбор,
+                    который невозможно сделать легко.
+                </p>
+
+            </div>
+
+            <button
+                class="story-button"
+                onclick="openShmyryov()"
+            >
+                🌲 НАЧАТЬ ИСТОРИЮ
+            </button>
+
+        </article>
+
+    </section>
+
+
+    <div class="bottom-note">
+
+        <strong>Тропами памяти</strong> —
+        это две истории внутри одного пути.
+
+        <br>
+
+        В каждой истории тебя ждут
+        <strong>досье героя, выборы, дневник
+        и исторический блок</strong>.
+
+        <br>
+
+        Твой герой вымышлен,
+        а исторические события и личности,
+        с которыми он встречается,
+        основаны на реальной истории.
+
+    </div>
+
+</main>
+
+
+<script>
+
+function openKorzh() {
+    window.location.href = "korzh.html";
+}
+
+
+function openShmyryov() {
+    window.location.href = "shmyryov.html";
+}
+
+
+function goHome() {
+    window.location.href = "index.html";
+}
+
+</script>
+
+</body>
+</html>
