@@ -55,32 +55,6 @@ body {
 
 
 /* =========================================
-   ВЕРХНЯЯ ПАНЕЛЬ
-========================================= */
-
-.topbar {
-    height: 64px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: rgba(10, 14, 13, 0.84);
-
-    border-bottom:
-        1px solid
-        rgba(236, 225, 199, 0.18);
-}
-
-.brand {
-    font-size: 21px;
-    letter-spacing: 2px;
-    color: #eee4d1;
-    text-transform: uppercase;
-}
-
-
-/* =========================================
    ЦЕНТР
 ========================================= */
 
@@ -119,6 +93,7 @@ body {
     backdrop-filter: blur(3px);
 }
 
+
 .kicker {
     font-size: 15px;
 
@@ -132,13 +107,6 @@ body {
 }
 
 
-/*
-   Большой заголовок убран.
-   Название "Тропами памяти"
-   уже есть на фоновой картинке.
-*/
-
-
 .years {
     margin-top: 10px;
 
@@ -149,17 +117,6 @@ body {
     color: #d0c2aa;
 }
 
-.subtitle {
-    margin: 24px auto 0;
-
-    max-width: 620px;
-
-    font-size: 21px;
-
-    line-height: 1.6;
-
-    color: #eee7da;
-}
 
 .description {
     margin: 18px auto 0;
@@ -320,42 +277,10 @@ body {
 
 
 /* =========================================
-   НИЖНЯЯ ПОДПИСЬ
-========================================= */
-
-.footer {
-    position: fixed;
-
-    bottom: 16px;
-
-    left: 0;
-    right: 0;
-
-    text-align: center;
-
-    font-size: 12px;
-
-    letter-spacing: 1px;
-
-    color:
-        rgba(235, 227, 211, 0.58);
-}
-
-
-/* =========================================
    ТЕЛЕФОН
 ========================================= */
 
 @media (max-width: 700px) {
-
-    .topbar {
-        height: 56px;
-    }
-
-    .brand {
-        font-size: 15px;
-        letter-spacing: 1.5px;
-    }
 
     .main {
         padding: 28px 14px 55px;
@@ -363,10 +288,6 @@ body {
 
     .intro {
         padding: 25px 20px 28px;
-    }
-
-    .subtitle {
-        font-size: 18px;
     }
 
     .paths {
@@ -382,11 +303,6 @@ body {
         width: 100%;
     }
 
-    .footer {
-        position: static;
-        margin-top: 20px;
-    }
-
 }
 
 </style>
@@ -397,17 +313,6 @@ body {
 <body>
 
 <div class="game">
-
-
-    <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
-
-    <div class="topbar">
-
-        <div class="brand">
-            ▲ ТРОПАМИ ПАМЯТИ
-        </div>
-
-    </div>
 
 
     <!-- ЦЕНТРАЛЬНАЯ ЧАСТЬ -->
@@ -427,11 +332,6 @@ body {
 
             <div class="years">
                 ВЕЛИКАЯ ОТЕЧЕСТВЕННАЯ ВОЙНА
-            </div>
-
-
-            <div class="subtitle">
-                Два пути. Одна история.
             </div>
 
 
@@ -522,17 +422,6 @@ body {
 
             Небольшое испытание по качествам и умениям
             · здесь нет неправильных ответов
-
-        </div>
-
-
-
-        <!-- ПОДПИСЬ -->
-
-        <div class="footer">
-
-            Интерактивный исторический проект
-            для учащихся 9 класса
 
         </div>
 
