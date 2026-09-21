@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Определи свой путь · Тропами памяти</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+    }
+
+    body {
+        min-height: 100vh;
+
+        font-family: Georgia, "Times New Roman", serif;
+
+        color: #f5eee2;
+
+        background:
+            linear-gradient(
+                rgba(12, 10, 8, 0.54),
+                rgba(12, 10, 8, 0.72)
+            ),
+            url("main-background.png")
+            center center / cover fixed no-repeat;
+    }
+
+    /* =========================
+       ВЕРХНЯЯ ПАНЕЛЬ
+       ========================= */
+
+    .topbar {
+        position: fixed;
+
+        top: 0;
+        left: 0;
+        right: 0;
+
+        height: 64px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 0 28px;
+
+        background: rgba(12, 10, 8, 0.84);
+
+        border-bottom:
+            1px solid rgba(255, 255, 255, 0.12);
+
+        backdrop-filter: blur(5px);
+
+        z-index: 100;
+    }
+
+    .logo {
+        color: #f5eee2;
+
+        text-decoration: none;
+
+        font-size: 20px;
+
+        font-weight: bold;
+
+        letter-spacing: 2px;
+    }
+
+    .home-btn {
+        padding: 10px 18px;
+
+        border:
+            1px solid rgba(245, 238, 226, 0.42);
+
+        border-radius: 6px;
+
+        background:
+            rgba(20, 17, 14, 0.72);
+
+        color: #f5eee2;
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 15px;
+
+        cursor: pointer;
+
+        transition:
+            background 0.25s ease,
+            border-color 0.25s ease,
+            transform 0.25s ease;
+    }
+
+    .home-btn:hover {
+        background:
+            rgba(245, 238, 226, 0.12);
+
+        border-color:
+            rgba(245, 238, 226, 0.72);
+
+        transform:
+            translateY(-1px);
+    }
+
+    /* =========================
+       СТРАНИЦА
+       ========================= */
+
+    .page {
+        min-height: 100vh;
+
+        padding:
+            108px 20px 70px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    /* =========================
+       ВСТУПЛЕНИЕ
+       ========================= */
+
+    .intro {
+        width: min(820px, 100%);
+
+        text-align: center;
+
+        margin-bottom: 32px;
+    }
+
+    .small-title {
+        margin-bottom: 12px;
+
+        color: #cdbb9e;
+
+        font-size: 14px;
+
+        letter-spacing: 4px;
+
+        text-transform: uppercase;
+    }
+
+    h1 {
+        margin:
+            0 0 16px;
+
+        font-size:
+            clamp(36px, 6vw, 60px);
+
+        line-height: 1.05;
+
+        letter-spacing: 2px;
+
+        text-shadow:
+            0 3px 16px rgba(0, 0, 0, 0.55);
+    }
+
+    .intro-text {
+        max-width: 700px;
+
+        margin:
+            0 auto;
+
+        color: #d8cdbd;
+
+        font-size: 18px;
+
+        line-height: 1.65;
+    }
+
+    /* =========================
+       КАРТОЧКА ТЕСТА
+       ========================= */
+
+    .test-box {
+        width: min(900px, 100%);
+
+        padding:
+            34px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(24, 21, 17, 0.94),
+                rgba(12, 11, 9, 0.92)
+            );
+
+        border:
+            1px solid rgba(245, 238, 226, 0.20);
+
+        border-radius: 10px;
+
+        box-shadow:
+            0 20px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    /* =========================
+       ПРОГРЕСС
+       ========================= */
+
+    .progress-area {
+        margin-bottom: 30px;
+    }
+
+    .progress-top {
+        display: flex;
+
+        justify-content: space-between;
+
+        margin-bottom: 9px;
+
+        color: #bdb2a3;
+
+        font-size: 14px;
+    }
+
+    .progress-line {
+        width: 100%;
+
+        height: 5px;
+
+        background:
+            rgba(245, 238, 226, 0.12);
+
+        border-radius: 20px;
+
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        height: 100%;
+
+        width: 0%;
+
+        background:
+            rgba(196, 167, 121, 0.82);
+
+        transition:
+            width 0.35s ease;
+    }
+
+    /* =========================
+       ВОПРОС
+       ========================= */
+
+    .question-number {
+        margin-bottom: 12px;
+
+        color: #cbb28d;
+
+        font-size: 14px;
+
+        letter-spacing: 2px;
+
+        text-transform: uppercase;
+    }
+
+    .question {
+        margin:
+            0 0 28px;
+
+        font-size:
+            clamp(24px, 4vw, 34px);
+
+        line-height: 1.3;
+    }
+
+    /* =========================
+       ВАРИАНТЫ
+       ========================= */
+
+    .answers {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 14px;
+    }
+
+    .answer {
+        width: 100%;
+
+        min-height: 82px;
+
+        padding:
+            18px 20px;
+
+        text-align: left;
+
+        border:
+            1px solid rgba(245, 238, 226, 0.20);
+
+        border-radius: 7px;
+
+        background:
+            rgba(245, 238, 226, 0.055);
+
+        color: #eee5d8;
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 16px;
+
+        line-height: 1.45;
+
+        cursor: pointer;
+
+        transition:
+            background 0.22s ease,
+            border-color 0.22s ease,
+            transform 0.22s ease;
+    }
+
+    .answer:hover {
+        background:
+            rgba(245, 238, 226, 0.12);
+
+        border-color:
+            rgba(245, 238, 226, 0.48);
+
+        transform:
+            translateY(-2px);
+    }
+
+    .answer-letter {
+        display: inline-block;
+
+        width: 28px;
+
+        color: #cbb28d;
+
+        font-weight: bold;
+    }
+
+    /* =========================
+       ПОДСКАЗКА
+       ========================= */
+
+    .hint {
+        margin-top: 28px;
+
+        color: #9f968a;
+
+        font-size: 13px;
+
+        line-height: 1.55;
+
+        text-align: center;
+    }
+
+    /* =========================
+       РЕЗУЛЬТАТ
+       ========================= */
+
+    .result {
+        display: none;
+
+        text-align: center;
+    }
+
+    .result-symbol {
+        font-size: 58px;
+
+        margin-bottom: 12px;
+    }
+
+    .result-label {
+        color: #cbb28d;
+
+        font-size: 14px;
+
+        letter-spacing: 4px;
+
+        text-transform: uppercase;
+
+        margin-bottom: 12px;
+    }
+
+    .result h2 {
+        margin:
+            0 0 18px;
+
+        font-size:
+            clamp(32px, 5vw, 52px);
+
+        line-height: 1.15;
+    }
+
+    .result-text {
+        max-width: 670px;
+
+        margin:
+            0 auto 28px;
+
+        color: #d3c8b9;
+
+        font-size: 17px;
+
+        line-height: 1.7;
+    }
+
+    .route-box {
+        margin:
+            26px auto;
+
+        max-width: 650px;
+
+        padding:
+            22px 24px;
+
+        border:
+            1px solid rgba(245, 238, 226, 0.16);
+
+        border-radius: 8px;
+
+        background:
+            rgba(245, 238, 226, 0.045);
+    }
+
+    .route-box strong {
+        display: block;
+
+        margin-bottom: 7px;
+
+        font-size: 19px;
+    }
+
+    .route-box span {
+        color: #bfb5a7;
+
+        line-height: 1.55;
+    }
+
+    /* =========================
+       КНОПКИ РЕЗУЛЬТАТА
+       ========================= */
+
+    .result-buttons {
+        display: flex;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 12px;
+
+        margin-top: 28px;
+    }
+
+    .result-button {
+        padding:
+            14px 22px;
+
+        border:
+            1px solid rgba(245, 238, 226, 0.34);
+
+        border-radius: 6px;
+
+        background:
+            rgba(245, 238, 226, 0.08);
+
+        color: #f5eee2;
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 15px;
+
+        cursor: pointer;
+
+        transition:
+            background 0.25s ease,
+            border-color 0.25s ease;
+    }
+
+    .result-button:hover {
+        background:
+            rgba(245, 238, 226, 0.15);
+
+        border-color:
+            rgba(245, 238, 226, 0.62);
+    }
+
+    .result-button.primary {
+        background:
+            rgba(196, 167, 121, 0.18);
+
+        border-color:
+            rgba(196, 167, 121, 0.52);
+    }
+
+    /* =========================
+       МОБИЛЬНАЯ ВЕРСИЯ
+       ========================= */
+
+    @media (max-width: 700px) {
+
+        .topbar {
+            height: 58px;
+
+            padding:
+                0 14px;
+        }
+
+        .logo {
+            font-size: 14px;
+
+            letter-spacing: 1px;
+        }
+
+        .home-btn {
+            padding:
+                8px 12px;
+
+            font-size: 13px;
+        }
+
+        .page {
+            padding:
+                92px 15px 45px;
+        }
+
+        .test-box {
+            padding:
+                24px 18px;
+        }
+
+        .answers {
+            grid-template-columns: 1fr;
+        }
+
+        .answer {
+            min-height: auto;
+        }
+    }
+</style>
+</head>
+
+
+<body>
+
+<header class="topbar">
+
+    <a
+        class="logo"
+        href="index.html"
+    >
+        ▲ ТРОПАМИ ПАМЯТИ
+    </a>
+
+    <button
+        class="home-btn"
+        onclick="goHome()"
+    >
+        🏠 ГЛАВНАЯ
+    </button>
+
+</header>
+
+
+<main class="page">
+
+    <section class="intro">
+
+        <div class="small-title">
+            Небольшое испытание
+        </div>
+
+        <h1>
+            ОПРЕДЕЛИ СВОЙ ПУТЬ
+        </h1>
+
+        <p class="intro-text">
+            Представь несколько ситуаций и выбери то,
+            что ближе тебе.
+            Здесь нет правильных и неправильных ответов.
+            Тест поможет понять, с какой историей тебе
+            интереснее начать.
+        </p>
+
+    </section>
+
+
+    <section class="test-box">
+
+        <!-- ТЕСТ -->
+
+        <div id="quiz">
+
+            <div class="progress-area">
+
+                <div class="progress-top">
+
+                    <span id="progressText">
+                        Вопрос 1 из 7
+                    </span>
+
+                    <span id="progressPercent">
+                        0%
+                    </span>
+
+                </div>
+
+                <div class="progress-line">
+
+                    <div
+                        class="progress-fill"
+                        id="progressFill"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="question-number">
+                СИТУАЦИЯ
+            </div>
+
+
+            <h2
+                class="question"
+                id="question"
+            ></h2>
+
+
+            <div
+                class="answers"
+                id="answers"
+            ></div>
+
+
+            <div class="hint">
+                Здесь нет «правильного» ответа.
+                Выбирай то, что действительно ближе тебе.
+            </div>
+
+        </div>
+
+
+        <!-- РЕЗУЛЬТАТ -->
+
+        <div
+            class="result"
+            id="result"
+        >
+
+            <div
+                class="result-symbol"
+                id="resultSymbol"
+            >
+                🌲
+            </div>
+
+            <div class="result-label">
+                ТВОЙ РЕЗУЛЬТАТ
+            </div>
+
+            <h2 id="resultTitle">
+                ТВОЙ ПУТЬ
+            </h2>
+
+            <p
+                class="result-text"
+                id="resultText"
+            ></p>
+
+
+            <div class="route-box">
+
+                <strong id="routeTitle"></strong>
+
+                <span id="routeText"></span>
+
+            </div>
+
+
+            <div class="result-buttons">
+
+                <button
+                    class="result-button primary"
+                    id="routeButton"
+                    onclick="goToRoute()"
+                >
+                    ОТПРАВИТЬСЯ В ПУТЬ
+                </button>
+
+                <button
+                    class="result-button"
+                    onclick="restartQuiz()"
+                >
+                    ПРОЙТИ ЗАНОВО
+                </button>
+
+                <button
+                    class="result-button"
+                    onclick="goHome()"
+                >
+                    🏠 НА ГЛАВНУЮ
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+/* =====================================================
+   ВОПРОСЫ
+   =====================================================
+
+   partisan = очки партизанского направления
+   underground = очки подпольного направления
+
+   Никаких «правильных» ответов здесь нет.
+   Ответ просто показывает, какой стиль действий
+   человеку ближе.
+   ===================================================== */
+
+const questions = [
+
+    {
+        text:
+            "Ты оказываешься в незнакомом месте. У тебя есть немного времени, чтобы понять, что происходит. Что ты сделаешь первым?",
+
+        answers: [
+
+            {
+                text:
+                    "Постараюсь запомнить ориентиры и понять, как отсюда выбраться.",
+                partisan: 2,
+                underground: 0
+            },
+
+            {
+                text:
+                    "Буду наблюдать за людьми и искать важные детали.",
+                partisan: 0,
+                underground: 2
+            },
+
+            {
+                text:
+                    "Попробую найти человека, которому можно доверять.",
+                partisan: 1,
+                underground: 1
+            },
+
+            {
+                text:
+                    "Сначала спокойно осмотрюсь, а потом решу, что делать.",
+                partisan: 1,
+                underground: 1
+            }
+
+        ]
+    },
+
+
+    {
+        text:
+            "Товарищ просит тебя помочь в деле, о котором нельзя рассказывать посторонним. Твоя реакция?",
+
+        answers: [
+
+            {
+                text:
+                    "Соглашусь, если понимаю, зачем это нужно, и буду держать слово.",
+                partisan: 1,
+                underground: 2
+            },
+
+            {
+                text:
+                    "Сначала постараюсь понять возможные последствия.",
+                partisan: 0,
+                underground: 2
+            },
+
+            {
+                text:
+                    "Если нужно действовать — лучше не откладывать.",
+                partisan: 2,
+                underground: 0
+            },
+
+            {
+                text:
+                    "Обсужу с товарищем, как сделать всё безопаснее.",
+                partisan: 1,
+                underground: 1
+            }
+
+        ]
+    },
+
+
+    {
+        text:
+            "План неожиданно меняется. Старый способ действовать больше не подходит. Что тебе ближе?",
+
+        answers: [
+
+            {
+                text:
+                    "Быстро перестроиться и действовать вместе с другими.",
+                partisan: 2,
+                underground: 0
+            },
+
+            {
+                text:
+                    "Сначала выяснить, почему всё изменилось.",
+                partisan: 0,
+                underground: 2
+            },
+
+            {
+                text:
+                    "Найти новый вариант и обсудить его с товарищами.",
+                partisan: 1,
+                underground: 1
+            },
+
+            {
+                text:
+                    "Ничего не предпринимать, пока ситуация не станет яснее.",
+                partisan: 0,
+                underground: 2
+            }
+
+        ]
+    },
+
+
+    {
+        text:
+            "В группе возник спор. Каждый считает, что именно его решение самое правильное. Что ты сделаешь?",
+
+        answers: [
+
+            {
+                text:
+                    "Попробую найти решение, с которым группа сможет действовать вместе.",
+                partisan: 2,
+                underground: 1
+            },
+
+            {
+                text:
+                    "Выслушаю всех и постараюсь заметить то, что другие упустили.",
+                partisan: 0,
+                underground: 2
+            },
+
+            {
+                text:
+                    "Если решение нужно принять быстро, возьму ответственность на себя.",
+                partisan: 2,
+                underground: 0
+            },
+
+            {
+                text:
+                    "Предложу сделать паузу и проверить факты.",
+                partisan: 0,
+                underground: 2
+            }
+
+        ]
+    },
+
+
+    {
+        text:
+            "Ты замечаешь небольшую деталь, которую остальные не заметили. Что ты скорее сделаешь?",
+
+        answers: [
+
+            {
+                text:
+                    "Запомню её и расскажу группе, если она может быть важна.",
+                partisan: 1,
+                underground: 2
+            },
+
+            {
+                text:
+                    "Постараюсь проверить, действительно ли эта деталь что-то означает.",
+                partisan: 0,
+                underground: 2
+            },
+
+            {
+                text:
+                    "Если она может помочь группе действовать дальше — сразу использую её.",
+                partisan: 2,
+                underground: 0
+            },
+
+            {
+                text:
+                    "Расскажу товарищу и вместе решим, что с ней делать.",
+                partisan: 1,
+                underground: 1
+            }
+
+        ]
+    },
+
+
+    {
+        text:
+            "Представь, что трудности могут продлиться долго. Что помогает тебе не сдаваться?",
+
+        answers: [
+
+            {
+                text:
+                    "Понимание, что рядом есть люди, на которых можно положиться.",
+                partisan: 2,
+                underground: 1
+            },
+
+            {
+                text:
+                    "Возможность сохранять спокойствие и думать шаг за шагом.",
+                partisan: 0,
+                underground: 2
+            },
+
+            {
+                text:
+                    "Чувство, что от моих действий зависит общий результат.",
+                partisan: 2,
+                underground: 0
+            },
+
+            {
+                text:
+                    "Умение замечать даже небольшие изменения вокруг.",
+                partisan: 0,
+                underground: 2
+            }
+
+        ]
+    },
+
+
+    {
+        text:
+            "Тебе предстоит выбрать задачу для себя. Что тебе кажется интереснее?",
+
+        answers: [
+
+            {
+                text:
+                    "Разобраться в местности, дороге и обстановке вокруг.",
+                partisan: 2,
+                underground: 0
+            },
+
+            {
+                text:
+                    "Наблюдать, устанавливать связи и передавать важную информацию.",
+                partisan: 0,
+                underground: 2
+            },
+
+            {
+                text:
+                    "Работать вместе с группой и помогать выполнять общий план.",
+                partisan: 2,
+                underground: 1
+            },
+
+            {
+                text:
+                    "Оставаться незаметным и внимательно следить за происходящим.",
+                partisan: 0,
+                underground: 2
+            }
+
+        ]
+    }
+
+];
+
+
+/* =====================================================
+   СОСТОЯНИЕ ТЕСТА
+   ===================================================== */
+
+let currentQuestion = 0;
+
+let partisanScore = 0;
+
+let undergroundScore = 0;
+
+let selectedRoute = "";
+
+
+/* =====================================================
+   ЗАПУСК
+   ===================================================== */
+
+function startQuiz() {
+
+    currentQuestion = 0;
+
+    partisanScore = 0;
+
+    undergroundScore = 0;
+
+    selectedRoute = "";
+
+    document.getElementById("quiz").style.display =
+        "block";
+
+    document.getElementById("result").style.display =
+        "none";
+
+    showQuestion();
+}
+
+
+/* =====================================================
+   ПОКАЗ ВОПРОСА
+   ===================================================== */
+
+function showQuestion() {
+
+    const question =
+        questions[currentQuestion];
+
+    const questionElement =
+        document.getElementById("question");
+
+    const answersElement =
+        document.getElementById("answers");
+
+    questionElement.textContent =
+        question.text;
+
+    answersElement.innerHTML = "";
+
+
+    question.answers.forEach(
+        function(answer, index) {
+
+            const button =
+                document.createElement("button");
+
+            button.className =
+                "answer";
+
+            button.innerHTML =
+                '<span class="answer-letter">'
+                + String.fromCharCode(65 + index)
+                + '.</span>'
+                + answer.text;
+
+            button.onclick =
+                function() {
+                    chooseAnswer(answer);
+                };
+
+            answersElement.appendChild(button);
+        }
+    );
+
+
+    updateProgress();
+}
+
+
+/* =====================================================
+   ВЫБОР ОТВЕТА
+   ===================================================== */
+
+function chooseAnswer(answer) {
+
+    partisanScore +=
+        answer.partisan;
+
+    undergroundScore +=
+        answer.underground;
+
+
+    currentQuestion++;
+
+
+    if (
+        currentQuestion >=
+        questions.length
+    ) {
+
+        showResult();
+
+    } else {
+
+        showQuestion();
+
+    }
+}
+
+
+/* =====================================================
+   ПРОГРЕСС
+   ===================================================== */
+
+function updateProgress() {
+
+    const number =
+        currentQuestion + 1;
+
+    const total =
+        questions.length;
+
+    const percent =
+        Math.round(
+            (currentQuestion / total) * 100
+        );
+
+
+    document.getElementById(
+        "progressText"
+    ).textContent =
+        "Вопрос "
+        + number
+        + " из "
+        + total;
+
+
+    document.getElementById(
+        "progressPercent"
+    ).textContent =
+        percent + "%";
+
+
+    document.getElementById(
+        "progressFill"
+    ).style.width =
+        percent + "%";
+}
+
+
+/* =====================================================
+   РЕЗУЛЬТАТ
+   ===================================================== */
+
+function showResult() {
+
+    document.getElementById("quiz").style.display =
+        "none";
+
+    document.getElementById("result").style.display =
+        "block";
+
+
+    const difference =
+        Math.abs(
+            partisanScore -
+            undergroundScore
+        );
+
+
+    /*
+       Если разница небольшая,
+       результат считается смешанным.
+    */
+
+    if (difference <= 2) {
+
+        selectedRoute = "both";
+
+        showBothResult();
+
+    }
+
+    else if (
+        partisanScore >
+        undergroundScore
+    ) {
+
+        selectedRoute = "partisans";
+
+        showPartisanResult();
+
+    }
+
+    else {
+
+        selectedRoute = "underground";
+
+        showUndergroundResult();
+
+    }
+}
+
+
+/* =====================================================
+   ПАРТИЗАНСКИЙ РЕЗУЛЬТАТ
+   ===================================================== */
+
+function showPartisanResult() {
+
+    document.getElementById(
+        "resultSymbol"
+    ).textContent =
+        "🌲";
+
+
+    document.getElementById(
+        "resultTitle"
+    ).textContent =
+        "ТЕБЕ БЛИЖЕ ПУТЬ ПАРТИЗАНОВ";
+
+
+    document.getElementById(
+        "resultText"
+    ).textContent =
+        "По твоим ответам тебе ближе действия, " +
+        "в которых важны выносливость, смелость, " +
+        "ориентирование, ответственность перед группой " +
+        "и способность действовать в меняющейся обстановке.";
+
+
+    document.getElementById(
+        "routeTitle"
+    ).textContent =
+        "🌲 ТРОПА ПАРТИЗАНОВ";
+
+
+    document.getElementById(
+        "routeText"
+    ).textContent =
+        "Здесь тебя ждут истории Василия Коржа " +
+        "и Минаи Шмырёва. Выбирай одну из них " +
+        "и отправляйся дальше.";
+
+
+    document.getElementById(
+        "routeButton"
+    ).textContent =
+        "ОТПРАВИТЬСЯ К ПАРТИЗАНАМ";
+}
+
+
+/* =====================================================
+   ПОДПОЛЬНЫЙ РЕЗУЛЬТАТ
+   ===================================================== */
+
+function showUndergroundResult() {
+
+    document.getElementById(
+        "resultSymbol"
+    ).textContent =
+        "🏙️";
+
+
+    document.getElementById(
+        "resultTitle"
+    ).textContent =
+        "ТЕБЕ БЛИЖЕ ПУТЬ ПОДПОЛЬЩИКОВ";
+
+
+    document.getElementById(
+        "resultText"
+    ).textContent =
+        "По твоим ответам тебе ближе действия, " +
+        "в которых особенно важны наблюдательность, " +
+        "осторожность, умение замечать детали, " +
+        "сохранять тайну и поддерживать связи.";
+
+
+    document.getElementById(
+        "routeTitle"
+    ).textContent =
+        "🏙️ ТРОПА ПОДПОЛЬЩИКОВ";
+
+
+    document.getElementById(
+        "routeText"
+    ).textContent =
+        "Здесь тебя ждут две разные истории: " +
+        "Минск и операция против Кубе, а также " +
+        "железнодорожное подполье Орши.";
+
+
+    document.getElementById(
+        "routeButton"
+    ).textContent =
+        "ОТПРАВИТЬСЯ К ПОДПОЛЬЩИКАМ";
+}
+
+
+/* =====================================================
+   СМЕШАННЫЙ РЕЗУЛЬТАТ
+   ===================================================== */
+
+function showBothResult() {
+
+    document.getElementById(
+        "resultSymbol"
+    ).textContent =
+        "🧭";
+
+
+    document.getElementById(
+        "resultTitle"
+    ).textContent =
+        "ТЕБЕ БЛИЗКИ ОБА ПУТИ";
+
+
+    document.getElementById(
+        "resultText"
+    ).textContent =
+        "В твоих ответах почти поровну сочетаются " +
+        "качества, которые пригодились людям " +
+        "и в партизанском, и в подпольном сопротивлении. " +
+        "Поэтому выбирать за тебя мы не будем.";
+
+
+    document.getElementById(
+        "routeTitle"
+    ).textContent =
+        "🧭 ТЕПЕРЬ РЕШАТЬ ТЕБЕ";
+
+
+    document.getElementById(
+        "routeText"
+    ).textContent =
+        "Можешь начать с любой тропы. " +
+        "А если захочешь — пройти обе и сравнить истории.";
+
+
+    document.getElementById(
+        "routeButton"
+    ).textContent =
+        "ВЫБРАТЬ ПУТЬ";
+}
+
+
+/* =====================================================
+   ПЕРЕХОД
+   ===================================================== */
+
+function goToRoute() {
+
+    if (
+        selectedRoute ===
+        "partisans"
+    ) {
+
+        window.location.href =
+            "partisans.html";
+
+        return;
+    }
+
+
+    if (
+        selectedRoute ===
+        "underground"
+    ) {
+
+        window.location.href =
+            "underground.html";
+
+        return;
+    }
+
+
+    /*
+       Если оба пути близки,
+       предлагаем выбрать самому.
+    */
+
+    window.location.href =
+        "index.html";
+}
+
+
+/* =====================================================
+   НАЧАТЬ ЗАНОВО
+   ===================================================== */
+
+function restartQuiz() {
+
+    startQuiz();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =====================================================
+   ГЛАВНАЯ
+   ===================================================== */
+
+function goHome() {
+
+    window.location.href =
+        "index.html";
+}
+
+
+/* =====================================================
+   ЗАПУСК
+   ===================================================== */
+
+startQuiz();
+
+</script>
+
+</body>
+</html>
