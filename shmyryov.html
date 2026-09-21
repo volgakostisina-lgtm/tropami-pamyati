@@ -7,7 +7,6 @@
 <title>Тропа Шмырёва · Тропами памяти</title>
 
 <style>
-
 * {
     box-sizing: border-box;
 }
@@ -15,42 +14,29 @@
 html,
 body {
     margin: 0;
+    padding: 0;
     min-height: 100%;
 }
 
 body {
-    font-family: Georgia, "Times New Roman", serif;
-    background: #101512;
-    color: #f1eadc;
-}
-
-/* =========================
-   ИГРА
-========================= */
-
-.game {
     min-height: 100vh;
 
-    background-image:
+    font-family: Georgia, "Times New Roman", serif;
+
+    color: #f5eee2;
+
+    background:
         linear-gradient(
-            rgba(7, 12, 10, 0.48),
-            rgba(7, 12, 10, 0.68)
+            rgba(12, 10, 8, 0.48),
+            rgba(12, 10, 8, 0.70)
         ),
-        url("shmyryov-background.png"),
-        url("main-background.png");
-
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-
-    position: relative;
-
-    padding-bottom: 50px;
+        url("main-background.png")
+        center center / cover fixed no-repeat;
 }
 
 /* =========================
    ВЕРХНЯЯ ПАНЕЛЬ
-========================= */
+   ========================= */
 
 .topbar {
     position: fixed;
@@ -59,2149 +45,3697 @@ body {
     left: 0;
     right: 0;
 
-    height: 54px;
+    height: 62px;
 
     display: flex;
-    justify-content: flex-end;
     align-items: center;
+    justify-content: space-between;
+
+    padding: 0 24px;
+
+    background: rgba(12, 10, 8, 0.86);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(5px);
+
+    z-index: 100;
+}
+
+.logo {
+    color: #f5eee2;
+
+    text-decoration: none;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+.top-actions {
+    display: flex;
 
     gap: 8px;
-
-    padding: 0 14px;
-
-    background: rgba(8, 12, 10, 0.78);
-
-    border-bottom: 1px solid rgba(235,225,205,0.15);
-
-    z-index: 20;
 }
 
 .top-button {
-    padding: 9px 14px;
+    padding: 9px 13px;
 
-    border: 1px solid rgba(235,225,205,0.25);
+    border:
+        1px solid rgba(245,238,226,0.28);
 
-    background: rgba(15,20,17,0.75);
+    border-radius: 6px;
 
-    color: #eee5d4;
+    background:
+        rgba(20,17,14,0.72);
 
-    font-family: Georgia, "Times New Roman", serif;
+    color: #f5eee2;
 
-    font-size: 14px;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 13px;
 
     cursor: pointer;
 
-    transition: 0.2s;
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease;
 }
 
 .top-button:hover {
-    background: rgba(65,62,48,0.85);
+    background:
+        rgba(245,238,226,0.13);
 
-    border-color: rgba(235,225,205,0.55);
+    border-color:
+        rgba(245,238,226,0.62);
 }
 
 /* =========================
    ОСНОВНАЯ ОБЛАСТЬ
-========================= */
+   ========================= */
 
-.main {
-    width: min(1170px, 94%);
+.page {
+    min-height: 100vh;
 
-    margin: 0 auto;
+    padding:
+        100px 20px 60px;
 
-    padding-top: 85px;
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
 }
 
-/* =========================
-   СЦЕНА
-========================= */
+.story-box {
+    width: min(900px, 100%);
 
-.scene {
-    background: rgba(8,13,11,0.82);
+    padding: 34px;
 
-    border: 1px solid rgba(225,215,194,0.25);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(24,21,17,0.94),
+            rgba(12,11,9,0.91)
+        );
+
+    border:
+        1px solid rgba(245,238,226,0.20);
+
+    border-radius: 10px;
 
     box-shadow:
-        0 20px 60px rgba(0,0,0,0.4);
-
-    padding: 40px 40px 45px;
-
-    min-height: 600px;
-
-    animation: appear 0.5s ease;
-}
-
-@keyframes appear {
-
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
+        0 20px 65px rgba(0,0,0,0.46);
 }
 
 /* =========================
-   ТЕКСТ
-========================= */
+   ЗАГОЛОВКИ
+   ========================= */
 
 .chapter {
-    font-size: 14px;
+    margin-bottom: 13px;
 
-    letter-spacing: 4px;
+    color: #cbb28d;
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
 
     text-transform: uppercase;
-
-    color: #cbbd9f;
-
-    margin-bottom: 18px;
 }
 
-h1 {
-    margin: 0 0 22px;
+.title {
+    margin:
+        0 0 20px;
 
-    font-size: clamp(34px, 5vw, 60px);
+    font-size:
+        clamp(30px, 5vw, 48px);
 
-    font-weight: normal;
-
-    color: #f1e7d3;
-
-    line-height: 1.08;
-
-    text-shadow:
-        0 3px 14px rgba(0,0,0,0.7);
+    line-height: 1.12;
 }
 
-h2 {
-    margin: 0 0 22px;
+.location {
+    margin-bottom: 22px;
 
-    font-size: clamp(28px, 4vw, 46px);
+    color: #aaa092;
 
-    font-weight: normal;
-
-    color: #eee2cb;
-}
-
-h3 {
-    margin-top: 35px;
-
-    color: #d8c8a9;
-
-    font-weight: normal;
+    font-size: 14px;
 
     letter-spacing: 1px;
 }
 
-.text {
-    max-width: 980px;
+/* =========================
+   ТЕКСТ
+   ========================= */
 
-    font-size: 20px;
+.story-text {
+    color: #ded4c6;
 
-    line-height: 1.8;
+    font-size: 18px;
 
-    color: #eee7da;
-
-    margin-bottom: 24px;
+    line-height: 1.78;
 }
 
-.small-text {
-    font-size: 16px;
+.story-text p {
+    margin:
+        0 0 18px;
+}
 
-    line-height: 1.7;
+.story-text p:last-child {
+    margin-bottom: 0;
+}
 
-    color: #cfc6b7;
+.dialogue {
+    margin:
+        25px 0;
+
+    padding:
+        18px 22px;
+
+    border-left:
+        3px solid rgba(203,178,141,0.68);
+
+    background:
+        rgba(245,238,226,0.045);
+
+    color: #eee5d8;
+
+    font-style: italic;
+
+    line-height: 1.65;
+}
+
+.emphasis {
+    color: #ead9bd;
 }
 
 /* =========================
-   ЦИТАТА
-========================= */
+   ВЫБОР
+   ========================= */
 
-.quote {
-    margin: 30px 0;
+.choice-title {
+    margin:
+        30px 0 14px;
 
-    padding: 22px 28px;
+    color: #cbb28d;
 
-    border-left: 3px solid #b8a67d;
-
-    background: rgba(20,25,22,0.7);
-
-    color: #eee5d5;
-
-    font-size: 20px;
-
-    line-height: 1.7;
-}
-
-/* =========================
-   ИНФО-КАРТОЧКА
-========================= */
-
-.info-card {
-    margin: 28px 0;
-
-    padding: 24px 28px;
-
-    background: rgba(39,39,31,0.65);
-
-    border: 1px solid rgba(222,210,183,0.2);
-}
-
-.info-title {
-    font-size: 15px;
+    font-size: 14px;
 
     letter-spacing: 2px;
 
     text-transform: uppercase;
-
-    color: #c7b896;
-
-    margin-bottom: 12px;
 }
 
-/* =========================
-   КНОПКИ
-========================= */
+.choices {
+    display: grid;
 
-.buttons {
-    margin-top: 35px;
+    grid-template-columns:
+        repeat(2, 1fr);
 
-    display: flex;
+    gap: 13px;
 
-    flex-wrap: wrap;
-
-    gap: 14px;
+    margin-top: 16px;
 }
 
 .choice {
-    flex: 1;
+    width: 100%;
 
-    min-width: 260px;
+    padding:
+        17px 19px;
 
-    padding: 18px 22px;
+    text-align: left;
 
-    background: rgba(22,27,24,0.92);
+    border:
+        1px solid rgba(245,238,226,0.20);
 
-    border: 1px solid rgba(232,222,201,0.3);
+    border-radius: 7px;
 
-    color: #f1e8d8;
+    background:
+        rgba(245,238,226,0.055);
 
-    font-family: Georgia, "Times New Roman", serif;
+    color: #eee5d8;
 
-    font-size: 17px;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 16px;
 
     line-height: 1.5;
 
     cursor: pointer;
 
     transition:
-        transform 0.2s,
-        background 0.2s,
-        border-color 0.2s;
+        background 0.22s ease,
+        border-color 0.22s ease,
+        transform 0.22s ease;
 }
 
 .choice:hover {
-    transform: translateY(-3px);
+    background:
+        rgba(245,238,226,0.13);
 
-    background: rgba(53,51,41,0.95);
+    border-color:
+        rgba(245,238,226,0.52);
 
-    border-color: rgba(235,225,205,0.65);
+    transform:
+        translateY(-2px);
 }
 
-.continue {
-    display: inline-block;
+/* =========================
+   НИЖНЯЯ ПАНЕЛЬ
+   ========================= */
 
-    margin-top: 30px;
+.stats {
+    width: min(900px, 100%);
 
-    padding: 16px 28px;
+    margin-top: 16px;
 
-    background: rgba(69,65,49,0.9);
+    display: grid;
 
-    border: 1px solid rgba(232,222,201,0.55);
+    grid-template-columns:
+        repeat(4, 1fr);
 
-    color: #f4ead7;
+    gap: 8px;
+}
 
-    font-family: Georgia, "Times New Roman", serif;
+.stat {
+    padding:
+        10px 8px;
 
-    font-size: 17px;
+    text-align: center;
+
+    background:
+        rgba(12,10,8,0.72);
+
+    border:
+        1px solid rgba(245,238,226,0.12);
+
+    border-radius: 6px;
+}
+
+.stat-name {
+    color: #938a7e;
+
+    font-size: 11px;
 
     letter-spacing: 1px;
 
-    cursor: pointer;
-
-    transition: 0.2s;
+    text-transform: uppercase;
 }
 
-.continue:hover {
-    transform: translateY(-2px);
+.stat-value {
+    margin-top: 4px;
 
-    background: rgba(84,78,58,0.95);
+    color: #d8c7aa;
+
+    font-size: 16px;
 }
 
 /* =========================
    ДОСЬЕ
-========================= */
+   ========================= */
 
-.dossier {
-    background: rgba(10,15,12,0.96);
+.dossier-screen {
+    display: none;
 
-    border: 1px solid rgba(225,215,194,0.3);
+    position: fixed;
 
-    padding: 35px;
+    inset: 0;
 
-    margin-top: 20px;
+    z-index: 200;
+
+    overflow-y: auto;
+
+    padding:
+        80px 18px 40px;
+
+    background:
+        rgba(8,7,6,0.93);
 }
 
-.dossier-title {
-    font-size: 30px;
+.dossier-card {
+    width: min(720px,100%);
 
-    color: #eee2ca;
+    margin:
+        0 auto;
 
-    margin-bottom: 8px;
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(29,26,21,0.98),
+            rgba(13,12,10,0.98)
+        );
+
+    border:
+        1px solid rgba(245,238,226,0.22);
+
+    border-radius: 10px;
 }
 
-.dossier-note {
-    color: #bdb4a4;
+.dossier-card h2 {
+    margin-top: 0;
 
-    margin-bottom: 28px;
+    font-size: 32px;
+}
 
-    line-height: 1.6;
+.dossier-intro {
+    color: #cfc3b4;
+
+    line-height: 1.65;
+}
+
+.profile-list {
+    display: grid;
+
+    gap: 10px;
+
+    margin-top: 22px;
+}
+
+.profile-button {
+    padding: 16px;
+
+    text-align: left;
+
+    border:
+        1px solid rgba(245,238,226,0.20);
+
+    border-radius: 7px;
+
+    background:
+        rgba(245,238,226,0.055);
+
+    color: #eee5d8;
+
+    cursor: pointer;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+}
+
+.profile-button:hover {
+    background:
+        rgba(245,238,226,0.12);
+}
+
+.profile-button strong {
+    display: block;
+
+    margin-bottom: 5px;
+}
+
+.profile-button span {
+    color: #a9a095;
+
+    font-size: 13px;
+}
+
+.dossier-form {
+    display: grid;
+
+    gap: 13px;
+
+    margin-top: 24px;
 }
 
 .field {
-    margin-bottom: 18px;
+    display: grid;
+
+    gap: 6px;
 }
 
 .field label {
-    display: block;
+    color: #bdb2a3;
 
-    margin-bottom: 7px;
-
-    color: #d2c4a8;
-
-    font-size: 15px;
-
-    letter-spacing: 1px;
+    font-size: 13px;
 }
 
 .field input,
 .field select {
     width: 100%;
 
-    padding: 12px 14px;
+    padding: 12px 13px;
 
-    background: rgba(29,33,29,0.95);
+    border:
+        1px solid rgba(245,238,226,0.20);
 
-    border: 1px solid rgba(222,211,188,0.25);
+    border-radius: 6px;
 
-    color: #eee7da;
+    background:
+        rgba(0,0,0,0.30);
 
-    font-family: Georgia, "Times New Roman", serif;
+    color: #f5eee2;
 
-    font-size: 16px;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 15px;
+
+    outline: none;
 }
 
 .field input:focus,
 .field select:focus {
-    outline: none;
+    border-color:
+        rgba(203,178,141,0.70);
+}
 
-    border-color: rgba(225,210,174,0.65);
+.form-note {
+    margin-top: 8px;
+
+    color: #91897e;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+.form-buttons {
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-top: 8px;
+}
+
+.form-button {
+    padding:
+        12px 18px;
+
+    border:
+        1px solid rgba(245,238,226,0.28);
+
+    border-radius: 6px;
+
+    background:
+        rgba(245,238,226,0.08);
+
+    color: #f5eee2;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    cursor: pointer;
+}
+
+.form-button.primary {
+    background:
+        rgba(196,167,121,0.17);
+
+    border-color:
+        rgba(196,167,121,0.48);
 }
 
 /* =========================
    ДНЕВНИК
-========================= */
+   ========================= */
 
-.diary {
-    margin-top: 30px;
+.diary-screen {
+    display: none;
 
-    padding: 25px;
+    position: fixed;
 
-    background: rgba(26,29,25,0.85);
+    inset: 0;
 
-    border: 1px solid rgba(225,215,194,0.18);
+    z-index: 210;
+
+    overflow-y: auto;
+
+    padding:
+        80px 18px 40px;
+
+    background:
+        rgba(8,7,6,0.93);
 }
 
-.diary-title {
-    color: #cbbd9f;
+.diary-card {
+    width: min(760px,100%);
 
-    letter-spacing: 2px;
+    margin:
+        0 auto;
 
-    text-transform: uppercase;
+    padding: 30px;
 
-    font-size: 14px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(29,26,21,0.98),
+            rgba(13,12,10,0.98)
+        );
 
-    margin-bottom: 15px;
+    border:
+        1px solid rgba(245,238,226,0.20);
+
+    border-radius: 10px;
+}
+
+.diary-card h2 {
+    margin-top: 0;
+
+    font-size: 32px;
 }
 
 .diary-entry {
-    color: #ded6c8;
+    padding:
+        17px 0;
 
-    line-height: 1.7;
+    border-bottom:
+        1px solid rgba(245,238,226,0.11);
 
-    margin-bottom: 14px;
+    color: #d7cdc0;
 
-    padding-bottom: 14px;
+    line-height: 1.65;
+}
 
-    border-bottom: 1px solid rgba(225,215,194,0.1);
+.diary-entry:last-child {
+    border-bottom: none;
+}
+
+.diary-empty {
+    color: #9c9388;
+
+    line-height: 1.6;
 }
 
 /* =========================
-   ИСТОРИЧЕСКАЯ СПРАВКА
-========================= */
+   ИСТОРИЧЕСКИЙ БЛОК
+   ========================= */
 
-.history {
-    margin-top: 30px;
+.history-screen {
+    display: none;
 
-    background: rgba(36,37,29,0.82);
+    position: fixed;
 
-    border: 1px solid rgba(225,215,194,0.25);
+    inset: 0;
 
-    padding: 30px;
+    z-index: 220;
+
+    overflow-y: auto;
+
+    padding:
+        80px 18px 40px;
+
+    background:
+        rgba(8,7,6,0.95);
 }
 
-.history-title {
-    font-size: 15px;
+.history-card {
+    width: min(820px,100%);
 
-    letter-spacing: 3px;
+    margin:
+        0 auto;
 
-    color: #cbbb9a;
+    padding: 32px;
 
-    text-transform: uppercase;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(29,26,21,0.98),
+            rgba(13,12,10,0.98)
+        );
 
-    margin-bottom: 15px;
+    border:
+        1px solid rgba(245,238,226,0.20);
+
+    border-radius: 10px;
 }
 
-.history p {
-    font-size: 17px;
+.history-card h2 {
+    margin-top: 0;
+
+    font-size: 32px;
+}
+
+.history-card h3 {
+    margin-top: 28px;
+
+    color: #cbb28d;
+
+    font-size: 19px;
+}
+
+.history-card p {
+    color: #d5cabc;
+
+    line-height: 1.75;
+}
+
+.history-card ul {
+    color: #d5cabc;
 
     line-height: 1.75;
 
-    color: #e2dbcf;
+    padding-left: 24px;
+}
+
+.close-button {
+    margin-top: 25px;
+
+    padding:
+        11px 18px;
+
+    border:
+        1px solid rgba(245,238,226,0.28);
+
+    border-radius: 6px;
+
+    background:
+        rgba(245,238,226,0.08);
+
+    color: #f5eee2;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    cursor: pointer;
 }
 
 /* =========================
    ФИНАЛ
-========================= */
+   ========================= */
 
 .final {
-    margin-top: 35px;
-
-    padding: 35px;
-
     text-align: center;
+}
 
-    background: rgba(21,25,21,0.92);
+.final-title {
+    margin-bottom: 20px;
 
-    border: 1px solid rgba(225,215,194,0.28);
+    color: #d8c7aa;
+
+    font-size: 14px;
+
+    letter-spacing: 4px;
 }
 
 .final h2 {
-    margin-bottom: 20px;
+    margin:
+        0 0 22px;
+
+    font-size:
+        clamp(32px,5vw,50px);
 }
 
-.final-text {
-    font-size: 21px;
+.final-note {
+    margin:
+        0 auto 24px;
 
-    line-height: 1.8;
+    max-width: 700px;
 
-    color: #e8dfcf;
+    color: #d8cdbd;
+
+    font-size: 17px;
+
+    line-height: 1.75;
+}
+
+.final-fact {
+    margin:
+        22px auto;
+
+    padding:
+        22px;
+
+    max-width: 700px;
+
+    text-align: left;
+
+    background:
+        rgba(245,238,226,0.045);
+
+    border:
+        1px solid rgba(245,238,226,0.14);
+
+    border-radius: 8px;
+
+    color: #cfc4b5;
+
+    line-height: 1.7;
+}
+
+.final-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 28px;
 }
 
 /* =========================
-   АДАПТАЦИЯ
-========================= */
+   МОБИЛЬНАЯ ВЕРСИЯ
+   ========================= */
 
-@media (max-width: 700px) {
-
-    .main {
-        width: 96%;
-
-        padding-top: 70px;
-    }
-
-    .scene {
-        padding: 27px 20px 32px;
-    }
+@media (max-width: 720px) {
 
     .topbar {
-        justify-content: center;
+        height: 58px;
+
+        padding:
+            0 12px;
+    }
+
+    .logo {
+        font-size: 14px;
+
+        letter-spacing: 1px;
+    }
+
+    .top-actions {
+        gap: 4px;
     }
 
     .top-button {
-        font-size: 12px;
+        padding:
+            7px 8px;
 
-        padding: 8px 10px;
+        font-size: 11px;
     }
 
-    .text {
-        font-size: 18px;
+    .page {
+        padding:
+            88px 14px 45px;
     }
 
-    .choice {
-        min-width: 100%;
+    .story-box {
+        padding:
+            25px 18px;
     }
 
+    .story-text {
+        font-size: 16px;
+    }
+
+    .choices {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .dossier-card,
+    .diary-card,
+    .history-card {
+        padding:
+            23px 18px;
+    }
 }
-
 </style>
 </head>
 
 
 <body>
 
-<div class="game">
 
-    <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
+<header class="topbar">
 
-    <div class="topbar">
+    <a
+        class="logo"
+        href="index.html"
+    >
+        ▲ ТРОПАМИ ПАМЯТИ
+    </a>
 
-        <button class="top-button" onclick="showDossier()">
+    <div class="top-actions">
+
+        <button
+            class="top-button"
+            onclick="openDossier()"
+        >
             📜 ДОСЬЕ
         </button>
 
-        <button class="top-button" onclick="showDiary()">
+        <button
+            class="top-button"
+            onclick="openDiary()"
+        >
             📖 ДНЕВНИК
         </button>
 
-        <button class="top-button" onclick="goHome()">
-            🏠 ГЛАВНАЯ
+        <button
+            class="top-button"
+            onclick="openHistory()"
+        >
+            📚 ИСТОРИЯ
+        </button>
+
+        <button
+            class="top-button"
+            onclick="goHome()"
+        >
+            🏠
         </button>
 
     </div>
 
+</header>
 
-    <main class="main">
 
-        <section class="scene" id="scene">
+<main class="page">
 
-        </section>
+    <section class="story-box" id="storyBox">
 
-    </main>
+        <div
+            class="chapter"
+            id="chapter"
+        ></div>
+
+        <h1
+            class="title"
+            id="title"
+        ></h1>
+
+        <div
+            class="location"
+            id="location"
+        ></div>
+
+        <div
+            class="story-text"
+            id="storyText"
+        ></div>
+
+        <div
+            id="choiceArea"
+        ></div>
+
+    </section>
+
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <div class="stat-name">
+                ДОВЕРИЕ
+            </div>
+
+            <div
+                class="stat-value"
+                id="trust"
+            >
+                0
+            </div>
+
+        </div>
+
+        <div class="stat">
+
+            <div class="stat-name">
+                ОСТОРОЖНОСТЬ
+            </div>
+
+            <div
+                class="stat-value"
+                id="caution"
+            >
+                0
+            </div>
+
+        </div>
+
+        <div class="stat">
+
+            <div class="stat-name">
+                СМЕЛОСТЬ
+            </div>
+
+            <div
+                class="stat-value"
+                id="courage"
+            >
+                0
+            </div>
+
+        </div>
+
+        <div class="stat">
+
+            <div class="stat-name">
+                СВЕДЕНИЯ
+            </div>
+
+            <div
+                class="stat-value"
+                id="information"
+            >
+                0
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- =========================
+     ДОСЬЕ
+     ========================= -->
+
+<div
+    class="dossier-screen"
+    id="dossierScreen"
+>
+
+    <div class="dossier-card">
+
+        <h2>
+            📜 ЛИЧНОЕ ДОСЬЕ
+        </h2>
+
+        <div
+            class="dossier-intro"
+            id="dossierIntro"
+        ></div>
+
+        <div
+            id="profileArea"
+        ></div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     ДНЕВНИК
+     ========================= -->
+
+<div
+    class="diary-screen"
+    id="diaryScreen"
+>
+
+    <div class="diary-card">
+
+        <h2>
+            📖 ДНЕВНИК
+        </h2>
+
+        <div id="diaryContent"></div>
+
+        <button
+            class="close-button"
+            onclick="closeOverlays()"
+        >
+            ЗАКРЫТЬ
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     ИСТОРИЯ
+     ========================= -->
+
+<div
+    class="history-screen"
+    id="historyScreen"
+>
+
+    <div class="history-card">
+
+        <h2>
+            📚 А ЧТО БЫЛО НА САМОМ ДЕЛЕ?
+        </h2>
+
+        <p>
+            История, которую ты проходишь, соединяет
+            реальные исторические события и вымышленного
+            героя-участника.
+        </p>
+
+        <h3>
+            Минай Филиппович Шмырёв
+        </h3>
+
+        <p>
+            Минай Филиппович Шмырёв — один из известных
+            руководителей партизанского движения
+            в Беларуси в годы Великой Отечественной войны.
+        </p>
+
+        <p>
+            В июле 1941 года в Суражском районе был
+            сформирован партизанский отряд под его
+            руководством. Позже Шмырёв создал и возглавил
+            1-ю Белорусскую партизанскую бригаду.
+        </p>
+
+        <h3>
+            Суражский район
+        </h3>
+
+        <p>
+            Суражский район стал одним из важных районов
+            развития партизанского движения.
+            Партизаны действовали в тылу противника,
+            поддерживали связь с населением, собирали
+            сведения и вели борьбу с оккупантами.
+        </p>
+
+        <h3>
+            «Батька Минай»
+        </h3>
+
+        <p>
+            Среди партизан Шмырёв получил прозвище
+            «Батька Минай».
+            Оно отражало его авторитет среди людей,
+            с которыми он воевал.
+        </p>
+
+        <h3>
+            Дети Шмырёва
+        </h3>
+
+        <p>
+            Одной из самых трагических страниц его биографии
+            стала судьба его детей.
+            Оккупанты взяли в заложники его сыновей
+            и дочерей и потребовали от Шмырёва прекратить
+            борьбу.
+        </p>
+
+        <p>
+            Дети были расстреляны.
+            Лиза передала отцу записку, в которой просила
+            его не сдаваться и продолжать борьбу.
+        </p>
+
+        <p>
+            Эта история стала одной из самых известных
+            страниц памяти о Шмырёве и его семье.
+        </p>
+
+        <h3>
+            Важно
+        </h3>
+
+        <p>
+            В игре решения принимает твой вымышленный герой.
+            Исторические решения Минаи Шмырёва не меняются:
+            мы используем выборы для того, чтобы показать
+            сложность ситуации и дать ученику возможность
+            посмотреть на события глазами участника.
+        </p>
+
+        <button
+            class="close-button"
+            onclick="closeOverlays()"
+        >
+            ЗАКРЫТЬ
+        </button>
+
+    </div>
 
 </div>
 
 
 <script>
 
-/* =========================================================
-   СОСТОЯНИЕ ИГРЫ
-========================================================= */
+/* =====================================================
+   ПРОФИЛЬ
+   ===================================================== */
+
+let hero = null;
 
 let game = {
-    chapter: 0,
+    scene: 0,
 
-    dossier: null,
+    trust: 0,
 
-    choice: null,
+    caution: 0,
+
+    courage: 0,
+
+    information: 0,
 
     diary: [],
 
-    childrenChoice: false,
-
-    detachmentChoice: false
+    discoveries: []
 };
 
 
-/* =========================================================
-   ЗАГРУЗКА
-========================================================= */
+/* =====================================================
+   LOCAL STORAGE
+   ===================================================== */
 
-const saved = localStorage.getItem("shmyryovGame");
-
-if (saved) {
+function getProfiles() {
 
     try {
 
-        const loaded = JSON.parse(saved);
+        return JSON.parse(
+            localStorage.getItem(
+                "tropami_profiles"
+            )
+        ) || [];
 
-        game = {
-            ...game,
-            ...loaded
-        };
+    } catch (error) {
 
-    } catch (e) {
+        return [];
 
-        console.log("Не удалось загрузить сохранение.");
+    }
+}
+
+
+function saveProfiles(profiles) {
+
+    localStorage.setItem(
+        "tropami_profiles",
+        JSON.stringify(profiles)
+    );
+}
+
+
+function saveCurrent() {
+
+    if (!hero) return;
+
+    const profiles =
+        getProfiles();
+
+    const index =
+        profiles.findIndex(
+            p => p.id === hero.id
+        );
+
+    if (index === -1) {
+
+        profiles.push(hero);
+
+    } else {
+
+        profiles[index] = hero;
 
     }
 
+    saveProfiles(profiles);
 }
 
 
-/* =========================================================
-   СОХРАНЕНИЕ
-========================================================= */
+/* =====================================================
+   ДОСЬЕ
+   ===================================================== */
 
-function saveGame() {
+function start() {
 
-    localStorage.setItem(
-        "shmyryovGame",
-        JSON.stringify(game)
+    const profiles =
+        getProfiles();
+
+    if (profiles.length > 0) {
+
+        showProfileChoice();
+
+    } else {
+
+        showDossierIntro();
+
+    }
+
+    render();
+}
+
+
+function showProfileChoice() {
+
+    const intro =
+        document.getElementById(
+            "dossierIntro"
+        );
+
+    const area =
+        document.getElementById(
+            "profileArea"
+        );
+
+    intro.innerHTML = `
+        <p>
+            В этом проекте можно создать вымышленное
+            досье героя и сохранять его прогресс.
+        </p>
+
+        <p>
+            Выбери существующее досье или создай новое.
+        </p>
+    `;
+
+    area.innerHTML = "";
+
+    const profiles =
+        getProfiles();
+
+    const list =
+        document.createElement(
+            "div"
+        );
+
+    list.className =
+        "profile-list";
+
+    profiles.forEach(
+        function(profile) {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+            button.className =
+                "profile-button";
+
+            button.innerHTML = `
+                <strong>
+                    📜 ${escapeHtml(
+                        profile.codeName ||
+                        "Без кодового имени"
+                    )}
+                </strong>
+
+                <span>
+                    ${escapeHtml(
+                        profile.name +
+                        " " +
+                        profile.surname
+                    )}
+                    ·
+                    ${profile.age || "—"} лет
+                    ·
+                    Тропа Шмырёва
+                    ·
+                    Глава ${profile.game.scene + 1}
+                </span>
+            `;
+
+            button.onclick =
+                function() {
+
+                    loadProfile(
+                        profile.id
+                    );
+
+                    closeOverlays();
+
+                    render();
+                };
+
+            list.appendChild(
+                button
+            );
+
+        }
     );
 
+    area.appendChild(list);
+
+
+    const newButton =
+        document.createElement(
+            "button"
+        );
+
+    newButton.className =
+        "form-button primary";
+
+    newButton.textContent =
+        "СОЗДАТЬ НОВОЕ ДОСЬЕ";
+
+    newButton.style.marginTop =
+        "18px";
+
+    newButton.onclick =
+        showDossierForm;
+
+    area.appendChild(
+        newButton
+    );
+
+
+    document.getElementById(
+        "dossierScreen"
+    ).style.display =
+        "block";
 }
 
 
-/* =========================================================
-   ЭКРАН
-========================================================= */
+function showDossierIntro() {
 
-function render(html) {
+    const intro =
+        document.getElementById(
+            "dossierIntro"
+        );
 
-    const scene = document.getElementById("scene");
+    const area =
+        document.getElementById(
+            "profileArea"
+        );
 
-    scene.innerHTML = html;
+    intro.innerHTML = `
+        <p>
+            <strong>Заполни досье своего героя.</strong>
+        </p>
+
+        <p>
+            Используй вымышленные данные —
+            это часть игры.
+        </p>
+    `;
+
+    area.innerHTML = "";
+
+    const button =
+        document.createElement(
+            "button"
+        );
+
+    button.className =
+        "form-button primary";
+
+    button.textContent =
+        "СОЗДАТЬ ДОСЬЕ";
+
+    button.onclick =
+        showDossierForm;
+
+    area.appendChild(
+        button
+    );
+
+    document.getElementById(
+        "dossierScreen"
+    ).style.display =
+        "block";
+}
+
+
+function showDossierForm() {
+
+    const intro =
+        document.getElementById(
+            "dossierIntro"
+        );
+
+    const area =
+        document.getElementById(
+            "profileArea"
+        );
+
+    intro.innerHTML = `
+        <p>
+            <strong>ЛИЧНОЕ ДОСЬЕ</strong>
+        </p>
+
+        <p>
+            Заполни досье своего героя.
+            Используй вымышленные данные —
+            это часть игры.
+        </p>
+    `;
+
+    area.innerHTML = `
+        <div class="dossier-form">
+
+            <div class="field">
+                <label>Имя</label>
+                <input id="firstName">
+            </div>
+
+            <div class="field">
+                <label>Фамилия</label>
+                <input id="lastName">
+            </div>
+
+            <div class="field">
+                <label>Возраст</label>
+                <input
+                    id="age"
+                    type="number"
+                    min="12"
+                    max="80"
+                >
+            </div>
+
+            <div class="field">
+                <label>Пол</label>
+
+                <select id="gender">
+
+                    <option value="">
+                        Не указывать
+                    </option>
+
+                    <option value="женский">
+                        Женский
+                    </option>
+
+                    <option value="мужской">
+                        Мужской
+                    </option>
+
+                    <option value="другое">
+                        Другое
+                    </option>
+
+                </select>
+            </div>
+
+            <div class="field">
+                <label>
+                    Родной город / деревня
+                </label>
+
+                <input id="homeTown">
+            </div>
+
+            <div class="field">
+                <label>
+                    Район / область
+                </label>
+
+                <input id="region">
+            </div>
+
+            <div class="field">
+                <label>
+                    Имя близкого человека
+                </label>
+
+                <input id="relativeName">
+            </div>
+
+            <div class="field">
+                <label>
+                    Кем он тебе приходится?
+                </label>
+
+                <input id="relativeRelation">
+            </div>
+
+            <div class="field">
+                <label>
+                    Как тебя узнать?
+                </label>
+
+                <input id="specialMark">
+            </div>
+
+            <div class="field">
+                <label>
+                    Под каким именем тебя будут знать товарищи?
+                </label>
+
+                <input id="codeName">
+            </div>
+
+            <div class="form-note">
+                Не используй реальные адреса,
+                телефоны или другие личные данные.
+                Это игровое вымышленное досье.
+            </div>
+
+            <div class="form-buttons">
+
+                <button
+                    class="form-button primary"
+                    onclick="createHero()"
+                >
+                    💾 СОХРАНИТЬ ДОСЬЕ
+                </button>
+
+                <button
+                    class="form-button"
+                    onclick="closeOverlays()"
+                >
+                    ОТМЕНА
+                </button>
+
+            </div>
+
+        </div>
+    `;
+}
+
+
+function value(id) {
+
+    const element =
+        document.getElementById(id);
+
+    return element
+        ? element.value.trim()
+        : "";
+}
+
+
+function createHero() {
+
+    const firstName =
+        value("firstName");
+
+    const lastName =
+        value("lastName");
+
+    if (
+        !firstName ||
+        !lastName
+    ) {
+
+        alert(
+            "Укажи имя и фамилию героя."
+        );
+
+        return;
+    }
+
+
+    hero = {
+
+        id:
+            Date.now().toString(),
+
+        name:
+            firstName,
+
+        surname:
+            lastName,
+
+        age:
+            value("age"),
+
+        gender:
+            value("gender"),
+
+        homeTown:
+            value("homeTown"),
+
+        region:
+            value("region"),
+
+        relativeName:
+            value("relativeName"),
+
+        relativeRelation:
+            value("relativeRelation"),
+
+        specialMark:
+            value("specialMark"),
+
+        codeName:
+            value("codeName") ||
+            "Тень",
+
+        path:
+            "Шмырёв",
+
+        game: {
+            scene: 0,
+
+            trust: 0,
+
+            caution: 0,
+
+            courage: 0,
+
+            information: 0,
+
+            diary: [],
+
+            discoveries: []
+        }
+
+    };
+
+
+    game =
+        hero.game;
+
+    saveCurrent();
+
+    closeOverlays();
+
+    render();
+}
+
+
+function loadProfile(id) {
+
+    const profiles =
+        getProfiles();
+
+    const profile =
+        profiles.find(
+            p => p.id === id
+        );
+
+    if (!profile) return;
+
+    hero = profile;
+
+    game =
+        hero.game || {
+
+            scene: 0,
+
+            trust: 0,
+
+            caution: 0,
+
+            courage: 0,
+
+            information: 0,
+
+            diary: [],
+
+            discoveries: []
+
+        };
+
+    hero.game =
+        game;
+
+    saveCurrent();
+}
+
+
+/* =====================================================
+   ДНЕВНИК
+   ===================================================== */
+
+function addDiary(text) {
+
+    if (
+        !game.diary.includes(text)
+    ) {
+
+        game.diary.push(text);
+
+        saveCurrent();
+
+    }
+}
+
+
+function addDiscovery(text) {
+
+    if (
+        !game.discoveries.includes(text)
+    ) {
+
+        game.discoveries.push(text);
+
+        saveCurrent();
+
+    }
+}
+
+
+/* =====================================================
+   ПЕРЕХОД СЦЕН
+   ===================================================== */
+
+function nextScene(number) {
+
+    game.scene =
+        number;
+
+    if (hero) {
+
+        hero.game =
+            game;
+
+        saveCurrent();
+
+    }
+
+    render();
 
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
-
 }
 
 
-/* =========================================================
-   ГЛАВНАЯ
-========================================================= */
+function continueStory() {
 
-function goHome() {
-
-    window.location.href = "index.html";
-
+    nextScene(
+        game.scene + 1
+    );
 }
 
 
-/* =========================================================
-   ПРОЛОГ
-========================================================= */
+/* =====================================================
+   СЦЕНА 0
+   ===================================================== */
 
-function startGame() {
+function scene0() {
 
-    game.chapter = 0;
+    return {
 
-    saveGame();
+        chapter:
+            "ГЛАВА I · ПЕРВЫЕ ДНИ",
 
-    renderPrologue();
+        title:
+            "Июль 1941 года",
 
+        location:
+            "ВИТЕБСКАЯ ОБЛАСТЬ · СУРАЖСКИЙ РАЙОН",
+
+        text: `
+            <p>
+                Война пришла неожиданно.
+                Ещё недавно здесь были обычные дороги,
+                дома, поля и привычная работа.
+                Теперь по ним проходили военные части,
+                появлялись беженцы, а новости становились
+                всё тревожнее.
+            </p>
+
+            <p>
+                Ты — вымышленный участник событий.
+                Твоя история начинается в тот момент,
+                когда мир вокруг уже изменился,
+                но ещё никто не знает,
+                насколько долгой окажется война.
+            </p>
+
+            <div class="dialogue">
+                — Теперь просто ждать нельзя, —
+                говорит один из местных.
+                — Если мы ничего не будем делать,
+                за нас всё решат другие.
+            </div>
+
+            <p>
+                Вскоре ты впервые слышишь имя
+                <span class="emphasis">
+                Минай Филиппович Шмырёв.
+                </span>
+            </p>
+        `,
+
+        choices: [
+
+            {
+                text:
+                    "Попробовать найти людей, готовых действовать вместе.",
+
+                action: function() {
+
+                    game.trust += 1;
+
+                    game.courage += 1;
+
+                    addDiary(
+                        "Я впервые услышал имя Минаи Шмырёва. Вокруг уже формировалось сопротивление."
+                    );
+
+                    addDiscovery(
+                        "Лето 1941 года — начало формирования партизанского движения в Суражском районе."
+                    );
+
+                    continueStory();
+                }
+            },
+
+            {
+                text:
+                    "Сначала узнать как можно больше о происходящем.",
+
+                action: function() {
+
+                    game.information += 2;
+
+                    game.caution += 1;
+
+                    addDiary(
+                        "Я решил сначала наблюдать и собирать сведения. В новой войне нельзя действовать вслепую."
+                    );
+
+                    addDiscovery(
+                        "Разведка и информация были важной частью сопротивления."
+                    );
+
+                    continueStory();
+                }
+            }
+
+        ]
+
+    };
 }
 
 
-function renderPrologue() {
+/* =====================================================
+   СЦЕНА 1
+   ===================================================== */
 
-    render(`
+function scene1() {
 
-        <div class="chapter">
-            ПРОЛОГ
-        </div>
+    return {
 
-        <h1>
-            Суражский район
-        </h1>
+        chapter:
+            "ГЛАВА I · ПЕРВЫЕ ДНИ",
 
-        <div class="text">
-            Июль 1941 года.
-        </div>
+        title:
+            "Человек, которого слушают",
 
-        <div class="text">
-            Война пришла в Беларусь совсем недавно.
-            Привычная жизнь рушится на глазах.
-            Люди пытаются понять, что делать дальше.
-        </div>
+        location:
+            "СУРАЖСКИЙ РАЙОН",
 
-        <div class="text">
-            Кто-то уходит в лес.
-            Кто-то остаётся рядом с домом.
-            Кто-то пытается сохранить связь с теми,
-            кто оказался далеко.
-        </div>
+        text: `
+            <p>
+                О Шмырёве говорят по-разному.
+                Кто-то знает его по прежней работе,
+                кто-то встречал раньше,
+                а кто-то слышал только имя.
+            </p>
 
-        <div class="text">
-            В Суражском районе формируется
-            партизанский отряд под руководством
-            <strong>Миная Филипповича Шмырёва.</strong>
-        </div>
+            <p>
+                Но сейчас люди приходят к нему
+                не ради разговоров.
+                Им нужно понять, что делать дальше.
+            </p>
 
-        <div class="quote">
-            Но помни: ты — вымышленный участник событий.
-            История М. Ф. Шмырёва и его семьи
-            остаётся историей реальных людей.
-        </div>
+            <div class="dialogue">
+                — Война не закончится завтра, —
+                спокойно говорит Шмырёв.
+                — Значит, надо думать не только
+                о сегодняшнем дне.
+            </div>
 
-        <button class="continue" onclick="showDossier()">
-            ПРОДОЛЖИТЬ →
-        </button>
+            <p>
+                В его словах нет громких обещаний.
+                Есть только ощущение,
+                что решение уже принято:
+                сопротивление должно продолжаться.
+            </p>
+        `,
 
-    `);
+        choices: [
 
+            {
+                text:
+                    "Слушать и запоминать каждую деталь.",
+
+                action: function() {
+
+                    game.information += 2;
+
+                    game.trust += 1;
+
+                    addDiary(
+                        "Шмырёв говорил спокойно. Мне показалось, что именно поэтому его слушали особенно внимательно."
+                    );
+
+                    continueStory();
+                }
+            },
+
+            {
+                text:
+                    "Спросить, чем лично я могу помочь.",
+
+                action: function() {
+
+                    game.courage += 2;
+
+                    game.trust += 1;
+
+                    addDiary(
+                        "Я спросил, чем могу помочь. Теперь отступать от собственных слов было бы трудно."
+                    );
+
+                    continueStory();
+                }
+            }
+
+        ]
+
+    };
 }
 
 
-/* =========================================================
-   ДОСЬЕ
-========================================================= */
+/* =====================================================
+   СЦЕНА 2
+   ===================================================== */
 
-function showDossier() {
+function scene2() {
 
-    if (game.dossier) {
+    return {
 
-        renderExistingDossier();
+        chapter:
+            "ГЛАВА II · ПЕРВЫЕ БОИ",
 
-        return;
+        title:
+            "Отряд",
 
+        location:
+            "ВИТЕБСКАЯ ОБЛАСТЬ · 1941",
+
+        text: `
+            <p>
+                В июле 1941 года в Суражском районе
+                был сформирован партизанский отряд
+                под руководством Минаи Филипповича Шмырёва.
+            </p>
+
+            <p>
+                Теперь это уже не просто разговоры.
+                Есть люди, которые готовы действовать.
+                Есть оружие, которого мало.
+                Есть дороги, по которым движется противник.
+            </p>
+
+            <p>
+                Перед первым заданием ты понимаешь:
+                партизанская борьба — это не только бой.
+                Иногда гораздо важнее увидеть то,
+                чего не заметил другой.
+            </p>
+        `,
+
+        choices: [
+
+            {
+                text:
+                    "Сосредоточиться на наблюдении и разведке.",
+
+                action: function() {
+
+                    game.information += 2;
+
+                    game.caution += 1;
+
+                    addDiary(
+                        "Первое правило, которое я понял: сначала увидеть, потом действовать."
+                    );
+
+                    addDiscovery(
+                        "Партизанская разведка помогала получать сведения о противнике."
+                    );
+
+                    continueStory();
+                }
+            },
+
+            {
+                text:
+                    "Попроситься в группу, которая действует на дороге.",
+
+                action: function() {
+
+                    game.courage += 2;
+
+                    game.trust += 1;
+
+                    addDiary(
+                        "Я решил идти вместе с группой. Страшно было, но ещё страшнее — стоять в стороне."
+                    );
+
+                    continueStory();
+                }
+            }
+
+        ]
+
+    };
+}
+
+
+/* =====================================================
+   СЦЕНА 3
+   ===================================================== */
+
+function scene3() {
+
+    return {
+
+        chapter:
+            "ГЛАВА II · ПЕРВЫЕ БОИ",
+
+        title:
+            "После первого столкновения",
+
+        location:
+            "ЛЕСНАЯ ДОРОГА",
+
+        text: `
+            <p>
+                После первого столкновения становится ясно:
+                война изменила правила жизни.
+            </p>
+
+            <p>
+                В лесу обсуждают не победные слова,
+                а простые вещи:
+                кто вернулся, кто не вернулся,
+                кто видел противника и что теперь известно.
+            </p>
+
+            <div class="dialogue">
+                — Запоминай всё, —
+                говорит старший товарищ.
+                — Иногда одна маленькая деталь
+                спасает больше людей, чем смелость.
+            </div>
+        `,
+
+        choices: [
+
+            {
+                text:
+                    "Записать всё, что удалось заметить.",
+
+                action: function() {
+
+                    game.information += 2;
+
+                    game.caution += 1;
+
+                    addDiary(
+                        "После боя мы разбирали не только ошибки. Мы пытались понять, что именно произошло."
+                    );
+
+                    continueStory();
+                }
+            },
+
+            {
+                text:
+                    "Помочь тем, кто вернулся с задания.",
+
+                action: function() {
+
+                    game.trust += 2;
+
+                    game.courage += 1;
+
+                    addDiary(
+                        "После столкновения стало особенно понятно, насколько люди зависят друг от друга."
+                    );
+
+                    continueStory();
+                }
+            }
+
+        ]
+
+    };
+}
+
+
+/* =====================================================
+   СЦЕНА 4
+   ===================================================== */
+
+function scene4() {
+
+    return {
+
+        chapter:
+            "ГЛАВА II · ПЕРВЫЕ БОИ",
+
+        title:
+            "Связь с деревнями",
+
+        location:
+            "СУРАЖСКИЙ РАЙОН",
+
+        text: `
+            <p>
+                Партизаны не существуют отдельно
+                от людей, которые остаются в оккупации.
+            </p>
+
+            <p>
+                Кто-то передаёт сведения.
+                Кто-то предупреждает об опасности.
+                Кто-то делится последним.
+                А кто-то боится настолько сильно,
+                что не решается сделать даже шаг.
+            </p>
+
+            <p>
+                Ты начинаешь понимать:
+                сопротивление держится не только
+                на тех, кто находится в лесу.
+            </p>
+        `,
+
+        choices: [
+
+            {
+                text:
+                    "Помогать поддерживать связь с населением.",
+
+                action: function() {
+
+                    game.trust += 2;
+
+                    game.information += 1;
+
+                    addDiary(
+                        "Лес и деревни не были двумя отдельными мирами. Между ними постоянно проходили люди и сведения."
+                    );
+
+                    addDiscovery(
+                        "Взаимодействие партизан и населения было важной частью сопротивления."
+                    );
+
+                    continueStory();
+                }
+            },
+
+            {
+                text:
+                    "Стараться не подвергать людей лишнему риску.",
+
+                action: function() {
+
+                    game.caution += 2;
+
+                    game.information += 1;
+
+                    addDiary(
+                        "Иногда желание помочь могло поставить под удар тех, кто оставался рядом с врагом."
+                    );
+
+                    continueStory();
+                }
+            }
+
+        ]
+
+    };
+}
+
+
+/* =====================================================
+   СЦЕНА 5
+   ===================================================== */
+
+function scene5() {
+
+    return {
+
+        chapter:
+            "ГЛАВА III · СУРАЖСКИЙ РАЙОН",
+
+        title:
+            "Сведения",
+
+        location:
+            "ЛЕС · 1941",
+
+        text: `
+            <p>
+                День начинается с обычного разговора,
+                но постепенно становится ясно:
+                у одного из связных есть важные сведения.
+            </p>
+
+            <p>
+                Речь идёт о движении противника,
+                дорогах и местах, которые приходится
+                внимательно наблюдать.
+            </p>
+
+            <p>
+                Информация сама по себе ничего не меняет.
+                Важно понять, кому её передать
+                и что можно сделать с ней дальше.
+            </p>
+        `,
+
+        choices: [
+
+            {
+                text:
+                    "Передать сведения командованию.",
+
+                action: function() {
+
+                    game.information += 2;
+
+                    game.trust += 1;
+
+                    addDiary(
+                        "Я понял, что разведывательные сведения имеют смысл только тогда, когда доходят до тех, кто может ими воспользоваться."
+                    );
+
+                    continueStory();
+                }
+            },
+
+            {
+                text:
+                    "Проверить сведения ещё раз.",
+
+                action: function() {
+
+                    game.information += 1;
+
+                    game.caution += 2;
+
+                    addDiary(
+                        "Мне хотелось убедиться, что мы не передадим товарищам ошибочную информацию."
+                    );
+
+                    continueStory();
+                }
+            }
+
+        ]
+
+    };
+}
+
+
+/* =====================================================
+   СЦЕНА 6
+   ===================================================== */
+
+function scene6() {
+
+    return {
+
+        chapter:
+            "ГЛАВА III · СУРАЖСКИЙ РАЙОН",
+
+        title:
+            "Ночная дорога",
+
+        location:
+            "ОККУПИРОВАННАЯ ТЕРРИТОРИЯ",
+
+        text: `
+            <p>
+                Ночь кажется особенно длинной.
+                Группа движется почти бесшумно.
+            </p>
+
+            <p>
+                Ты не знаешь, что произойдёт через несколько
+                минут. Именно поэтому каждый звук заставляет
+                остановиться.
+            </p>
+
+            <div class="dialogue">
+                — Не торопись, —
+                шепчет товарищ.
+                — Самая большая ошибка —
+                начать бояться собственного страха.
+            </div>
+
+            <p>
+                Вдалеке появляется свет.
+                Все замирают.
+            </p>
+        `,
+
+        choices: [
+
+            {
+                text:
+                    "Остаться вместе с группой и ждать сигнала.",
+
+                action: function() {
+
+                    game.caution += 2;
+
+                    game.trust += 1;
+
+                    addDiary(
+                        "Ночью особенно ясно понимаешь, почему группа должна действовать как одно целое."
+                    );
+
+                    continueStory();
+                }
+            },
+
+            {
+                text:
+                    "Внимательно наблюдать за дорогой.",
+
+                action: function() {
+
+                    game.information += 2;
+
+                    game.courage += 1;
+
+                    addDiary(
+                        "Я старался запомнить всё, что происходило вокруг."
+                    );
+
+                    continueStory();
+                }
+            }
+
+        ]
+
+    };
+}
+
+
+/* =====================================================
+   СЦЕНА 7
+   ===================================================== */
+
+function scene7() {
+
+    return {
+
+        chapter:
+            "ГЛАВА III · СУРАЖСКИЙ РАЙОН",
+
+        title:
+            "Партизанская зона",
+
+        location:
+            "СУРАЖСКИЙ РАЙОН",
+
+        text: `
+            <p>
+                Постепенно сопротивление становится
+                всё более организованным.
+            </p>
+
+            <p>
+                Появляются районы, где партизаны
+                могут действовать увереннее.
+                Но это не означает, что опасность исчезла.
+            </p>
+
+            <p>
+                Наоборот.
+                Чем заметнее становится сопротивление,
+                тем сильнее противник пытается его подавить.
+            </p>
+
+            <p>
+                Для тебя это первый момент,
+                когда ты понимаешь масштаб происходящего.
+                Это уже не несколько человек в лесу.
+            </p>
+        `,
+
+        choices: [
+
+            {
+                text:
+                    "Помогать укреплять связь между группами.",
+
+                action: function() {
+
+                    game.trust += 2;
+
+                    game.information += 1;
+
+                    addDiscovery(
+                        "Партизанские зоны создавали условия для более устойчивого сопротивления."
+                    );
+
+                    addDiary(
+                        "Сопротивление становилось системой, а не случайностью."
+                    );
+
+                    continueStory();
+                }
+            },
+
+            {
+                text:
+                    "Продолжать наблюдать и собирать сведения.",
+
+                action: function() {
+
+                    game.information += 2;
+
+                    game.caution += 1;
+
+                    addDiary(
+                        "Чем больше становилось людей, тем важнее становилась информация."
+                    );
+
+                    continueStory();
+                }
+            }
+
+        ]
+
+    };
+}
+
+
+/* =====================================================
+   СЦЕНА 8
+   ===================================================== */
+
+function scene8() {
+
+    return {
+
+        chapter:
+            "ГЛАВА IV · ОПАСНОСТЬ",
+
+        title:
+            "Карательная операция",
+
+        location:
+            "ВИТЕБСКАЯ ОБЛАСТЬ",
+
+        text: `
+            <p>
+                Вскоре появляются тревожные сведения:
+                против партизан готовится операция.
+            </p>
+
+            <p>
+                Теперь опасность угрожает не только
+                тем, кто находится в лесу.
+                Под ударом могут оказаться деревни
+                и люди, которые помогают сопротивлению.
+            </p>
+
+            <div class="dialogue">
+                — Нельзя думать только о себе, —
+                говорит один из старших.
+                — За нами стоят люди.
+            </div>
+
+            <p>
+                Эти слова остаются в памяти.
+            </p>
+        `,
+
+        choices: [
+
+            {
+                text:
+                    "Предупредить людей об опасности.",
+
+                action: function() {
+
+                    game.trust += 2;
+
+                    game.courage += 1;
+
+                    addDiary(
+                        "Когда опасность угрожает мирным людям, молчать становится ещё труднее."
+                    );
+
+                    continueStory();
+                }
+            },
+
+            {
+                text:
+                    "Сначала уточнить сведения об операции.",
+
+                action: function() {
+
+                    game.information += 2;
+
+                    game.caution += 1;
+
+                    addDiary(
+                        "Я понимал: ошибка в такой ситуации может стоить слишком дорого."
+                    );
+
+                    continueStory();
+                }
+            }
+
+        ]
+
+    };
+}
+
+
+/* =====================================================
+   СЦЕНА 9
+   ===================================================== */
+
+function scene9() {
+
+    return {
+
+        chapter:
+            "ГЛАВА IV · ОПАСНОСТЬ",
+
+        title:
+            "Выбор командира",
+
+        location:
+            "ПАРТИЗАНСКИЙ ЛАГЕРЬ",
+
+        text: `
+            <p>
+                Шмырёв должен принимать решения,
+                от которых зависит судьба других.
+            </p>
+
+            <p>
+                Командир не может знать заранее,
+                какой вариант окажется безопаснее.
+                Он может только оценивать сведения,
+                советоваться с людьми и принимать решение.
+            </p>
+
+            <p>
+                Ты впервые видишь войну не как цепочку
+                отдельных событий, а как множество
+                решений, связанных между собой.
+            </p>
+        `,
+
+        choices: [
+
+            {
+                text:
+                    "Доверять командованию и выполнять решение.",
+
+                action: function() {
+
+                    game.trust += 2;
+
+                    addDiary(
+                        "Я понял, что командир отвечает не только за своё решение, но и за тех, кто ему доверился."
+                    );
+
+                    continueStory();
+                }
+            },
+
+            {
+                text:
+                    "Высказать свои сомнения, если они могут быть важны.",
+
+                action: function() {
+
+                    game.information += 1;
+
+                    game.trust += 1;
+
+                    game.courage += 1;
+
+                    addDiary(
+                        "Молчать было бы проще. Но иногда товарищу нужно сказать то, что ты заметил."
+                    );
+
+                    continueStory();
+                }
+            }
+
+        ]
+
+    };
+}
+
+
+/* =====================================================
+   СЦЕНА 10
+   ===================================================== */
+
+function scene10() {
+
+    return {
+
+        chapter:
+            "ГЛАВА V · БАТЬКА МИНАЙ",
+
+        title:
+            "Так его называли",
+
+        location:
+            "ПАРТИЗАНСКИЙ ЛАГЕРЬ",
+
+        text: `
+            <p>
+                Среди партизан Шмырёва называют
+                «Батькой Минаем».
+            </p>
+
+            <p>
+                За этим прозвищем — не только уважение
+                к командиру.
+                Война заставляет людей искать того,
+                кому можно доверить решение,
+                когда времени почти не осталось.
+            </p>
+
+            <div class="dialogue">
+                — Он не обещает, что будет легко, —
+                говорит тебе товарищ.
+                — Поэтому ему и верят.
+            </div>
+
+            <p>
+                Ты начинаешь понимать:
+                доверие в отряде невозможно приказать.
+                Его приходится заслуживать.
+            </p>
+        `,
+
+        choices: [
+
+            {
+                text:
+                    "Помочь товарищам и заслужить их доверие.",
+
+                action: function() {
+
+                    game.trust += 2;
+
+                    addDiary(
+                        "Теперь я лучше понимаю, откуда может появиться такое прозвище, как «Батька Минай»."
+                    );
+
+                    continueStory();
+                }
+            },
+
+            {
+                text:
+                    "Наблюдать за Шмырёвым и учиться у него.",
+
+                action: function() {
+
+                    game.information += 2;
+
+                    game.caution += 1;
+
+                    addDiary(
+                        "Я наблюдал за Шмырёвым. Его сила была не в громких словах."
+                    );
+
+                    continueStory();
+                }
+            }
+
+        ]
+
+    };
+}
+
+
+/* =====================================================
+   СЦЕНА 11
+   ===================================================== */
+
+function scene11() {
+
+    return {
+
+        chapter:
+            "ГЛАВА VI · ТЕНЬ ВОЙНЫ",
+
+        title:
+            "Слабое место",
+
+        location:
+            "ПАРТИЗАНСКИЙ ЛАГЕРЬ",
+
+        text: `
+            <p>
+                Однажды разговоры вокруг костра становятся
+                непривычно тихими.
+            </p>
+
+            <p>
+                Ты замечаешь, что товарищи избегают
+                одной темы.
+            </p>
+
+            <p>
+                Потом узнаёшь:
+                противник пытается заставить Шмырёва
+                прекратить борьбу, используя его семью.
+            </p>
+
+            <p>
+                Впервые война становится
+                не просто борьбой отряда.
+                Она приходит туда,
+                куда никто не хотел бы её пускать.
+            </p>
+        `,
+
+        choices: [
+
+            {
+                text:
+                    "Остаться рядом с товарищами и не задавать лишних вопросов.",
+
+                action: function() {
+
+                    game.trust += 2;
+
+                    game.caution += 1;
+
+                    addDiary(
+                        "Иногда поддержка — это не вопрос и не совет. Иногда это просто оставаться рядом."
+                    );
+
+                    continueStory();
+                }
+            },
+
+            {
+                text:
+                    "Попробовать узнать, что произошло.",
+
+                action: function() {
+
+                    game.information += 2;
+
+                    game.courage += 1;
+
+                    addDiary(
+                        "Я понял, что речь идёт о детях Шмырёва."
+                    );
+
+                    continueStory();
+                }
+            }
+
+        ]
+
+    };
+}
+
+
+/* =====================================================
+   СЦЕНА 12
+   ===================================================== */
+
+function scene12() {
+
+    return {
+
+        chapter:
+            "ГЛАВА VI · ТЕНЬ ВОЙНЫ",
+
+        title:
+            "Дети",
+
+        location:
+            "ВИТЕБСКАЯ ОБЛАСТЬ · 1941",
+
+        text: `
+            <p>
+                Оккупанты взяли в заложники детей
+                Минаи Шмырёва.
+            </p>
+
+            <p>
+                Среди них были Миша, Зина,
+                Серж и Лиза.
+            </p>
+
+            <p>
+                Противник требует от Шмырёва
+                прекратить борьбу и сдаться.
+            </p>
+
+            <p>
+                В лагере почти никто не говорит громко.
+                Все понимают:
+                это уже не обычный приказ
+                и не обычная военная задача.
+            </p>
+
+            <div class="dialogue">
+                — Что теперь будет? —
+                тихо спрашивает кто-то.
+            </div>
+
+            <p>
+                Ты не знаешь, что ответить.
+            </p>
+        `,
+
+        choices: [
+
+            {
+                text:
+                    "Остаться рядом с отрядом и ждать решения Шмырёва.",
+
+                action: function() {
+
+                    game.trust += 2;
+
+                    game.caution += 1;
+
+                    addDiary(
+                        "Теперь решение Шмырёва касалось не только войны. Перед ним поставили страшный выбор."
+                    );
+
+                    continueStory();
+                }
+            },
+
+            {
+                text:
+                    "Сказать товарищам, что борьба должна продолжаться.",
+
+                action: function() {
+
+                    game.courage += 2;
+
+                    game.trust += 1;
+
+                    addDiary(
+                        "Я не знал, какие слова могут помочь человеку в такой момент. Но молчать тоже было невозможно."
+                    );
+
+                    continueStory();
+                }
+            }
+
+        ]
+
+    };
+}
+
+
+/* =====================================================
+   СЦЕНА 13
+   ===================================================== */
+
+function scene13() {
+
+    return {
+
+        chapter:
+            "ГЛАВА VII · ПИСЬМО",
+
+        title:
+            "Папа, за нас не волнуйся",
+
+        location:
+            "СУРАЖСКИЙ РАЙОН",
+
+        text: `
+            <p>
+                Через некоторое время становится известно,
+                что Лиза смогла передать отцу записку.
+            </p>
+
+            <div class="dialogue">
+                «Папа, за нас не волнуйся,
+                никого не слушай, к немцам не иди...»
+            </div>
+
+            <p>
+                В этой короткой записке — голос ребёнка,
+                который пытается поддержать отца
+                в момент, когда поддержка нужна ему самому.
+            </p>
+
+            <p>
+                Для тебя это один из тех моментов,
+                когда история перестаёт быть просто
+                набором дат.
+            </p>
+
+            <p>
+                Перед тобой — настоящие люди,
+                которым пришлось принимать решения
+                в обстоятельствах, которые невозможно
+                представить обычной мирной жизнью.
+            </p>
+        `,
+
+        choices: [
+
+            {
+                text:
+                    "Запомнить слова Лизы.",
+
+                action: function() {
+
+                    game.information += 1;
+
+                    game.trust += 2;
+
+                    addDiary(
+                        "Я запомню слова Лизы. Война может заставить ребёнка говорить с отцом как взрослого."
+                    );
+
+                    addDiscovery(
+                        "История Лизы и её записки стала одной из самых известных страниц памяти о семье Шмырёва."
+                    );
+
+                    continueStory();
+                }
+            },
+
+            {
+                text:
+                    "Записать эту историю в дневник.",
+
+                action: function() {
+
+                    game.information += 2;
+
+                    addDiary(
+                        "Я записал историю Лизы. Чтобы память не исчезла, её нужно сохранить."
+                    );
+
+                    addDiscovery(
+                        "Память о погибших становится частью исторической памяти народа."
+                    );
+
+                    continueStory();
+                }
+            }
+
+        ]
+
+    };
+}
+
+
+/* =====================================================
+   СЦЕНА 14
+   ===================================================== */
+
+function scene14() {
+
+    return {
+
+        chapter:
+            "ГЛАВА VII · ПОСЛЕДСТВИЯ",
+
+        title:
+            "Решение",
+
+        location:
+            "ПАРТИЗАНСКИЙ ЛАГЕРЬ",
+
+        text: `
+            <p>
+                Шмырёв продолжает борьбу.
+            </p>
+
+            <p>
+                Его дети становятся жертвами оккупантов.
+                Эта трагедия навсегда остаётся частью
+                истории его семьи и его личной судьбы.
+            </p>
+
+            <p>
+                Для тебя это не момент победы.
+                Здесь нет красивой развязки.
+            </p>
+
+            <p>
+                Есть только понимание цены,
+                которую людям пришлось платить
+                за сопротивление.
+            </p>
+
+            <div class="dialogue">
+                Иногда история заканчивается не тогда,
+                когда заканчивается бой.
+                Иногда она продолжается
+                в памяти тех, кто остался.
+            </div>
+        `,
+
+        choices: [
+
+            {
+                text:
+                    "Продолжать помогать отряду.",
+
+                action: function() {
+
+                    game.courage += 2;
+
+                    game.trust += 1;
+
+                    addDiary(
+                        "После случившегося стало невозможно думать о войне как о далёком событии."
+                    );
+
+                    continueStory();
+                }
+            },
+
+            {
+                text:
+                    "Сохранить память о погибших.",
+
+                action: function() {
+
+                    game.information += 2;
+
+                    game.trust += 1;
+
+                    addDiary(
+                        "Я понял: сохранить память — тоже ответственность."
+                    );
+
+                    continueStory();
+                }
+            }
+
+        ]
+
+    };
+}
+
+
+/* =====================================================
+   СЦЕНА 15
+   ===================================================== */
+
+function scene15() {
+
+    return {
+
+        chapter:
+            "ГЛАВА VIII · ДАЛЬШЕ",
+
+        title:
+            "После трагедии",
+
+        location:
+            "БЕЛАРУСЬ · ПАРТИЗАНСКОЕ ДВИЖЕНИЕ",
+
+        text: `
+            <p>
+                Жизнь партизанского движения продолжается.
+            </p>
+
+            <p>
+                Отряды растут, появляются новые люди,
+                укрепляются связи, продолжается разведка
+                и борьба против оккупантов.
+            </p>
+
+            <p>
+                История Шмырёва не заканчивается
+                историей его детей.
+                Но теперь ты знаешь,
+                какой личной ценой для него
+                продолжалась эта борьба.
+            </p>
+
+            <p>
+                Впоследствии Шмырёв создал и возглавил
+                1-ю Белорусскую партизанскую бригаду.
+            </p>
+        `,
+
+        choices: [
+
+            {
+                text:
+                    "Продолжить путь вместе с отрядом.",
+
+                action: function() {
+
+                    game.trust += 1;
+
+                    game.courage += 1;
+
+                    addDiary(
+                        "История продолжается. Для тех, кто остался в строю, война ещё не закончилась."
+                    );
+
+                    continueStory();
+                }
+            },
+
+            {
+                text:
+                    "Остановиться и осмыслить пройденное.",
+
+                action: function() {
+
+                    game.information += 2;
+
+                    addDiary(
+                        "Иногда нужно остановиться, чтобы понять, что именно ты увидел."
+                    );
+
+                    continueStory();
+                }
+            }
+
+        ]
+
+    };
+}
+
+
+/* =====================================================
+   СЦЕНА 16
+   ===================================================== */
+
+function scene16() {
+
+    return {
+
+        chapter:
+            "ГЛАВА VIII · ПАМЯТЬ",
+
+        title:
+            "Батька Минай",
+
+        location:
+            "СУРАЖ · БЕЛАРУСЬ",
+
+        text: `
+            <p>
+                Война когда-нибудь заканчивается.
+                Но память о людях остаётся.
+            </p>
+
+            <p>
+                Для одних Шмырёв — командир.
+                Для других — «Батька Минай».
+                Для истории — один из руководителей
+                партизанского движения в Беларуси.
+            </p>
+
+            <p>
+                Для тебя он теперь человек,
+                за именем которого стоят
+                не только даты и награды,
+                но и люди, решения, потери
+                и огромная ответственность.
+            </p>
+
+            <div class="dialogue">
+                Ты закрываешь дневник.
+                Но история на этом не заканчивается.
+            </div>
+        `,
+
+        choices: [
+
+            {
+                text:
+                    "Открыть исторический блок.",
+
+                action: function() {
+
+                    nextScene(17);
+                }
+            }
+
+        ]
+
+    };
+}
+
+
+/* =====================================================
+   СЦЕНА 17 · ФИНАЛ
+   ===================================================== */
+
+function scene17() {
+
+    return {
+
+        chapter:
+            "ИСТОРИЧЕСКИЙ ЭПИЛОГ",
+
+        title:
+            "А что было на самом деле?",
+
+        location:
+            "ПАМЯТЬ · ИСТОРИЯ · БЕЛАРУСЬ",
+
+        text: `
+            <div class="final">
+
+                <div class="final-title">
+                    📖 А ЧТО БЫЛО НА САМОМ ДЕЛЕ?
+                </div>
+
+                <h2>
+                    Тропа пройдена
+                </h2>
+
+                <p class="final-note">
+                    Твой герой был вымышленным.
+                    Но люди, события и историческая
+                    обстановка, через которые ты прошёл,
+                    основаны на реальной истории.
+                </p>
+
+                <div class="final-fact">
+
+                    <strong>
+                        Минай Филиппович Шмырёв
+                    </strong>
+
+                    <br><br>
+
+                    В июле 1941 года в Суражском районе
+                    был сформирован партизанский отряд
+                    под его руководством.
+
+                    <br><br>
+
+                    Позже Шмырёв создал и возглавил
+                    1-ю Белорусскую партизанскую бригаду.
+
+                    <br><br>
+
+                    Среди партизан он получил прозвище
+                    <strong>«Батька Минай»</strong>.
+
+                    <br><br>
+
+                    Особое место в его биографии занимает
+                    трагическая история его детей,
+                    взятых оккупантами в заложники.
+                    Несмотря на это, Шмырёв продолжил
+                    борьбу.
+
+                    <br><br>
+
+                    История его семьи стала частью
+                    памяти о цене сопротивления
+                    в годы Великой Отечественной войны.
+
+                </div>
+
+                <p class="final-note">
+                    Теперь можно вернуться к главной странице
+                    или открыть другую тропу.
+                </p>
+
+                <div class="final-buttons">
+
+                    <button
+                        class="form-button primary"
+                        onclick="goHome()"
+                    >
+                        🏠 НА ГЛАВНУЮ
+                    </button>
+
+                    <button
+                        class="form-button"
+                        onclick="openHistory()"
+                    >
+                        📚 ИСТОРИЧЕСКАЯ СПРАВКА
+                    </button>
+
+                    <button
+                        class="form-button"
+                        onclick="openDiary()"
+                    >
+                        📖 ОТКРЫТЬ ДНЕВНИК
+                    </button>
+
+                </div>
+
+            </div>
+        `,
+
+        choices: []
+
+    };
+}
+
+
+/* =====================================================
+   МАССИВ СЦЕН
+
+   ===================================================== */
+
+const scenes = [
+
+    scene0,
+    scene1,
+    scene2,
+    scene3,
+    scene4,
+    scene5,
+    scene6,
+    scene7,
+    scene8,
+    scene9,
+    scene10,
+    scene11,
+    scene12,
+    scene13,
+    scene14,
+    scene15,
+    scene16,
+    scene17
+
+];
+
+
+/* =====================================================
+   РЕНДЕР
+   ===================================================== */
+
+function render() {
+
+    const sceneFunction =
+        scenes[game.scene];
+
+    if (!sceneFunction) {
+
+        game.scene =
+            scenes.length - 1;
+
+        saveCurrent();
+
+        return render();
     }
 
-    render(`
 
-        <div class="chapter">
-            ЛИЧНОЕ ДОСЬЕ
-        </div>
+    const scene =
+        sceneFunction();
 
-        <h2>
-            Заполни досье своего героя
-        </h2>
 
-        <div class="dossier">
+    document.getElementById(
+        "chapter"
+    ).textContent =
+        scene.chapter;
 
-            <div class="dossier-note">
-                Используй вымышленные данные —
-                это часть игры.
-            </div>
 
+    document.getElementById(
+        "title"
+    ).textContent =
+        scene.title;
 
-            <div class="field">
 
-                <label>
-                    Имя
-                </label>
+    document.getElementById(
+        "location"
+    ).textContent =
+        scene.location;
 
-                <input
-                    id="firstName"
-                    placeholder="Например: Иван"
-                >
 
-            </div>
+    document.getElementById(
+        "storyText"
+    ).innerHTML =
+        scene.text;
 
 
-            <div class="field">
+    const choiceArea =
+        document.getElementById(
+            "choiceArea"
+        );
 
-                <label>
-                    Фамилия
-                </label>
-
-                <input
-                    id="lastName"
-                    placeholder="Например: Петров"
-                >
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    Возраст
-                </label>
-
-                <input
-                    id="age"
-                    type="number"
-                    min="14"
-                    max="70"
-                    placeholder="Например: 16"
-                >
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    Родной город или деревня
-                </label>
-
-                <input
-                    id="place"
-                    placeholder="Вымышленное место"
-                >
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    Район / область
-                </label>
-
-                <input
-                    id="district"
-                    placeholder="Например: Витебская область"
-                >
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    Имя близкого человека
-                </label>
-
-                <input
-                    id="relative"
-                    placeholder="Вымышленное имя"
-                >
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    Кем он тебе приходится?
-                </label>
-
-                <input
-                    id="relation"
-                    placeholder="Например: сестра"
-                >
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    Как тебя узнать?
-                </label>
-
-                <input
-                    id="mark"
-                    placeholder="Особая примета"
-                >
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    Под каким именем тебя знают товарищи?
-                </label>
-
-                <input
-                    id="code"
-                    placeholder="Кодовое имя"
-                >
-
-            </div>
-
-
-            <button
-                class="continue"
-                onclick="saveDossier()"
-            >
-                💾 СОХРАНИТЬ ДОСЬЕ
-            </button>
-
-        </div>
-
-    `);
-
-}
-
-
-/* =========================================================
-   СОХРАНЕНИЕ ДОСЬЕ
-========================================================= */
-
-function saveDossier() {
-
-    const firstName =
-        document.getElementById("firstName").value.trim();
-
-    const lastName =
-        document.getElementById("lastName").value.trim();
-
-    const age =
-        document.getElementById("age").value.trim();
-
-    const place =
-        document.getElementById("place").value.trim();
-
-    const district =
-        document.getElementById("district").value.trim();
-
-    const relative =
-        document.getElementById("relative").value.trim();
-
-    const relation =
-        document.getElementById("relation").value.trim();
-
-    const mark =
-        document.getElementById("mark").value.trim();
-
-    const code =
-        document.getElementById("code").value.trim();
+    choiceArea.innerHTML = "";
 
 
     if (
-        !firstName ||
-        !lastName ||
-        !age ||
-        !place ||
-        !district ||
-        !relative ||
-        !relation ||
-        !mark ||
-        !code
+        scene.choices &&
+        scene.choices.length > 0
     ) {
 
-        alert("Заполни, пожалуйста, все поля досье.");
+        const title =
+            document.createElement(
+                "div"
+            );
+
+        title.className =
+            "choice-title";
+
+        title.textContent =
+            "ТВОЙ ВЫБОР";
+
+        choiceArea.appendChild(
+            title
+        );
+
+
+        const choices =
+            document.createElement(
+                "div"
+            );
+
+        choices.className =
+            "choices";
+
+
+        scene.choices.forEach(
+            function(choice) {
+
+                const button =
+                    document.createElement(
+                        "button"
+                    );
+
+                button.className =
+                    "choice";
+
+                button.textContent =
+                    choice.text;
+
+                button.onclick =
+                    choice.action;
+
+                choices.appendChild(
+                    button
+                );
+
+            }
+        );
+
+
+        choiceArea.appendChild(
+            choices
+        );
+
+    }
+
+
+    document.getElementById(
+        "trust"
+    ).textContent =
+        game.trust;
+
+
+    document.getElementById(
+        "caution"
+    ).textContent =
+        game.caution;
+
+
+    document.getElementById(
+        "courage"
+    ).textContent =
+        game.courage;
+
+
+    document.getElementById(
+        "information"
+    ).textContent =
+        game.information;
+}
+
+
+/* =====================================================
+   ДОСЬЕ — ОТКРЫТЬ
+   ===================================================== */
+
+function openDossier() {
+
+    if (!hero) {
+
+        showDossierIntro();
 
         return;
-
     }
 
 
-    game.dossier = {
-
-        firstName,
-        lastName,
-        age,
-        place,
-        district,
-        relative,
-        relation,
-        mark,
-        code
-
-    };
-
-
-    game.diary.push(
-        "Июль 1941 года. Моё досье принято. Теперь начинается мой путь."
-    );
-
-
-    saveGame();
-
-    showDossierAccepted();
-
+    showProfileChoice();
 }
 
 
-/* =========================================================
-   ДОСЬЕ ПРИНЯТО
-========================================================= */
-
-function showDossierAccepted() {
-
-    render(`
-
-        <div class="chapter">
-            ДОСЬЕ ПРИНЯТО
-        </div>
-
-        <h1>
-            ${game.dossier.code}
-        </h1>
-
-        <div class="text">
-            Товарищ
-            <strong>
-                ${game.dossier.firstName}
-                ${game.dossier.lastName}
-            </strong>,
-            твоё досье сохранено.
-        </div>
-
-        <div class="quote">
-            Война не знает заранее,
-            какой выбор придётся сделать человеку.
-        </div>
-
-        <div class="text">
-            Но иногда история ставит человека
-            перед выбором, от которого
-            невозможно просто отвернуться.
-        </div>
-
-        <button
-            class="continue"
-            onclick="chapter1()"
-        >
-            НАЧАТЬ ИСТОРИЮ →
-        </button>
-
-    `);
-
-}
-
-
-/* =========================================================
-   ЕСЛИ ДОСЬЕ УЖЕ ЕСТЬ
-========================================================= */
-
-function renderExistingDossier() {
-
-    render(`
-
-        <div class="chapter">
-            ЛИЧНОЕ ДОСЬЕ
-        </div>
-
-        <h2>
-            ${game.dossier.code}
-        </h2>
-
-        <div class="dossier">
-
-            <div class="small-text">
-
-                <p>
-                    <strong>Имя:</strong>
-                    ${game.dossier.firstName}
-                    ${game.dossier.lastName}
-                </p>
-
-                <p>
-                    <strong>Возраст:</strong>
-                    ${game.dossier.age}
-                </p>
-
-                <p>
-                    <strong>Родной край:</strong>
-                    ${game.dossier.place},
-                    ${game.dossier.district}
-                </p>
-
-                <p>
-                    <strong>Близкий человек:</strong>
-                    ${game.dossier.relative}
-                    (${game.dossier.relation})
-                </p>
-
-                <p>
-                    <strong>Особая примета:</strong>
-                    ${game.dossier.mark}
-                </p>
-
-                <p>
-                    <strong>Кодовое имя:</strong>
-                    ${game.dossier.code}
-                </p>
-
-            </div>
-
-
-            <button
-                class="continue"
-                onclick="continueGame()"
-            >
-                ПРОДОЛЖИТЬ ИСТОРИЮ →
-            </button>
-
-        </div>
-
-    `);
-
-}
-
-
-/* =========================================================
-   ПРОДОЛЖЕНИЕ
-========================================================= */
-
-function continueGame() {
-
-    switch (game.chapter) {
-
-        case 0:
-            chapter1();
-            break;
-
-        case 1:
-            chapter2();
-            break;
-
-        case 2:
-            chapter3();
-            break;
-
-        case 3:
-            chapter4();
-            break;
-
-        case 4:
-            chapter5();
-            break;
-
-        case 5:
-            chapter6();
-            break;
-
-        case 6:
-            chapter7();
-            break;
-
-        case 7:
-            historicalPart();
-            break;
-
-        default:
-            chapter1();
-
-    }
-
-}
-
-
-/* =========================================================
-   ГЛАВА I
-========================================================= */
-
-function chapter1() {
-
-    game.chapter = 1;
-
-    saveGame();
-
-    render(`
-
-        <div class="chapter">
-            ГЛАВА I
-        </div>
-
-        <h1>
-            Лес становится ближе
-        </h1>
-
-        <div class="text">
-            Июль 1941 года.
-        </div>
-
-        <div class="text">
-            С каждым днём становится понятнее:
-            война — это не только сообщения
-            с фронта.
-        </div>
-
-        <div class="text">
-            Она приходит в деревни,
-            на дороги, в дома.
-            Она заставляет людей
-            принимать решения,
-            которых ещё недавно
-            никто не представлял.
-        </div>
-
-        <div class="text">
-            В Суражском районе собираются люди,
-            готовые сопротивляться.
-        </div>
-
-        <div class="text">
-            Их возглавляет
-            <strong>Минай Филиппович Шмырёв.</strong>
-        </div>
-
-        <div class="info-card">
-
-            <div class="info-title">
-                ИСТОРИЧЕСКИЙ КОНТЕКСТ
-            </div>
-
-            <div class="small-text">
-                В июле 1941 года в Суражском районе
-                был сформирован партизанский отряд
-                под руководством М. Ф. Шмырёва.
-            </div>
-
-        </div>
-
-        <div class="text">
-            Тебе предстоит находиться рядом
-            с историческими событиями,
-            но твой герой остаётся вымышленным.
-        </div>
-
-        <button
-            class="continue"
-            onclick="chapter2()"
-        >
-            ДАЛЬШЕ →
-        </button>
-
-    `);
-
-}
-
-
-/* =========================================================
-   ГЛАВА II
-========================================================= */
-
-function chapter2() {
-
-    game.chapter = 2;
-
-    game.diary.push(
-        "Мы вошли в лес. Здесь всё непривычно: тишина, дороги, незнакомые люди."
-    );
-
-    saveGame();
-
-    render(`
-
-        <div class="chapter">
-            ГЛАВА II
-        </div>
-
-        <h1>
-            Первые дни
-        </h1>
-
-        <div class="text">
-            В лесу всё кажется непривычным.
-        </div>
-
-        <div class="text">
-            Нет привычных улиц.
-            Нет расписания.
-            Нет уверенности в том,
-            что будет завтра.
-        </div>
-
-        <div class="text">
-            Есть только люди,
-            которым приходится
-            учиться доверять друг другу.
-        </div>
-
-        <div class="text">
-            Шмырёв внимательно разговаривает
-            с людьми, проверяет сведения,
-            распределяет обязанности.
-        </div>
-
-        <div class="quote">
-            В сопротивлении важно не только
-            быть смелым.
-            Важно уметь думать о других.
-        </div>
-
-        <div class="text">
-            Один из товарищей сообщает,
-            что неподалёку замечены незнакомые люди.
-            Нужно понять, действительно ли
-            это опасность.
-        </div>
-
-        <div class="buttons">
-
-            <button
-                class="choice"
-                onclick="chapter3()"
-            >
-                🔎
-                Проверить сведения
-                и сначала понять,
-                что произошло
-            </button>
-
-
-            <button
-                class="choice"
-                onclick="chapter3()"
-            >
-                👥
-                Предупредить товарищей
-                и действовать
-                осторожнее
-            </button>
-
-        </div>
-
-    `);
-
-}
-
-
-/* =========================================================
-   ГЛАВА III
-========================================================= */
-
-function chapter3() {
-
-    game.chapter = 3;
-
-    game.diary.push(
-        "Сегодня я понял(а), что любая ошибка может повлиять не только на тебя."
-    );
-
-    saveGame();
-
-    render(`
-
-        <div class="chapter">
-            ГЛАВА III
-        </div>
-
-        <h1>
-            Цена доверия
-        </h1>
-
-        <div class="text">
-            Проходит несколько недель.
-        </div>
-
-        <div class="text">
-            Отряд становится организованнее.
-            Люди начинают лучше понимать,
-            кто за что отвечает.
-        </div>
-
-        <div class="text">
-            Но одновременно возрастает
-            ответственность.
-        </div>
-
-        <div class="text">
-            Любая информация должна быть проверена.
-            Любое решение может затронуть
-            не одного человека.
-        </div>
-
-        <div class="info-card">
-
-            <div class="info-title">
-                ПОПРОБУЙ ПРЕДСТАВИТЬ
-            </div>
-
-            <div class="small-text">
-                Ты получил важную информацию.
-                Но не знаешь, насколько она точна.
-                Передать её немедленно
-                или сначала проверить?
-            </div>
-
-        </div>
-
-        <div class="text">
-            Ты понимаешь:
-            сопротивление состоит
-            не только из боевых действий.
-        </div>
-
-        <div class="text">
-            Это связь.
-            Разведка.
-            Наблюдение.
-            Помощь людям.
-            Доверие.
-        </div>
-
-        <button
-            class="continue"
-            onclick="chapter4()"
-        >
-            ПРОДОЛЖИТЬ →
-        </button>
-
-    `);
-
-}
-
-
-/* =========================================================
-   ГЛАВА IV — ДЕТИ
-========================================================= */
-
-function chapter4() {
-
-    game.chapter = 4;
-
-    game.diary.push(
-        "Сегодня произошло то, о чём никто не хотел говорить вслух."
-    );
-
-    saveGame();
-
-    render(`
-
-        <div class="chapter">
-            ГЛАВА IV
-        </div>
-
-        <h1>
-            Когда война приходит в семью
-        </h1>
-
-        <div class="text">
-            Однажды становится известно,
-            что оккупанты захватили
-            детей М. Ф. Шмырёва
-            в качестве заложников.
-        </div>
-
-        <div class="text">
-            Миша.
-            Зина.
-            Серёжа.
-            Лиза.
-        </div>
-
-        <div class="text">
-            Четверо детей.
-            От трёх до четырнадцати лет.
-        </div>
-
-        <div class="quote">
-            Требование врага было страшным:
-            Шмырёв должен был сдаться,
-            чтобы спасти детей.
-        </div>
-
-        <div class="text">
-            Представь себя рядом с ним.
-        </div>
-
-        <div class="text">
-            С одной стороны —
-            товарищи и люди,
-            которые рассчитывают на командира.
-        </div>
-
-        <div class="text">
-            С другой —
-            дети, за которых он отвечает
-            прежде всего как отец.
-        </div>
-
-        <h2>
-            Что бы ты выбрал?
-        </h2>
-
-        <div class="buttons">
-
-            <button
-                class="choice"
-                onclick="chooseChildren()"
-            >
-                👨‍👧‍👦
-                Попытаться спасти детей
-            </button>
-
-
-            <button
-                class="choice"
-                onclick="chooseDetachment()"
-            >
-                🌲
-                Остаться с отрядом
-                и продолжить борьбу
-            </button>
-
-        </div>
-
-    `);
-
-}
-
-
-/* =========================================================
-   ВЫБОР ДЕТЕЙ
-========================================================= */
-
-function chooseChildren() {
-
-    game.childrenChoice = true;
-
-    game.detachmentChoice = false;
-
-    game.choice = "children";
-
-    game.diary.push(
-        "Я выбрал(а) детей. Теперь я понимаю, насколько страшным был этот выбор для отца."
-    );
-
-    saveGame();
-
-    render(`
-
-        <div class="chapter">
-            ТВОЙ ВЫБОР
-        </div>
-
-        <h1>
-            Семья
-        </h1>
-
-        <div class="text">
-            Ты решил(а), что судьба детей
-            не может быть отодвинута
-            на второй план.
-        </div>
-
-        <div class="text">
-            Но очень скоро понимаешь:
-            война не предлагает простых решений.
-        </div>
-
-        <div class="text">
-            Ты не можешь изменить уже
-            произошедшее.
-            Ты можешь только представить,
-            насколько тяжёлым был выбор
-            человека, оказавшегося
-            одновременно командиром
-            и отцом.
-        </div>
-
-        <div class="quote">
-            Иногда исторический выбор нельзя
-            измерить словами «правильно»
-            или «неправильно».
-        </div>
-
-        <button
-            class="continue"
-            onclick="chapter5()"
-        >
-            УЗНАТЬ, ЧТО ПРОИЗОШЛО ДАЛЬШЕ →
-        </button>
-
-    `);
-
-}
-
-
-/* =========================================================
-   ВЫБОР ОТРЯДА
-========================================================= */
-
-function chooseDetachment() {
-
-    game.detachmentChoice = true;
-
-    game.childrenChoice = false;
-
-    game.choice = "detachment";
-
-    game.diary.push(
-        "Я выбрал(а) остаться с отрядом. Но теперь понимаю, какой ценой далось это решение."
-    );
-
-    saveGame();
-
-    render(`
-
-        <div class="chapter">
-            ТВОЙ ВЫБОР
-        </div>
-
-        <h1>
-            Отряд
-        </h1>
-
-        <div class="text">
-            Ты решил(а), что командир
-            не может бросить людей,
-            которые доверились ему.
-        </div>
-
-        <div class="text">
-            Но решение не приносит облегчения.
-        </div>
-
-        <div class="text">
-            Потому что теперь ты знаешь:
-            где-то рядом находятся дети,
-            судьба которых зависит
-            от решения их отца.
-        </div>
-
-        <div class="quote">
-            Продолжить борьбу —
-            тоже значит принять
-            ответственность за последствия.
-        </div>
-
-        <button
-            class="continue"
-            onclick="chapter5()"
-        >
-            УЗНАТЬ, ЧТО ПРОИЗОШЛО ДАЛЬШЕ →
-        </button>
-
-    `);
-
-}
-
-
-/* =========================================================
-   ГЛАВА V
-========================================================= */
-
-function chapter5() {
-
-    game.chapter = 5;
-
-    game.diary.push(
-        "Я понял(а), что история состоит не только из событий, но и из человеческих решений."
-    );
-
-    saveGame();
-
-    render(`
-
-        <div class="chapter">
-            ГЛАВА V
-        </div>
-
-        <h1>
-            Записка
-        </h1>
-
-        <div class="text">
-            Самое страшное происходит тогда,
-            когда становится понятно:
-            угроза детям — не пустая угроза.
-        </div>
-
-        <div class="text">
-            Старшая дочь Лиза смогла тайно
-            передать отцу записку.
-        </div>
-
-        <div class="quote">
-            «Папа, за нас не волнуйся,
-            никого не слушай, к немцам не иди...»
-        </div>
-
-        <div class="text">
-            Эти слова изменили всё.
-        </div>
-
-        <div class="text">
-            Теперь решение должно быть принято
-            не только за себя.
-        </div>
-
-        <div class="text">
-            Ты смотришь на события
-            уже не глазами участника,
-            а глазами человека,
-            который начинает понимать
-            настоящую цену исторического выбора.
-        </div>
-
-        <button
-            class="continue"
-            onclick="chapter6()"
-        >
-            ПРОДОЛЖИТЬ →
-        </button>
-
-    `);
-
-}
-
-
-/* =========================================================
-   ГЛАВА VI
-========================================================= */
-
-function chapter6() {
-
-    game.chapter = 6;
-
-    game.diary.push(
-        "Я больше не думаю о войне как о карте и стрелках. За каждым решением стоят люди."
-    );
-
-    saveGame();
-
-    render(`
-
-        <div class="chapter">
-            ГЛАВА VI
-        </div>
-
-        <h1>
-            Не только оружие
-        </h1>
-
-        <div class="text">
-            Война продолжается.
-        </div>
-
-        <div class="text">
-            Партизаны выполняют задания,
-            добывают сведения,
-            поддерживают связь
-            и продолжают сопротивление.
-        </div>
-
-        <div class="text">
-            Но рядом с ними остаются
-            мирные жители.
-        </div>
-
-        <div class="text">
-            Кто-то помогает продуктами.
-            Кто-то передаёт сведения.
-            Кто-то предупреждает об опасности.
-        </div>
-
-        <div class="info-card">
-
-            <div class="info-title">
-                ПОДУМАЙ
-            </div>
-
-            <div class="small-text">
-                Почему сопротивление нельзя
-                свести только к боевым действиям?
-            </div>
-
-        </div>
-
-        <div class="buttons">
-
-            <button
-                class="choice"
-                onclick="chapter7()"
-            >
-                Потому что важны
-                связь, информация
-                и помощь населения.
-            </button>
-
-
-            <button
-                class="choice"
-                onclick="chapter7()"
-            >
-                Потому что сопротивление —
-                это совместная деятельность
-                многих людей.
-            </button>
-
-        </div>
-
-    `);
-
-}
-
-
-/* =========================================================
-   ГЛАВА VII
-========================================================= */
-
-function chapter7() {
-
-    game.chapter = 7;
-
-    game.diary.push(
-        "История Шмырёва заставила меня задуматься о цене мужества."
-    );
-
-    saveGame();
-
-    render(`
-
-        <div class="chapter">
-            ГЛАВА VII
-        </div>
-
-        <h1>
-            Память
-        </h1>
-
-        <div class="text">
-            Время идёт.
-        </div>
-
-        <div class="text">
-            Меняется обстановка.
-            Меняются люди.
-            Меняется сама война.
-        </div>
-
-        <div class="text">
-            Но история остаётся.
-        </div>
-
-        <div class="text">
-            В памяти о Минае Филипповиче Шмырёве
-            соединяются две стороны его судьбы:
-            судьба командира и судьба отца.
-        </div>
-
-        <div class="text">
-            Именно поэтому история
-            не должна превращаться
-            в набор дат и фамилий.
-        </div>
-
-        <div class="quote">
-            История начинается там,
-            где за событиями мы начинаем
-            видеть людей.
-        </div>
-
-        <button
-            class="continue"
-            onclick="historicalPart()"
-        >
-            📖 А ЧТО БЫЛО НА САМОМ ДЕЛЕ?
-        </button>
-
-    `);
-
-}
-
-
-/* =========================================================
-   ИСТОРИЧЕСКАЯ СПРАВКА
-========================================================= */
-
-function historicalPart() {
-
-    game.chapter = 8;
-
-    saveGame();
-
-    render(`
-
-        <div class="chapter">
-            А ЧТО БЫЛО НА САМОМ ДЕЛЕ?
-        </div>
-
-        <h1>
-            Минай Филиппович Шмырёв
-        </h1>
-
-        <div class="history">
-
-            <div class="history-title">
-                ИСТОРИЧЕСКАЯ СПРАВКА
-            </div>
-
-            <p>
-                В июле 1941 года в Суражском районе
-                был сформирован партизанский отряд
-                под руководством
-                <strong>Миная Филипповича Шмырёва
-                (1891–1964).</strong>
-            </p>
-
-            <p>
-                Позже он создал и возглавил
-                1-ю Белорусскую партизанскую бригаду.
-                За время войны среди партизан
-                Шмырёв получил известность
-                под прозвищем
-                <strong>«Батька Минай».</strong>
-            </p>
-
-            <p>
-                Важнейшей частью его судьбы
-                стала трагедия его семьи.
-                Оккупанты захватили в качестве
-                заложников четверых детей Шмырёва:
-                Мишу, Зину, Серёжу и Лизу.
-            </p>
-
-            <p>
-                Захватчики требовали от отца
-                сдаться в обмен на спасение детей.
-            </p>
-
-            <p>
-                Старшая дочь Лиза смогла тайно
-                передать отцу записку.
-                В ней она просила его
-                не поддаваться требованиям врага.
-            </p>
-
-            <p>
-                Несмотря на трагедию,
-                Шмырёв продолжил борьбу.
-            </p>
-
-            <p>
-                За свой патриотический выбор
-                он был награждён,
-                а память о его детях
-                сохранилась в Сураже.
-            </p>
-
-        </div>
-
-
-        <div class="info-card">
-
-            <div class="info-title">
-                ВАЖНО
-            </div>
-
-            <div class="small-text">
-                История твоего героя была
-                художественной частью игры.
-                Минай Филиппович Шмырёв,
-                его дети и описанные
-                трагические события —
-                реальные исторические люди
-                и события.
-            </div>
-
-        </div>
-
-
-        <div class="history">
-
-            <div class="history-title">
-                ЧТО БЫЛО ВЫМЫШЛЕНО
-            </div>
-
-            <p>
-                Твой герой, его имя,
-                семья, кодовое имя,
-                личные переживания,
-                диалоги и выборы —
-                художественная часть проекта.
-            </p>
-
-            <p>
-                Они нужны для того,
-                чтобы ты мог(ла)
-                не просто прочитать
-                исторический материал,
-                а попробовать посмотреть
-                на события глазами
-                участника эпохи.
-            </p>
-
-        </div>
-
-
-        <div class="final">
-
-            <h2>
-                Ты не меняешь историю.
-            </h2>
-
-            <div class="final-text">
-                Ты проходишь её рядом
-                с теми, кто действительно
-                её пережил.
-            </div>
-
-            <div class="final-text"
-                 style="margin-top:20px;">
-                И теперь ты знаешь,
-                почему память —
-                это не только даты.
-            </div>
-
-            <button
-                class="continue"
-                onclick="finishGame()"
-            >
-                ЗАВЕРШИТЬ ТРОПУ →
-            </button>
-
-        </div>
-
-    `);
-
-}
-
-
-/* =========================================================
-   ФИНАЛ
-========================================================= */
-
-function finishGame() {
-
-    game.chapter = 9;
-
-    saveGame();
-
-    render(`
-
-        <div class="chapter">
-            ТРОПА ПРОЙДЕНА
-        </div>
-
-        <h1>
-            Ты дошёл(ла) до конца
-        </h1>
-
-        <div class="text">
-            ${game.dossier
-                ? game.dossier.firstName + ", " + game.dossier.code
-                : "Путник"
-            },
-            эта история завершилась.
-        </div>
-
-        <div class="quote">
-            «Память — это не прошлое.
-            Это то, что мы несём дальше».
-        </div>
-
-        <div class="text">
-            Ты увидел(а) историю Минаи Шмырёва
-            не только как последовательность
-            исторических фактов,
-            но и как историю человека,
-            которому пришлось принимать
-            решения в условиях войны.
-        </div>
-
-        <div class="text">
-            Теперь можно вернуться
-            и пройти другой путь.
-        </div>
-
-        <button
-            class="continue"
-            onclick="goHome()"
-        >
-            🏠 ВЕРНУТЬСЯ НА ГЛАВНУЮ
-        </button>
-
-    `);
-
-}
-
-
-/* =========================================================
+/* =====================================================
    ДНЕВНИК
-========================================================= */
+   ===================================================== */
 
-function showDiary() {
+function openDiary() {
 
-    let entries = "";
+    const screen =
+        document.getElementById(
+            "diaryScreen"
+        );
 
-    if (!game.diary || game.diary.length === 0) {
+    const content =
+        document.getElementById(
+            "diaryContent"
+        );
 
-        entries = `
-            <div class="diary-entry">
-                Пока здесь ничего нет.
-                Пройди несколько сцен истории —
-                и записи появятся.
+
+    if (
+        game.diary.length === 0
+    ) {
+
+        content.innerHTML = `
+            <div class="diary-empty">
+                В дневнике пока ничего нет.
+                Первые записи появятся по мере прохождения истории.
             </div>
         `;
 
     } else {
 
-        game.diary.forEach((entry, index) => {
+        content.innerHTML =
+            game.diary
+                .map(
+                    function(entry) {
 
-            entries += `
-                <div class="diary-entry">
-                    <strong>
-                        Запись ${index + 1}
-                    </strong>
-                    <br>
-                    ${entry}
-                </div>
-            `;
+                        return `
+                            <div class="diary-entry">
+                                ${escapeHtml(entry)}
+                            </div>
+                        `;
 
-        });
+                    }
+                )
+                .join("");
 
     }
 
 
-    render(`
+    if (
+        game.discoveries.length > 0
+    ) {
 
-        <div class="chapter">
-            ЛИЧНЫЙ ДНЕВНИК
-        </div>
+        content.innerHTML += `
+            <h3
+                style="
+                    margin-top:28px;
+                    color:#cbb28d;
+                "
+            >
+                НАЙДЕННЫЕ ИСТОРИЧЕСКИЕ СВЕДЕНИЯ
+            </h3>
+        `;
 
-        <h2>
-            Мои записи
-        </h2>
 
-        <div class="diary">
+        game.discoveries.forEach(
+            function(item) {
 
-            <div class="diary-title">
-                Следы пройденного пути
-            </div>
+                content.innerHTML += `
+                    <div class="diary-entry">
+                        📌 ${escapeHtml(item)}
+                    </div>
+                `;
 
-            ${entries}
+            }
+        );
 
-        </div>
+    }
 
-        <button
-            class="continue"
-            onclick="continueGame()"
-        >
-            ← ВЕРНУТЬСЯ К ИСТОРИИ
-        </button>
 
-    `);
-
+    screen.style.display =
+        "block";
 }
 
 
-/* =========================================================
+/* =====================================================
+   ИСТОРИЯ
+   ===================================================== */
+
+function openHistory() {
+
+    document.getElementById(
+        "historyScreen"
+    ).style.display =
+        "block";
+}
+
+
+/* =====================================================
+   ЗАКРЫТЬ
+   ===================================================== */
+
+function closeOverlays() {
+
+    document.getElementById(
+        "dossierScreen"
+    ).style.display =
+        "none";
+
+    document.getElementById(
+        "diaryScreen"
+    ).style.display =
+        "none";
+
+    document.getElementById(
+        "historyScreen"
+    ).style.display =
+        "none";
+}
+
+
+/* =====================================================
+   ГЛАВНАЯ
+   ===================================================== */
+
+function goHome() {
+
+    window.location.href =
+        "index.html";
+}
+
+
+/* =====================================================
+   ЭКРАНИРОВАНИЕ
+   ===================================================== */
+
+function escapeHtml(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+
+/* =====================================================
    ЗАПУСК
-========================================================= */
+   ===================================================== */
 
-if (game.dossier) {
-
-    render(`
-
-        <div class="chapter">
-            ТРОПА ШМЫРЁВА
-        </div>
-
-        <h1>
-            Суражский район
-        </h1>
-
-        <div class="text">
-            Твоё досье уже сохранено.
-        </div>
-
-        <div class="quote">
-            ${game.dossier.firstName}
-            ${game.dossier.lastName}
-            ·
-            ${game.dossier.code}
-        </div>
-
-        <button
-            class="continue"
-            onclick="continueGame()"
-        >
-            ПРОДОЛЖИТЬ ИСТОРИЮ →
-        </button>
-
-        <button
-            class="continue"
-            onclick="showDossier()"
-            style="margin-left:10px;"
-        >
-            📜 ОТКРЫТЬ ДОСЬЕ
-        </button>
-
-    `);
-
-} else {
-
-    startGame();
-
-}
+start();
 
 </script>
 
