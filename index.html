@@ -65,15 +65,22 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
     border-color: rgba(230, 216, 190, 0.75);
 }
 
-/* Контент главной страницы (пример контейнера) */
+/* КОНТЕЙНЕР ДЛЯ ВАШИХ ССЫЛОК/КАРТОЧЕК */
 .main-content {
     padding: 60px 20px;
-    text-align: center;
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+/* Стили для ваших блоков/карточек на главной (если они текстовые или кнопочные) */
+.index-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
 }
 </style>
 </head>
@@ -95,10 +102,20 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
     <!-- СКРЫТЫЙ АУДИОПЛЕЕР -->
     <audio id="bgMusic" src="music.mp3" preload="auto" loop></audio>
 
-    <!-- ВАШ ОСНОВНОЙ КОНТЕНТ ГЛАВНОЙ СТРАНИЦЫ -->
-    <div class="main-content">
-        <!-- Здесь находятся ваши блоки/ссылки на партизан, подпольщиков и т.д. -->
-    </div>
+    <!-- ОСНОВНОЙ БЛОК ГЛАВНОЙ СТРАНИЦЫ -->
+    <main class="main-content">
+        <div class="index-container">
+            <!-- 
+              ЕСЛИ У ВАС ТУТ БЫЛИ ССЫЛКИ ИЛИ КАРТОЧКИ (на партизан, подпольщиков и т.д.), 
+              вставьте их сюда обратно. Например:
+            -->
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="partisans.html" style="padding: 20px 40px; background: rgba(16, 21, 18, 0.88); border: 1px solid rgba(230, 216, 190, 0.3); color: #f1eadc; text-decoration: none; border-radius: 8px; font-size: 18px;">Партизаны</a>
+                <a href="underground.html" style="padding: 20px 40px; background: rgba(16, 21, 18, 0.88); border: 1px solid rgba(230, 216, 190, 0.3); color: #f1eadc; text-decoration: none; border-radius: 8px; font-size: 18px;">Подполье</a>
+                <a href="test.html" style="padding: 20px 40px; background: rgba(16, 21, 18, 0.88); border: 1px solid rgba(230, 216, 190, 0.3); color: #f1eadc; text-decoration: none; border-radius: 8px; font-size: 18px;">Тест</a>
+            </div>
+        </div>
+    </main>
 
 </div>
 
@@ -117,13 +134,12 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
             music.play().then(() => {
                 musicButton.textContent = "♫ Выключить мелодию";
             }).catch(() => {
-                // Если браузер заблокировал автоплей без клика
                 localStorage.setItem("musicPlaying", "false");
             });
         }
     });
 
-    // Сохраняем текущую секунду трека при его проигрывании
+    // Сохраняем текущую секунду трека
     music.addEventListener("timeupdate", () => {
         localStorage.setItem("musicCurrentTime", music.currentTime);
     });
@@ -139,7 +155,7 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
             });
         } else {
             music.pause();
-            musicButton.textContent = "♫ Включить мелодию";
+            musicButton.textContent = "♫ Выключить мелодию";
             localStorage.setItem("musicPlaying", "false");
         }
     });
