@@ -55,6 +55,95 @@ body {
 
 
 /* =========================================
+   ВЕРХНЯЯ ПАНЕЛЬ
+========================================= */
+
+.top-bar {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    padding: 18px 28px;
+
+    background: rgba(10, 15, 13, 0.72);
+
+    border-bottom:
+        1px solid
+        rgba(230, 216, 190, 0.18);
+}
+
+.top-links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.top-link {
+    color: #e8dfcf;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 15px;
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.top-link:hover {
+    color: #d6b77c;
+}
+
+.top-link.active {
+    color: #d6b77c;
+}
+
+
+/* =========================================
+   КНОПКА МУЗЫКИ
+========================================= */
+
+.music-button {
+    padding: 10px 16px;
+
+    border:
+        1px solid
+        rgba(230, 216, 190, 0.45);
+
+    background: rgba(30, 35, 30, 0.85);
+
+    color: #f1eadc;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.music-button:hover {
+    background: rgba(55, 58, 47, 0.95);
+
+    border-color:
+        rgba(230, 216, 190, 0.75);
+}
+
+
+/* =========================================
    ЦЕНТР
 ========================================= */
 
@@ -191,7 +280,7 @@ body {
 
 
 /* =========================================
-   НОВЫЕ ЗНАЧКИ
+   ЗНАЧКИ
 ========================================= */
 
 .path-icon {
@@ -320,36 +409,45 @@ body {
 
 @media (max-width: 700px) {
 
+    .top-bar {
+        padding: 14px 16px;
+        justify-content: center;
+    }
+
+    .top-links {
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .top-link {
+        font-size: 14px;
+    }
+
     .main {
         padding: 28px 14px 55px;
     }
-
 
     .intro {
         padding: 25px 20px 28px;
     }
 
-
     .paths {
         grid-template-columns: 1fr;
     }
-
 
     .path-button {
         min-height: 240px;
     }
 
-
     .path-icon {
         height: 105px;
     }
-
 
     .path-icon img {
         width: 95px;
         height: 95px;
     }
-
 
     .test-button {
         min-width: 0;
@@ -366,6 +464,53 @@ body {
 <body>
 
 <div class="game">
+
+
+    <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
+
+    <header class="top-bar">
+
+        <nav class="top-links">
+
+            <a
+                href="index.html"
+                class="top-link active"
+            >
+                Главная
+            </a>
+
+            <a
+                href="opisanie.html"
+                class="top-link"
+            >
+                Описание проекта
+            </a>
+
+        </nav>
+
+
+        <button
+            class="music-button"
+            id="musicButton"
+            type="button"
+            aria-pressed="false"
+        >
+            ♫ Включить мелодию
+        </button>
+
+    </header>
+
+
+
+    <!-- МУЗЫКА -->
+
+    <audio
+        id="backgroundMusic"
+        src="music.mp3"
+        loop
+        preload="none"
+    ></audio>
+
 
 
     <!-- ЦЕНТРАЛЬНАЯ ЧАСТЬ -->
@@ -495,6 +640,46 @@ body {
 
 
 </div>
+
+
+<script>
+
+/* =========================================
+   УПРАВЛЕНИЕ МЕЛОДИЕЙ
+========================================= */
+
+const music = document.getElementById("backgroundMusic");
+const musicButton = document.getElementById("musicButton");
+
+musicButton.addEventListener("click", async function () {
+
+    if (music.paused) {
+
+        try {
+            await music.play();
+
+            musicButton.textContent = "♫ Выключить мелодию";
+            musicButton.setAttribute("aria-pressed", "true");
+
+        } catch (error) {
+
+            musicButton.textContent = "Не удалось включить мелодию";
+
+            console.error("Не удалось воспроизвести музыку:", error);
+        }
+
+    } else {
+
+        music.pause();
+
+        musicButton.textContent = "♫ Включить мелодию";
+        musicButton.setAttribute("aria-pressed", "false");
+
+    }
+
+});
+
+</script>
 
 </body>
 </html>
