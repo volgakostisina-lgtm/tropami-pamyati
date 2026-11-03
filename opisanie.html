@@ -1,0 +1,351 @@
+<style>
+/* ===== Описание проекта «Тропами памяти» ===== */
+
+.tm-description {
+    padding: 60px 20px;
+    background: #f4f1e9;
+    color: #292b28;
+    font-family: Arial, sans-serif;
+}
+
+.tm-description * {
+    box-sizing: border-box;
+}
+
+.tm-description__container {
+    width: 100%;
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+.tm-description__heading {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.tm-description__label {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: #8a382b;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.tm-description__heading h1 {
+    margin: 0 0 20px;
+    color: #3b3028;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 42px;
+    line-height: 1.2;
+}
+
+.tm-description__intro {
+    margin: 0;
+    color: #5e574e;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.tm-description__cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    align-items: stretch;
+}
+
+.tm-description__card {
+    padding: 32px;
+    background: #fffdf8;
+    border: 1px solid #ded6c8;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(54, 43, 31, 0.06);
+}
+
+.tm-description__card--students {
+    border-top: 5px solid #9b4937;
+}
+
+.tm-description__card--teachers {
+    border-top: 5px solid #53694d;
+}
+
+.tm-description__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 20px;
+    background: #f0e7d8;
+    border-radius: 12px;
+    font-size: 26px;
+}
+
+.tm-description__card h2 {
+    margin: 0 0 15px;
+    color: #3b3028;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 28px;
+    line-height: 1.3;
+}
+
+.tm-description__lead {
+    margin: 0 0 18px;
+    color: #8a382b;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+.tm-description__card p {
+    color: #514b43;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.tm-description__card h3 {
+    margin: 25px 0 12px;
+    color: #4b5e45;
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+.tm-description__card ul {
+    margin: 12px 0 22px;
+    padding-left: 22px;
+    color: #514b43;
+}
+
+.tm-description__card li {
+    margin-bottom: 9px;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.tm-description__card--students li::marker {
+    color: #9b4937;
+}
+
+.tm-description__card--teachers li::marker {
+    color: #53694d;
+}
+
+.tm-description__note {
+    margin-top: 25px;
+    padding: 17px 20px;
+    background: #f3eee4;
+    border-left: 4px solid #9b4937;
+    border-radius: 0 8px 8px 0;
+    color: #51483d;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.tm-description__card--teachers .tm-description__note {
+    border-left-color: #53694d;
+}
+
+.tm-description__button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 13px 24px;
+    background: #8a382b;
+    border: 2px solid #8a382b;
+    border-radius: 7px;
+    color: #fffdf8 !important;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+}
+
+.tm-description__button:hover {
+    background: transparent;
+    color: #8a382b !important;
+}
+
+.tm-description__conclusion {
+    max-width: 900px;
+    margin: 30px auto 0;
+    padding: 25px 30px;
+    background: #e8e2d5;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.tm-description__conclusion p {
+    margin: 0;
+    color: #453c32;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.8;
+}
+
+/* Адаптация для мобильных устройств */
+
+@media screen and (max-width: 767px) {
+    .tm-description {
+        padding: 40px 15px;
+    }
+
+    .tm-description__heading h1 {
+        font-size: 32px;
+    }
+
+    .tm-description__intro {
+        font-size: 16px;
+    }
+
+    .tm-description__cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .tm-description__card {
+        padding: 23px;
+    }
+
+    .tm-description__card h2 {
+        font-size: 25px;
+    }
+
+    .tm-description__conclusion {
+        padding: 20px;
+    }
+
+    .tm-description__conclusion p {
+        font-size: 16px;
+    }
+}
+</style>
+
+<section class="tm-description" id="tm-description">
+    <div class="tm-description__container">
+
+        <div class="tm-description__heading">
+            <span class="tm-description__label">Интерактивный исторический проект</span>
+            <h1>Тропами памяти</h1>
+            <p class="tm-description__intro">
+                История Орши, Константина Заслонова и железнодорожного подполья
+                в формате интерактивной игры.
+            </p>
+        </div>
+
+        <div class="tm-description__cards">
+
+            <!-- Для учащихся -->
+            <article class="tm-description__card tm-description__card--students">
+                <div class="tm-description__icon">📖</div>
+
+                <h2>Для учащихся</h2>
+
+                <p class="tm-description__lead">
+                    Пройди игровой маршрут — и открой историю Орши.
+                </p>
+
+                <p>
+                    «Тропами памяти» — это возможность погрузиться в события
+                    Великой Отечественной войны, узнать о людях, которые боролись
+                    за свободу родного края, и увидеть историю через интерактивное
+                    повествование.
+                </p>
+
+                <p>Во время прохождения ты сможешь:</p>
+
+                <ul>
+                    <li>узнать больше об истории Орши и подпольном движении;</li>
+                    <li>познакомиться с историческими материалами и событиями;</li>
+                    <li>принимать решения и наблюдать, как они влияют на сюжет;</li>
+                    <li>размышлять о мужестве, ответственности и нравственном выборе;</li>
+                    <li>понять, почему важно сохранять память о прошлом.</li>
+                </ul>
+
+                <div class="tm-description__note">
+                    Здесь важно не только дойти до финала, но и задуматься
+                    о событиях, поступках людей и значении исторической памяти.
+                </div>
+
+                <a href="ССЫЛКА_НА_ИГРУ" class="tm-description__button">
+                    Начать игру
+                </a>
+            </article>
+
+            <!-- Для педагогов -->
+            <article class="tm-description__card tm-description__card--teachers">
+                <div class="tm-description__icon">🎓</div>
+
+                <h2>Для педагогов</h2>
+
+                <p class="tm-description__lead">
+                    Интерактивный ресурс для гражданско-патриотического воспитания.
+                </p>
+
+                <p>
+                    «Тропами памяти» — интерактивная историческая игра,
+                    посвящённая событиям Великой Отечественной войны в Орше,
+                    деятельности Константина Заслонова и железнодорожного подполья.
+                </p>
+
+                <p>
+                    Проект может стать частью воспитательной работы, направленной
+                    на сохранение исторической памяти, формирование
+                    гражданско-патриотических ценностей и уважительного отношения
+                    к героическому прошлому Беларуси.
+                </p>
+
+                <p>
+                    Игровой формат предлагает учащимся стать участниками сюжетного
+                    повествования, принимать решения и размышлять о поступках людей
+                    в сложных исторических обстоятельствах. Это помогает не только
+                    расширить знания о событиях прошлого, но и осмыслить такие
+                    ценности, как <strong>мужество, ответственность, верность долгу,
+                    взаимопомощь и любовь к Родине</strong>.
+                </p>
+
+                <h3>Воспитательные возможности проекта</h3>
+
+                <ul>
+                    <li>формирование интереса к истории Беларуси и малой родины;</li>
+                    <li>воспитание уважения к подвигу защитников Отечества;</li>
+                    <li>сохранение памяти об участниках подпольного и партизанского движения;</li>
+                    <li>осмысление нравственного выбора, личной ответственности и гражданского долга;</li>
+                    <li>развитие сопереживания и понимания ценности мира;</li>
+                    <li>бережное отношение к историческому и культурному наследию.</li>
+                </ul>
+
+                <h3>Как использовать ресурс в воспитательной работе?</h3>
+
+                <ul>
+                    <li>на классных часах и тематических воспитательных мероприятиях;</li>
+                    <li>при проведении мероприятий гражданско-патриотической и военно-патриотической направленности;</li>
+                    <li>в рамках изучения истории родного края;</li>
+                    <li>для индивидуального или группового прохождения с обсуждением;</li>
+                    <li>как основу для проектной и исследовательской деятельности учащихся.</li>
+                </ul>
+
+                <div class="tm-description__note">
+                    После прохождения игры педагог может предложить учащимся
+                    обсудить, какие события и решения произвели на них наибольшее
+                    впечатление, что они узнали о подвиге людей военного времени
+                    и почему важно сохранять память о прошлом.
+                </div>
+            </article>
+
+        </div>
+
+        <div class="tm-description__conclusion">
+            <p>
+                «Тропами памяти» — это возможность обратиться к истории через
+                личное участие, переживание и размышление, помогая учащимся
+                почувствовать связь между прошлым, настоящим и ответственностью
+                за будущее.
+            </p>
+        </div>
+
+    </div>
+</section>
