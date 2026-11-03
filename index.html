@@ -56,8 +56,8 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
         </nav>
     </header>
 
-    <!-- СКРЫТЫЙ АУДИОПЛЕЕР -->
-    <audio id="bgMusic" src="music.mp3" loop></audio>
+    <!-- СКРЫТЫЙ АУДИОПЛЕЕР С АВТОЗАПУСКОМ -->
+    <audio id="bgMusic" src="music.mp3" autoplay loop></audio>
 
     <!-- ЦЕНТРАЛЬНАЯ ЧАСТЬ -->
     <main class="main">
@@ -117,15 +117,16 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
 </div>
 
 <script>
-    // Автоматический запуск музыки при первом клике на любую часть страницы
-    document.addEventListener('click', function musicStarter() {
+    // Попытка запустить музыку при загрузке
+    window.addEventListener('DOMContentLoaded', () => {
         const music = document.getElementById('bgMusic');
-        if (music.paused) {
-            music.play().catch(function(error) {
-                console.log("Автозапуск ожидает действия пользователя", error);
-            });
-        }
-    }, { once: true });
+        music.play().catch(() => {
+            // Если браузер заблокировал автозапуск, музыка включится автоматически по первому клику
+            document.addEventListener('click', () => {
+                music.play();
+            }, { once: true });
+        });
+    });
 </script>
 
 </body>
