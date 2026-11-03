@@ -3,56 +3,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Тропами памяти</title>
+<title>Главная — Тропами памяти</title>
 <style>
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; min-height: 100%; height: 100%; }
+html, body { margin: 0; padding: 0; min-height: 100%; }
 body { font-family: Georgia, "Times New Roman", serif; background: #101512; color: #f1eadc; }
 
-/* Главный контейнер с фоном */
-.game-wrapper {
+.game {
     min-height: 100vh;
     background-image: linear-gradient(rgba(10, 15, 13, 0.20), rgba(10, 15, 13, 0.38)), url("main-background.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     display: flex;
     flex-direction: column;
 }
 
-/* Верхняя панель управления */
+/* ВЕРХНЯЯ ПАНЕЛЬ */
 .top-bar {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 28px;
-    background: rgba(10, 15, 13, 0.82);
+    padding: 18px 28px;
+    background: rgba(10, 15, 13, 0.72);
     border-bottom: 1px solid rgba(230, 216, 190, 0.18);
-    position: sticky;
-    top: 0;
-    z-index: 100;
 }
 
-.nav-links {
+.top-links {
     display: flex;
-    gap: 20px;
+    align-items: center;
+    gap: 22px;
 }
 
-.nav-link {
+.top-link {
     color: #e8dfcf;
     font-family: Georgia, "Times New Roman", serif;
     font-size: 15px;
     text-decoration: none;
-    cursor: pointer;
     transition: color 0.2s ease;
 }
 
-.nav-link:hover, .nav-link.active {
+.top-link:hover, .top-link.active {
     color: #d6b77c;
 }
 
+/* Кнопка управления музыкой */
 .music-button {
     padding: 8px 14px;
     border: 1px solid rgba(230, 216, 190, 0.45);
@@ -62,74 +58,89 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
     font-size: 14px;
     cursor: pointer;
     border-radius: 4px;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, border-color 0.2s ease;
 }
-
 .music-button:hover {
     background: rgba(55, 58, 47, 0.95);
+    border-color: rgba(230, 216, 190, 0.75);
 }
 
-/* Окно для отображения страниц (iframe) */
-.content-frame {
-    width: 100%;
+/* Контент главной страницы (пример контейнера) */
+.main-content {
+    padding: 60px 20px;
+    text-align: center;
     flex: 1;
-    border: none;
-    min-height: calc(100vh - 65px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 </style>
 </head>
 <body>
 
-<div class="game-wrapper">
+<div class="game">
 
-    <!-- ВЕРХНЕЕ МЕНЮ И КНОПКА МУЗЫКИ -->
+    <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
     <header class="top-bar">
-        <nav class="nav-links">
-            <a onclick="loadPage('main_content.html')" class="nav-link active" id="link-main">Главная</a>
-            <a onclick="loadPage('opisanie.html')" class="nav-link" id="link-opisanie">Описание проекта</a>
+        <nav class="top-links">
+            <a href="index.html" class="top-link active">Главная</a>
+            <a href="opisanie.html" class="top-link">Описание проекта</a>
         </nav>
-        
         <button class="music-button" id="musicButton" type="button">
             ♫ Включить мелодию
         </button>
     </header>
 
-    <!-- АУДИОПЛЕЕР (играет беспрерывно) -->
-    <audio id="bgMusic" src="music.mp3" loop preload="auto"></audio>
+    <!-- СКРЫТЫЙ АУДИОПЛЕЕР -->
+    <audio id="bgMusic" src="music.mp3" preload="auto" loop></audio>
 
-    <!-- ИНТЕРАКТИВНОЕ ОКНО СТРАНИЦ -->
-    <iframe id="siteFrame" class="content-frame" src="main_content.html"></iframe>
+    <!-- ВАШ ОСНОВНОЙ КОНТЕНТ ГЛАВНОЙ СТРАНИЦЫ -->
+    <div class="main-content">
+        <!-- Здесь находятся ваши блоки/ссылки на партизан, подпольщиков и т.д. -->
+    </div>
 
 </div>
 
 <script>
-    // Логика переключения страниц без перезагрузки всего сайта
-    function loadPage(pageUrl) {
-        document.getElementById('siteFrame').src = pageUrl;
-        
-        // Подсветка активной ссылки в меню
-        document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
-        if(pageUrl === 'opisanie.html') {
-            document.getElementById('link-opisanie').classList.add('active');
-        } else {
-            document.getElementById('link-main').classList.add('active');
-        }
-    }
-
-    // Управление непрерывной музыкой
     const music = document.getElementById("bgMusic");
     const musicButton = document.getElementById("musicButton");
 
+    // Восстанавливаем состояние музыки при загрузке страницы
+    window.addEventListener("DOMContentLoaded", () => {
+        const musicPlaying = localStorage.getItem("musicPlaying") === "true";
+        const musicCurrentTime = parseFloat(localStorage.getItem("musicCurrentTime")) || 0;
+
+        music.currentTime = musicCurrentTime;
+
+        if (musicPlaying) {
+            music.play().then(() => {
+                musicButton.textContent = "♫ Выключить мелодию";
+            }).catch(() => {
+                // Если браузер заблокировал автоплей без клика
+                localStorage.setItem("musicPlaying", "false");
+            });
+        }
+    });
+
+    // Сохраняем текущую секунду трека при его проигрывании
+    music.addEventListener("timeupdate", () => {
+        localStorage.setItem("musicCurrentTime", music.currentTime);
+    });
+
+    // Управление кнопкой
     musicButton.addEventListener("click", function () {
         if (music.paused) {
             music.play().then(() => {
                 musicButton.textContent = "♫ Выключить мелодию";
+                localStorage.setItem("musicPlaying", "true");
             }).catch(e => {
                 console.log("Ошибка воспроизведения:", e);
             });
         } else {
             music.pause();
             musicButton.textContent = "♫ Включить мелодию";
+            localStorage.setItem("musicPlaying", "false");
         }
     });
 </script>
