@@ -1,537 +1,88 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Тропами памяти</title>
-
 <style>
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; min-height: 100%; }
+body { font-family: Georgia, "Times New Roman", serif; background: #101512; color: #f1eadc; }
+.game { min-height: 100vh; background-image: linear-gradient(rgba(10, 15, 13, 0.20), rgba(10, 15, 13, 0.38)), url("main-background.png"); background-size: cover; background-position: center; background-repeat: no-repeat; display: flex; flex-direction: column; }
+.top-bar { width: 100%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 18px 28px; background: rgba(10, 15, 13, 0.72); border-bottom: 1px solid rgba(230, 216, 190, 0.18); }
+.top-links { display: flex; align-items: center; gap: 22px; }
+.top-link { color: #e8dfcf; font-family: Georgia, "Times New Roman", serif; font-size: 15px; text-decoration: none; transition: color 0.2s ease; }
+.top-link:hover, .top-link.active { color: #d6b77c; }
 
-* {
-    box-sizing: border-box;
-}
-
-html,
-body {
-    margin: 0;
-    padding: 0;
-    min-height: 100%;
-}
-
-body {
-    font-family: Georgia, "Times New Roman", serif;
-    background: #101512;
-    color: #f1eadc;
-}
-
-
-/* =========================================
-   ОСНОВНОЙ ЭКРАН
-========================================= */
-
-.game {
-    min-height: 100vh;
-
-    background-image:
-        linear-gradient(
-            rgba(10, 15, 13, 0.20),
-            rgba(10, 15, 13, 0.38)
-        ),
-        url("main-background.png");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
+.suno-container {
     display: flex;
-    flex-direction: column;
-}
-
-
-/* =========================================
-   ВЕРХНЯЯ ПАНЕЛЬ
-========================================= */
-
-.top-bar {
+    justify-content: center;
+    margin: 15px 0;
     width: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-
-    gap: 12px;
-
-    padding: 18px 28px;
-
-    background: rgba(10, 15, 13, 0.72);
-
-    border-bottom:
-        1px solid
-        rgba(230, 216, 190, 0.18);
 }
 
-.top-links {
-    display: flex;
-    align-items: center;
-    gap: 22px;
-}
-
-.top-link {
-    color: #e8dfcf;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 15px;
-    text-decoration: none;
-
-    transition: color 0.2s ease;
-}
-
-.top-link:hover {
-    color: #d6b77c;
-}
-
-.top-link.active {
-    color: #d6b77c;
-}
-
-
-/* =========================================
-   КНОПКА МУЗЫКИ
-========================================= */
-
-.music-button {
-    padding: 10px 16px;
-
-    border:
-        1px solid
-        rgba(230, 216, 190, 0.45);
-
-    background: rgba(30, 35, 30, 0.85);
-
-    color: #f1eadc;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 14px;
-
-    cursor: pointer;
-
-    transition:
-        background 0.2s ease,
-        border-color 0.2s ease;
-}
-
-.music-button:hover {
-    background: rgba(55, 58, 47, 0.95);
-
-    border-color:
-        rgba(230, 216, 190, 0.75);
-}
-
-
-/* =========================================
-   ЦЕНТР
-========================================= */
-
-.main {
-    flex: 1;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    padding: 45px 20px 70px;
-
-    text-align: center;
-}
-
-
-/* =========================================
-   ВСТУПИТЕЛЬНЫЙ БЛОК
-========================================= */
-
-.intro {
-    max-width: 760px;
-
-    padding: 32px 40px 36px;
-
-    background: rgba(12, 17, 15, 0.72);
-
-    border:
-        1px solid
-        rgba(230, 216, 190, 0.18);
-
-    box-shadow:
-        0 18px 45px rgba(0, 0, 0, 0.35);
-
-    backdrop-filter: blur(3px);
-}
-
-
-.kicker {
-    font-size: 15px;
-
-    letter-spacing: 4px;
-
-    text-transform: uppercase;
-
-    color: #cfc3ad;
-
-    margin-bottom: 12px;
-}
-
-
-.years {
-    margin-top: 10px;
-
-    font-size: 18px;
-
-    letter-spacing: 3px;
-
-    color: #d0c2aa;
-}
-
-
-.description {
-    margin: 18px auto 0;
-
-    max-width: 610px;
-
-    font-size: 16px;
-
-    line-height: 1.7;
-
-    color: #cfc7b9;
-}
-
-
-/* =========================================
-   ДВА ПУТИ
-========================================= */
-
-.paths {
-    margin-top: 32px;
-
-    width: min(900px, 100%);
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 18px;
-}
-
-
-.path-button {
-    min-height: 250px;
-
-    border:
-        1px solid
-        rgba(235, 225, 205, 0.35);
-
-    background:
-        rgba(16, 21, 18, 0.84);
-
-    color: #f1eadc;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    cursor: pointer;
-
-    padding: 25px 20px;
-
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        border-color 0.2s ease;
-
-    box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.28);
-}
-
-
-.path-button:hover {
-    transform: translateY(-3px);
-
-    background:
-        rgba(25, 31, 27, 0.94);
-
-    border-color:
-        rgba(235, 225, 205, 0.65);
-}
-
-
-/* =========================================
-   ЗНАЧКИ
-========================================= */
-
-.path-icon {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    height: 120px;
-
-    margin-bottom: 12px;
-}
-
-
-.path-icon img {
-    width: 110px;
-    height: 110px;
-
-    object-fit: contain;
-
-    display: block;
-
-    filter:
-        drop-shadow(
-            0 4px 8px
-            rgba(0, 0, 0, 0.45)
-        );
-
-    transition:
-        transform 0.25s ease;
-}
-
-
-.path-button:hover .path-icon img {
-    transform: scale(1.05);
-}
-
-
-.path-title {
-    display: block;
-
-    font-size: 22px;
-
-    letter-spacing: 2px;
-
-    text-transform: uppercase;
-}
-
-
-.path-text {
-    display: block;
-
-    margin-top: 7px;
-
-    font-size: 14px;
-
-    color: #c8c0b2;
-
-    line-height: 1.4;
-}
-
-
-/* =========================================
-   КНОПКА ТЕСТА
-========================================= */
-
-.test-button {
-    margin-top: 18px;
-
-    min-width: 360px;
-
-    padding: 17px 30px;
-
-    border:
-        1px solid
-        rgba(230, 216, 190, 0.55);
-
-    background:
-        rgba(49, 48, 39, 0.94);
-
-    color: #f2eadb;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 17px;
-
-    letter-spacing: 2px;
-
-    cursor: pointer;
-
-    text-transform: uppercase;
-
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        border-color 0.2s ease;
-}
-
-
-.test-button:hover {
-    transform: translateY(-2px);
-
-    background:
-        rgba(67, 64, 50, 0.97);
-
-    border-color:
-        rgba(240, 229, 207, 0.8);
-}
-
-
-.test-note {
-    margin-top: 10px;
-
-    font-size: 13px;
-
-    color: #bdb5a8;
-}
-
-
-/* =========================================
-   ТЕЛЕФОН
-========================================= */
-
+.main { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 45px 20px 70px; text-align: center; }
+.intro { max-width: 760px; padding: 32px 40px 36px; background: rgba(12, 17, 15, 0.72); border: 1px solid rgba(230, 216, 190, 0.18); box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35); backdrop-filter: blur(3px); }
+.kicker { font-size: 15px; letter-spacing: 4px; text-transform: uppercase; color: #cfc3ad; margin-bottom: 12px; }
+.years { margin-top: 10px; font-size: 18px; letter-spacing: 3px; color: #d0c2aa; }
+.description { margin: 18px auto 0; max-width: 610px; font-size: 16px; line-height: 1.7; color: #cfc7b9; }
+.paths { margin-top: 32px; width: min(900px, 100%); display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.path-button { min-height: 250px; border: 1px solid rgba(235, 225, 205, 0.35); background: rgba(16, 21, 18, 0.84); color: #f1eadc; font-family: Georgia, "Times New Roman", serif; cursor: pointer; padding: 25px 20px; transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.28); }
+.path-button:hover { transform: translateY(-3px); background: rgba(25, 31, 27, 0.94); border-color: rgba(235, 225, 205, 0.65); }
+.path-icon { display: flex; align-items: center; justify-content: center; height: 120px; margin-bottom: 12px; }
+.path-icon img { width: 110px; height: 110px; object-fit: contain; display: block; filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.45)); transition: transform 0.25s ease; }
+.path-button:hover .path-icon img { transform: scale(1.05); }
+.path-title { display: block; font-size: 22px; letter-spacing: 2px; text-transform: uppercase; }
+.path-text { display: block; margin-top: 7px; font-size: 14px; color: #c8c0b2; line-height: 1.4; }
+.test-button { margin-top: 18px; min-width: 360px; padding: 17px 30px; border: 1px solid rgba(230, 216, 190, 0.55); background: rgba(49, 48, 39, 0.94); color: #f2eadb; font-family: Georgia, "Times New Roman", serif; font-size: 17px; letter-spacing: 2px; cursor: pointer; text-transform: uppercase; transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease; }
+.test-button:hover { transform: translateY(-2px); background: rgba(67, 64, 50, 0.97); border-color: rgba(240, 229, 207, 0.8); }
+.test-note { margin-top: 10px; font-size: 13px; color: #bdb5a8; }
 @media (max-width: 700px) {
-
-    .top-bar {
-        padding: 14px 16px;
-        justify-content: center;
-    }
-
-    .top-links {
-        justify-content: center;
-        gap: 16px;
-        flex-wrap: wrap;
-    }
-
-    .top-link {
-        font-size: 14px;
-    }
-
-    .main {
-        padding: 28px 14px 55px;
-    }
-
-    .intro {
-        padding: 25px 20px 28px;
-    }
-
-    .paths {
-        grid-template-columns: 1fr;
-    }
-
-    .path-button {
-        min-height: 240px;
-    }
-
-    .path-icon {
-        height: 105px;
-    }
-
-    .path-icon img {
-        width: 95px;
-        height: 95px;
-    }
-
-    .test-button {
-        min-width: 0;
-        width: 100%;
-    }
-
+    .top-bar { padding: 14px 16px; justify-content: center; }
+    .top-links { justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .top-link { font-size: 14px; }
+    .main { padding: 28px 14px 55px; }
+    .intro { padding: 25px 20px 28px; }
+    .paths { grid-template-columns: 1fr; }
+    .path-button { min-height: 240px; }
+    .path-icon { height: 105px; }
+    .path-icon img { width: 95px; height: 95px; }
+    .test-button { min-width: 0; width: 100%; }
 }
-
 </style>
-
 </head>
-
-
 <body>
 
 <div class="game">
 
-
     <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
-
     <header class="top-bar">
-
         <nav class="top-links">
-
-            <a
-                href="index.html"
-                class="top-link active"
-            >
-                Главная
-            </a>
-
-            <a
-                href="opisanie.html"
-                class="top-link"
-            >
-                Описание проекта
-            </a>
-
+            <a href="index.html" class="top-link active">Главная</a>
+            <a href="opisanie.html" class="top-link">Описание проекта</a>
         </nav>
-
-
-        <button
-            class="music-button"
-            id="musicButton"
-            type="button"
-            aria-pressed="false"
-        >
-            ♫ Включить мелодию
-        </button>
-
     </header>
 
-
-
-    <!-- МУЗЫКА -->
-
-    <audio
-        id="backgroundMusic"
-        src="music.mp3"
-        loop
-        preload="none"
-    ></audio>
-
-
+    <!-- ВСТРОЕННЫЙ ПЛЕЕР SUNO -->
+    <div class="suno-container">
+        <iframe src="https://suno.com/embed/6fda1516-cb0e-4988-9bbc-7dedd235be7c" 
+                width="760" 
+                height="240" 
+                style="border:0; border-radius: 12px; max-width: 100%;" 
+                allow="autoplay; encrypted-media; fullscreen" 
+                allowfullscreen 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            <a href="https://suno.com/song/6fda1516-cb0e-4988-9bbc-7dedd235be7c">Listen on Suno</a>
+        </iframe>
+    </div>
 
     <!-- ЦЕНТРАЛЬНАЯ ЧАСТЬ -->
-
     <main class="main">
-
-
         <!-- ВСТУПЛЕНИЕ -->
-
         <section class="intro">
-
-            <div class="kicker">
-                Беларусь · 1941–1944
-            </div>
-
-
-            <div class="years">
-                ВЕЛИКАЯ ОТЕЧЕСТВЕННАЯ ВОЙНА
-            </div>
-
-
+            <div class="kicker">Беларусь · 1941–1944</div>
+            <div class="years">ВЕЛИКАЯ ОТЕЧЕСТВЕННАЯ ВОЙНА</div>
             <div class="description">
                 Перед тобой два пути сопротивления.
                 Ты можешь выбрать один самостоятельно
@@ -539,147 +90,49 @@ body {
                 которое поможет определить,
                 какой путь тебе ближе.
             </div>
-
         </section>
 
-
-
         <!-- ДВА ПУТИ -->
-
         <div class="paths">
-
-
             <!-- ПАРТИЗАНЫ -->
-
-            <button
-                class="path-button"
-                onclick="window.location.href='partisans.html'"
-            >
-
+            <button class="path-button" onclick="window.location.href='partisans.html'">
                 <span class="path-icon">
-
-                    <img
-                        src="znak-partizany.png"
-                        alt="Знак партизан"
-                    >
-
+                    <img src="znak-partizany.png" alt="Знак партизан">
                 </span>
-
-
-                <span class="path-title">
-                    Партизаны
-                </span>
-
-
+                <span class="path-title">Партизаны</span>
                 <span class="path-text">
                     Лес, разведка, рейды,
                     командная работа и борьба
                     на оккупированной территории.
                 </span>
-
             </button>
 
-
-
             <!-- ПОДПОЛЬЩИКИ -->
-
-            <button
-                class="path-button"
-                onclick="window.location.href='underground.html'"
-            >
-
+            <button class="path-button" onclick="window.location.href='underground.html'">
                 <span class="path-icon">
-
-                    <img
-                        src="znak-podpolshchiki.png"
-                        alt="Знак подпольщиков"
-                    >
-
+                    <img src="znak-podpolshchiki.png" alt="Знак подпольщиков">
                 </span>
-
-
-                <span class="path-title">
-                    Подпольщики
-                </span>
-
-
+                <span class="path-title">Подпольщики</span>
                 <span class="path-text">
                     Конспирация, связь,
                     информация, осторожность
                     и сопротивление в оккупации.
                 </span>
-
             </button>
-
-
         </div>
-
-
 
         <!-- ТЕСТ -->
-
-        <button
-            class="test-button"
-            onclick="window.location.href='test.html'"
-        >
-
-            🧭 ОПРЕДЕЛИТЬ СВОЙ ПУТЬ
-
+        <button class="test-button" onclick="window.location.href='test.html'">
+            ОПРЕДЕЛИТЬ СВОЙ ПУТЬ
         </button>
 
-
         <div class="test-note">
-
             Небольшое испытание по качествам и умениям
             · здесь нет неправильных ответов
-
         </div>
-
-
     </main>
 
-
 </div>
-
-
-<script>
-
-/* =========================================
-   УПРАВЛЕНИЕ МЕЛОДИЕЙ
-========================================= */
-
-const music = document.getElementById("backgroundMusic");
-const musicButton = document.getElementById("musicButton");
-
-musicButton.addEventListener("click", async function () {
-
-    if (music.paused) {
-
-        try {
-            await music.play();
-
-            musicButton.textContent = "♫ Выключить мелодию";
-            musicButton.setAttribute("aria-pressed", "true");
-
-        } catch (error) {
-
-            musicButton.textContent = "Не удалось включить мелодию";
-
-            console.error("Не удалось воспроизвести музыку:", error);
-        }
-
-    } else {
-
-        music.pause();
-
-        musicButton.textContent = "♫ Включить мелодию";
-        musicButton.setAttribute("aria-pressed", "false");
-
-    }
-
-});
-
-</script>
 
 </body>
 </html>
