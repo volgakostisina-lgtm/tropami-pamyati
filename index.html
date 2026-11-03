@@ -14,13 +14,6 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
 .top-link { color: #e8dfcf; font-family: Georgia, "Times New Roman", serif; font-size: 15px; text-decoration: none; transition: color 0.2s ease; }
 .top-link:hover, .top-link.active { color: #d6b77c; }
 
-.suno-container {
-    display: flex;
-    justify-content: center;
-    margin: 15px 0;
-    width: 100%;
-}
-
 .main { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 45px 20px 70px; text-align: center; }
 .intro { max-width: 760px; padding: 32px 40px 36px; background: rgba(12, 17, 15, 0.72); border: 1px solid rgba(230, 216, 190, 0.18); box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35); backdrop-filter: blur(3px); }
 .kicker { font-size: 15px; letter-spacing: 4px; text-transform: uppercase; color: #cfc3ad; margin-bottom: 12px; }
@@ -63,19 +56,8 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
         </nav>
     </header>
 
-    <!-- ВСТРОЕННЫЙ ПЛЕЕР SUNO -->
-    <div class="suno-container">
-        <iframe src="https://suno.com/embed/6fda1516-cb0e-4988-9bbc-7dedd235be7c" 
-                width="760" 
-                height="240" 
-                style="border:0; border-radius: 12px; max-width: 100%;" 
-                allow="autoplay; encrypted-media; fullscreen" 
-                allowfullscreen 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            <a href="https://suno.com/song/6fda1516-cb0e-4988-9bbc-7dedd235be7c">Listen on Suno</a>
-        </iframe>
-    </div>
+    <!-- СКРЫТЫЙ АУДИОПЛЕЕР -->
+    <audio id="bgMusic" src="music.mp3" loop></audio>
 
     <!-- ЦЕНТРАЛЬНАЯ ЧАСТЬ -->
     <main class="main">
@@ -133,6 +115,18 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
     </main>
 
 </div>
+
+<script>
+    // Автоматический запуск музыки при первом клике на любую часть страницы
+    document.addEventListener('click', function musicStarter() {
+        const music = document.getElementById('bgMusic');
+        if (music.paused) {
+            music.play().catch(function(error) {
+                console.log("Автозапуск ожидает действия пользователя", error);
+            });
+        }
+    }, { once: true });
+</script>
 
 </body>
 </html>
