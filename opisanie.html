@@ -61,9 +61,17 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
     margin: 0 auto;
 }
 
+/* Верхний блок в рамочке (как у карточек) */
 .tm-description__heading {
-    max-width: 850px;
-    margin: 0 auto 40px;
+    max-width: 100%;
+    margin: 0 auto 35px;
+    padding: 35px 40px;
+    background: rgba(16, 21, 18, 0.88);
+    border: 1px solid rgba(230, 216, 190, 0.22);
+    border-top: 5px solid #d6b77c;
+    border-radius: 16px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(3px);
     text-align: center;
 }
 
@@ -88,7 +96,7 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
 /* Текст вверху */
 .tm-description__intro {
     margin: 0;
-    color: #f1eadc;
+    color: #cfc7b9;
     font-family: Georgia, "Times New Roman", serif;
     font-size: 18px;
     font-style: italic;
@@ -215,6 +223,7 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
 @media screen and (max-width: 767px) {
     .top-bar { padding: 14px 16px; justify-content: center; }
     .tm-description { padding: 40px 15px; }
+    .tm-description__heading { padding: 25px 20px; }
     .tm-description__heading h1 { font-size: 32px; }
     .tm-description__intro { font-size: 16px; }
     .tm-description__cards { grid-template-columns: 1fr; gap: 20px; }
@@ -241,6 +250,7 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
     <section class="tm-description" id="tm-description">
         <div class="tm-description__container">
 
+            <!-- Верхний блок в рамочке -->
             <div class="tm-description__heading">
                 <span class="tm-description__label">Интерактивный исторический проект</span>
                 <h1>Тропами памяти</h1>
