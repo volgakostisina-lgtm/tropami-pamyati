@@ -61,7 +61,7 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
     margin: 0 auto;
 }
 
-/* Верхний блок в рамочке (как у карточек) */
+/* Верхний блок в рамочке */
 .tm-description__heading {
     max-width: 100%;
     margin: 0 auto 35px;
@@ -93,7 +93,6 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
     line-height: 1.2;
 }
 
-/* Текст вверху */
 .tm-description__intro {
     margin: 0;
     color: #cfc7b9;
@@ -236,21 +235,23 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
 
 <div class="game">
 
-    <!-- ВЕРХНЯЯ ПАНЕЛЬ (только кнопка музыки) -->
+    <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
     <header class="top-bar">
         <button class="music-button" id="musicButton" type="button">
             ♫ Включить мелодию
         </button>
     </header>
 
-    <!-- СКРЫТЫЙ АУДИОПЛЕЕР -->
-    <audio id="bgMusic" src="music.mp3" loop></audio>
+    <!-- АУДИОПЛЕЕР С ПРЯМОЙ ССЫЛКОЙ -->
+    <audio id="bgMusic" preload="auto" loop>
+        <source src="music.mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает аудио элемент.
+    </audio>
 
     <!-- КОНТЕНТ СТРАНИЦЫ ОПИСАНИЯ -->
     <section class="tm-description" id="tm-description">
         <div class="tm-description__container">
 
-            <!-- Верхний блок в рамочке -->
             <div class="tm-description__heading">
                 <span class="tm-description__label">Интерактивный исторический проект</span>
                 <h1>Тропами памяти</h1>
@@ -367,7 +368,6 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
 </div>
 
 <script>
-    // Логика управления музыкой
     const music = document.getElementById("bgMusic");
     const musicButton = document.getElementById("musicButton");
 
@@ -377,6 +377,7 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
                 musicButton.textContent = "♫ Выключить мелодию";
             }).catch(e => {
                 console.log("Ошибка воспроизведения:", e);
+                alert("Не удалось воспроизвести аудио. Убедитесь, что файл music.mp3 находится в папке с сайтом.");
             });
         } else {
             music.pause();
