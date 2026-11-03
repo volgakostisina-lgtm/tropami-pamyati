@@ -2,57 +2,13 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Описание проекта — Тропами памяти</title>
 <style>
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; min-height: 100%; }
-body { font-family: Georgia, "Times New Roman", serif; background: #101512; color: #f1eadc; }
+html, body { margin: 0; padding: 0; background: transparent; color: #f1eadc; font-family: Georgia, "Times New Roman", serif; }
 
-.game {
-    min-height: 100vh;
-    background-image: linear-gradient(rgba(10, 15, 13, 0.20), rgba(10, 15, 13, 0.38)), url("main-background.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-}
-
-/* ВЕРХНЯЯ ПАНЕЛЬ (только кнопка музыки) */
-.top-bar {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 18px 28px;
-    background: rgba(10, 15, 13, 0.72);
-    border-bottom: 1px solid rgba(230, 216, 190, 0.18);
-}
-
-/* Кнопка управления музыкой */
-.music-button {
-    padding: 8px 14px;
-    border: 1px solid rgba(230, 216, 190, 0.45);
-    background: rgba(30, 35, 30, 0.85);
-    color: #f1eadc;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background 0.2s ease, border-color 0.2s ease;
-}
-.music-button:hover {
-    background: rgba(55, 58, 47, 0.95);
-    border-color: rgba(230, 216, 190, 0.75);
-}
-
-/* ===== СТИЛИ ОПИСАНИЯ ПРОЕКТА ===== */
 .tm-description {
-    padding: 50px 20px;
-    color: #f1eadc;
+    padding: 40px 20px;
     font-family: Arial, sans-serif;
-    flex: 1;
 }
 
 .tm-description__container {
@@ -61,7 +17,6 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
     margin: 0 auto;
 }
 
-/* Верхний блок в рамочке */
 .tm-description__heading {
     max-width: 100%;
     margin: 0 auto 35px;
@@ -106,7 +61,6 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 25px;
-    align-items: stretch;
 }
 
 .tm-description__card {
@@ -118,63 +72,15 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
     backdrop-filter: blur(3px);
 }
 
-.tm-description__card--students {
-    border-top: 5px solid #b35443;
-}
+.tm-description__card--students { border-top: 5px solid #b35443; }
+.tm-description__card--teachers { border-top: 5px solid #63825c; }
 
-.tm-description__card--teachers {
-    border-top: 5px solid #63825c;
-}
-
-.tm-description__card h2 {
-    margin: 0 0 15px;
-    color: #f1eadc;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 28px;
-    line-height: 1.3;
-}
-
-.tm-description__lead {
-    margin: 0 0 18px;
-    color: #d6b77c;
-    font-size: 17px;
-    font-weight: 700;
-    line-height: 1.6;
-}
-
-.tm-description__card p {
-    color: #cfc7b9;
-    font-size: 15px;
-    line-height: 1.8;
-}
-
-.tm-description__card h3 {
-    margin: 25px 0 12px;
-    color: #9cb894;
-    font-size: 17px;
-    line-height: 1.5;
-    font-family: Georgia, "Times New Roman", serif;
-}
-
-.tm-description__card ul {
-    margin: 12px 0 22px;
-    padding-left: 22px;
-    color: #cfc7b9;
-}
-
-.tm-description__card li {
-    margin-bottom: 9px;
-    font-size: 15px;
-    line-height: 1.7;
-}
-
-.tm-description__card--students li::marker {
-    color: #b35443;
-}
-
-.tm-description__card--teachers li::marker {
-    color: #63825c;
-}
+.tm-description__card h2 { margin: 0 0 15px; color: #f1eadc; font-family: Georgia, serif; font-size: 28px; }
+.tm-description__lead { margin: 0 0 18px; color: #d6b77c; font-size: 17px; font-weight: 700; }
+.tm-description__card p { color: #cfc7b9; font-size: 15px; line-height: 1.8; }
+.tm-description__card h3 { margin: 25px 0 12px; color: #9cb894; font-size: 17px; }
+.tm-description__card ul { margin: 12px 0 22px; padding-left: 22px; color: #cfc7b9; }
+.tm-description__card li { margin-bottom: 9px; font-size: 15px; line-height: 1.7; }
 
 .tm-description__note {
     margin-top: 25px;
@@ -184,207 +90,67 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
     border-radius: 0 8px 8px 0;
     color: #e8dfcf;
     font-size: 14px;
-    line-height: 1.7;
 }
+.tm-description__card--teachers .tm-description__note { border-left-color: #63825c; }
 
-.tm-description__card--teachers .tm-description__note {
-    border-left-color: #63825c;
-}
-
-/* Кнопка «Главная» внизу */
-.tm-description__footer {
-    margin-top: 40px;
-    text-align: center;
-}
-
-.home-button {
-    display: inline-block;
-    padding: 14px 35px;
-    border: 1px solid rgba(230, 216, 190, 0.55);
-    background: rgba(49, 48, 39, 0.94);
-    color: #f2eadb;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 16px;
-    letter-spacing: 2px;
-    text-decoration: none;
-    text-transform: uppercase;
-    border-radius: 4px;
-    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-}
-
-.home-button:hover {
-    transform: translateY(-2px);
-    background: rgba(67, 64, 50, 0.97);
-    border-color: rgba(240, 229, 207, 0.8);
-}
-
-/* Адаптация для мобильных устройств */
 @media screen and (max-width: 767px) {
-    .top-bar { padding: 14px 16px; justify-content: center; }
-    .tm-description { padding: 40px 15px; }
-    .tm-description__heading { padding: 25px 20px; }
-    .tm-description__heading h1 { font-size: 32px; }
-    .tm-description__intro { font-size: 16px; }
-    .tm-description__cards { grid-template-columns: 1fr; gap: 20px; }
-    .tm-description__card { padding: 23px; }
-    .tm-description__card h2 { font-size: 25px; }
+    .tm-description__cards { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 
-<div class="game">
+<section class="tm-description">
+    <div class="tm-description__container">
 
-    <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
-    <header class="top-bar">
-        <button class="music-button" id="musicButton" type="button">
-            ♫ Включить мелодию
-        </button>
-    </header>
-
-    <!-- АУДИОПЛЕЕР С ПРЯМОЙ ССЫЛКОЙ -->
-    <audio id="bgMusic" preload="auto" loop>
-        <source src="music.mp3" type="audio/mpeg">
-        Ваш браузер не поддерживает аудио элемент.
-    </audio>
-
-    <!-- КОНТЕНТ СТРАНИЦЫ ОПИСАНИЯ -->
-    <section class="tm-description" id="tm-description">
-        <div class="tm-description__container">
-
-            <div class="tm-description__heading">
-                <span class="tm-description__label">Интерактивный исторический проект</span>
-                <h1>Тропами памяти</h1>
-                <p class="tm-description__intro">
-                    «Тропами памяти» — это возможность обратиться к истории через
-                    личное участие, переживание и размышление, помогая учащимся
-                    почувствовать связь между прошлым, настоящим и ответственностью
-                    за будущее.
-                </p>
-            </div>
-
-            <div class="tm-description__cards">
-
-                <!-- Для учащихся -->
-                <article class="tm-description__card tm-description__card--students">
-                    <h2>Для учащихся</h2>
-
-                    <p class="tm-description__lead">
-                        Пройди игровой маршрут — и открой страницы истории.
-                    </p>
-
-                    <p>
-                        «Тропами памяти» — это возможность погрузиться в события
-                        Великой Отечественной войны, узнать о людях, которые боролись
-                        за свободу родного края, и увидеть историю через интерактивное
-                        повествование.
-                    </p>
-
-                    <p>Во время прохождения ты сможешь:</p>
-
-                    <ul>
-                        <li>узнать больше об историческом прошлом и подпольном движении;</li>
-                        <li>познакомиться с материалами и событиями тех лет;</li>
-                        <li>принимать решения и наблюдать, как они влияют на сюжет;</li>
-                        <li>размышлять о мужестве, ответственности и нравственном выборе;</li>
-                        <li>понять, почему важно сохранять память о прошлом.</li>
-                    </ul>
-
-                    <div class="tm-description__note">
-                        Здесь важно не только дойти до финала, но и задуматься
-                        о событиях, поступках людей и значении исторической памяти.
-                    </div>
-                </article>
-
-                <!-- Для педагогов -->
-                <article class="tm-description__card tm-description__card--teachers">
-                    <h2>Для педагогов</h2>
-
-                    <p class="tm-description__lead">
-                        Интерактивный ресурс для гражданско-патриотического воспитания.
-                    </p>
-
-                    <p>
-                        «Тропами памяти» — интерактивная историческая игра,
-                        посвящённая событиям Великой Отечественной войны,
-                        деятельности народных героев и подпольного сопротивления.
-                    </p>
-
-                    <p>
-                        Проект может стать частью воспитательной работы, направленной
-                        на сохранение исторической памяти, формирование
-                        гражданско-патриотических ценностей и уважительного отношения
-                        к героическому прошлому.
-                    </p>
-
-                    <p>
-                        Игровой формат предлагает учащимся стать участниками сюжетного
-                        повествования, принимать решения и размышлять о поступках людей
-                        в сложных исторических обстоятельствах. Это помогает не только
-                        расширить знания о событиях прошлого, но и осмыслить такие
-                        ценности, как <strong>мужество, ответственность, верность долгу,
-                        взаимопомощь и любовь к Родине</strong>.
-                    </p>
-
-                    <h3>Воспитательные возможности проекта</h3>
-
-                    <ul>
-                        <li>формирование интереса к истории и малой родине;</li>
-                        <li>воспитание уважения к подвигу защитников Отечества;</li>
-                        <li>сохранение памяти об участниках сопротивления;</li>
-                        <li>осмысление нравственного выбора, личной ответственности и гражданского долга;</li>
-                        <li>развитие сопереживания и понимания ценности мира;</li>
-                        <li>бережное отношение к историческому и культурному наследию.</li>
-                    </ul>
-
-                    <h3>Как использовать ресурс в воспитательной работе?</h3>
-
-                    <ul>
-                        <li>на классных часах и тематических воспитательных мероприятиях;</li>
-                        <li>при проведении мероприятий гражданско-патриотической и военно-патриотической направленности;</li>
-                        <li>в рамках изучения истории родного края;</li>
-                        <li>для индивидуального или группового прохождения с обсуждением;</li>
-                        <li>как основу для проектной и исследовательской деятельности учащихся.</li>
-                    </ul>
-
-                    <div class="tm-description__note">
-                        После прохождения игры педагог может предложить учащимся
-                        обсудить, какие события и решения произвели на них наибольшее
-                        впечатление, что они узнали о подвиге людей военного времени
-                        и почему важно сохранять память о прошлом.
-                    </div>
-                </article>
-
-            </div>
-
-            <!-- Кнопка «Главная» внизу -->
-            <div class="tm-description__footer">
-                <a href="index.html" class="home-button">Главная</a>
-            </div>
-
+        <div class="tm-description__heading">
+            <span class="tm-description__label">Интерактивный исторический проект</span>
+            <h1>Тропами памяти</h1>
+            <p class="tm-description__intro">
+                «Тропами памяти» — это возможность обратиться к истории через
+                личное участие, переживание и размышление, помогая учащимся
+                почувствовать связь между прошлым, настоящим и ответственностью
+                за будущее.
+            </p>
         </div>
-    </section>
 
-</div>
+        <div class="tm-description__cards">
+            <!-- Для учащихся -->
+            <article class="tm-description__card tm-description__card--students">
+                <h2>Для учащихся</h2>
+                <p class="tm-description__lead">Пройди игровой маршрут — и открой страницы истории.</p>
+                <p>«Тропами памяти» — это возможность погрузиться в события Великой Отечественной войны, узнать о людях, которые боролись за свободу родного края, и увидеть историю через интерактивное повествование.</p>
+                <p>Во время прохождения ты сможешь:</p>
+                <ul>
+                    <li>узнать больше об историческом прошлом и подпольном движении;</li>
+                    <li>познакомиться с материалами и событиями тех лет;</li>
+                    <li>принимать решения и наблюдать, как они влияют на сюжет;</li>
+                    <li>размышлять о мужестве, ответственности и нравственном выборе;</li>
+                    <li>понять, почему важно сохранять память о прошлом.</li>
+                </ul>
+                <div class="tm-description__note">Здесь важно не только дойти до финала, но и задуматься о событиях, поступках людей и значении исторической памяти.</div>
+            </article>
 
-<script>
-    const music = document.getElementById("bgMusic");
-    const musicButton = document.getElementById("musicButton");
+            <!-- Для педагогов -->
+            <article class="tm-description__card tm-description__card--teachers">
+                <h2>Для педагогов</h2>
+                <p class="tm-description__lead">Интерактивный ресурс для гражданско-патриотического воспитания.</p>
+                <p>«Тропами памяти» — интерактивная историческая игра, посвящённая событиям Великой Отечественной войны, деятельности народных героев и подпольного сопротивления.</p>
+                <p>Проект может стать частью воспитательной работы, направленной на сохранение исторической памяти, формирование гражданско-патриотических ценностей и уважительного отношения к героическому прошлому.</p>
+                <p>Игровой формат предлагает учащимся стать участниками сюжетного повествования, принимать решения и размышлять о поступках людей в сложных исторических обстоятельствах.</p>
+                <h3>Воспитательные возможности проекта</h3>
+                <ul>
+                    <li>формирование интереса к истории и малой родине;</li>
+                    <li>воспитание уважения к подвигу защитников Отечества;</li>
+                    <li>сохранение памяти об участниках сопротивления;</li>
+                    <li>осмысление нравственного выбора и гражданского долга.</li>
+                </ul>
+                <div class="tm-description__note">После прохождения игры педагог может предложить учащимся обсудить наиболее впечатлившие события и выводы.</div>
+            </article>
+        </div>
 
-    musicButton.addEventListener("click", function () {
-        if (music.paused) {
-            music.play().then(() => {
-                musicButton.textContent = "♫ Выключить мелодию";
-            }).catch(e => {
-                console.log("Ошибка воспроизведения:", e);
-                alert("Не удалось воспроизвести аудио. Убедитесь, что файл music.mp3 находится в папке с сайтом.");
-            });
-        } else {
-            music.pause();
-            musicButton.textContent = "♫ Включить мелодию";
-        }
-    });
-</script>
+    </div>
+</section>
 
 </body>
 </html>
