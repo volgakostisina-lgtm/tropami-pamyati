@@ -1,832 +1,575 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Тропа подпольщиков · Тропами памяти</title>
+<title>Подпольщики · Тропами памяти</title>
 
 <style>
-
-* {
-    box-sizing: border-box;
-}
-
-html,
-body {
-    margin: 0;
-    padding: 0;
-    min-height: 100%;
-}
-
-body {
-    font-family: Georgia, "Times New Roman", serif;
-    color: #eee;
-
-    background:
-        linear-gradient(
-            rgba(8, 10, 11, .58),
-            rgba(8, 10, 11, .78)
-        ),
-        url("main-background.png")
-        center / cover fixed no-repeat;
-}
-
-
-/* =========================
-   ВЕРХНЯЯ ПАНЕЛЬ
-========================= */
-
-.topbar {
-
-    position: fixed;
-
-    top: 0;
-    left: 0;
-    right: 0;
-
-    z-index: 100;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 13px 22px;
-
-    background: rgba(10, 11, 12, .92);
-
-    border-bottom:
-        1px solid rgba(255,255,255,.15);
-
-    backdrop-filter: blur(7px);
-}
-
-
-.logo {
-
-    color: #d8c49b;
-
-    font-size: 14px;
-
-    letter-spacing: 2px;
-
-    white-space: nowrap;
-}
-
-
-.top-buttons {
-
-    display: flex;
-
-    gap: 8px;
-
-    flex-wrap: wrap;
-
-    justify-content: flex-end;
-}
-
-
-.top-buttons button {
-
-    padding: 7px 11px;
-
-    border-radius: 5px;
-
-    border:
-        1px solid rgba(255,255,255,.18);
-
-    background:
-        rgba(255,255,255,.06);
-
-    color: #eee;
-
-    font-family: inherit;
-
-    cursor: pointer;
-
-    transition: .2s;
-}
-
-
-.top-buttons button:hover {
-
-    background:
-        rgba(255,255,255,.14);
-
-}
-
-
-/* =========================
-   ОСНОВНАЯ ОБЛАСТЬ
-========================= */
-
-.page {
-
-    min-height: 100vh;
-
-    max-width: 1150px;
-
-    margin: 0 auto;
-
-    padding:
-        120px 25px 70px;
-}
-
-
-/* =========================
-   ЗАГОЛОВОК
-========================= */
-
-.intro {
-
-    max-width: 850px;
-
-    margin:
-        0 auto 38px;
-
-    padding: 35px;
-
-    text-align: center;
-
-    background:
-        rgba(11, 13, 14, .87);
-
-    border:
-        1px solid rgba(255,255,255,.15);
-
-    border-radius: 10px;
-
-    box-shadow:
-        0 20px 55px rgba(0,0,0,.42);
-}
-
-
-.label {
-
-    margin-bottom: 15px;
-
-    color: #bda675;
-
-    font-size: 13px;
-
-    letter-spacing: 4px;
-
-    text-transform: uppercase;
-}
-
-
-h1 {
-
-    margin: 0 0 18px;
-
-    color: #f1e6d0;
-
-    font-size:
-        clamp(38px, 7vw, 68px);
-
-    line-height: 1.05;
-
-    letter-spacing: 2px;
-}
-
-
-.subtitle {
-
-    margin: 0;
-
-    color: #ddd4c4;
-
-    font-size: 20px;
-
-    line-height: 1.6;
-}
-
-
-.divider {
-
-    width: 90px;
-
-    height: 1px;
-
-    margin: 25px auto;
-
-    background: #a38b5d;
-}
-
-
-/* =========================
-   ИСТОРИИ
-========================= */
-
-.stories {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-    gap: 25px;
-
-    max-width: 1050px;
-
-    margin: 0 auto;
-}
-
-
-.story {
-
-    position: relative;
-
-    display: flex;
-
-    flex-direction: column;
-
-    min-height: 440px;
-
-    padding: 30px;
-
-    background:
-        rgba(12,14,15,.91);
-
-    border:
-        1px solid rgba(255,255,255,.15);
-
-    border-radius: 10px;
-
-    box-shadow:
-        0 18px 45px rgba(0,0,0,.38);
-
-    transition:
-        transform .25s,
-        border-color .25s,
-        background .25s;
-}
-
-
-.story:hover {
-
-    transform:
-        translateY(-5px);
-
-    border-color:
-        rgba(205,181,126,.55);
-
-    background:
-        rgba(17,19,20,.96);
-}
-
-
-.story-number {
-
-    color: #9f8a60;
-
-    font-size: 12px;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 18px;
-}
-
-
-.story-icon {
-
-    font-size: 42px;
-
-    margin-bottom: 15px;
-}
-
-
-.story h2 {
-
-    margin: 0 0 15px;
-
-    color: #e8d5aa;
-
-    font-size: 29px;
-
-    line-height: 1.15;
-}
-
-
-.story h3 {
-
-    margin: 0 0 18px;
-
-    color: #c7bda9;
-
-    font-size: 17px;
-
-    font-weight: normal;
-
-    line-height: 1.5;
-}
-
-
-.story p {
-
-    color: #d4d1ca;
-
-    font-size: 17px;
-
-    line-height: 1.7;
-
-    margin-top: 0;
-}
-
-
-.story-facts {
-
-    margin:
-        10px 0 25px;
-
-    padding: 15px 17px;
-
-    background:
-        rgba(255,255,255,.045);
-
-    border-left:
-        3px solid #85744e;
-
-    color: #c9c5bc;
-
-    line-height: 1.6;
-
-    font-size: 15px;
-}
-
-
-.story-facts strong {
-
-    color: #d8c695;
-}
-
-
-.story-button {
-
-    margin-top: auto;
-
-    width: 100%;
-
-    padding: 14px 18px;
-
-    border-radius: 6px;
-
-    border:
-        1px solid #9b8456;
-
-    background:
-        #675637;
-
-    color: #f5eee1;
-
-    font-family: inherit;
-
-    font-size: 16px;
-
-    cursor: pointer;
-
-    transition: .2s;
-}
-
-
-.story-button:hover {
-
-    background:
-        #7b6744;
-
-    transform:
-        translateY(-2px);
-}
-
-
-/* =========================
-   НИЖНИЙ БЛОК
-========================= */
-
-.note {
-
-    max-width: 850px;
-
-    margin: 32px auto 0;
-
-    padding: 23px 28px;
-
-    background:
-        rgba(10,12,13,.82);
-
-    border:
-        1px solid rgba(255,255,255,.12);
-
-    border-radius: 8px;
-
-    text-align: center;
-}
-
-
-.note-title {
-
-    color: #d8c493;
-
-    font-size: 15px;
-
-    letter-spacing: 1px;
-
-    margin-bottom: 10px;
-}
-
-
-.note p {
-
-    margin: 0;
-
-    color: #bdb9b0;
-
-    line-height: 1.6;
-
-    font-size: 15px;
-}
-
-
-/* =========================
-   НАЗАД
-========================= */
-
-.back {
-
-    display: block;
-
-    margin:
-        28px auto 0;
-
-    padding:
-        11px 18px;
-
-    background:
-        rgba(255,255,255,.06);
-
-    color: #ddd;
-
-    border:
-        1px solid rgba(255,255,255,.18);
-
-    border-radius: 5px;
-
-    font-family: inherit;
-
-    cursor: pointer;
-}
-
-
-.back:hover {
-
-    background:
-        rgba(255,255,255,.12);
-}
-
-
-/* =========================
-   МОБИЛЬНАЯ ВЕРСИЯ
-========================= */
-
-@media (max-width: 800px) {
+    * {
+        box-sizing: border-box;
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+        font-family: Georgia, "Times New Roman", serif;
+        color: #f5eee2;
+    }
+
+    body {
+        min-height: 100vh;
+        background:
+            linear-gradient(
+                rgba(12, 10, 8, 0.52),
+                rgba(12, 10, 8, 0.68)
+            ),
+            url("main-background.png") center center / cover fixed no-repeat;
+    }
+
+    /* Верхняя панель */
 
     .topbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        min-height: 64px;
 
-        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
 
-        align-items: flex-start;
+        padding: 12px 28px;
 
-        gap: 10px;
+        background: rgba(12, 10, 8, 0.82);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+        backdrop-filter: blur(5px);
+
+        z-index: 100;
     }
 
+    .topbar a {
+        color: #f5eee2;
+        text-decoration: none;
+        font-size: 16px;
+        letter-spacing: 1px;
+        transition: color 0.25s ease;
+    }
+
+    .topbar a:hover {
+        color: #cbb28d;
+    }
+
+    .logo {
+        font-weight: bold;
+    }
+
+    /* Основная часть */
 
     .page {
+        min-height: 100vh;
+        padding: 110px 24px 70px;
 
-        padding-top: 150px;
-
-        padding-left: 12px;
-
-        padding-right: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
+    /* Вступление в стиле лонгрида */
 
     .intro {
-
-        padding: 27px 20px;
+        width: min(900px, 100%);
+        text-align: center;
+        margin-bottom: 42px;
     }
 
+    h1 {
+        margin: 0 0 14px;
+
+        font-size: clamp(36px, 6vw, 64px);
+        line-height: 1.05;
+        letter-spacing: 2px;
+
+        text-shadow:
+            0 3px 15px rgba(0, 0, 0, 0.55);
+    }
+
+    .intro-text {
+        max-width: 780px;
+        margin: 25px auto 0;
+        padding: 25px 32px;
+
+        background: rgba(12, 10, 8, 0.68);
+        border: 1px solid rgba(245, 238, 226, 0.18);
+        border-radius: 8px;
+
+        font-size: 17px;
+        line-height: 1.8;
+        color: #ddd2c1;
+        text-align: left;
+
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .intro-text p {
+        margin: 0 0 16px;
+    }
+
+    .intro-text p:last-child {
+        margin-bottom: 0;
+    }
+
+    .intro-text strong {
+        color: #f5eee2;
+    }
+
+    .intro-invitation {
+        padding-top: 14px;
+        border-top: 1px solid rgba(245, 238, 226, 0.2);
+
+        color: #d1c0a4;
+        font-style: italic;
+        text-align: center;
+    }
+
+    /* Карточки историй */
 
     .stories {
+        width: min(1000px, 100%);
 
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 24px;
     }
 
+    .story-card {
+        position: relative;
 
-    .story {
+        min-height: 440px;
+        padding: 34px 30px;
 
-        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
-        padding: 25px;
+        background:
+            linear-gradient(
+                145deg,
+                rgba(24, 21, 17, 0.92),
+                rgba(12, 11, 9, 0.88)
+            );
+
+        border: 1px solid rgba(245, 238, 226, 0.20);
+        border-radius: 10px;
+
+        box-shadow:
+            0 18px 50px rgba(0, 0, 0, 0.40);
+
+        overflow: hidden;
+
+        transition:
+            transform 0.3s ease,
+            border-color 0.3s ease,
+            box-shadow 0.3s ease;
     }
 
-}
+    .story-card::before {
+        content: "";
 
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
 
+        width: 4px;
+
+        background: rgba(178, 148, 101, 0.75);
+    }
+
+    .story-card:hover {
+        transform: translateY(-5px);
+
+        border-color: rgba(245, 238, 226, 0.42);
+
+        box-shadow:
+            0 24px 65px rgba(0, 0, 0, 0.52);
+    }
+
+    .story-location {
+        font-size: 14px;
+        letter-spacing: 2px;
+
+        color: #cbb28d;
+        text-transform: uppercase;
+
+        margin-bottom: 16px;
+    }
+
+    .story-card h2 {
+        margin: 0 0 14px;
+
+        color: #f5eee2;
+        font-size: 30px;
+        line-height: 1.2;
+    }
+
+    .story-person {
+        margin: 0 0 20px;
+
+        font-size: 18px;
+        color: #e2d7c7;
+
+        line-height: 1.5;
+    }
+
+    .story-description {
+        margin: 0 0 15px;
+
+        font-size: 16px;
+        line-height: 1.65;
+
+        color: #c7bdaf;
+    }
+
+    /* Исторические детали */
+
+    .story-facts {
+        margin-top: 12px;
+        padding: 16px 18px;
+
+        background: rgba(245, 238, 226, 0.06);
+        border-left: 3px solid rgba(178, 148, 101, 0.75);
+        border-radius: 0 5px 5px 0;
+
+        color: #c7bdaf;
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .story-facts strong {
+        display: block;
+        margin-bottom: 7px;
+        color: #d1c0a4;
+    }
+
+    .story-facts ul {
+        margin: 0;
+        padding-left: 19px;
+    }
+
+    .story-facts li {
+        margin-bottom: 3px;
+    }
+
+    /* Кнопки историй */
+
+    .story-button {
+        margin-top: 28px;
+        width: 100%;
+
+        padding: 14px 18px;
+
+        border: 1px solid rgba(245, 238, 226, 0.35);
+        border-radius: 6px;
+
+        background: rgba(245, 238, 226, 0.08);
+        color: #f5eee2;
+
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 16px;
+        letter-spacing: 1px;
+
+        cursor: pointer;
+
+        transition:
+            background 0.25s ease,
+            border-color 0.25s ease;
+    }
+
+    .story-button:hover {
+        background: rgba(245, 238, 226, 0.16);
+        border-color: rgba(245, 238, 226, 0.65);
+    }
+
+    /* Адаптация для телефона */
+
+    @media (max-width: 760px) {
+
+        .topbar {
+            min-height: 58px;
+            padding: 12px 15px;
+        }
+
+        .topbar a {
+            font-size: 13px;
+            letter-spacing: 0;
+        }
+
+        .page {
+            padding: 92px 16px 45px;
+        }
+
+        .stories {
+            grid-template-columns: 1fr;
+        }
+
+        .story-card {
+            min-height: auto;
+            padding: 28px 25px;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        .intro-text {
+            padding: 20px;
+            font-size: 15px;
+        }
+
+        .story-card h2 {
+            font-size: 27px;
+        }
+
+        .story-person {
+            font-size: 16px;
+        }
+    }
+
+    @media (max-width: 360px) {
+        .topbar a {
+            font-size: 12px;
+        }
+    }
 </style>
 </head>
 
-
 <body>
 
+<!-- Фоновая музыка -->
 
-<!-- =========================
-     ВЕРХНЯЯ ПАНЕЛЬ
-========================= -->
+<audio id="bgMusic" src="music.mp3" autoplay loop preload="auto"></audio>
+
+<!-- Верхняя панель -->
 
 <header class="topbar">
 
-    <div class="logo">
-        ▲ ТРОПАМИ ПАМЯТИ
-    </div>
+    <a class="logo" href="index.html">Тропами памяти</a>
 
-
-    <div class="top-buttons">
-
-        <button onclick="goHome()">
-            🏠 ГЛАВНАЯ
-        </button>
-
-    </div>
+    <a href="index.html">Главная страница</a>
 
 </header>
 
-
-
-<!-- =========================
-     СТРАНИЦА
-========================= -->
+<!-- Основная страница -->
 
 <main class="page">
 
-
-    <!-- ВСТУПЛЕНИЕ -->
+    <!-- Вступление -->
 
     <section class="intro">
 
-        <div class="label">
-            ВТОРАЯ ТРОПА
+        <h1>ПОДПОЛЬЩИКИ</h1>
+
+        <div class="intro-text">
+
+            <p>
+                <strong>«Тропами памяти»</strong> — это путешествие
+                в мир городского сопротивления в годы
+                Великой Отечественной войны.
+                В оккупированных городах люди продолжали
+                бороться, рискуя собственной жизнью.
+            </p>
+
+            <p>
+                Подпольная борьба требовала мужества,
+                выдержки и доверия. Тайные встречи,
+                передача информации, связь между участниками
+                сопротивления и решения, от которых зависели
+                человеческие судьбы, становились частью
+                повседневной жизни подпольщиков.
+            </p>
+
+            <p>
+                На этой тропе тебя ждут две истории:
+                события в оккупированном Минске и борьба
+                железнодорожного подполья в Орше.
+                Ты познакомишься с реальными историческими
+                личностями и обстоятельствами их деятельности.
+            </p>
+
+            <p>
+                Твой игровой герой вымышлен,
+                но исторические события и личности,
+                с которыми он встречается,
+                основаны на реальной истории.
+            </p>
+
+            <p class="intro-invitation">
+                Выбери одну из двух историй и пройди
+                свой путь по следам белорусского подполья.
+            </p>
+
         </div>
-
-
-        <h1>
-            ПОДПОЛЬЩИКИ
-        </h1>
-
-
-        <div class="divider"></div>
-
-
-        <p class="subtitle">
-            Городская борьба.
-            Тайные связи.
-            Информация.
-            Риск.
-        </p>
-
-
-        <p class="subtitle">
-            Здесь нет одного пути.
-            Выбери историю,
-            с которой хочешь начать.
-        </p>
 
     </section>
 
-
-
-    <!-- =========================
-         ДВЕ ИСТОРИИ
-    ========================= -->
+    <!-- Истории -->
 
     <section class="stories">
 
+        <!-- История о Минске и операции против Кубе -->
 
-        <!-- =====================
-             МАЗАНИК / ОСИПОВА / ТРОЯН
-        ====================== -->
+        <article class="story-card">
 
-        <article class="story">
+            <div>
 
-            <div class="story-number">
-                ИСТОРИЯ I
-            </div>
+                <div class="story-location">
+                    МИНСК · 1943 ГОД
+                </div>
 
+                <h2>
+                    Минск. Операция против Кубе
+                </h2>
 
-            <div class="story-icon">
-                💠
-            </div>
+                <p class="story-person">
+                    Елена Мазаник · Мария Осипова · Надежда Троян
+                </p>
 
+                <p class="story-description">
+                    Минск, 1943 год.
+                    В оккупированном городе действует подполье.
+                    Несколько женщин оказываются связанными
+                    с одной из самых известных операций
+                    белорусского подполья.
+                </p>
 
-            <h2>
-                Минск. Операция против Кубе
-            </h2>
+                <div class="story-facts">
 
+                    <strong>В этой истории:</strong>
 
-            <h3>
-                Елена Мазаник · Мария Осипова ·
-                Надежда Троян
-            </h3>
+                    <ul>
+                        <li>подпольная связь;</li>
+                        <li>сбор и передача информации;</li>
+                        <li>доверие и осторожность;</li>
+                        <li>Минск в годы оккупации;</li>
+                        <li>операция против Вильгельма Кубе.</li>
+                    </ul>
 
-
-            <p>
-                Минск, 1943 год.
-                В оккупированном городе
-                действует подполье.
-            </p>
-
-
-            <p>
-                Несколько женщин оказываются
-                связанными с одной из самых
-                известных операций белорусского
-                подполья.
-            </p>
-
-
-            <div class="story-facts">
-
-                <strong>
-                    В этой истории:
-                </strong>
-
-                <br>
-
-                • подпольная связь<br>
-
-                • сбор и передача информации<br>
-
-                • доверие и осторожность<br>
-
-                • Минск 1943 года<br>
-
-                • операция против
-                Вильгельма Кубе
+                </div>
 
             </div>
-
 
             <button
                 class="story-button"
                 onclick="openMazanik()"
             >
-                ОТКРЫТЬ ИСТОРИЮ →
+                НАЧАТЬ ИСТОРИЮ
             </button>
 
         </article>
 
+        <!-- История Константина Заслонова -->
 
+        <article class="story-card">
 
-        <!-- =====================
-             ЗАСЛОНОВ
-        ====================== -->
+            <div>
 
-        <article class="story">
+                <div class="story-location">
+                    ОРША · 1941–1942 ГОДЫ
+                </div>
 
-            <div class="story-number">
-                ИСТОРИЯ II
-            </div>
+                <h2>
+                    Орша. Железнодорожное подполье
+                </h2>
 
+                <p class="story-person">
+                    Константин Заслонов
+                </p>
 
-            <div class="story-icon">
-                🚂
-            </div>
+                <p class="story-description">
+                    Осень 1941 года. Орша.
+                    Крупный железнодорожный узел оказывается
+                    под оккупацией. Подпольщики начинают
+                    сопротивление, используя связь,
+                    информацию и возможности железной дороги.
+                </p>
 
+                <div class="story-facts">
 
-            <h2>
-                Орша. Железнодорожное подполье
-            </h2>
+                    <strong>В этой истории:</strong>
 
+                    <ul>
+                        <li>Орша в 1941 году;</li>
+                        <li>железнодорожное подполье;</li>
+                        <li>разведка и связь;</li>
+                        <li>сопротивление оккупации;</li>
+                        <li>переход к партизанской борьбе в 1942 году.</li>
+                    </ul>
 
-            <h3>
-                Константин Заслонов
-            </h3>
-
-
-            <p>
-                Осень 1941 года.
-                Орша.
-                Крупный железнодорожный узел
-                оказывается под оккупацией.
-            </p>
-
-
-            <p>
-                Подпольщики начинают сопротивление,
-                используя связь, информацию
-                и возможности железнодорожного
-                узла.
-            </p>
-
-
-            <div class="story-facts">
-
-                <strong>
-                    В этой истории:
-                </strong>
-
-                <br>
-
-                • Орша 1941 года<br>
-
-                • железнодорожное подполье<br>
-
-                • разведка и связь<br>
-
-                • сопротивление оккупации<br>
-
-                • переход к партизанской борьбе
-                в 1942 году
+                </div>
 
             </div>
-
 
             <button
                 class="story-button"
                 onclick="openZaslonov()"
             >
-                ОТКРЫТЬ ИСТОРИЮ →
+                НАЧАТЬ ИСТОРИЮ
             </button>
 
         </article>
 
     </section>
 
-
-
-    <!-- =========================
-         ПОЯСНЕНИЕ
-    ========================= -->
-
-    <section class="note">
-
-        <div class="note-title">
-            📖 КАК УСТРОЕНА ТРОПА
-        </div>
-
-
-        <p>
-            Каждая история — отдельная
-            визуальная новелла.
-            В ней тебя ждут личное досье,
-            игровые решения, дневник
-            и исторический блок
-            «А что было на самом деле?».
-        </p>
-
-    </section>
-
-
-
-    <button
-        class="back"
-        onclick="goHome()"
-    >
-        ← Вернуться на главную
-    </button>
-
-
 </main>
-
-
 
 <script>
 
-/* =========================
-   ПЕРЕХОДЫ
-========================= */
-
-function goHome() {
-
-    window.location.href = "index.html";
-
-}
-
+/* Переходы к историям */
 
 function openMazanik() {
-
     window.location.href = "mazanik.html";
-
 }
-
 
 function openZaslonov() {
-
     window.location.href = "zaslonov.html";
-
 }
+
+/* Фоновая музыка */
+
+const music = document.getElementById("bgMusic");
+
+async function startMusic() {
+    try {
+        await music.play();
+
+        document.removeEventListener("pointerdown", startMusic, true);
+        document.removeEventListener("keydown", startMusic, true);
+
+    } catch (error) {
+        // Если браузер запретил автозапуск,
+        // музыка попробует включиться после действия пользователя.
+    }
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startMusic);
+} else {
+    startMusic();
+}
+
+document.addEventListener("pointerdown", startMusic, true);
+document.addEventListener("keydown", startMusic, true);
 
 </script>
 
-
 </body>
 </html>
+```
