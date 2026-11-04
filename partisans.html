@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -36,13 +37,14 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 64px;
+        min-height: 64px;
 
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 15px;
 
-        padding: 0 28px;
+        padding: 12px 28px;
 
         background: rgba(12, 10, 8, 0.82);
         border-bottom: 1px solid rgba(255, 255, 255, 0.12);
@@ -52,45 +54,26 @@
         z-index: 100;
     }
 
-    .logo {
+    .topbar a {
         color: #f5eee2;
         text-decoration: none;
-        font-size: 20px;
+        font-size: 16px;
+        letter-spacing: 1px;
+        transition: color 0.25s ease;
+    }
+
+    .topbar a:hover {
+        color: #cbb28d;
+    }
+
+    .logo {
         font-weight: bold;
-        letter-spacing: 2px;
-    }
-
-    .home-btn {
-        border: 1px solid rgba(245, 238, 226, 0.45);
-        background: rgba(20, 17, 14, 0.7);
-        color: #f5eee2;
-
-        padding: 10px 18px;
-
-        border-radius: 6px;
-
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 15px;
-
-        cursor: pointer;
-
-        transition:
-            background 0.25s ease,
-            border-color 0.25s ease,
-            transform 0.25s ease;
-    }
-
-    .home-btn:hover {
-        background: rgba(245, 238, 226, 0.12);
-        border-color: rgba(245, 238, 226, 0.75);
-        transform: translateY(-1px);
     }
 
     /* Основная часть */
 
     .page {
         min-height: 100vh;
-
         padding: 110px 24px 70px;
 
         display: flex;
@@ -98,21 +81,12 @@
         align-items: center;
     }
 
+    /* Вступление */
+
     .intro {
         width: min(900px, 100%);
         text-align: center;
-
         margin-bottom: 42px;
-    }
-
-    .path-number {
-        font-size: 15px;
-        letter-spacing: 4px;
-        text-transform: uppercase;
-
-        color: #d1c0a4;
-
-        margin-bottom: 12px;
     }
 
     h1 {
@@ -120,25 +94,51 @@
 
         font-size: clamp(36px, 6vw, 64px);
         line-height: 1.05;
-
         letter-spacing: 2px;
 
         text-shadow:
             0 3px 15px rgba(0, 0, 0, 0.55);
     }
 
-    .subtitle {
-        margin: 0 auto;
+    .intro-text {
+        max-width: 780px;
+        margin: 25px auto 0;
+        padding: 25px 32px;
 
-        max-width: 720px;
+        background: rgba(12, 10, 8, 0.68);
+        border: 1px solid rgba(245, 238, 226, 0.18);
+        border-radius: 8px;
 
-        font-size: 18px;
-        line-height: 1.65;
-
+        font-size: 17px;
+        line-height: 1.8;
         color: #ddd2c1;
+        text-align: left;
+
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
     }
 
-    /* Карточки */
+    .intro-text p {
+        margin: 0 0 16px;
+    }
+
+    .intro-text p:last-child {
+        margin-bottom: 0;
+    }
+
+    .intro-text strong {
+        color: #f5eee2;
+    }
+
+    .intro-invitation {
+        padding-top: 14px;
+        border-top: 1px solid rgba(245, 238, 226, 0.2);
+
+        color: #d1c0a4;
+        font-style: italic;
+        text-align: center;
+    }
+
+    /* Карточки историй */
 
     .stories {
         width: min(1000px, 100%);
@@ -153,7 +153,6 @@
         position: relative;
 
         min-height: 390px;
-
         padding: 34px 30px;
 
         display: flex;
@@ -168,7 +167,6 @@
             );
 
         border: 1px solid rgba(245, 238, 226, 0.20);
-
         border-radius: 10px;
 
         box-shadow:
@@ -206,11 +204,9 @@
 
     .story-location {
         font-size: 14px;
-
         letter-spacing: 2px;
 
         color: #cbb28d;
-
         text-transform: uppercase;
 
         margin-bottom: 16px;
@@ -218,9 +214,7 @@
 
     .story-card h2 {
         margin: 0 0 12px;
-
         font-size: 32px;
-
         line-height: 1.15;
     }
 
@@ -228,7 +222,6 @@
         margin: 0 0 20px;
 
         font-size: 18px;
-
         color: #e2d7c7;
 
         line-height: 1.5;
@@ -238,31 +231,27 @@
         margin: 0;
 
         font-size: 16px;
-
         line-height: 1.65;
 
         color: #c7bdaf;
     }
 
+    /* Кнопки историй */
+
     .story-button {
         margin-top: 28px;
-
         width: 100%;
 
         padding: 14px 18px;
 
         border: 1px solid rgba(245, 238, 226, 0.35);
-
         border-radius: 6px;
 
         background: rgba(245, 238, 226, 0.08);
-
         color: #f5eee2;
 
         font-family: Georgia, "Times New Roman", serif;
-
         font-size: 16px;
-
         letter-spacing: 1px;
 
         cursor: pointer;
@@ -277,51 +266,18 @@
         border-color: rgba(245, 238, 226, 0.65);
     }
 
-    /* Нижняя подпись */
-
-    .bottom-note {
-        width: min(850px, 100%);
-
-        margin-top: 42px;
-
-        padding: 22px 26px;
-
-        text-align: center;
-
-        background: rgba(12, 10, 8, 0.62);
-
-        border: 1px solid rgba(245, 238, 226, 0.12);
-
-        border-radius: 8px;
-
-        color: #bfb5a7;
-
-        font-size: 14px;
-
-        line-height: 1.65;
-    }
-
-    .bottom-note strong {
-        color: #ddd2c1;
-    }
-
-    /* Телефон */
+    /* Адаптация для телефона */
 
     @media (max-width: 760px) {
 
         .topbar {
-            height: 58px;
-            padding: 0 15px;
+            min-height: 58px;
+            padding: 12px 15px;
         }
 
-        .logo {
-            font-size: 15px;
-            letter-spacing: 1px;
-        }
-
-        .home-btn {
-            padding: 8px 12px;
+        .topbar a {
             font-size: 13px;
+            letter-spacing: 0;
         }
 
         .page {
@@ -340,8 +296,16 @@
             font-size: 40px;
         }
 
-        .subtitle {
-            font-size: 16px;
+        .intro-text {
+            padding: 20px;
+            font-size: 15px;
+        }
+    }
+
+    @media (max-width: 360px) {
+
+        .topbar a {
+            font-size: 12px;
         }
     }
 </style>
@@ -349,43 +313,62 @@
 
 <body>
 
+<!-- Фоновая музыка -->
+
+<audio id="bgMusic" src="music.mp3" autoplay loop preload="auto"></audio>
+
 <!-- Верхняя панель -->
 
 <header class="topbar">
 
-    <a class="logo" href="index.html">
-        ▲ ТРОПАМИ ПАМЯТИ
-    </a>
+    <a class="logo" href="index.html">Тропами памяти</a>
 
-    <button class="home-btn" onclick="goHome()">
-        🏠 ГЛАВНАЯ
-    </button>
+    <a href="index.html">Главная страница</a>
 
 </header>
-
 
 <!-- Основная страница -->
 
 <main class="page">
 
+    <!-- Вступление -->
+
     <section class="intro">
 
-        <div class="path-number">
-            ПЕРВАЯ ТРОПА
+        <h1>ПАРТИЗАНЫ</h1>
+
+        <div class="intro-text">
+
+            <p>
+                <strong>«Тропами памяти»</strong> — это путешествие
+                по двум историям партизанского сопротивления
+                в годы Великой Отечественной войны.
+            </p>
+
+            <p>
+                Каждая история открывает свой путь:
+                знакомство с героем, его судьбой и историческими
+                событиями, возможность принимать решения,
+                вести дневник и узнавать больше о прошлом.
+            </p>
+
+            <p>
+                Главный герой, от лица которого ты будешь
+                проходить этот путь, вымышлен. Но люди,
+                события и обстоятельства, с которыми он
+                сталкивается, основаны на реальной истории.
+            </p>
+
+            <p class="intro-invitation">
+                Выбери одну из двух троп и прикоснись
+                к истории партизанского движения Беларуси.
+            </p>
+
         </div>
-
-        <h1>
-            ПАРТИЗАНЫ
-        </h1>
-
-        <p class="subtitle">
-            Лес. Дороги. Разведка. Связь.
-            Решения, от которых зависела судьба товарищей.
-            Выбери историю, с которой хочешь начать.
-        </p>
 
     </section>
 
+    <!-- Истории -->
 
     <section class="stories">
 
@@ -420,11 +403,10 @@
                 class="story-button"
                 onclick="openKorzh()"
             >
-                🌲 НАЧАТЬ ИСТОРИЮ
+                НАЧАТЬ ИСТОРИЮ
             </button>
 
         </article>
-
 
         <!-- ШМЫРЁВ -->
 
@@ -457,54 +439,55 @@
                 class="story-button"
                 onclick="openShmyryov()"
             >
-                🌲 НАЧАТЬ ИСТОРИЮ
+                НАЧАТЬ ИСТОРИЮ
             </button>
 
         </article>
 
     </section>
 
-
-    <div class="bottom-note">
-
-        <strong>Тропами памяти</strong> —
-        это две истории внутри одного пути.
-
-        <br>
-
-        В каждой истории тебя ждут
-        <strong>досье героя, выборы, дневник
-        и исторический блок</strong>.
-
-        <br>
-
-        Твой герой вымышлен,
-        а исторические события и личности,
-        с которыми он встречается,
-        основаны на реальной истории.
-
-    </div>
-
 </main>
 
-
 <script>
+
+/* Переходы к историям */
 
 function openKorzh() {
     window.location.href = "korzh.html";
 }
 
-
 function openShmyryov() {
     window.location.href = "shmyryov.html";
 }
 
+/* Фоновая музыка */
 
-function goHome() {
-    window.location.href = "index.html";
+const music = document.getElementById("bgMusic");
+
+async function startMusic() {
+    try {
+        await music.play();
+
+        document.removeEventListener("pointerdown", startMusic, true);
+        document.removeEventListener("keydown", startMusic, true);
+
+    } catch (error) {
+        // Если браузер запретил автозапуск,
+        // музыка попробует включиться после действия пользователя.
+    }
 }
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startMusic);
+} else {
+    startMusic();
+}
+
+document.addEventListener("pointerdown", startMusic, true);
+document.addEventListener("keydown", startMusic, true);
 
 </script>
 
 </body>
 </html>
+```
