@@ -1,53 +1,43 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Описание проекта — Тропами памяти</title>
+
 <style>
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; min-height: 100%; }
-body { font-family: Georgia, "Times New Roman", serif; background: #101512; color: #f1eadc; }
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #101512;
+    color: #f1eadc;
+}
 
 .game {
     min-height: 100vh;
-    background-image: linear-gradient(rgba(10, 15, 13, 0.20), rgba(10, 15, 13, 0.38)), url("main-background.png");
+    background-image:
+        linear-gradient(rgba(10, 15, 13, 0.25), rgba(10, 15, 13, 0.48)),
+        url("main-background.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     display: flex;
     flex-direction: column;
 }
 
-/* ВЕРХНЯЯ ПАНЕЛЬ (только кнопка музыки) */
-.top-bar {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 18px 28px;
-    background: rgba(10, 15, 13, 0.72);
-    border-bottom: 1px solid rgba(230, 216, 190, 0.18);
-}
+/* ОСНОВНОЙ КОНТЕНТ */
 
-/* Кнопка управления музыкой */
-.music-button {
-    padding: 8px 14px;
-    border: 1px solid rgba(230, 216, 190, 0.45);
-    background: rgba(30, 35, 30, 0.85);
-    color: #f1eadc;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background 0.2s ease, border-color 0.2s ease;
-}
-.music-button:hover {
-    background: rgba(55, 58, 47, 0.95);
-    border-color: rgba(230, 216, 190, 0.75);
-}
-
-/* ===== СТИЛИ ОПИСАНИЯ ПРОЕКТА ===== */
 .tm-description {
     padding: 50px 20px;
     color: #f1eadc;
@@ -61,23 +51,29 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
     margin: 0 auto;
 }
 
-/* Верхний блок в рамочке (как у карточек) */
-.tm-description__heading {
-    max-width: 100%;
-    margin: 0 auto 35px;
-    padding: 35px 40px;
-    background: rgba(16, 21, 18, 0.88);
+/* ОБЩИЕ БЛОКИ */
+
+.tm-block {
+    margin-bottom: 28px;
+    padding: 32px 38px;
+    background: rgba(16, 21, 18, 0.90);
     border: 1px solid rgba(230, 216, 190, 0.22);
-    border-top: 5px solid #d6b77c;
-    border-radius: 16px;
+    border-radius: 14px;
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(3px);
-    text-align: center;
 }
 
-.tm-description__label {
+/* ГЛАВНЫЙ БЛОК */
+
+.tm-heading {
+    text-align: center;
+    padding: 38px 45px;
+    border-top: 5px solid #d6b77c;
+}
+
+.tm-label {
     display: inline-block;
-    margin-bottom: 12px;
+    margin-bottom: 13px;
     color: #d6b77c;
     font-size: 13px;
     font-weight: 700;
@@ -85,7 +81,7 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
     text-transform: uppercase;
 }
 
-.tm-description__heading h1 {
+.tm-heading h1 {
     margin: 0 0 20px;
     color: #f1eadc;
     font-family: Georgia, "Times New Roman", serif;
@@ -93,15 +89,121 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
     line-height: 1.2;
 }
 
-/* Текст вверху */
-.tm-description__intro {
-    margin: 0;
-    color: #cfc7b9;
+.tm-intro {
+    max-width: 900px;
+    margin: 0 auto;
+    color: #d8cfbf;
     font-family: Georgia, "Times New Roman", serif;
     font-size: 18px;
     font-style: italic;
+    line-height: 1.85;
+}
+
+/* ЗАГОЛОВКИ И ТЕКСТ */
+
+.tm-block h2 {
+    margin: 0 0 20px;
+    color: #f1eadc;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 29px;
+    line-height: 1.3;
+}
+
+.tm-block h3 {
+    margin: 26px 0 13px;
+    color: #d6b77c;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 19px;
+    line-height: 1.5;
+}
+
+.tm-block p {
+    color: #cfc7b9;
+    font-size: 15px;
+    line-height: 1.85;
+}
+
+.tm-block ul {
+    margin: 15px 0 20px;
+    padding-left: 23px;
+    color: #cfc7b9;
+}
+
+.tm-block li {
+    margin-bottom: 10px;
+    font-size: 15px;
+    line-height: 1.75;
+}
+
+.tm-block li::marker {
+    color: #d6b77c;
+}
+
+/* ВОСПИТАТЕЛЬНАЯ МИССИЯ */
+
+.tm-mission {
+    border-top: 5px solid #b35443;
+}
+
+.tm-mission h2 {
+    color: #e2c49a;
+}
+
+.tm-mission__lead {
+    color: #e2c49a !important;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 19px !important;
+    font-style: italic;
+}
+
+/* ЦЕННОСТИ */
+
+.tm-values {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.tm-value {
+    padding: 18px 20px;
+    background: rgba(35, 38, 30, 0.72);
+    border-left: 3px solid #b35443;
+    border-radius: 0 8px 8px 0;
+}
+
+.tm-value strong {
+    display: block;
+    margin-bottom: 7px;
+    color: #e2c49a;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 17px;
+}
+
+.tm-value span {
+    color: #cfc7b9;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+/* ВОСПИТАТЕЛЬНЫЙ ПОТЕНЦИАЛ */
+
+.tm-potential {
+    border-top: 5px solid #d6b77c;
+}
+
+.tm-note {
+    margin-top: 24px;
+    padding: 19px 22px;
+    background: rgba(30, 35, 30, 0.85);
+    border-left: 4px solid #d6b77c;
+    border-radius: 0 8px 8px 0;
+    color: #e8dfcf;
+    font-size: 15px;
     line-height: 1.8;
 }
+
+/* КАРТОЧКИ */
 
 .tm-description__cards {
     display: grid;
@@ -110,91 +212,93 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
     align-items: stretch;
 }
 
-.tm-description__card {
-    padding: 32px;
-    background: rgba(16, 21, 18, 0.88);
+.tm-card {
+    padding: 30px;
+    background: rgba(16, 21, 18, 0.90);
     border: 1px solid rgba(230, 216, 190, 0.22);
-    border-radius: 16px;
+    border-radius: 14px;
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(3px);
 }
 
-.tm-description__card--students {
+.tm-card--students {
     border-top: 5px solid #b35443;
 }
 
-.tm-description__card--teachers {
+.tm-card--teachers {
     border-top: 5px solid #63825c;
 }
 
-.tm-description__card h2 {
-    margin: 0 0 15px;
+.tm-card h2 {
+    margin: 0 0 18px;
     color: #f1eadc;
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 28px;
-    line-height: 1.3;
+    font-size: 27px;
 }
 
-.tm-description__lead {
-    margin: 0 0 18px;
-    color: #d6b77c;
-    font-size: 17px;
-    font-weight: 700;
-    line-height: 1.6;
+.tm-card h3 {
+    margin: 25px 0 12px;
+    color: #9cb894;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
 }
 
-.tm-description__card p {
+.tm-card p {
     color: #cfc7b9;
     font-size: 15px;
     line-height: 1.8;
 }
 
-.tm-description__card h3 {
-    margin: 25px 0 12px;
-    color: #9cb894;
-    font-size: 17px;
-    line-height: 1.5;
-    font-family: Georgia, "Times New Roman", serif;
-}
-
-.tm-description__card ul {
-    margin: 12px 0 22px;
+.tm-card ul {
     padding-left: 22px;
     color: #cfc7b9;
 }
 
-.tm-description__card li {
-    margin-bottom: 9px;
+.tm-card li {
+    margin-bottom: 10px;
     font-size: 15px;
     line-height: 1.7;
 }
 
-.tm-description__card--students li::marker {
+.tm-card--students li::marker {
     color: #b35443;
 }
 
-.tm-description__card--teachers li::marker {
+.tm-card--teachers li::marker {
     color: #63825c;
 }
 
-.tm-description__note {
-    margin-top: 25px;
-    padding: 17px 20px;
-    background: rgba(30, 35, 30, 0.85);
-    border-left: 4px solid #b35443;
-    border-radius: 0 8px 8px 0;
-    color: #e8dfcf;
-    font-size: 14px;
-    line-height: 1.7;
+.tm-lead {
+    margin-bottom: 18px;
+    color: #d6b77c !important;
+    font-size: 17px !important;
+    font-weight: 700;
+    line-height: 1.65 !important;
 }
 
-.tm-description__card--teachers .tm-description__note {
-    border-left-color: #63825c;
+/* ЗАКЛЮЧЕНИЕ */
+
+.tm-conclusion {
+    margin-top: 28px;
+    padding: 35px 40px;
+    text-align: center;
+    border-top: 4px solid #d6b77c;
 }
 
-/* Кнопка «Главная» внизу */
+.tm-conclusion p {
+    max-width: 850px;
+    margin: 0 auto;
+    color: #e2c49a;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 21px;
+    font-style: italic;
+    line-height: 1.8;
+}
+
+/* КНОПКА НА ГЛАВНУЮ */
+
 .tm-description__footer {
-    margin-top: 40px;
+    margin-top: 38px;
     text-align: center;
 }
 
@@ -210,180 +314,402 @@ body { font-family: Georgia, "Times New Roman", serif; background: #101512; colo
     text-decoration: none;
     text-transform: uppercase;
     border-radius: 4px;
-    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    transition: all 0.25s ease;
 }
 
 .home-button:hover {
     transform: translateY(-2px);
     background: rgba(67, 64, 50, 0.97);
-    border-color: rgba(240, 229, 207, 0.8);
+    border-color: #d6b77c;
+    color: #d6b77c;
 }
 
-/* Адаптация для мобильных устройств */
+/* МОБИЛЬНАЯ ВЕРСИЯ */
+
 @media screen and (max-width: 767px) {
-    .top-bar { padding: 14px 16px; justify-content: center; }
-    .tm-description { padding: 40px 15px; }
-    .tm-description__heading { padding: 25px 20px; }
-    .tm-description__heading h1 { font-size: 32px; }
-    .tm-description__intro { font-size: 16px; }
-    .tm-description__cards { grid-template-columns: 1fr; gap: 20px; }
-    .tm-description__card { padding: 23px; }
-    .tm-description__card h2 { font-size: 25px; }
+    .tm-description {
+        padding: 30px 14px;
+    }
+
+    .tm-block {
+        padding: 24px 20px;
+    }
+
+    .tm-heading {
+        padding: 27px 20px;
+    }
+
+    .tm-heading h1 {
+        font-size: 32px;
+    }
+
+    .tm-intro {
+        font-size: 16px;
+    }
+
+    .tm-block h2 {
+        font-size: 25px;
+    }
+
+    .tm-values {
+        grid-template-columns: 1fr;
+    }
+
+    .tm-description__cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .tm-card {
+        padding: 23px;
+    }
+
+    .tm-conclusion {
+        padding: 27px 20px;
+    }
+
+    .tm-conclusion p {
+        font-size: 18px;
+    }
 }
 </style>
 </head>
+
 <body>
 
 <div class="game">
 
-    <!-- ВЕРХНЯЯ ПАНЕЛЬ (только кнопка музыки) -->
-    <header class="top-bar">
-        <button class="music-button" id="musicButton" type="button">
-            ♫ Включить мелодию
-        </button>
-    </header>
+    <!-- АУДИОПЛЕЕР БЕЗ КНОПКИ УПРАВЛЕНИЯ -->
 
-    <!-- СКРЫТЫЙ АУДИОПЛЕЕР -->
-    <audio id="bgMusic" src="music.mp3" loop></audio>
+    <audio id="bgMusic" src="music.mp3" autoplay loop preload="auto"></audio>
 
-    <!-- КОНТЕНТ СТРАНИЦЫ ОПИСАНИЯ -->
-    <section class="tm-description" id="tm-description">
+    <main class="tm-description">
         <div class="tm-description__container">
 
-            <!-- Верхний блок в рамочке -->
-            <div class="tm-description__heading">
-                <span class="tm-description__label">Интерактивный исторический проект</span>
+            <!-- ГЛАВНЫЙ БЛОК -->
+
+            <section class="tm-block tm-heading">
+
+                <span class="tm-label">
+                    Интерактивный историко-образовательный проект
+                </span>
+
                 <h1>Тропами памяти</h1>
-                <p class="tm-description__intro">
-                    «Тропами памяти» — это возможность обратиться к истории через
-                    личное участие, переживание и размышление, помогая учащимся
-                    почувствовать связь между прошлым, настоящим и ответственностью
-                    за будущее.
+
+                <p class="tm-intro">
+                    Проект посвящён партизанскому и подпольному движению
+                    в Беларуси в годы Великой Отечественной войны (1941–1944).
+                    Его цель — не только познакомить учащихся с историческими
+                    событиями, но и помочь осмыслить значение мужества,
+                    человеческой стойкости, гражданской ответственности
+                    и сохранения памяти о подвиге предков.
                 </p>
-            </div>
+
+            </section>
+
+            <!-- ВОСПИТАТЕЛЬНАЯ МИССИЯ -->
+
+            <section class="tm-block tm-mission">
+
+                <h2>Воспитательная миссия проекта</h2>
+
+                <p class="tm-mission__lead">
+                    История становится по-настоящему значимой тогда,
+                    когда за событиями прошлого мы видим судьбы людей,
+                    их поступки, переживания и нравственный выбор.
+                </p>
+
+                <p>
+                    Главная воспитательная направленность проекта
+                    «Тропами памяти» — формирование у учащихся уважительного
+                    отношения к историческому прошлому своей страны,
+                    чувства сопричастности к судьбе Родины и осознания
+                    ценности мира. Обращение к истории партизанского
+                    и подпольного сопротивления позволяет говорить не только
+                    о военных событиях, но и о человеческом мужестве,
+                    верности, солидарности и ответственности.
+                </p>
+
+                <p>
+                    Через знакомство с историческими материалами
+                    и интерактивное повествование проект побуждает учащихся
+                    задуматься о том, какой ценой достаётся мир,
+                    почему важно помнить о защитниках Отечества
+                    и какую ответственность каждое поколение несёт
+                    за сохранение исторической правды.
+                </p>
+
+                <div class="tm-values">
+
+                    <div class="tm-value">
+                        <strong>Историческая память</strong>
+                        <span>
+                            Уважение к прошлому страны, сохранение памяти
+                            о событиях войны и людях, боровшихся с оккупантами.
+                        </span>
+                    </div>
+
+                    <div class="tm-value">
+                        <strong>Гражданственность и патриотизм</strong>
+                        <span>
+                            Осознание связи с историей своей страны,
+                            уважение к её прошлому и культурному наследию.
+                        </span>
+                    </div>
+
+                    <div class="tm-value">
+                        <strong>Мужество и ответственность</strong>
+                        <span>
+                            Размышление о стойкости, верности своим убеждениям
+                            и ответственности за принятые решения.
+                        </span>
+                    </div>
+
+                    <div class="tm-value">
+                        <strong>Милосердие и взаимопомощь</strong>
+                        <span>
+                            Понимание ценности человеческой жизни,
+                            сострадания, поддержки и единства перед лицом испытаний.
+                        </span>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ВОСПИТАТЕЛЬНЫЙ ПОТЕНЦИАЛ -->
+
+            <section class="tm-block tm-potential">
+
+                <h2>Воспитательный потенциал проекта</h2>
+
+                <p>
+                    Проект ориентирован на развитие не только познавательного
+                    интереса, но и личностного отношения учащихся к историческим
+                    событиям. Он создаёт условия для эмоционального восприятия
+                    материала, самостоятельных размышлений и обсуждения
+                    нравственных вопросов.
+                </p>
+
+                <h3>В ходе работы с проектом учащиеся получают возможность:</h3>
+
+                <ul>
+                    <li>
+                        расширить знания об истории Беларуси в годы
+                        Великой Отечественной войны;
+                    </li>
+                    <li>
+                        познакомиться с деятельностью партизан и подпольщиков,
+                        их вкладом в борьбу с оккупацией;
+                    </li>
+                    <li>
+                        осознать значение личного мужества, стойкости,
+                        взаимовыручки и гражданского долга;
+                    </li>
+                    <li>
+                        развивать способность сопереживать людям,
+                        оказавшимся в тяжёлых исторических обстоятельствах;
+                    </li>
+                    <li>
+                        формировать уважительное отношение к подвигу
+                        старших поколений;
+                    </li>
+                    <li>
+                        осмыслить ценность мира, человеческой жизни
+                        и исторической правды.
+                    </li>
+                </ul>
+
+                <div class="tm-note">
+                    Важно, чтобы знакомство с историей не ограничивалось
+                    запоминанием дат и событий. Оно должно помогать молодому
+                    поколению понимать прошлое, делать нравственные выводы
+                    и осознавать значение ответственности за настоящее и будущее.
+                </div>
+
+            </section>
+
+            <!-- ДЛЯ УЧАЩИХСЯ И ПЕДАГОГОВ -->
 
             <div class="tm-description__cards">
 
-                <!-- Для учащихся -->
-                <article class="tm-description__card tm-description__card--students">
+                <!-- ДЛЯ УЧАЩИХСЯ -->
+
+                <article class="tm-card tm-card--students">
+
                     <h2>Для учащихся</h2>
 
-                    <p class="tm-description__lead">
-                        Пройди игровой маршрут — и открой страницы истории.
+                    <p class="tm-lead">
+                        Пройди маршрут, познакомься с историей и задумайся
+                        о людях, чьи судьбы стали частью прошлого нашей страны.
                     </p>
 
                     <p>
-                        «Тропами памяти» — это возможность погрузиться в события
-                        Великой Отечественной войны, узнать о людях, которые боролись
-                        за свободу родного края, и увидеть историю через интерактивное
-                        повествование.
+                        Интерактивный формат позволяет обратиться к событиям
+                        Великой Отечественной войны через историческое
+                        повествование. Учащиеся знакомятся с материалами
+                        о партизанском и подпольном движении, узнают о борьбе
+                        людей за свободу родного края.
                     </p>
 
-                    <p>Во время прохождения ты сможешь:</p>
+                    <h3>Во время прохождения проекта ты сможешь:</h3>
 
                     <ul>
-                        <li>узнать больше об историческом прошлом и подпольном движении;</li>
-                        <li>познакомиться с материалами и событиями тех лет;</li>
-                        <li>принимать решения и наблюдать, как они влияют на сюжет;</li>
-                        <li>размышлять о мужестве, ответственности и нравственном выборе;</li>
-                        <li>понять, почему важно сохранять память о прошлом.</li>
+                        <li>
+                            узнать о событиях военного времени и сопротивлении
+                            на оккупированной территории Беларуси;
+                        </li>
+                        <li>
+                            познакомиться с историческими материалами
+                            и судьбами людей;
+                        </li>
+                        <li>
+                            пройти интерактивный маршрут и принимать решения
+                            в рамках сюжета;
+                        </li>
+                        <li>
+                            поразмышлять о мужестве, долге, ответственности
+                            и нравственном выборе;
+                        </li>
+                        <li>
+                            понять, почему память о прошлом необходимо
+                            бережно сохранять и передавать следующим поколениям.
+                        </li>
                     </ul>
 
-                    <div class="tm-description__note">
-                        Здесь важно не только дойти до финала, но и задуматься
-                        о событиях, поступках людей и значении исторической памяти.
+                    <div class="tm-note">
+                        Главное — не просто пройти маршрут до конца,
+                        а задуматься о судьбах людей, их поступках и о том,
+                        почему подвиг защитников Родины не должен быть забыт.
                     </div>
+
                 </article>
 
-                <!-- Для педагогов -->
-                <article class="tm-description__card tm-description__card--teachers">
+                <!-- ДЛЯ ПЕДАГОГОВ -->
+
+                <article class="tm-card tm-card--teachers">
+
                     <h2>Для педагогов</h2>
 
-                    <p class="tm-description__lead">
-                        Интерактивный ресурс для гражданско-патриотического воспитания.
+                    <p class="tm-lead">
+                        Материал для гражданско-патриотического
+                        и нравственного воспитания учащихся.
                     </p>
 
                     <p>
-                        «Тропами памяти» — интерактивная историческая игра,
-                        посвящённая событиям Великой Отечественной войны,
-                        деятельности народных героев и подпольного сопротивления.
+                        Проект может использоваться как дополнительный ресурс
+                        в образовательной и воспитательной деятельности.
+                        Его содержание позволяет объединить изучение
+                        исторического материала с обсуждением нравственных
+                        и гражданских ценностей.
                     </p>
 
-                    <p>
-                        Проект может стать частью воспитательной работы, направленной
-                        на сохранение исторической памяти, формирование
-                        гражданско-патриотических ценностей и уважительного отношения
-                        к героическому прошлому.
-                    </p>
-
-                    <p>
-                        Игровой формат предлагает учащимся стать участниками сюжетного
-                        повествования, принимать решения и размышлять о поступках людей
-                        в сложных исторических обстоятельствах. Это помогает не только
-                        расширить знания о событиях прошлого, но и осмыслить такие
-                        ценности, как <strong>мужество, ответственность, верность долгу,
-                        взаимопомощь и любовь к Родине</strong>.
-                    </p>
-
-                    <h3>Воспитательные возможности проекта</h3>
+                    <h3>Варианты использования:</h3>
 
                     <ul>
-                        <li>формирование интереса к истории и малой родине;</li>
-                        <li>воспитание уважения к подвигу защитников Отечества;</li>
-                        <li>сохранение памяти об участниках сопротивления;</li>
-                        <li>осмысление нравственного выбора, личной ответственности и гражданского долга;</li>
-                        <li>развитие сопереживания и понимания ценности мира;</li>
-                        <li>бережное отношение к историческому и культурному наследию.</li>
+                        <li>классные часы и уроки мужества;</li>
+                        <li>
+                            мероприятия гражданско-патриотической
+                            и военно-патриотической направленности;
+                        </li>
+                        <li>
+                            тематические занятия, посвящённые памятным датам
+                            Великой Отечественной войны;
+                        </li>
+                        <li>изучение истории родного края и краеведческая работа;</li>
+                        <li>
+                            индивидуальное или групповое прохождение
+                            с последующим обсуждением;
+                        </li>
+                        <li>
+                            проектная и исследовательская деятельность учащихся.
+                        </li>
                     </ul>
 
-                    <h3>Как использовать ресурс в воспитательной работе?</h3>
+                    <h3>Вопросы для обсуждения:</h3>
 
                     <ul>
-                        <li>на классных часах и тематических воспитательных мероприятиях;</li>
-                        <li>при проведении мероприятий гражданско-патриотической и военно-патриотической направленности;</li>
-                        <li>в рамках изучения истории родного края;</li>
-                        <li>для индивидуального или группового прохождения с обсуждением;</li>
-                        <li>как основу для проектной и исследовательской деятельности учащихся.</li>
+                        <li>
+                            Какие качества помогали людям сохранять стойкость
+                            в годы войны?
+                        </li>
+                        <li>
+                            Почему взаимопомощь и единство имели особое значение?
+                        </li>
+                        <li>
+                            Что значит сохранять историческую память сегодня?
+                        </li>
+                        <li>
+                            Почему важно передавать знания о прошлом
+                            следующим поколениям?
+                        </li>
                     </ul>
 
-                    <div class="tm-description__note">
-                        После прохождения игры педагог может предложить учащимся
-                        обсудить, какие события и решения произвели на них наибольшее
-                        впечатление, что они узнали о подвиге людей военного времени
-                        и почему важно сохранять память о прошлом.
+                    <div class="tm-note">
+                        После прохождения проекта педагог может организовать
+                        беседу, предложить учащимся поделиться впечатлениями,
+                        обсудить исторические события и сформулировать личное
+                        отношение к затронутым нравственным вопросам.
                     </div>
+
                 </article>
 
             </div>
 
-            <!-- Кнопка «Главная» внизу -->
+            <!-- ЗАКЛЮЧЕНИЕ -->
+
+            <section class="tm-block tm-conclusion">
+
+                <span class="tm-label">Главная мысль проекта</span>
+
+                <p>
+                    Память о прошлом — это не только знание исторических событий.
+                    Это уважение к людям, понимание цены мира и ответственность
+                    за будущее. Пока мы помним, подвиг не становится прошлым.
+                </p>
+
+            </section>
+
+            <!-- КНОПКА ВОЗВРАТА -->
+
             <div class="tm-description__footer">
                 <a href="index.html" class="home-button">Главная</a>
             </div>
 
         </div>
-    </section>
+    </main>
 
 </div>
 
 <script>
-    // Логика управления музыкой
-    const music = document.getElementById("bgMusic");
-    const musicButton = document.getElementById("musicButton");
+const music = document.getElementById("bgMusic");
 
-    musicButton.addEventListener("click", function () {
-        if (music.paused) {
-            music.play().then(() => {
-                musicButton.textContent = "♫ Выключить мелодию";
-            }).catch(e => {
-                console.log("Ошибка воспроизведения:", e);
-            });
-        } else {
-            music.pause();
-            musicButton.textContent = "♫ Включить мелодию";
-        }
-    });
+// Попытка автоматического запуска музыки
+async function startMusic() {
+    try {
+        await music.play();
+
+        document.removeEventListener("pointerdown", startMusic, true);
+        document.removeEventListener("keydown", startMusic, true);
+
+    } catch (error) {
+        // Если браузер запретил автозапуск,
+        // музыка попробует включиться после действия пользователя.
+    }
+}
+
+// Запуск при загрузке страницы
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startMusic);
+} else {
+    startMusic();
+}
+
+// Повторная попытка после первого касания или нажатия
+document.addEventListener("pointerdown", startMusic, true);
+document.addEventListener("keydown", startMusic, true);
 </script>
 
 </body>
 </html>
+```
