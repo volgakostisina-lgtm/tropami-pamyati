@@ -8,373 +8,377 @@
 
 <style>
 *{
-    box-sizing:border-box;
+ box-sizing:border-box;
 }
 
 html,body{
-    margin:0;
-    padding:0;
-    width:100%;
-    min-height:100%;
-    font-family:Arial,Helvetica,sans-serif;
-    background:#111;
-    color:#f4eee2;
+ margin:0;
+ padding:0;
+ width:100%;
+ min-height:100%;
+ font-family:Arial,Helvetica,sans-serif;
+ background:#111;
+ color:#f4eee2;
 }
 
 body{
-    min-height:100vh;
-    background:
-        linear-gradient(rgba(12,12,12,.66),rgba(12,12,12,.82)),
-        url("main-background.png") center/cover fixed no-repeat;
+ min-height:100vh;
+ background:
+ linear-gradient(rgba(12,12,12,.66),rgba(12,12,12,.82)),
+ url("main-background.png") center/cover fixed no-repeat;
 }
 
 button,input,select{
-    font:inherit;
+ font:inherit;
 }
 
 .topbar{
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    height:64px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 24px;
-    background:rgba(9,9,9,.88);
-    border-bottom:1px solid rgba(255,255,255,.12);
-    backdrop-filter:blur(8px);
-    z-index:50;
+ position:fixed;
+ top:0;
+ left:0;
+ right:0;
+ height:64px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:0 24px;
+ background:rgba(9,9,9,.88);
+ border-bottom:1px solid rgba(255,255,255,.12);
+ backdrop-filter:blur(8px);
+ z-index:50;
 }
 
 .logo{
-    letter-spacing:3px;
-    font-weight:bold;
-    font-size:14px;
+ color:#f4eee2;
+ text-decoration:none;
+ letter-spacing:2px;
+ font-weight:bold;
+ font-size:14px;
 }
 
 .top-actions{
-    display:flex;
-    gap:8px;
+ display:flex;
+ gap:8px;
 }
 
 .top-btn{
-    border:1px solid rgba(255,255,255,.18);
-    background:rgba(255,255,255,.06);
-    color:#eee;
-    padding:9px 13px;
-    border-radius:8px;
-    cursor:pointer;
-    transition:.2s;
+ display:inline-block;
+ text-decoration:none;
+ border:1px solid rgba(255,255,255,.18);
+ background:rgba(255,255,255,.06);
+ color:#eee;
+ padding:9px 13px;
+ border-radius:8px;
+ cursor:pointer;
+ transition:.2s;
 }
 
 .top-btn:hover{
-    background:rgba(255,255,255,.13);
+ background:rgba(255,255,255,.13);
 }
 
 .screen{
-    min-height:100vh;
-    padding:96px 20px 60px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+ min-height:100vh;
+ padding:96px 20px 60px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
 }
 
 .panel{
-    width:min(920px,100%);
-    background:rgba(15,15,15,.86);
-    border:1px solid rgba(255,255,255,.13);
-    border-radius:18px;
-    padding:42px;
-    box-shadow:0 20px 70px rgba(0,0,0,.45);
+ width:min(920px,100%);
+ background:rgba(15,15,15,.86);
+ border:1px solid rgba(255,255,255,.13);
+ border-radius:18px;
+ padding:42px;
+ box-shadow:0 20px 70px rgba(0,0,0,.45);
 }
 
 .kicker{
-    color:#c5a96d;
-    letter-spacing:4px;
-    font-size:13px;
-    margin-bottom:12px;
-    text-transform:uppercase;
+ color:#c5a96d;
+ letter-spacing:4px;
+ font-size:13px;
+ margin-bottom:12px;
+ text-transform:uppercase;
 }
 
 h1{
-    margin:0 0 16px;
-    font-family:Georgia,serif;
-    font-size:clamp(34px,6vw,62px);
-    line-height:1;
+ margin:0 0 16px;
+ font-family:Georgia,serif;
+ font-size:clamp(34px,6vw,62px);
+ line-height:1;
 }
 
 h2{
-    font-family:Georgia,serif;
-    font-size:34px;
-    margin:0 0 18px;
+ font-family:Georgia,serif;
+ font-size:34px;
+ margin:0 0 18px;
 }
 
 h3{
-    font-family:Georgia,serif;
-    font-size:25px;
+ font-family:Georgia,serif;
+ font-size:25px;
 }
 
 .subtitle{
-    color:#c9c3b8;
-    font-size:18px;
-    line-height:1.6;
+ color:#c9c3b8;
+ font-size:18px;
+ line-height:1.6;
 }
 
 .story-text{
-    color:#e9e3d7;
-    font-size:18px;
-    line-height:1.8;
-    white-space:pre-line;
+ color:#e9e3d7;
+ font-size:18px;
+ line-height:1.8;
+ white-space:pre-line;
 }
 
 .quote{
-    margin:25px 0;
-    padding:18px 22px;
-    border-left:3px solid #c5a96d;
-    background:rgba(255,255,255,.045);
-    color:#eee4d2;
-    font-family:Georgia,serif;
-    font-size:20px;
-    line-height:1.6;
+ margin:25px 0;
+ padding:18px 22px;
+ border-left:3px solid #c5a96d;
+ background:rgba(255,255,255,.045);
+ color:#eee4d2;
+ font-family:Georgia,serif;
+ font-size:20px;
+ line-height:1.6;
 }
 
 .choice-grid{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:14px;
-    margin-top:28px;
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:14px;
+ margin-top:28px;
 }
 
 .choice{
-    text-align:left;
-    padding:18px;
-    border-radius:12px;
-    border:1px solid rgba(255,255,255,.14);
-    background:rgba(255,255,255,.055);
-    color:#f3eee5;
-    cursor:pointer;
-    transition:.25s;
+ text-align:left;
+ padding:18px;
+ border-radius:12px;
+ border:1px solid rgba(255,255,255,.14);
+ background:rgba(255,255,255,.055);
+ color:#f3eee5;
+ cursor:pointer;
+ transition:.25s;
 }
 
 .choice:hover{
-    transform:translateY(-2px);
-    background:rgba(255,255,255,.10);
-    border-color:rgba(197,169,109,.55);
+ transform:translateY(-2px);
+ background:rgba(255,255,255,.10);
+ border-color:rgba(197,169,109,.55);
 }
 
 .choice-title{
-    display:block;
-    font-weight:bold;
-    margin-bottom:7px;
+ display:block;
+ font-weight:bold;
+ margin-bottom:7px;
 }
 
 .choice-note{
-    display:block;
-    color:#aaa49b;
-    font-size:14px;
-    line-height:1.4;
+ display:block;
+ color:#aaa49b;
+ font-size:14px;
+ line-height:1.4;
 }
 
 .primary{
-    display:inline-block;
-    margin-top:26px;
-    padding:14px 20px;
-    border:none;
-    border-radius:9px;
-    background:#c5a96d;
-    color:#18140e;
-    font-weight:bold;
-    cursor:pointer;
-    letter-spacing:.5px;
+ display:inline-block;
+ margin-top:26px;
+ padding:14px 20px;
+ border:none;
+ border-radius:9px;
+ background:#c5a96d;
+ color:#18140e;
+ font-weight:bold;
+ cursor:pointer;
+ letter-spacing:.5px;
 }
 
 .primary:hover{
-    filter:brightness(1.08);
+ filter:brightness(1.08);
 }
 
 .secondary{
-    display:inline-block;
-    margin-top:14px;
-    padding:11px 17px;
-    border:1px solid rgba(255,255,255,.18);
-    border-radius:9px;
-    background:rgba(255,255,255,.05);
-    color:#eee;
-    cursor:pointer;
+ display:inline-block;
+ margin-top:14px;
+ padding:11px 17px;
+ border:1px solid rgba(255,255,255,.18);
+ border-radius:9px;
+ background:rgba(255,255,255,.05);
+ color:#eee;
+ cursor:pointer;
 }
 
 .dossier{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
-    margin-top:25px;
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:14px;
+ margin-top:25px;
 }
 
 .field{
-    display:flex;
-    flex-direction:column;
-    gap:7px;
+ display:flex;
+ flex-direction:column;
+ gap:7px;
 }
 
 .field.full{
-    grid-column:1/-1;
+ grid-column:1/-1;
 }
 
 .field label{
-    color:#bdb5a7;
-    font-size:13px;
+ color:#bdb5a7;
+ font-size:13px;
 }
 
 .field input,
 .field select{
-    width:100%;
-    padding:13px;
-    border-radius:8px;
-    border:1px solid rgba(255,255,255,.14);
-    background:#1a1a1a;
-    color:#f5f0e7;
-    outline:none;
+ width:100%;
+ padding:13px;
+ border-radius:8px;
+ border:1px solid rgba(255,255,255,.14);
+ background:#1a1a1a;
+ color:#f5f0e7;
+ outline:none;
 }
 
 .field input:focus,
 .field select:focus{
-    border-color:#c5a96d;
+ border-color:#c5a96d;
 }
 
 .small-note{
-    margin-top:16px;
-    color:#99948b;
-    font-size:13px;
-    line-height:1.5;
+ margin-top:16px;
+ color:#99948b;
+ font-size:13px;
+ line-height:1.5;
 }
 
 .profile-list{
-    display:grid;
-    gap:12px;
-    margin-top:25px;
+ display:grid;
+ gap:12px;
+ margin-top:25px;
 }
 
 .profile{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
-    padding:17px;
-    border:1px solid rgba(255,255,255,.13);
-    border-radius:10px;
-    background:rgba(255,255,255,.045);
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:15px;
+ padding:17px;
+ border:1px solid rgba(255,255,255,.13);
+ border-radius:10px;
+ background:rgba(255,255,255,.045);
 }
 
 .profile-info{
-    line-height:1.5;
+ line-height:1.5;
 }
 
 .profile-code{
-    color:#c5a96d;
-    font-weight:bold;
+ color:#c5a96d;
+ font-weight:bold;
 }
 
 .profile-meta{
-    color:#aaa;
-    font-size:13px;
+ color:#aaa;
+ font-size:13px;
 }
 
 .overlay{
-    position:fixed;
-    inset:0;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-    background:rgba(0,0,0,.78);
-    z-index:100;
+ position:fixed;
+ inset:0;
+ display:none;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+ background:rgba(0,0,0,.78);
+ z-index:100;
 }
 
 .overlay.active{
-    display:flex;
+ display:flex;
 }
 
 .modal{
-    width:min(850px,100%);
-    max-height:88vh;
-    overflow:auto;
-    background:#151515;
-    border:1px solid rgba(255,255,255,.16);
-    border-radius:16px;
-    padding:30px;
+ width:min(850px,100%);
+ max-height:88vh;
+ overflow:auto;
+ background:#151515;
+ border:1px solid rgba(255,255,255,.16);
+ border-radius:16px;
+ padding:30px;
 }
 
 .modal h2{
-    font-size:28px;
+ font-size:28px;
 }
 
 .diary-entry{
-    padding:15px 0;
-    border-bottom:1px solid rgba(255,255,255,.09);
+ padding:15px 0;
+ border-bottom:1px solid rgba(255,255,255,.09);
 }
 
 .diary-entry strong{
-    color:#c5a96d;
+ color:#c5a96d;
 }
 
 .stat-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
-    margin-top:24px;
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:10px;
+ margin-top:24px;
 }
 
 .stat{
-    background:rgba(255,255,255,.05);
-    padding:15px;
-    border-radius:9px;
-    text-align:center;
+ background:rgba(255,255,255,.05);
+ padding:15px;
+ border-radius:9px;
+ text-align:center;
 }
 
 .stat b{
-    display:block;
-    font-size:24px;
-    color:#c5a96d;
+ display:block;
+ font-size:24px;
+ color:#c5a96d;
 }
 
 .fade{
-    animation:fade .45s ease;
+ animation:fade .45s ease;
 }
 
 @keyframes fade{
-    from{opacity:0;transform:translateY(8px)}
-    to{opacity:1;transform:translateY(0)}
+ from{opacity:0;transform:translateY(8px)}
+ to{opacity:1;transform:translateY(0)}
 }
 
 @media(max-width:700px){
     .panel{
-        padding:26px 20px;
+ padding:26px 20px;
     }
 
     .choice-grid,
     .dossier,
     .stat-grid{
-        grid-template-columns:1fr;
+ grid-template-columns:1fr;
     }
 
     .field.full{
-        grid-column:auto;
+ grid-column:auto;
     }
 
     .topbar{
-        padding:0 12px;
+ padding:0 12px;
     }
 
     .logo{
-        font-size:11px;
-        letter-spacing:2px;
+ font-size:11px;
+ letter-spacing:2px;
     }
 
     .top-btn{
-        padding:8px 9px;
-        font-size:12px;
+ padding:8px 9px;
+ font-size:12px;
     }
 }
 </style>
@@ -382,13 +386,31 @@ h3{
 
 <body>
 
+<audio id="backgroundMusic" loop preload="auto">
+    <source src="Спокойствие%20Resolve.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+(function(){
+    const music = document.getElementById("backgroundMusic");
+    if (!music) return;
+    music.volume = 0.35;
+    function startMusic(){
+        music.play().catch(function(){});
+    }
+    window.addEventListener("load", startMusic);
+    document.addEventListener("pointerdown", startMusic, { once: true });
+    document.addEventListener("keydown", startMusic, { once: true });
+})();
+</script>
+
 <div class="topbar">
-    <div class="logo">▲ ТРОПАМИ ПАМЯТИ · ПОДПОЛЬЕ</div>
+    <a class="logo" href="index.html">Тропами памяти</a>
 
     <div class="top-actions">
-        <button class="top-btn" onclick="openDossier()">📜 ДОСЬЕ</button>
-        <button class="top-btn" onclick="openDiary()">📖 ДНЕВНИК</button>
-        <button class="top-btn" onclick="goHome()">🏠 ГЛАВНАЯ</button>
+        <button class="top-btn" onclick="openDossier()">ДОСЬЕ</button>
+        <button class="top-btn" onclick="openDiary()">ДНЕВНИК</button>
+        <a class="top-btn" href="index.html">Главная страница</a>
     </div>
 </div>
 
@@ -404,7 +426,7 @@ h3{
 <!-- МОДАЛЬНОЕ ОКНО ДНЕВНИКА -->
 <div id="diaryOverlay" class="overlay">
     <div class="modal">
-        <h2>📖 Дневник</h2>
+        <h2> Дневник</h2>
         <div id="diaryContent"></div>
         <button class="secondary" onclick="closeOverlays()">Закрыть</button>
     </div>
@@ -413,102 +435,93 @@ h3{
 <script>
 
 /* =========================================================
-   СОСТОЯНИЕ ИГРЫ
+ СОСТОЯНИЕ ИГРЫ
 ========================================================= */
 
 let hero = null;
 
 let game = {
-    scene: 0,
-    trust: 0,
-    caution: 0,
-    courage: 0,
-    evidence: 0,
-    diary: [],
-    discoveries: [],
-    finished: false
+ scene: 0,
+ trust: 0,
+ caution: 0,
+ courage: 0,
+ evidence: 0,
+ diary: [],
+ discoveries: [],
+ finished: false
 };
 
 const STORAGE_KEY = "tropami_mazanik_profiles";
 
 /* =========================================================
-   ПРОФИЛИ
+ ПРОФИЛИ
 ========================================================= */
 
 function getProfiles(){
-    try{
-        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+ try{
+ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
     }catch(e){
-        return [];
+ return [];
     }
 }
 
 function saveProfiles(profiles){
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(profiles));
+ localStorage.setItem(STORAGE_KEY, JSON.stringify(profiles));
 }
 
 function saveCurrent(){
-    if(!hero) return;
-
-    hero.game = game;
-
-    const profiles = getProfiles();
-
-    const index = profiles.findIndex(p => p.id === hero.id);
-
-    if(index >= 0){
-        profiles[index] = hero;
+ if(!hero) return;
+ hero.game = game;
+ const profiles = getProfiles();
+ const index = profiles.findIndex(p => p.id === hero.id);
+ if(index >= 0){
+ profiles[index] = hero;
     }else{
-        profiles.push(hero);
+ profiles.push(hero);
     }
-
-    saveProfiles(profiles);
+ saveProfiles(profiles);
 }
 
 /* =========================================================
-   ЭКРАНЫ
+ ЭКРАНЫ
 ========================================================= */
 
 function render(html){
-    document.getElementById("app").innerHTML =
+ document.getElementById("app").innerHTML =
         `<div class="screen fade">${html}</div>`;
 }
 
 function goHome(){
-    window.location.href = "index.html";
+ window.location.href = "index.html";
 }
 
 /* =========================================================
-   НАЧАЛО
+ НАЧАЛО
 ========================================================= */
 
 function start(){
-
-    const profiles = getProfiles();
-
-    if(profiles.length){
-        showProfileChoice();
+ const profiles = getProfiles();
+ if(profiles.length){
+ showProfileChoice();
     }else{
-        showIntro();
+ showIntro();
     }
 }
 
 function showIntro(){
-
-    render(`
+ render(`
         <div class="panel">
 
             <div class="kicker">ВТОРАЯ ТРОПА · ПОДПОЛЬЕ</div>
 
             <h1>Город молчит</h1>
 
-            <div class="subtitle">
-                Минск. 1943 год.
+            <div class="subtitle"> Минск. 1943 год.
             </div>
 
             <div class="quote">
                 «В городе опасно не только то, что ты делаешь.
-                Опасно даже то, кто тебя знает».
+ Опасно даже то, кто тебя знает».
             </div>
 
             <div class="story-text">
@@ -523,8 +536,7 @@ function showIntro(){
 становится выбором.
             </div>
 
-            <button class="primary" onclick="showDossierIntro()">
-                НАЧАТЬ ИСТОРИЮ
+            <button class="primary" onclick="showDossierIntro()"> НАЧАТЬ ИСТОРИЮ
             </button>
 
         </div>
@@ -532,12 +544,11 @@ function showIntro(){
 }
 
 /* =========================================================
-   ДОСЬЕ
+ ДОСЬЕ
 ========================================================= */
 
 function showDossierIntro(){
-
-    render(`
+ render(`
         <div class="panel">
 
             <div class="kicker">ЛИЧНОЕ ДОСЬЕ</div>
@@ -554,8 +565,7 @@ function showDossierIntro(){
 или другую личную информацию.
             </div>
 
-            <button class="primary" onclick="showDossierForm()">
-                ЗАПОЛНИТЬ ДОСЬЕ
+            <button class="primary" onclick="showDossierForm()"> ЗАПОЛНИТЬ ДОСЬЕ
             </button>
 
         </div>
@@ -563,8 +573,7 @@ function showDossierIntro(){
 }
 
 function showDossierForm(existing=null){
-
-    render(`
+ render(`
         <div class="panel">
 
             <div class="kicker">ЛИЧНОЕ ДОСЬЕ</div>
@@ -586,7 +595,7 @@ function showDossierForm(existing=null){
                 <div class="field">
                     <label>Возраст</label>
                     <input id="age" type="number" min="12" max="80"
-                           value="${existing?.age || ""}">
+ value="${existing?.age || ""}">
                 </div>
 
                 <div class="field">
@@ -630,12 +639,10 @@ function showDossierForm(existing=null){
 
             </div>
 
-            <div class="small-note">
-                Все данные — часть игры. Используй вымышленные сведения.
+            <div class="small-note"> Все данные — часть игры. Используй вымышленные сведения.
             </div>
 
-            <button class="primary" onclick="createHero()">
-                💾 СОХРАНИТЬ ДОСЬЕ
+            <button class="primary" onclick="createHero()"> СОХРАНИТЬ ДОСЬЕ
             </button>
 
         </div>
@@ -643,19 +650,17 @@ function showDossierForm(existing=null){
 }
 
 function createHero(){
-
-    const firstName = document.getElementById("firstName").value.trim();
-    const lastName = document.getElementById("lastName").value.trim();
-    const age = document.getElementById("age").value.trim();
-    const gender = document.getElementById("gender").value;
-    const homePlace = document.getElementById("homePlace").value.trim();
-    const region = document.getElementById("region").value.trim();
-    const relativeName = document.getElementById("relativeName").value.trim();
-    const relativeRole = document.getElementById("relativeRole").value.trim();
-    const specialMark = document.getElementById("specialMark").value.trim();
-    const codeName = document.getElementById("codeName").value.trim();
-
-    if(
+ const firstName = document.getElementById("firstName").value.trim();
+ const lastName = document.getElementById("lastName").value.trim();
+ const age = document.getElementById("age").value.trim();
+ const gender = document.getElementById("gender").value;
+ const homePlace = document.getElementById("homePlace").value.trim();
+ const region = document.getElementById("region").value.trim();
+ const relativeName = document.getElementById("relativeName").value.trim();
+ const relativeRole = document.getElementById("relativeRole").value.trim();
+ const specialMark = document.getElementById("specialMark").value.trim();
+ const codeName = document.getElementById("codeName").value.trim();
+ if(
         !firstName ||
         !lastName ||
         !age ||
@@ -667,48 +672,42 @@ function createHero(){
         !specialMark ||
         !codeName
     ){
-        alert("Заполни все поля досье.");
-        return;
+ alert("Заполни все поля досье.");
+ return;
     }
-
-    hero = {
-        id:"hero_" + Date.now(),
-        firstName,
-        lastName,
-        age,
-        gender,
-        homePlace,
-        region,
-        relativeName,
-        relativeRole,
-        specialMark,
-        codeName,
-        path:"Подпольщики",
-        mentor:"Елена Мазаник · Мария Осипова · Надежда Троян",
-        game:{
-            scene:0,
-            trust:0,
-            caution:0,
-            courage:0,
-            evidence:0,
-            diary:[],
-            discoveries:[],
-            finished:false
+ hero = {
+ id:"hero_" + Date.now(),
+ firstName,
+ lastName,
+ age,
+ gender,
+ homePlace,
+ region,
+ relativeName,
+ relativeRole,
+ specialMark,
+ codeName,
+ path:"Подпольщики",
+ mentor:"Елена Мазаник · Мария Осипова · Надежда Троян",
+ game:{
+ scene:0,
+ trust:0,
+ caution:0,
+ courage:0,
+ evidence:0,
+ diary:[],
+ discoveries:[],
+ finished:false
         }
     };
-
-    game = hero.game;
-
-    saveCurrent();
-
-    storyScene0();
+ game = hero.game;
+ saveCurrent();
+ storyScene0();
 }
 
 function showProfileChoice(){
-
-    const profiles = getProfiles();
-
-    let html = `
+ const profiles = getProfiles();
+ let html = `
         <div class="panel">
 
             <div class="kicker">АРХИВ</div>
@@ -722,19 +721,16 @@ function showProfileChoice(){
 
             <div class="profile-list">
     `;
-
-    profiles.forEach(p=>{
-
-        const progress = p.game?.finished
+ profiles.forEach(p=>{
+ const progress = p.game?.finished
             ? "История завершена"
             : "История продолжается";
-
-        html += `
+ html += `
             <div class="profile">
 
                 <div class="profile-info">
                     <div class="profile-code">
-                        📜 ${escapeHtml(p.codeName)}
+                         ${escapeHtml(p.codeName)}
                     </div>
 
                     <div>
@@ -743,113 +739,98 @@ function showProfileChoice(){
                         ${escapeHtml(String(p.age))}
                     </div>
 
-                    <div class="profile-meta">
-                        Подпольщики · ${progress}
+                    <div class="profile-meta"> Подпольщики · ${progress}
                     </div>
                 </div>
 
                 <button class="primary"
-                        style="margin:0"
-                        onclick="loadProfile('${p.id}')">
-                    ПРОДОЛЖИТЬ
+ style="margin:0"
+ onclick="loadProfile('${p.id}')"> ПРОДОЛЖИТЬ
                 </button>
 
             </div>
         `;
     });
-
-    html += `
+ html += `
             </div>
 
             <button class="secondary"
-                    onclick="showDossierIntro()">
-                Создать новое досье
+ onclick="showDossierIntro()"> Создать новое досье
             </button>
 
         </div>
     `;
-
-    render(html);
+ render(html);
 }
 
 function loadProfile(id){
-
-    const profiles = getProfiles();
-    const found = profiles.find(p=>p.id===id);
-
-    if(!found) return;
-
-    hero = found;
-    game = found.game || {
-        scene:0,
-        trust:0,
-        caution:0,
-        courage:0,
-        evidence:0,
-        diary:[],
-        discoveries:[],
-        finished:false
+ const profiles = getProfiles();
+ const found = profiles.find(p=>p.id===id);
+ if(!found) return;
+ hero = found;
+ game = found.game || {
+ scene:0,
+ trust:0,
+ caution:0,
+ courage:0,
+ evidence:0,
+ diary:[],
+ discoveries:[],
+ finished:false
     };
-
-    if(game.finished){
-        showEnding();
+ if(game.finished){
+ showEnding();
     }else{
-        continueStory();
+ continueStory();
     }
 }
 
 /* =========================================================
-   ИСТОРИЯ
+ ИСТОРИЯ
 ========================================================= */
 
 function continueStory(){
-
-    switch(game.scene){
-
-        case 0: storyScene0(); break;
-        case 1: storyScene1(); break;
-        case 2: storyScene2(); break;
-        case 3: storyScene3(); break;
-        case 4: storyScene4(); break;
-        case 5: storyScene5(); break;
-        case 6: storyScene6(); break;
-        case 7: storyScene7(); break;
-        case 8: storyScene8(); break;
-        case 9: storyScene9(); break;
-        case 10: storyScene10(); break;
-        default: showEnding();
+ switch(game.scene){
+ case 0: storyScene0(); break;
+ case 1: storyScene1(); break;
+ case 2: storyScene2(); break;
+ case 3: storyScene3(); break;
+ case 4: storyScene4(); break;
+ case 5: storyScene5(); break;
+ case 6: storyScene6(); break;
+ case 7: storyScene7(); break;
+ case 8: storyScene8(); break;
+ case 9: storyScene9(); break;
+ case 10: storyScene10(); break;
+ default: showEnding();
     }
 }
 
 function nextScene(){
-
-    game.scene++;
-    saveCurrent();
-    continueStory();
+ game.scene++;
+ saveCurrent();
+ continueStory();
 }
 
 function addDiary(text){
-
-    game.diary.push({
-        date:new Date().toLocaleDateString("ru-RU"),
-        text
+ game.diary.push({
+ date:new Date().toLocaleDateString("ru-RU"),
+ text
     });
 }
 
 function addDiscovery(text){
-
-    if(!game.discoveries.includes(text)){
-        game.discoveries.push(text);
+ if(!game.discoveries.includes(text)){
+ game.discoveries.push(text);
     }
 }
 
 /* =========================================================
-   СЦЕНА 0
+ СЦЕНА 0
 ========================================================= */
 
 function storyScene0(){
-
-    render(`
+ render(`
         <div class="panel">
 
             <div class="kicker">МИНСК · 1943</div>
@@ -900,20 +881,20 @@ function storyScene0(){
             <div class="choice-grid">
 
                 <button class="choice" onclick="
-                    game.caution++;
-                    addDiary('Я решил не спешить. Сначала нужно понять, откуда взялась записка.');
-                    addDiscovery('Таинственная записка');
-                    nextScene();
+ game.caution++;
+ addDiary('Я решил не спешить. Сначала нужно понять, откуда взялась записка.');
+ addDiscovery('Таинственная записка');
+ nextScene();
                 ">
                     <span class="choice-title">Спрятать записку и сначала проверить знак</span>
                     <span class="choice-note">Осторожность может сохранить жизнь.</span>
                 </button>
 
                 <button class="choice" onclick="
-                    game.courage++;
-                    addDiary('Я решил прийти на встречу. Иногда слишком долгие сомнения опаснее риска.');
-                    addDiscovery('Таинственная записка');
-                    nextScene();
+ game.courage++;
+ addDiary('Я решил прийти на встречу. Иногда слишком долгие сомнения опаснее риска.');
+ addDiscovery('Таинственная записка');
+ nextScene();
                 ">
                     <span class="choice-title">Принять приглашение</span>
                     <span class="choice-note">Если это зовут товарища, нельзя заставлять его ждать.</span>
@@ -926,12 +907,11 @@ function storyScene0(){
 }
 
 /* =========================================================
-   СЦЕНА 1
+ СЦЕНА 1
 ========================================================= */
 
 function storyScene1(){
-
-    render(`
+ render(`
         <div class="panel">
 
             <div class="kicker">ГЛАВА I</div>
@@ -980,19 +960,19 @@ function storyScene1(){
             <div class="choice-grid">
 
                 <button class="choice" onclick="
-                    game.caution++;
-                    game.trust++;
-                    addDiary('Я не стал задавать лишних вопросов.');
-                    nextScene();
+ game.caution++;
+ game.trust++;
+ addDiary('Я не стал задавать лишних вопросов.');
+ nextScene();
                 ">
                     <span class="choice-title">Взять свёрток и ничего не спрашивать</span>
                     <span class="choice-note">В подполье доверие начинается с умения хранить чужую тайну.</span>
                 </button>
 
                 <button class="choice" onclick="
-                    game.evidence++;
-                    addDiary('Я попросил хотя бы объяснить, кому именно я должен передать свёрток.');
-                    nextScene();
+ game.evidence++;
+ addDiary('Я попросил хотя бы объяснить, кому именно я должен передать свёрток.');
+ nextScene();
                 ">
                     <span class="choice-title">Попросить объяснить хотя бы цель задания</span>
                     <span class="choice-note">Ты хочешь понимать, во что ввязываешься.</span>
@@ -1005,12 +985,11 @@ function storyScene1(){
 }
 
 /* =========================================================
-   СЦЕНА 2
+ СЦЕНА 2
 ========================================================= */
 
 function storyScene2(){
-
-    render(`
+ render(`
         <div class="panel">
 
             <div class="kicker">ГЛАВА II</div>
@@ -1059,19 +1038,19 @@ function storyScene2(){
             <div class="choice-grid">
 
                 <button class="choice" onclick="
-                    game.caution+=2;
-                    addDiary('Я не передал свёрток незнакомцу. Слишком много неизвестных.');
-                    addDiscovery('Первое сомнение');
-                    nextScene();
+ game.caution+=2;
+ addDiary('Я не передал свёрток незнакомцу. Слишком много неизвестных.');
+ addDiscovery('Первое сомнение');
+ nextScene();
                 ">
                     <span class="choice-title">Не отдавать свёрток</span>
                     <span class="choice-note">Сначала убедиться, что перед тобой действительно свой человек.</span>
                 </button>
 
                 <button class="choice" onclick="
-                    game.trust++;
-                    addDiary('Я решил довериться и передал свёрток.');
-                    nextScene();
+ game.trust++;
+ addDiary('Я решил довериться и передал свёрток.');
+ nextScene();
                 ">
                     <span class="choice-title">Довериться условному имени</span>
                     <span class="choice-note">Он знает твоё кодовое имя. Возможно, этого достаточно.</span>
@@ -1084,12 +1063,11 @@ function storyScene2(){
 }
 
 /* =========================================================
-   СЦЕНА 3
+ СЦЕНА 3
 ========================================================= */
 
 function storyScene3(){
-
-    render(`
+ render(`
         <div class="panel">
 
             <div class="kicker">ГЛАВА III</div>
@@ -1138,14 +1116,13 @@ function storyScene3(){
             </div>
 
             <button class="primary" onclick="
-                game.trust++;
-                addDiscovery('Елена Мазаник');
-                addDiscovery('Мария Осипова');
-                addDiscovery('Надежда Троян');
-                addDiary('Сегодня я впервые услышал три имени: Мазаник, Осипова и Троян.');
-                nextScene();
-            ">
-                ЗАПОМНИТЬ ТРИ ИМЕНИ
+ game.trust++;
+ addDiscovery('Елена Мазаник');
+ addDiscovery('Мария Осипова');
+ addDiscovery('Надежда Троян');
+ addDiary('Сегодня я впервые услышал три имени: Мазаник, Осипова и Троян.');
+ nextScene();
+            "> ЗАПОМНИТЬ ТРИ ИМЕНИ
             </button>
 
         </div>
@@ -1153,12 +1130,11 @@ function storyScene3(){
 }
 
 /* =========================================================
-   СЦЕНА 4
+ СЦЕНА 4
 ========================================================= */
 
 function storyScene4(){
-
-    render(`
+ render(`
         <div class="panel">
 
             <div class="kicker">ГЛАВА IV</div>
@@ -1191,18 +1167,18 @@ function storyScene4(){
             <div class="choice-grid">
 
                 <button class="choice" onclick="
-                    game.caution++;
-                    addDiary('Я решил изменить привычный маршрут и предупредить товарищей.');
-                    nextScene();
+ game.caution++;
+ addDiary('Я решил изменить привычный маршрут и предупредить товарищей.');
+ nextScene();
                 ">
                     <span class="choice-title">Предупредить товарищей</span>
                     <span class="choice-note">Лучше перестраховаться.</span>
                 </button>
 
                 <button class="choice" onclick="
-                    game.evidence++;
-                    addDiary('Я решил сначала понаблюдать и собрать больше сведений.');
-                    nextScene();
+ game.evidence++;
+ addDiary('Я решил сначала понаблюдать и собрать больше сведений.');
+ nextScene();
                 ">
                     <span class="choice-title">Понаблюдать ещё</span>
                     <span class="choice-note">Один признак ещё ничего не доказывает.</span>
@@ -1215,12 +1191,11 @@ function storyScene4(){
 }
 
 /* =========================================================
-   СЦЕНА 5
+ СЦЕНА 5
 ========================================================= */
 
 function storyScene5(){
-
-    render(`
+ render(`
         <div class="panel">
 
             <div class="kicker">ГЛАВА V</div>
@@ -1268,12 +1243,11 @@ function storyScene5(){
             </div>
 
             <button class="primary" onclick="
-                game.evidence++;
-                addDiscovery('Вильгельм Кубе');
-                addDiary('Теперь я знаю имя человека, вокруг которого строится операция.');
-                nextScene();
-            ">
-                ПРОДОЛЖИТЬ
+ game.evidence++;
+ addDiscovery('Вильгельм Кубе');
+ addDiary('Теперь я знаю имя человека, вокруг которого строится операция.');
+ nextScene();
+            "> ПРОДОЛЖИТЬ
             </button>
 
         </div>
@@ -1281,12 +1255,11 @@ function storyScene5(){
 }
 
 /* =========================================================
-   СЦЕНА 6
+ СЦЕНА 6
 ========================================================= */
 
 function storyScene6(){
-
-    render(`
+ render(`
         <div class="panel">
 
             <div class="kicker">ГЛАВА VI</div>
@@ -1322,18 +1295,18 @@ function storyScene6(){
             <div class="choice-grid">
 
                 <button class="choice" onclick="
-                    game.caution+=2;
-                    addDiary('Я решил сначала проверить информацию.');
-                    nextScene();
+ game.caution+=2;
+ addDiary('Я решил сначала проверить информацию.');
+ nextScene();
                 ">
                     <span class="choice-title">Проверить сообщение</span>
                     <span class="choice-note">Лучше задержать информацию, чем передать ложную.</span>
                 </button>
 
                 <button class="choice" onclick="
-                    game.courage++;
-                    addDiary('Я решил сообщить товарищам о новой информации сразу.');
-                    nextScene();
+ game.courage++;
+ addDiary('Я решил сообщить товарищам о новой информации сразу.');
+ nextScene();
                 ">
                     <span class="choice-title">Немедленно предупредить товарищей</span>
                     <span class="choice-note">Иногда промедление тоже может быть опасным.</span>
@@ -1346,12 +1319,11 @@ function storyScene6(){
 }
 
 /* =========================================================
-   СЦЕНА 7
+ СЦЕНА 7
 ========================================================= */
 
 function storyScene7(){
-
-    render(`
+ render(`
         <div class="panel">
 
             <div class="kicker">ГЛАВА VII · СЕНТЯБРЬ 1943</div>
@@ -1403,11 +1375,10 @@ function storyScene7(){
             </div>
 
             <button class="primary" onclick="
-                game.courage++;
-                addDiary('Я дождался момента. Теперь оставалось только ждать.');
-                nextScene();
-            ">
-                ЖДАТЬ
+ game.courage++;
+ addDiary('Я дождался момента. Теперь оставалось только ждать.');
+ nextScene();
+            "> ЖДАТЬ
             </button>
 
         </div>
@@ -1415,12 +1386,11 @@ function storyScene7(){
 }
 
 /* =========================================================
-   СЦЕНА 8
+ СЦЕНА 8
 ========================================================= */
 
 function storyScene8(){
-
-    render(`
+ render(`
         <div class="panel">
 
             <div class="kicker">22 СЕНТЯБРЯ 1943 ГОДА</div>
@@ -1471,11 +1441,10 @@ function storyScene8(){
             </div>
 
             <button class="primary" onclick="
-                addDiscovery('22 сентября 1943 года');
-                addDiary('22 сентября. Операция завершилась. Но я понял: конец одного дела не означает конец опасности.');
-                nextScene();
-            ">
-                ПРОДОЛЖИТЬ
+ addDiscovery('22 сентября 1943 года');
+ addDiary('22 сентября. Операция завершилась. Но я понял: конец одного дела не означает конец опасности.');
+ nextScene();
+            "> ПРОДОЛЖИТЬ
             </button>
 
         </div>
@@ -1483,12 +1452,11 @@ function storyScene8(){
 }
 
 /* =========================================================
-   СЦЕНА 9
+ СЦЕНА 9
 ========================================================= */
 
 function storyScene9(){
-
-    render(`
+ render(`
         <div class="panel">
 
             <div class="kicker">ПОСЛЕ</div>
@@ -1535,10 +1503,9 @@ function storyScene9(){
             </div>
 
             <button class="primary" onclick="
-                addDiary('Я понял, что подпольная борьба состояла не только из громких событий, но и из множества незаметных решений.');
-                nextScene();
-            ">
-                ОТКРЫТЬ ПОСЛЕДНЮЮ СТРАНИЦУ
+ addDiary('Я понял, что подпольная борьба состояла не только из громких событий, но и из множества незаметных решений.');
+ nextScene();
+            "> ОТКРЫТЬ ПОСЛЕДНЮЮ СТРАНИЦУ
             </button>
 
         </div>
@@ -1546,18 +1513,16 @@ function storyScene9(){
 }
 
 /* =========================================================
-   СЦЕНА 10 — ИСТОРИЧЕСКИЙ БЛОК
+ СЦЕНА 10 — ИСТОРИЧЕСКИЙ БЛОК
 ========================================================= */
 
 function storyScene10(){
-
-    game.finished = true;
-    saveCurrent();
-
-    render(`
+ game.finished = true;
+ saveCurrent();
+ render(`
         <div class="panel">
 
-            <div class="kicker">📖 А ЧТО БЫЛО НА САМОМ ДЕЛЕ?</div>
+            <div class="kicker"> А ЧТО БЫЛО НА САМОМ ДЕЛЕ?</div>
 
             <h2>История вместо легенды</h2>
 
@@ -1631,24 +1596,20 @@ function storyScene10(){
             <div class="stat-grid">
 
                 <div class="stat">
-                    <b>${game.trust}</b>
-                    доверие
+                    <b>${game.trust}</b> доверие
                 </div>
 
                 <div class="stat">
-                    <b>${game.caution}</b>
-                    осторожность
+                    <b>${game.caution}</b> осторожность
                 </div>
 
                 <div class="stat">
-                    <b>${game.evidence}</b>
-                    сведения
+                    <b>${game.evidence}</b> сведения
                 </div>
 
             </div>
 
-            <button class="primary" onclick="showEnding()">
-                ЗАКРЫТЬ ИСТОРИЮ
+            <button class="primary" onclick="showEnding()"> ЗАКРЫТЬ ИСТОРИЮ
             </button>
 
         </div>
@@ -1656,12 +1617,11 @@ function storyScene10(){
 }
 
 /* =========================================================
-   ФИНАЛ
+ ФИНАЛ
 ========================================================= */
 
 function showEnding(){
-
-    render(`
+ render(`
         <div class="panel">
 
             <div class="kicker">ИСТОРИЯ ЗАВЕРШЕНА</div>
@@ -1690,12 +1650,10 @@ ${escapeHtml(hero.firstName)}, ${escapeHtml(hero.codeName)}.
 решили не пройти мимо».
             </div>
 
-            <button class="primary" onclick="goHome()">
-                🏠 ВЕРНУТЬСЯ НА ГЛАВНУЮ
+            <button class="primary" onclick="goHome()"> ВЕРНУТЬСЯ НА ГЛАВНУЮ
             </button>
 
-            <button class="secondary" onclick="showDiaryPage()">
-                📖 ОТКРЫТЬ ДНЕВНИК
+            <button class="secondary" onclick="showDiaryPage()"> ОТКРЫТЬ ДНЕВНИК
             </button>
 
         </div>
@@ -1703,19 +1661,17 @@ ${escapeHtml(hero.firstName)}, ${escapeHtml(hero.codeName)}.
 }
 
 /* =========================================================
-   ДОСЬЕ
+ ДОСЬЕ
 ========================================================= */
 
 function openDossier(){
-
-    if(!hero){
-        showDossierIntro();
-        return;
+ if(!hero){
+ showDossierIntro();
+ return;
     }
+ document.getElementById("dossierContent").innerHTML = `
 
-    document.getElementById("dossierContent").innerHTML = `
-
-        <h2>📜 Личное досье</h2>
+        <h2> Личное досье</h2>
 
         <div class="story-text">
             <b>Имя:</b> ${escapeHtml(hero.firstName)}
@@ -1742,46 +1698,36 @@ function openDossier(){
         <hr style="border-color:rgba(255,255,255,.1);margin:25px 0">
 
         <div class="story-text">
-            <b>Историческая линия:</b><br>
-            Елена Мазаник · Мария Осипова · Надежда Троян
+            <b>Историческая линия:</b><br> Елена Мазаник · Мария Осипова · Надежда Троян
         </div>
 
-        <button class="secondary" onclick="closeOverlays()">
-            Закрыть
+        <button class="secondary" onclick="closeOverlays()"> Закрыть
         </button>
     `;
-
-    document.getElementById("dossierOverlay")
+ document.getElementById("dossierOverlay")
         .classList.add("active");
 }
 
 /* =========================================================
-   ДНЕВНИК
+ ДНЕВНИК
 ========================================================= */
 
 function openDiary(){
-
-    if(!hero){
-        alert("Сначала создай героя.");
-        return;
+ if(!hero){
+ alert("Сначала создай героя.");
+ return;
     }
-
-    let html = "";
-
-    if(!game.diary.length){
-
-        html = `
-            <div class="story-text">
-                Пока здесь пусто.
-                Твой дневник начнётся вместе с историей.
+ let html = "";
+ if(!game.diary.length){
+ html = `
+            <div class="story-text"> Пока здесь пусто.
+ Твой дневник начнётся вместе с историей.
             </div>
         `;
 
     }else{
-
-        game.diary.forEach((entry,index)=>{
-
-            html += `
+ game.diary.forEach((entry,index)=>{
+ html += `
                 <div class="diary-entry">
                     <strong>Запись ${index+1} · ${escapeHtml(entry.date)}</strong>
                     <div class="story-text">
@@ -1791,29 +1737,26 @@ function openDiary(){
             `;
         });
     }
-
-    document.getElementById("diaryContent").innerHTML = html;
-
-    document.getElementById("diaryOverlay")
+ document.getElementById("diaryContent").innerHTML = html;
+ document.getElementById("diaryOverlay")
         .classList.add("active");
 }
 
 function showDiaryPage(){
-    openDiary();
+ openDiary();
 }
 
 function closeOverlays(){
-    document.querySelectorAll(".overlay")
+ document.querySelectorAll(".overlay")
         .forEach(x=>x.classList.remove("active"));
 }
 
 /* =========================================================
-   БЕЗОПАСНЫЙ ВЫВОД ТЕКСТА
+ БЕЗОПАСНЫЙ ВЫВОД ТЕКСТА
 ========================================================= */
 
 function escapeHtml(text){
-
-    return String(text)
+ return String(text)
         .replace(/&/g,"&amp;")
         .replace(/</g,"&lt;")
         .replace(/>/g,"&gt;")
@@ -1822,7 +1765,7 @@ function escapeHtml(text){
 }
 
 /* =========================================================
-   ЗАПУСК
+ ЗАПУСК
 ========================================================= */
 
 start();
