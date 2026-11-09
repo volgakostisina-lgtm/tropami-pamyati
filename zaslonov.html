@@ -382,24 +382,45 @@ hr{
 
 <body>
 
+<audio id="backgroundMusic" src="Спокойствие%20Resolve.mp3" loop preload="auto"></audio>
+<script>
+(function(){
+    const music = document.getElementById("backgroundMusic");
+    if (!music) return;
+    music.volume = 0.35;
+    const startMusic = () => {
+        if (music.paused) {
+            const playAttempt = music.play();
+            if (playAttempt && typeof playAttempt.catch === "function") {
+                playAttempt.catch(() => {});
+            }
+        }
+    };
+    startMusic();
+    document.addEventListener("pointerdown", startMusic, { once: true });
+    document.addEventListener("keydown", startMusic, { once: true });
+})();
+</script>
+
+
 <div class="topbar">
 
     <div class="logo">
-        ▲ ТРОПАМИ ПАМЯТИ
+        <a href="index.html" style="color:inherit;text-decoration:none;">Тропами памяти</a>
     </div>
 
     <div class="top-actions">
 
         <button class="top-btn" onclick="openDossier()">
-            📜 ДОСЬЕ
+            ДОСЬЕ
         </button>
 
         <button class="top-btn" onclick="openDiary()">
-            📖 ДНЕВНИК
+            ДНЕВНИК
         </button>
 
         <button class="top-btn" onclick="goHome()">
-            🏠 ГЛАВНАЯ
+            Главная страница
         </button>
 
     </div>
@@ -437,7 +458,7 @@ hr{
 
     <div class="modal">
 
-        <h2>📖 Дневник</h2>
+        <h2>Дневник</h2>
 
         <div id="diaryContent"></div>
 
@@ -602,7 +623,7 @@ function showProfileChoice(){
                 <div>
 
                     <div class="profile-code">
-                        📜 ${escapeHtml(profile.codeName)}
+                        ${escapeHtml(profile.codeName)}
                     </div>
 
                     <div>
@@ -839,7 +860,7 @@ function showDossierIntro(){
                 class="primary"
                 onclick="createHero()">
 
-                💾 СОХРАНИТЬ ДОСЬЕ
+                СОХРАНИТЬ ДОСЬЕ
 
             </button>
 
@@ -2305,7 +2326,7 @@ function scene13(){
         <div class="panel">
 
             <div class="kicker">
-                📖 А ЧТО БЫЛО НА САМОМ ДЕЛЕ?
+                А ЧТО БЫЛО НА САМОМ ДЕЛЕ?
             </div>
 
             <h2>
@@ -2531,7 +2552,7 @@ ${escapeHtml(hero.codeName)}.
             <button class="primary"
                 onclick="goHome()">
 
-                🏠 ВЕРНУТЬСЯ НА ГЛАВНУЮ
+                ВЕРНУТЬСЯ НА ГЛАВНУЮ
 
             </button>
 
@@ -2540,7 +2561,7 @@ ${escapeHtml(hero.codeName)}.
             <button class="secondary"
                 onclick="openDiary()">
 
-                📖 ОТКРЫТЬ ДНЕВНИК
+                ОТКРЫТЬ ДНЕВНИК
 
             </button>
 
@@ -2567,7 +2588,7 @@ function openDossier(){
     document.getElementById("dossierContent").innerHTML = `
 
         <h2>
-            📜 Личное досье
+            Личное досье
         </h2>
 
         <div class="story-text">
